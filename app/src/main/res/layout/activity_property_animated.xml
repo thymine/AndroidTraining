@@ -40,15 +40,24 @@
         android:layout_height="200dp"
         android:layout_alignParentBottom="true"
         android:contentDescription="@string/ground"
-        android:padding="40dp"
+        android:padding="0dp"
         android:src="@drawable/ground" />
 
     <ImageView
+        android:id="@+id/grass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="400dp"
+        android:paddingLeft="60dp"
+        android:contentDescription="@string/ground"
+        android:src="@drawable/grass" />
+
+    <!--<ImageView
         android:id="@+id/window"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:contentDescription="@string/window"
-        android:src="@drawable/window" />
+        android:src="@drawable/window" />-->
 
     <ImageView
         android:id="@+id/wheel"

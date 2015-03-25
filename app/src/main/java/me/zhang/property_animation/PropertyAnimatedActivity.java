@@ -2,11 +2,9 @@ package me.zhang.property_animation;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -36,17 +34,39 @@ public class PropertyAnimatedActivity extends Activity {
         sunSet.setTarget(sun);
         sunSet.start();
 
-        ValueAnimator skyAnim = ObjectAnimator.ofInt(
-                findViewById(R.id.car_layout),
-                "backgroundColor",
-                Color.rgb(0x66, 0xcc, 0xff),
-                Color.rgb(0x00, 0x66, 0x99)
-        );
-        skyAnim.setDuration(3000);
-        skyAnim.setRepeatCount(ValueAnimator.INFINITE);
-        skyAnim.setRepeatCount(ValueAnimator.REVERSE);
-        skyAnim.setEvaluator(new ArgbEvaluator());
-        skyAnim.start();
+        ObjectAnimator grassAnimX = ObjectAnimator.ofFloat(findViewById(R.id.grass), "x", -100);
+        grassAnimX.setDuration(1000);
+        grassAnimX.setRepeatCount(ValueAnimator.INFINITE);
+        grassAnimX.setRepeatMode(ValueAnimator.REVERSE);
+        grassAnimX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float value = (float) animation.getAnimatedValue();
+                // TODO
+            }
+        });
+
+        ObjectAnimator grassAnimY = ObjectAnimator.ofFloat(findViewById(R.id.grass), "y", -50);
+        grassAnimY.setDuration(1000);
+        grassAnimY.setRepeatCount(ValueAnimator.INFINITE);
+        grassAnimY.setRepeatMode(ValueAnimator.REVERSE);
+
+        AnimatorSet grassSet = new AnimatorSet();
+        grassSet.play(grassAnimX).with(grassAnimY);
+        grassSet.start();
+
+
+//        ValueAnimator skyAnim = ObjectAnimator.ofInt(
+//                findViewById(R.id.car_layout),
+//                "backgroundColor",
+//                Color.rgb(0x66, 0xcc, 0xff),
+//                Color.rgb(0x00, 0x66, 0x99)
+//        );
+//        skyAnim.setDuration(3000);
+//        skyAnim.setRepeatCount(ValueAnimator.INFINITE);
+//        skyAnim.setRepeatCount(ValueAnimator.REVERSE);
+//        skyAnim.setEvaluator(new ArgbEvaluator());
+//        skyAnim.start();
 
         ObjectAnimator cloudAnim = ObjectAnimator.ofFloat(findViewById(R.id.cloud1), "x", -350);
         cloudAnim.setDuration(3000);
