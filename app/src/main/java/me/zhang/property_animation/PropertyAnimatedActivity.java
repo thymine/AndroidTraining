@@ -42,7 +42,7 @@ public class PropertyAnimatedActivity extends Activity {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float value = (float) animation.getAnimatedValue();
-                // TODO
+                // TODO 作一些额外处理
             }
         });
 
