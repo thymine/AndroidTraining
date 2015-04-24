@@ -1,1 +1,1 @@
-include ':app', ':userinput'
+include ':app', ':userinput', ':DisplayingBitmapsEfficiently'

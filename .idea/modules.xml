@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidTraining.iml" filepath="$PROJECT_DIR$/AndroidTraining.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" filepath="$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/userinput/userinput.iml" filepath="$PROJECT_DIR$/userinput/userinput.iml" />
     </modules>
   </component>
 </project>
+
