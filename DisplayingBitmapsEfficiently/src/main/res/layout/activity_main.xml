@@ -5,7 +5,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/btn_pick"
+        android:id="@+id/pick"
         android:onClick="pickImage"
         android:text="@string/pic_image"
         android:layout_width="match_parent"
@@ -13,12 +13,19 @@
 
     <ImageView
         android:id="@+id/picked_image"
-        android:layout_below="@+id/btn_pick"
+        android:layout_below="@+id/pick"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/ic_launcher"
         android:scaleType="centerInside"
         android:contentDescription="@string/picked_image" />
 
+    <ProgressBar
+        android:id="@+id/load_progress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:visibility="gone"
+        android:layout_below="@+id/pick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
