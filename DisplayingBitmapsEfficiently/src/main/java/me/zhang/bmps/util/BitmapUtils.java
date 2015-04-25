@@ -36,7 +36,7 @@ public class BitmapUtils {
         return BitmapFactory.decodeStream(bais, null, options);
     }
 
-    private static int copy(InputStream in, ByteArrayOutputStream out) {
+    public static int copy(InputStream in, ByteArrayOutputStream out) {
         byte[] buffer = new byte[IO_BUFFER_SIZE];
         int count = 0;
         int n;
