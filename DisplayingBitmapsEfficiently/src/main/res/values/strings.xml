@@ -3,4 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="pic_image">Pick Image</string>
+    <string name="picked_image">Picked Image</string>
 </resources>

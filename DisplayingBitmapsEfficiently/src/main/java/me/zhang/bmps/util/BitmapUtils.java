@@ -1,27 +1,54 @@
 package me.zhang.bmps.util;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by Zhang on 4/24/2015 10:16 下午.
  */
 public class BitmapUtils {
 
-    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
+    private static final int IO_BUFFER_SIZE = 1024;
+
+    public static Bitmap decodeSampledBitmapFromInputStream(InputStream in,
+                                                            int reqWidth, int reqHeight) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        // Make a copy of InputStream for Bitmap decoding
+        copy(in, out);
+        // InputSteam for Bitmap decoding
+        ByteArrayInputStream bais = new ByteArrayInputStream(out.toByteArray());
+
         // First decode with inJustDecodeBounds = true to check dimensions
         final BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(res, resId, options);
+        BitmapFactory.decodeStream(in, null, options);
 
         // Calculate inSampleSize
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
 
-        // Decode bitmap with inSampleSize set
         options.inJustDecodeBounds = false;
-        return BitmapFactory.decodeResource(res, resId, options);
+        // Decode bitmap with inSampleSize set.
+        return BitmapFactory.decodeStream(bais, null, options);
+    }
+
+    private static int copy(InputStream in, ByteArrayOutputStream out) {
+        byte[] buffer = new byte[IO_BUFFER_SIZE];
+        int count = 0;
+        int n;
+        try {
+            while ((n = in.read(buffer)) != -1) {
+                out.write(buffer, 0, n);
+                count += n;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
     public static int calculateInSampleSize(
