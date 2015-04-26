@@ -1,12 +1,18 @@
 package me.zhang.bmps.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.widget.ImageView;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import me.zhang.bmps.view.AsyncDrawable;
 
 /**
  * Created by Zhang on 4/24/2015 10:16 下午.
@@ -15,10 +21,12 @@ public class BitmapUtils {
 
     private static final int IO_BUFFER_SIZE = 1024 * 8;
 
-    public static Bitmap decodeSampledBitmapFromInputStream(InputStream in,
+    public static Bitmap decodeSampledBitmapFromInputStream(Context context, Uri uri,
                                                             int reqWidth, int reqHeight) {
+        InputStream in = null;
         InputStream copyOfIn = null;
         try {
+            in = context.getContentResolver().openInputStream(uri);
             // Image datas
             byte[] datas = inputStreamToBytes(in);
 
@@ -111,6 +119,18 @@ public class BitmapUtils {
         }
 
         return inSampleSize;
+    }
+
+    // Retrieve the task associated with a particular ImageView
+    public static BitmapWorkerTask getBitmapWorkerTask(ImageView imageView) {
+        if (imageView != null) {
+            final Drawable drawable = imageView.getDrawable();
+            if (drawable instanceof AsyncDrawable) {
+                final AsyncDrawable asyncDrawable = (AsyncDrawable) drawable;
+                return asyncDrawable.getBitmapWorkerTask();
+            }
+        }
+        return null;
     }
 
 }
