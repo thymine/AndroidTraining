@@ -21,6 +21,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -225,7 +227,13 @@ public class AsyncActivity extends BaseActivity {
         @Override
         protected Bitmap doInBackground(Uri... params) {
             uri = params[0];
-            return BitmapUtils.decodeSampledBitmapFromInputStream(mContext, uri, 120, 120);
+            InputStream in = null;
+            try {
+                in = mContext.getContentResolver().openInputStream(uri);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            return BitmapUtils.decodeSampledBitmapFromInputStream(in, 120, 120);
         }
 
         // Once complete, see if ImageView is still around and set bitmap.
