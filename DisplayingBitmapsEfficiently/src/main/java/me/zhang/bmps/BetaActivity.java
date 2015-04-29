@@ -1,10 +1,14 @@
 package me.zhang.bmps;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -17,19 +21,18 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 import me.zhang.bmps.util.BitmapUtils;
-import me.zhang.bmps.util.BitmapWorkerTask;
-import me.zhang.bmps.view.AsyncDrawable;
 
 /**
  * Created by Zhang on 4/26/2015 4:59 下午.
  */
 public class BetaActivity extends BaseActivity {
 
-    Bitmap mPlaceHolderBitmap;
+    private Bitmap mPlaceHolderBitmap;
     private GridView mGridView;
     private Context mContext;
 
@@ -38,18 +41,21 @@ public class BetaActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beta);
         mContext = getApplicationContext();
+        mPlaceHolderBitmap =
+                BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+
         final int mImageThumbSize = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_size);
         final int mImageThumbSpacing = getResources().getDimensionPixelSize(R.dimen.image_thumbnail_spacing);
 
-        mPlaceHolderBitmap =
-                BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
         mGridView = (GridView) findViewById(R.id.image_grid);
+
         List<String> images = getAllShownImagesPath(mContext);
         List<Uri> datas = new ArrayList<>();
         for (String s : images) {
             datas.add(Uri.fromFile(new File(s)));
         }
-        final ImageGridAdapter adapter = new ImageGridAdapter(mContext, datas);
+
+        final ImageGridAdapter adapter = new ImageGridAdapter(datas);
         mGridView.setAdapter(adapter);
 
         mGridView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -101,7 +107,6 @@ public class BetaActivity extends BaseActivity {
         uri = android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
 
         String[] projection = {MediaStore.MediaColumns.DATA};
-
         cursor = context.getContentResolver().query(uri, projection, null,
                 null, null);
 
@@ -116,7 +121,7 @@ public class BetaActivity extends BaseActivity {
 
     private void loadBitmap(Uri uri, ImageView imageView) {
         if (cancelPotentialWork(uri, imageView)) {
-            final BitmapWorkerTask task = new BitmapWorkerTask(mContext, imageView);
+            final BitmapWorkerTask task = new BitmapWorkerTask(imageView);
             final AsyncDrawable asyncDrawable =
                     new AsyncDrawable(getResources(), mPlaceHolderBitmap, task);
             imageView.setImageDrawable(asyncDrawable);
@@ -125,7 +130,7 @@ public class BetaActivity extends BaseActivity {
     }
 
     private boolean cancelPotentialWork(Uri uri, ImageView imageView) {
-        final BitmapWorkerTask bitmapWorkerTask = BitmapUtils.getBitmapWorkerTask(imageView);
+        final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
         if (bitmapWorkerTask != null) {
             final Uri bitmapUri = bitmapWorkerTask.getUri();
             // If bitmapUri is not yet set or it differs from the new uri
@@ -142,14 +147,11 @@ public class BetaActivity extends BaseActivity {
     }
 
     class ImageGridAdapter extends BaseAdapter {
-
-        private final Context mContext;
         private final List<Uri> mDatas;
         private int mItemHeight = 0;
         private GridView.LayoutParams mImageViewLayoutParams;
 
-        public ImageGridAdapter(Context context, List<Uri> datas) {
-            mContext = context;
+        public ImageGridAdapter(List<Uri> datas) {
             mDatas = datas;
             mImageViewLayoutParams = new GridView.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -199,6 +201,78 @@ public class BetaActivity extends BaseActivity {
             loadBitmap(mDatas.get(position), imageView);
             return imageView;
         }
+    }
+
+    class BitmapWorkerTask extends AsyncTask<Uri, Void, Bitmap> {
+        private final WeakReference<ImageView> imageViewWeakReference;
+        private Uri uri;
+
+        public Uri getUri() {
+            return uri;
+        }
+
+        public BitmapWorkerTask(ImageView imageView) {
+            // Use a WeakReference to ensure the ImageView can be garbage collected
+            imageViewWeakReference = new WeakReference<>(imageView);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        // Decode image in background.
+        @Override
+        protected Bitmap doInBackground(Uri... params) {
+            uri = params[0];
+            return BitmapUtils.decodeSampledBitmapFromInputStream(mContext, uri, 120, 120);
+        }
+
+        // Once complete, see if ImageView is still around and set bitmap.
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+
+            // Check if the task is cancelled
+            if (isCancelled()) {
+                bitmap = null;
+            }
+
+            if (bitmap != null) {
+                final ImageView imageView = imageViewWeakReference.get();
+                final BitmapWorkerTask bitmapWorkerTask = getBitmapWorkerTask(imageView);
+                // Check if the current task matches the one associated with the ImageView
+                if (this == bitmapWorkerTask) {
+                    imageView.setImageBitmap(bitmap);
+                }
+            }
+        }
+    }
+
+    // Retrieve the task associated with a particular ImageView
+    private BitmapWorkerTask getBitmapWorkerTask(ImageView imageView) {
+        if (imageView != null) {
+            final Drawable drawable = imageView.getDrawable();
+            if (drawable instanceof AsyncDrawable) {
+                final AsyncDrawable asyncDrawable = (AsyncDrawable) drawable;
+                return asyncDrawable.getBitmapWorkerTask();
+            }
+        }
+        return null;
+    }
+
+    class AsyncDrawable extends BitmapDrawable {
+        private final WeakReference<BitmapWorkerTask> bitmapWorkerTaskWeakReference;
+
+        public AsyncDrawable(Resources res, Bitmap bitmap, BitmapWorkerTask bitmapWorkerTask) {
+            super(res, bitmap);
+            bitmapWorkerTaskWeakReference = new WeakReference<>(bitmapWorkerTask);
+        }
+
+        public BitmapWorkerTask getBitmapWorkerTask() {
+            return bitmapWorkerTaskWeakReference.get();
+        }
+
     }
 
 }
