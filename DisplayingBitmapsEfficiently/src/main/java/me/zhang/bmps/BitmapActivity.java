@@ -17,7 +17,7 @@ import me.zhang.bmps.util.BitmapUtils;
 /**
  * Created by Zhang on 4/26/2015 11:12 上午.
  */
-public class AlphaActivity extends BaseActivity {
+public class BitmapActivity extends BaseActivity {
 
     private static final int PICK_IMAGE = 0x10;
     private ImageView mPickedImage;
@@ -27,7 +27,7 @@ public class AlphaActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alpha);
+        setContentView(R.layout.activity_bitmap);
         mContext = getApplicationContext();
         mPickedImage = (ImageView) findViewById(R.id.picked_image);
         mLoadingProgress = (ProgressBar) findViewById(R.id.loading_progress);

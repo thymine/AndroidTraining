@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlphaActivity" />
-        <activity android:name=".BetaActivity" />
+        <activity android:name=".BitmapActivity" />
+        <activity android:name=".AsyncActivity" />
+        <activity android:name=".CacheActivity" />
     </application>
 
 </manifest>
