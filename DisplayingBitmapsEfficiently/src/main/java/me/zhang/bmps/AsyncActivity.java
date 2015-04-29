@@ -30,7 +30,7 @@ import me.zhang.bmps.util.BitmapUtils;
 /**
  * Created by Zhang on 4/26/2015 4:59 下午.
  */
-public class BetaActivity extends BaseActivity {
+public class AsyncActivity extends BaseActivity {
 
     private Bitmap mPlaceHolderBitmap;
     private GridView mGridView;
@@ -39,7 +39,7 @@ public class BetaActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_beta);
+        setContentView(R.layout.activity_async);
         mContext = getApplicationContext();
         mPlaceHolderBitmap =
                 BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
