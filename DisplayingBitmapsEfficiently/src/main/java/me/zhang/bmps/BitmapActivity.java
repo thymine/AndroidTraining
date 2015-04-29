@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
 import me.zhang.bmps.util.BitmapUtils;
@@ -76,7 +78,14 @@ public class BitmapActivity extends BaseActivity {
         // Decode image in background.
         @Override
         protected Bitmap doInBackground(Uri... params) {
-            return BitmapUtils.decodeSampledBitmapFromInputStream(mContext, params[0], 480, 800);
+            Uri uri = params[0];
+            InputStream in = null;
+            try {
+                in = mContext.getContentResolver().openInputStream(uri);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            return BitmapUtils.decodeSampledBitmapFromInputStream(in, 480, 800);
         }
 
         // Once complete, see if ImageView is still around and set bitmap.

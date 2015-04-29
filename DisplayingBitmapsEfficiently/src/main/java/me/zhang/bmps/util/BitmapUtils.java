@@ -1,14 +1,13 @@
 package me.zhang.bmps.util;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Created by Zhang on 4/24/2015 10:16 下午.
@@ -17,12 +16,10 @@ public class BitmapUtils {
 
     private static final int IO_BUFFER_SIZE = 1024 * 8;
 
-    public static Bitmap decodeSampledBitmapFromInputStream(Context context, Uri uri,
+    public static Bitmap decodeSampledBitmapFromInputStream(InputStream in,
                                                             int reqWidth, int reqHeight) {
-        InputStream in = null;
         InputStream copyOfIn = null;
         try {
-            in = context.getContentResolver().openInputStream(uri);
             // Image datas
             byte[] datas = inputStreamToBytes(in);
 
@@ -57,15 +54,26 @@ public class BitmapUtils {
         return null;
     }
 
-    public static int copy(InputStream in, ByteArrayOutputStream out) throws IOException {
-        byte[] buffer = new byte[IO_BUFFER_SIZE];
-        int count = 0;
-        int n;
-        while ((n = in.read(buffer)) != -1) {
-            out.write(buffer, 0, n);
-            count += n;
+    public static boolean copy(InputStream in, OutputStream out) throws IOException {
+        try {
+            byte[] buffer = new byte[IO_BUFFER_SIZE];
+            int n;
+            while ((n = in.read(buffer)) != -1) {
+                out.write(buffer, 0, n);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (in != null) {
+                    in.close();
+                }
+            } catch (final IOException e) {
+                e.printStackTrace();
+            }
         }
-        return count;
+        return false;
     }
 
     public static InputStream bytesToInputStream(byte[] bytes) {
