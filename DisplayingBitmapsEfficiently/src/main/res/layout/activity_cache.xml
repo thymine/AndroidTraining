@@ -1,17 +1,7 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment"
+    android:name="me.zhang.bmps.CacheFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <GridView
-        android:id="@+id/image_grid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnWidth="@dimen/image_thumbnail_size"
-        android:horizontalSpacing="1dp"
-        android:verticalSpacing="1dp"
-        android:stretchMode="columnWidth"
-        android:numColumns="auto_fit" />
-
-</RelativeLayout>
+    tools:layout="@layout/fragment_cache" />

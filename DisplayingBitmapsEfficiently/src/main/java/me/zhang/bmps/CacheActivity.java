@@ -68,29 +68,36 @@ public class CacheActivity extends BaseActivity {
         setContentView(R.layout.activity_cache);
         mContext = getApplicationContext();
 
-        /**
-         * Note: In this example, one eighth of the application memory is allocated for our cache.
-         * On a normal/hdpi device this is a minimum of around 4MB (32/8).
-         * A full screen GridView filled with images on a device with 800x480 resolution
-         * would use around 1.5MB (800*480*4 bytes),
-         * so this would cache a minimum of around 2.5 pages of images in memory.
-         */
-        // Get max available VM memory, exceeding this amount will throw an
-        // OutOfMemory exception. Stored in kilobytes as LruCache takes an
-        // int in its constructor.
-        final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
+        CacheFragment cacheFragment = CacheFragment.findOrCreateCacheFragment(getSupportFragmentManager());
+        mMemoryCache = cacheFragment.mRetainedCache;
+        if (mMemoryCache == null) {
+            /**
+             * Note: In this example, one eighth of the application memory is allocated for our cache.
+             * On a normal/hdpi device this is a minimum of around 4MB (32/8).
+             * A full screen GridView filled with images on a device with 800x480 resolution
+             * would use around 1.5MB (800*480*4 bytes),
+             * so this would cache a minimum of around 2.5 pages of images in memory.
+             */
+            // Get max available VM memory, exceeding this amount will throw an
+            // OutOfMemory exception. Stored in kilobytes as LruCache takes an
+            // int in its constructor.
+            final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
 
-        // Use 1/8th of the available memory for this memory cache.
-        final int cacheSize = maxMemory / 8;
+            // Use 1/8th of the available memory for this memory cache.
+            final int cacheSize = maxMemory / 8;
 
-        mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
-            @Override
-            protected int sizeOf(String key, Bitmap value) {
-                // The cache size will be measured in kilobytes rather than
-                // number of items.
-                return value.getByteCount() / 1024;
-            }
-        };
+            mMemoryCache = new LruCache<String, Bitmap>(cacheSize) {
+                @Override
+                protected int sizeOf(String key, Bitmap value) {
+                    // The cache size will be measured in kilobytes rather than
+                    // number of items.
+                    return value.getByteCount() / 1024;
+                }
+            };
+
+            // And back to mRetainedCache
+            cacheFragment.mRetainedCache = mMemoryCache;
+        }
 
         // Initialize disk cache on background thread
         File cacheDir = getDiskCacheDir(mContext, DISK_CACHE_SUBDIR);
@@ -451,6 +458,7 @@ public class CacheActivity extends BaseActivity {
     class BitmapWorkerTask extends AsyncTask<Uri, Void, Bitmap> {
         private final WeakReference<ImageView> imageViewWeakReference;
         private Uri uri;
+        private Bitmap bitmap;
 
         public Uri getUri() {
             return uri;
@@ -468,7 +476,7 @@ public class CacheActivity extends BaseActivity {
 
             final String imageKey = uri.toString();
             // Check disk cache in background thread
-            Bitmap bitmap = getBitmapFromDiskCache(imageKey);
+            bitmap = getBitmapFromDiskCache(imageKey);
             if (bitmap == null) { // Not found in disk cache
                 // Process as normal
                 InputStream in = null;
@@ -481,8 +489,14 @@ public class CacheActivity extends BaseActivity {
                 // Add decoded bitmap to memory cache - LruCache
                 addBitmapToMemoryCache(uri.toString(), bitmap);
             }
-            // Add final bitmap to caches
-            addBitmapToDiskCache(imageKey, bitmap);
+            // Displaying bitmaps quickly
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    // Add final bitmap to caches - take time task
+                    addBitmapToDiskCache(imageKey, bitmap);
+                }
+            }).start();
 
             return bitmap;
         }
