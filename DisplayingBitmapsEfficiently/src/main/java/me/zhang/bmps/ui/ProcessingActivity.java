@@ -1,4 +1,4 @@
-package me.zhang.bmps;
+package me.zhang.bmps.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -27,12 +27,13 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.zhang.bmps.R;
 import me.zhang.bmps.util.BitmapUtils;
 
 /**
  * Created by Zhang on 4/26/2015 4:59 下午.
  */
-public class AsyncActivity extends BaseActivity {
+public class ProcessingActivity extends BaseActivity {
 
     private Bitmap mPlaceHolderBitmap;
     private GridView mGridView;

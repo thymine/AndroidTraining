@@ -1,4 +1,4 @@
-package me.zhang.bmps;
+package me.zhang.bmps.ui;
 
 import android.app.ListActivity;
 import android.content.Intent;
