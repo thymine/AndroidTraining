@@ -1,8 +1,10 @@
-package me.zhang.bmps;
+package me.zhang.bmps.ui;
 
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import me.zhang.bmps.R;
 
 /**
  * Created by Zhang on 4/26/2015 4:51 下午.

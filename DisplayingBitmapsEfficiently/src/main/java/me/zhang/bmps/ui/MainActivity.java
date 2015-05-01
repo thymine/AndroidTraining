@@ -1,4 +1,4 @@
-package me.zhang.bmps;
+package me.zhang.bmps.ui;
 
 import android.os.Bundle;
 
@@ -12,9 +12,9 @@ public class MainActivity extends MenuActivity {
 
     @Override
     protected void prepareMenu() {
-        addMenuItem("Loading Large Bitmaps Efficiently", BitmapActivity.class);
-        addMenuItem("Processing Bitmaps Off the UI Thread", AsyncActivity.class);
-        addMenuItem("Caching Bitmaps", CacheActivity.class);
+        addMenuItem("Loading Large Bitmaps Efficiently", LoadingActivity.class);
+        addMenuItem("Processing Bitmaps Off the UI Thread", ProcessingActivity.class);
+        addMenuItem("Caching Bitmaps", CachingActivity.class);
     }
 
 }

@@ -1,4 +1,4 @@
-package me.zhang.bmps;
+package me.zhang.bmps.ui;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -9,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CacheFragment extends Fragment {
+import me.zhang.bmps.R;
 
-    private static final String TAG = CacheFragment.class.getSimpleName();
+public class CachingFragment extends Fragment {
+
+    private static final String TAG = CachingFragment.class.getSimpleName();
     public LruCache<String, Bitmap> mRetainedCache;
 
-    public CacheFragment() {
+    public CachingFragment() {
     }
 
     @Override
@@ -23,10 +25,10 @@ public class CacheFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_cache, container, false);
     }
 
-    public static CacheFragment findOrCreateCacheFragment(FragmentManager fm) {
-        CacheFragment fragment = (CacheFragment) fm.findFragmentByTag(TAG);
+    public static CachingFragment findOrCreateCacheFragment(FragmentManager fm) {
+        CachingFragment fragment = (CachingFragment) fm.findFragmentByTag(TAG);
         if (fragment == null) {
-            fragment = new CacheFragment();
+            fragment = new CachingFragment();
             fm.beginTransaction().add(fragment, TAG).commit();
         }
         return fragment;

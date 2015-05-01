@@ -1,4 +1,4 @@
-package me.zhang.bmps;
+package me.zhang.bmps.ui;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -27,8 +27,6 @@ import android.widget.ImageView;
 
 import com.jakewharton.disklrucache.DiskLruCache;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -42,12 +40,13 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.zhang.bmps.R;
 import me.zhang.bmps.util.BitmapUtils;
 
 /**
  * Created by Zhang on 2015/4/29 2:07 下午.
  */
-public class CacheActivity extends BaseActivity {
+public class CachingActivity extends BaseActivity {
 
     private Bitmap mPlaceHolderBitmap;
     private GridView mGridView;
@@ -68,8 +67,8 @@ public class CacheActivity extends BaseActivity {
         setContentView(R.layout.activity_cache);
         mContext = getApplicationContext();
 
-        CacheFragment cacheFragment = CacheFragment.findOrCreateCacheFragment(getSupportFragmentManager());
-        mMemoryCache = cacheFragment.mRetainedCache;
+        CachingFragment cachingFragment = CachingFragment.findOrCreateCacheFragment(getSupportFragmentManager());
+        mMemoryCache = cachingFragment.mRetainedCache;
         if (mMemoryCache == null) {
             /**
              * Note: In this example, one eighth of the application memory is allocated for our cache.
@@ -96,7 +95,7 @@ public class CacheActivity extends BaseActivity {
             };
 
             // And back to mRetainedCache
-            cacheFragment.mRetainedCache = mMemoryCache;
+            cachingFragment.mRetainedCache = mMemoryCache;
         }
 
         // Initialize disk cache on background thread
@@ -157,35 +156,6 @@ public class CacheActivity extends BaseActivity {
                 }
             }
         });
-    }
-
-    private boolean uriToStream(Context context, Uri uri, OutputStream os) {
-        BufferedOutputStream out = null;
-        BufferedInputStream in = null;
-        try {
-            in = new BufferedInputStream(context.getContentResolver().openInputStream(uri), 8 * 1024);
-            out = new BufferedOutputStream(os, 8 * 1024);
-
-            int b;
-            while ((b = in.read()) != -1) {
-                out.write(b);
-            }
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) {
-                    out.close();
-                }
-                if (in != null) {
-                    in.close();
-                }
-            } catch (final IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return false;
     }
 
     public int getAppVersion(Context context) {

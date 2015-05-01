@@ -1,4 +1,4 @@
-package me.zhang.bmps;
+package me.zhang.bmps.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,12 +14,13 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
+import me.zhang.bmps.R;
 import me.zhang.bmps.util.BitmapUtils;
 
 /**
  * Created by Zhang on 4/26/2015 11:12 上午.
  */
-public class BitmapActivity extends BaseActivity {
+public class LoadingActivity extends BaseActivity {
 
     private static final int PICK_IMAGE = 0x10;
     private ImageView mPickedImage;
