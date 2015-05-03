@@ -22,6 +22,7 @@
         <activity android:name=".ui.LoadingActivity" />
         <activity android:name=".ui.ProcessingActivity" />
         <activity android:name=".ui.CachingActivity" />
+        <activity android:name=".ui.ImageDetailActivity" />
     </application>
 
 </manifest>

@@ -1,7 +1,9 @@
 package me.zhang.bmps.ui;
 
 import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
@@ -21,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -42,12 +45,14 @@ import java.util.List;
 
 import me.zhang.bmps.R;
 import me.zhang.bmps.util.BitmapUtils;
+import me.zhang.bmps.util.Utils;
 
 /**
  * Created by Zhang on 2015/4/29 2:07 下午.
  */
-public class CachingActivity extends BaseActivity {
+public class CachingActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
+    public static List<Uri> mDatas;
     private Bitmap mPlaceHolderBitmap;
     private GridView mGridView;
     private Context mContext;
@@ -115,13 +120,15 @@ public class CachingActivity extends BaseActivity {
         mGridView = (GridView) findViewById(R.id.image_grid);
 
         List<String> images = getAllShownImagesPath(mContext);
-        List<Uri> datas = new ArrayList<>();
+        mDatas = new ArrayList<>();
         for (String s : images) {
-            datas.add(Uri.fromFile(new File(s)));
+            mDatas.add(Uri.fromFile(new File(s)));
         }
 
-        final ImageGridAdapter adapter = new ImageGridAdapter(datas);
+        final ImageGridAdapter adapter = new ImageGridAdapter(mDatas);
         mGridView.setAdapter(adapter);
+
+        mGridView.setOnItemClickListener(this);
 
         mGridView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -235,10 +242,23 @@ public class CachingActivity extends BaseActivity {
                     e.printStackTrace();
                 }
                 if (snapshot != null) {
-                    // Get bitmap input stream
-                    InputStream in = snapshot.getInputStream(0);
-                    // Decode stream to bitmap
-                    bitmap = BitmapFactory.decodeStream(in);
+                    InputStream in = null;
+                    try {
+                        // Get bitmap input stream
+                        in = snapshot.getInputStream(0);
+                        // Decode stream to bitmap
+                        bitmap = BitmapFactory.decodeStream(in);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            if (in != null) {
+                                in.close();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
         }
@@ -274,6 +294,23 @@ public class CachingActivity extends BaseActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         return new ByteArrayInputStream(baos.toByteArray());
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+        final Intent i = new Intent(this, ImageDetailActivity.class);
+        i.putExtra(ImageDetailActivity.EXTRA_IMAGE, (int) id);
+        if (Utils.hasJellyBean()) {
+            // makeThumbnailScaleUpAnimation() looks kind of ugly here as the loading spinner may
+            // show plus the thumbnail image in GridView is cropped. so using
+            // makeScaleUpAnimation() instead.
+            ActivityOptions options =
+                    ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight());
+            startActivity(i, options.toBundle());
+        } else {
+            startActivity(i);
+        }
     }
 
     class InitDiskCacheTask extends AsyncTask<File, Void, Void> {
@@ -452,12 +489,20 @@ public class CachingActivity extends BaseActivity {
                 InputStream in = null;
                 try {
                     in = mContext.getContentResolver().openInputStream(uri);
+                    bitmap = BitmapUtils.decodeSampledBitmapFromInputStream(in, 120, 120);
+                    // Add decoded bitmap to memory cache - LruCache
+                    addBitmapToMemoryCache(uri.toString(), bitmap);
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
+                } finally {
+                    try {
+                        if (in != null) {
+                            in.close();
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
-                bitmap = BitmapUtils.decodeSampledBitmapFromInputStream(in, 120, 120);
-                // Add decoded bitmap to memory cache - LruCache
-                addBitmapToMemoryCache(uri.toString(), bitmap);
             }
             // Displaying bitmaps quickly
             new Thread(new Runnable() {

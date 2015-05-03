@@ -20,7 +20,7 @@ public class BitmapUtils {
                                                             int reqWidth, int reqHeight) {
         InputStream copyOfIn = null;
         try {
-            // Image datas
+            // Image mDatas
             byte[] datas = inputStreamToBytes(in);
 
             // First decode with inJustDecodeBounds = true to check dimensions

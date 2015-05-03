@@ -6,4 +6,5 @@
     <string name="pic_image">Pick Image</string>
     <string name="picked_image">Picked Image</string>
     <string name="title_activity_temp">TempActivity</string>
+    <string name="image_detail">image_detail</string>
 </resources>
