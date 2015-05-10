@@ -8,5 +8,6 @@ public class MainActivity extends MenuActivity {
     protected void prepareMenu() {
         addMenuItem("Applying a Transition", SceneActivity.class);
         addMenuItem("Apply a Transition Without Scenes", NoSceneActivity.class);
+        addMenuItem("Creating Custom Transitions", CustomActivity.class);
     }
 }
