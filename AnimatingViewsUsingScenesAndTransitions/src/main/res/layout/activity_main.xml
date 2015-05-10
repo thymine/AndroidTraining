@@ -10,12 +10,10 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/TextViewStyle"
         android:layout_centerHorizontal="true"
         android:text="@string/title"
-        android:textSize="12pt"
-        android:textStyle="bold|italic" />
+        android:textSize="14pt" />
 
     <FrameLayout
         android:id="@+id/scene_root"
@@ -28,8 +26,8 @@
 
     <FrameLayout
         android:id="@+id/another_scene_root"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
