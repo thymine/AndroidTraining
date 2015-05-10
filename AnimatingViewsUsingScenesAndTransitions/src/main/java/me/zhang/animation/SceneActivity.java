@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SceneActivity extends Activity {
 
@@ -69,8 +70,8 @@ public class SceneActivity extends Activity {
         /**
          * Create a transition instance from a resource file
          */
-        final Transition fadeTransitionXml = TransitionInflater.from(this).
-                inflateTransition(R.transition.fade_transition);
+        final Transition fadeTransitionXml = TransitionInflater.from(this)
+                .inflateTransition(R.transition.fade_transition);
 
         /**
          * Create a transition instance in your code
@@ -81,8 +82,35 @@ public class SceneActivity extends Activity {
         final Transition changeBoundsTransitionCode = new ChangeBounds();
         changeBoundsTransitionCode.setDuration(1000);
 
-        final Transition seqTransitionsXml = TransitionInflater.from(this).
-                inflateTransition(R.transition.seq_transitions);
+        final Transition seqTransitionsXml = TransitionInflater.from(this)
+                .inflateTransition(R.transition.seq_transitions);
+        seqTransitionsXml.addListener(new Transition.TransitionListener() {
+            @Override
+            public void onTransitionStart(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionEnd(Transition transition) {
+                Toast.makeText(getApplicationContext(), "onTransitionEnd", Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            @Override
+            public void onTransitionCancel(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionPause(Transition transition) {
+
+            }
+
+            @Override
+            public void onTransitionResume(Transition transition) {
+
+            }
+        });
 
         mSceneRoot.setOnClickListener(new View.OnClickListener() {
             @Override
