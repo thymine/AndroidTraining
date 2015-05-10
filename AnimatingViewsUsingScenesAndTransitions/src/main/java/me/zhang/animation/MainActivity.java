@@ -2,9 +2,15 @@ package me.zhang.animation;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.transition.ChangeBounds;
+import android.transition.Fade;
 import android.transition.Scene;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
+import android.transition.TransitionManager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -13,11 +19,10 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 
     FrameLayout mSceneRoot;
-    FrameLayout mAnotherSceneRoot;
     Scene mAScene;
     Scene mAnotherScene;
 
-    Scene mScene;
+    boolean isAScene = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +55,46 @@ public class MainActivity extends ActionBarActivity {
         mViewHierarchy.setOrientation(LinearLayout.VERTICAL);
 
         TextView textView1 = new TextView(this);
-        ViewGroup.LayoutParams params = textView1.getLayoutParams();
-        params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        textView1.setLayoutParams(
+                new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+        );
         textView1.setText("Line Text 1");
+        textView1.setGravity(View.TEXT_ALIGNMENT_CENTER);
         mViewHierarchy.addView(textView1);
 
-        mAnotherSceneRoot = (FrameLayout) findViewById(R.id.another_scene_root);
-        mScene = new Scene(mAnotherSceneRoot, mViewHierarchy);
+
+        /**
+         * Create a transition instance from a resource file
+         */
+        final Transition fadeTransitionXml = TransitionInflater.from(this).
+                inflateTransition(R.transition.fade_transition);
+
+        /**
+         * Create a transition instance in your code
+         */
+        final Transition fadeTransitionCode = new Fade(Fade.IN|Fade.OUT); // Default Mode
+        fadeTransitionCode.setDuration(1000);
+
+        final Transition changeBoundsTransitionCode = new ChangeBounds();
+        changeBoundsTransitionCode.setDuration(1000);
+
+        final Transition seqTransitionsXml = TransitionInflater.from(this).
+                inflateTransition(R.transition.seq_transitions);
+
+        mSceneRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                fadeTransitionXml.addTarget(R.id.text_view1);
+//                fadeTransitionXml.addTarget(R.id.text_view2);
+                TransitionManager.go(
+                        (isAScene = !isAScene) ? mAScene : mAnotherScene,
+                        seqTransitionsXml
+                );
+            }
+        });
     }
 
     @Override

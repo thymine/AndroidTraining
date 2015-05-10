@@ -2,19 +2,28 @@
     android:id="@+id/scene_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_view3"
+        style="@style/TextViewStyle"
+        android:text="@string/line_text_3"
+        android:textSize="10pt"
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/text_view2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/line_text_2" />
+        style="@style/TextViewStyle"
+        android:text="@string/line_text_2"
+        android:textSize="10pt"
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/text_view1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/line_text_1" />
+        style="@style/TextViewStyle"
+        android:text="@string/line_text_1"
+        android:textSize="10pt"
+        android:textStyle="normal" />
 
 </LinearLayout>
