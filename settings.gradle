@@ -1,1 +1,1 @@
-include ':app', ':userinput', ':DisplayingBitmapsEfficiently', ':AnimatingViewsUsingScenesAndTransitions'
+include ':app', ':UserInput', ':DisplayingBitmapsEfficiently', ':AnimatingViewsUsingScenesAndTransitions', ':AddingAnimations'
