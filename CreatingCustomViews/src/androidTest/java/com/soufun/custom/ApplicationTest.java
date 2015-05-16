@@ -1,4 +1,4 @@
-package me.zhang.userinput;
+package com.soufun.custom;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
