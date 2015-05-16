@@ -4,9 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" filepath="$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" />
       <module fileurl="file://$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" filepath="$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" filepath="$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" />
       <module fileurl="file://$PROJECT_DIR$/Develop.iml" filepath="$PROJECT_DIR$/Develop.iml" />
       <module fileurl="file://$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" filepath="$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UserInput/UserInput.iml" filepath="$PROJECT_DIR$/UserInput/UserInput.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
