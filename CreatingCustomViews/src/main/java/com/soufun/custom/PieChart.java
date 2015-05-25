@@ -22,7 +22,7 @@ public class PieChart extends View {
                 0
         );
         try {
-            mShowText = a.getBoolean(R.styleable.PieChart_showText, false);
+            mShowText = a.getBoolean(R.styleable.PieChart_showTxt, false);
             mTextPos = a.getInteger(R.styleable.PieChart_labelPosition, 0);
         } finally {
             // Note that TypedArray objects are a shared resource and must be recycled after use.
