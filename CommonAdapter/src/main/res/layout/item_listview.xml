@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/id_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="Title"
+        android:textColor="#111"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/id_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_title"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:maxLines="3"
+        android:minLines="1"
+        android:text="Description Description Description Description Description"
+        android:textColor="#333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/id_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_desc"
+        android:singleLine="true"
+        android:text="Title"
+        android:textColor="#555"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/id_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/id_desc"
+        android:drawableLeft="@drawable/icon_phone"
+        android:text="10086"
+        android:textSize="12sp" />
+
+</RelativeLayout>
