@@ -3,17 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" filepath="$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/AndroidTraining.iml" filepath="$PROJECT_DIR$/AndroidTraining.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/Android.iml" filepath="$PROJECT_DIR$/Android.iml" />
->>>>>>> ea37d215b10a10abec778721b3fdfa28de61fcf7
-=======
->>>>>>> parent of 05d6d12... Rename project
-=======
->>>>>>> parent of 05d6d12... Rename project
       <module fileurl="file://$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" filepath="$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" />
       <module fileurl="file://$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" filepath="$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" />
       <module fileurl="file://$PROJECT_DIR$/Develop.iml" filepath="$PROJECT_DIR$/Develop.iml" />
