@@ -4,12 +4,16 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" filepath="$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/AndroidTraining.iml" filepath="$PROJECT_DIR$/AndroidTraining.iml" />
 =======
       <module fileurl="file://$PROJECT_DIR$/Android.iml" filepath="$PROJECT_DIR$/Android.iml" />
 >>>>>>> ea37d215b10a10abec778721b3fdfa28de61fcf7
+=======
+>>>>>>> parent of 05d6d12... Rename project
       <module fileurl="file://$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" filepath="$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" />
       <module fileurl="file://$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" filepath="$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Develop.iml" filepath="$PROJECT_DIR$/Develop.iml" />
       <module fileurl="file://$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" filepath="$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" />
       <module fileurl="file://$PROJECT_DIR$/Volley/Volley.iml" filepath="$PROJECT_DIR$/Volley/Volley.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
