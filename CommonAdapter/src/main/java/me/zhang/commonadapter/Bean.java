@@ -10,6 +10,8 @@ public class Bean {
     private String time;
     private String phone;
 
+    private boolean isChecked;
+
     public Bean() {
     }
 
@@ -55,5 +57,13 @@ public class Bean {
     @Override
     public String toString() {
         return super.toString();
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean isChecked) {
+        this.isChecked = isChecked;
     }
 }
