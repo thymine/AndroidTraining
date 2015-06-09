@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
     android:padding="10dp">
 
     <TextView
@@ -13,6 +14,13 @@
         android:textColor="#111"
         android:textSize="18sp" />
 
+    <CheckBox
+        android:id="@+id/id_check"
+        android:focusable="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" />
+
     <TextView
         android:id="@+id/id_desc"
         android:layout_width="match_parent"
@@ -20,6 +28,7 @@
         android:layout_below="@id/id_title"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@id/id_check"
         android:maxLines="3"
         android:minLines="1"
         android:text="Description Description Description Description Description"
@@ -32,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/id_desc"
         android:singleLine="true"
-        android:text="Title"
+        android:text="2009-1-1"
         android:textColor="#555"
         android:textSize="12sp" />
 

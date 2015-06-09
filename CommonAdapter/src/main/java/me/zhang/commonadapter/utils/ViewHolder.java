@@ -5,6 +5,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by Zhang on 6/9/2015 3:31 下午.
@@ -33,6 +34,10 @@ public class ViewHolder {
         }
     }
 
+    public int getPosition() {
+        return mPosition;
+    }
+
     public <T extends View> T getView(int viewId) {
         View view = mViews.get(viewId);
         if (view == null) {
@@ -44,6 +49,19 @@ public class ViewHolder {
 
     public View getConvertView() {
         return mConvertView;
+    }
+
+    /**
+     * Handy method for settting content
+     *
+     * @param viewId ID of TextView
+     * @param content Text to set
+     * @return this - ViewHolder
+     */
+    public ViewHolder setText(int viewId, CharSequence content) {
+        TextView textView = (TextView) mConvertView.findViewById(viewId);
+        textView.setText(content);
+        return this;
     }
 
 }
