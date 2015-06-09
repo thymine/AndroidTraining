@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/AddingAnimations" />
             <option value="$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions" />
+            <option value="$PROJECT_DIR$/CommonAdapter" />
             <option value="$PROJECT_DIR$/CreatingCustomViews" />
             <option value="$PROJECT_DIR$/DisplayingBitmapsEfficiently" />
             <option value="$PROJECT_DIR$/Volley" />
