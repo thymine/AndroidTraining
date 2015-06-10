@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
 //        mListView.setAdapter(mAdapter);
         /* Using anonymous inner class directly */
         mListView.setAdapter(
-                new CommonAdapter<Bean>(MainActivity.this, mDatas) {
+                new CommonAdapter<Bean>(MainActivity.this, mDatas, R.layout.item_listview) {
 
                     private List<Integer> mCheckedPostion = new ArrayList<>();
 

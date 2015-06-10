@@ -14,7 +14,7 @@ import me.zhang.commonadapter.utils.ViewHolder;
 public class NewAdapter extends CommonAdapter<Bean> {
 
     public NewAdapter(Context context, List<Bean> datas) {
-        super(context, datas);
+        super(context, datas, R.layout.item_listview);
     }
 
     @Override
