@@ -1,1 +1,1 @@
-include ':app', ':DisplayingBitmapsEfficiently', ':AnimatingViewsUsingScenesAndTransitions', ':AddingAnimations', ':CreatingCustomViews', ':Volley', ':CommonAdapter'
+include ':app', ':DisplayingBitmapsEfficiently', ':AnimatingViewsUsingScenesAndTransitions', ':AddingAnimations', ':CreatingCustomViews', ':Volley', ':CommonAdapter', ':ResumeDownload'
