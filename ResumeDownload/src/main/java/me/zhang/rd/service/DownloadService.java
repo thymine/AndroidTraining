@@ -31,6 +31,10 @@ public class DownloadService extends Service {
     public static final String INTENT_FILE_INFO = "fileInfo";
     public static final String ACTION_START = "start";
     public static final String ACTION_STOP = "stop";
+    public static final String ACTION_UPDATE = "update";
+    public static final String ACTION_FINISHED = "finished";
+
+    private DownloadTask mTask;
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -44,6 +48,11 @@ public class DownloadService extends Service {
         } else if (ACTION_STOP.equals(intent.getAction())) {
             FileInfo fileInfo = (FileInfo) intent.getSerializableExtra(INTENT_FILE_INFO);
             Log.i(TAG, "Stop /// " + fileInfo.toString());
+
+            if (mTask != null) {
+                // stop download task
+                mTask.mIsPause = true;
+            }
         }
         return super.onStartCommand(intent, flags, startId);
     }
@@ -61,6 +70,10 @@ public class DownloadService extends Service {
                 case MSG_INIT:
                     FileInfo fileInfo = (FileInfo) msg.obj;
                     Log.i(TAG, "Init /// " + fileInfo.toString());
+
+                    // start download
+                    mTask = new DownloadTask(DownloadService.this, fileInfo);
+                    mTask.download();
                     break;
             }
         }
