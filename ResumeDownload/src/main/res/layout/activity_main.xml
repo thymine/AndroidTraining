@@ -9,8 +9,37 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/id_filename"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentTop="true"
+        android:text="@string/file_name"
+        android:textSize="18sp" />
 
+    <ProgressBar
+        android:id="@+id/id_progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_filename"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:progress="50" />
+
+    <Button
+        android:id="@+id/id_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_progress"
+        android:layout_centerHorizontal="true"
+        android:text="@string/start" />
+
+    <Button
+        android:id="@+id/id_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_progress"
+        android:layout_toEndOf="@+id/id_start"
+        android:layout_toRightOf="@+id/id_start"
+        android:text="@string/stop" />
 </RelativeLayout>
