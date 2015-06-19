@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/CreatingCustomViews" />
             <option value="$PROJECT_DIR$/DisplayingBitmapsEfficiently" />
             <option value="$PROJECT_DIR$/ResumeDownload" />
+            <option value="$PROJECT_DIR$/TrackBatteryStatus" />
           </set>
         </option>
       </GradleProjectSettings>

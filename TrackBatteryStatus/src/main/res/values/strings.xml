@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Track Battery Status</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="poll_server_button">Poll Server</string>
+</resources>
