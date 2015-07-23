@@ -1,1 +1,1 @@
-include ':ResumeDownload', ':AddingAnimations', ':AnimatingViewsUsingScenesAndTransitions', ':CommonAdapter', ':CreatingCustomViews', ':DisplayingBitmapsEfficiently', ':TrackBatteryStatus', ':RxAndroid'
+include ':ResumeDownload', ':AddingAnimations', ':AnimatingViewsUsingScenesAndTransitions', ':CommonAdapter', ':CreatingCustomViews', ':DisplayingBitmapsEfficiently', ':TrackBatteryStatus', ':RxAndroid', ':EventBus'
