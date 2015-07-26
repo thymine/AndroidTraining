@@ -5,6 +5,7 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.2.1" />
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
@@ -15,9 +16,11 @@
             <option value="$PROJECT_DIR$/CreatingCustomViews" />
             <option value="$PROJECT_DIR$/DisplayingBitmapsEfficiently" />
             <option value="$PROJECT_DIR$/EventBus" />
+            <option value="$PROJECT_DIR$/ListView" />
             <option value="$PROJECT_DIR$/ResumeDownload" />
+            <option value="$PROJECT_DIR$/RxAndroid" />
             <option value="$PROJECT_DIR$/TrackBatteryStatus" />
-            <option value="$PROJECT_DIR$/rxandroid" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
       </GradleProjectSettings>
