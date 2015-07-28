@@ -15,9 +15,11 @@
             <option value="$PROJECT_DIR$/CreatingCustomViews" />
             <option value="$PROJECT_DIR$/DisplayingBitmapsEfficiently" />
             <option value="$PROJECT_DIR$/EventBus" />
+            <option value="$PROJECT_DIR$/Lab" />
             <option value="$PROJECT_DIR$/ResumeDownload" />
+            <option value="$PROJECT_DIR$/RxAndroid" />
             <option value="$PROJECT_DIR$/TrackBatteryStatus" />
-            <option value="$PROJECT_DIR$/rxandroid" />
+            <option value="$PROJECT_DIR$/UsingTouchGestures" />
           </set>
         </option>
       </GradleProjectSettings>

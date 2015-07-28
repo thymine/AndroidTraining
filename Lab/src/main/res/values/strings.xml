@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Count Down</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="waiting">等待</string>
+    <string name="start">开始倒计时</string>
+    <string name="stop">停止倒计时</string>
+    <string name="text_parent">Parent</string>
+    <string name="text_child">Child</string>
+</resources>
