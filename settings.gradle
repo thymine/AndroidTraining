@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 include ':app', ':ResumeDownload', ':AddingAnimations', ':AnimatingViewsUsingScenesAndTransitions', ':CommonAdapter', ':CreatingCustomViews', ':DisplayingBitmapsEfficiently', ':TrackBatteryStatus', ':EventBus', ':ListView', 'RxAndroid'
+=======
+include ':app', ':ResumeDownload', ':AddingAnimations', ':AnimatingViewsUsingScenesAndTransitions', ':CommonAdapter', ':CreatingCustomViews', ':DisplayingBitmapsEfficiently', ':TrackBatteryStatus', ':EventBus', ':UsingTouchGestures', ':Lab', ':RxAndroid'
+>>>>>>> origin/master
