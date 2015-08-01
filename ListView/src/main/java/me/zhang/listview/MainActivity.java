@@ -2,16 +2,22 @@ package me.zhang.listview;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements LoadingMoreListView.LoadingMoreListener {
 
     private LoadingMoreListView loadingMoreListView;
+
+    /* 加载数据起始位置 */
+    private int offset;
+    /* 当前页，默认第一页 */
+    private int currentPage = 1;
+
+    private List<String> datas;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +30,15 @@ public class MainActivity extends Activity {
 
     }
 
-    private void initData() {
-        List<String> datas = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            datas.add(i + 1 + "");
-        }
+    private void initView() {
+        loadingMoreListView = (LoadingMoreListView) findViewById(R.id.list_loading_more);
+    }
 
-        ArrayAdapter<String> adapter =
+    private void initData() {
+        datas = new ArrayList<>();
+        buildData();
+
+        adapter =
                 new ArrayAdapter<>(
                         this,
                         android.R.layout.simple_expandable_list_item_1,
@@ -39,27 +47,23 @@ public class MainActivity extends Activity {
                 );
 
         loadingMoreListView.setAdapter(adapter);
-    }
-
-    private void initView() {
-        loadingMoreListView = (LoadingMoreListView) findViewById(R.id.list_loading_more);
+        loadingMoreListView.setLoadingMoreListener(this);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public void onLoad() {
+        /* 请求下一页数据 */
+        currentPage++;
+        /* 获取更多数据 */
+        buildData();
+        /* 更新ListView */
+        adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    private void buildData() {
+        int pageSize = 10;
+        for (; offset < pageSize * currentPage; offset++) {
+            datas.add(offset + 1 + "");
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
