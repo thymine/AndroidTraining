@@ -16,18 +16,11 @@
             <option value="$PROJECT_DIR$/CreatingCustomViews" />
             <option value="$PROJECT_DIR$/DisplayingBitmapsEfficiently" />
             <option value="$PROJECT_DIR$/EventBus" />
-<<<<<<< HEAD
-            <option value="$PROJECT_DIR$/ListView" />
-            <option value="$PROJECT_DIR$/ResumeDownload" />
-            <option value="$PROJECT_DIR$/RxAndroid" />
-            <option value="$PROJECT_DIR$/TrackBatteryStatus" />
-=======
             <option value="$PROJECT_DIR$/Lab" />
             <option value="$PROJECT_DIR$/ResumeDownload" />
             <option value="$PROJECT_DIR$/RxAndroid" />
             <option value="$PROJECT_DIR$/TrackBatteryStatus" />
             <option value="$PROJECT_DIR$/UsingTouchGestures" />
->>>>>>> origin/master
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
