@@ -14,6 +14,13 @@
         android:scaleType="centerInside"
         android:src="@drawable/arrow_down" />
 
+    <ProgressBar
+        android:id="@+id/pb_refreshing"
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
     <LinearLayout
         android:id="@+id/ll_tips"
         android:layout_width="wrap_content"
@@ -29,17 +36,17 @@
             android:id="@+id/tv_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/s_pull"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:text="@string/s_pull" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_update_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/s_update_time"
             android:textColor="@android:color/darker_gray"
-            android:textSize="12sp"
-            android:text="@string/s_update_time" />
+            android:textSize="12sp" />
 
 
     </LinearLayout>
