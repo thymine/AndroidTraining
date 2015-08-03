@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <me.zhang.listview.LoadingMoreListView
-        android:id="@+id/list_loading_more"
+    <me.zhang.listview.PullToRefreshListView
+        android:id="@+id/lv_pull_to_refresh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
