@@ -4,4 +4,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="hint_loading_more">加载更多…</string>
+    <string name="s_pull">下拉刷新</string>
+    <string name="s_release">松开刷新</string>
+    <string name="s_update_time">5分钟前更新</string>
 </resources>

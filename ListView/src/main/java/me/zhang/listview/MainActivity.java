@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MainActivity extends Activity implements LoadingMoreListView.LoadingMoreListener {
 
-    private LoadingMoreListView loadingMoreListView;
+    private PullToRefreshListView lsPullToRefresh;
 
     /* 加载数据起始位置 */
     private int offset;
@@ -31,7 +31,7 @@ public class MainActivity extends Activity implements LoadingMoreListView.Loadin
     }
 
     private void initView() {
-        loadingMoreListView = (LoadingMoreListView) findViewById(R.id.list_loading_more);
+        lsPullToRefresh = (PullToRefreshListView) findViewById(R.id.lv_pull_to_refresh);
     }
 
     private void initData() {
@@ -46,8 +46,8 @@ public class MainActivity extends Activity implements LoadingMoreListView.Loadin
                         datas
                 );
 
-        loadingMoreListView.setAdapter(adapter);
-        loadingMoreListView.setLoadingMoreListener(this);
+        lsPullToRefresh.setAdapter(adapter);
+        lsPullToRefresh.setLoadingMoreListener(this);
     }
 
     @Override
@@ -56,6 +56,10 @@ public class MainActivity extends Activity implements LoadingMoreListView.Loadin
         currentPage++;
         /* 获取更多数据 */
         buildData();
+
+        /* 完成加载 */
+        lsPullToRefresh.complete();
+
         /* 更新ListView */
         adapter.notifyDataSetChanged();
     }

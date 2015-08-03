@@ -76,14 +76,18 @@ public class LoadingMoreListView extends ListView implements AbsListView.OnScrol
                             /* 加载更多数据接口回调 */
                             loadingMoreListener.onLoad();
 
-                            /* 完成加载 */
-                            isLoading = false;
-                            footer.setVisibility(GONE);
+//                            complete(); // 手动调用，标识加载结束
                         }
                     }, 1000);
                 }
             }
         }
+    }
+
+    /* 完成加载 */
+    protected void complete() {
+        isLoading = false;
+        footer.setVisibility(GONE);
     }
 
     private void checkListenerValidation() {
