@@ -10,5 +10,6 @@ public class MainActivity extends MenuActivity {
     protected void prepareMenu() {
         addMenuItem("Count Down Timer", CountDownActivity.class);
         addMenuItem("Non-Scrollable ExpandableListView", NonScrollableListViewActivity.class);
+        addMenuItem("Count Up Timer", CountUpActivity.class);
     }
 }
