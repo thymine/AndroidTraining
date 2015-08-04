@@ -8,4 +8,6 @@
     <string name="stop">停止倒计时</string>
     <string name="text_parent">Parent</string>
     <string name="text_child">Child</string>
+    <string name="s_post">发布</string>
+    <string name="s_count">计时</string>
 </resources>

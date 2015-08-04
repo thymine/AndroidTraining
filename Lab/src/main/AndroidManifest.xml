@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".CountDownActivity" />
         <activity android:name=".NonScrollableListViewActivity" />
+        <activity android:name=".CountUpActivity" />
     </application>
 
 </manifest>
