@@ -21,6 +21,7 @@
         <activity android:name=".CountDownActivity" />
         <activity android:name=".NonScrollableListViewActivity" />
         <activity android:name=".CountUpActivity" />
+        <activity android:name=".ListViewActivity" />
     </application>
 
 </manifest>
