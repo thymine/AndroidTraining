@@ -57,9 +57,9 @@ public class LVAdapter extends BaseAdapter {
         /* 加载数据 */
         fillData(holder, item);
 
-        if (position == 3) {
-            return null;
-        }
+//        if (position == 3) {
+//            return null;
+//        }
 
         return convertView;
     }
@@ -67,6 +67,8 @@ public class LVAdapter extends BaseAdapter {
     @NonNull
     private View initView(View convertView, ViewGroup parent) {
         if (convertView == null) {
+            Log.i("Zhang", "convertView == null");
+
             holder = new ViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.item_list, parent, false);
 
