@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/RxAndroid/RxAndroid.iml" filepath="$PROJECT_DIR$/RxAndroid/RxAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" filepath="$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" />
       <module fileurl="file://$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" filepath="$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/VideoView/VideoView.iml" filepath="$PROJECT_DIR$/VideoView/VideoView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
