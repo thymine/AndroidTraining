@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lovely="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.soufun.custom.LovelyView
+        android:id="@+id/lv_mine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        lovely:circleCol="#f09"
+        lovely:circleLabel="Mine"
+        lovely:labelCol="#ff6" />
+
+</LinearLayout>
