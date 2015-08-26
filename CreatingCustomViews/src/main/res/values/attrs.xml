@@ -14,6 +14,13 @@
 -->
 
 <resources>
+
+    <declare-styleable name="LovelyView">
+        <attr name="circleCol" format="color" />
+        <attr name="circleLabel" format="string" />
+        <attr name="labelCol" format="color" />
+    </declare-styleable>
+
     <declare-styleable name="PieChart">
         <attr name="autoCenterPointerInSlice" format="boolean"/>
         <attr name="highlightStrength" format="float"/>

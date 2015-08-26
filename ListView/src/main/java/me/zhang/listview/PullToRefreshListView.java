@@ -166,12 +166,12 @@ public class PullToRefreshListView extends LoadingMoreListView {
         RotateAnimation up2down = new RotateAnimation(
                 0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
         );
-        up2down.setDuration(500);
+        up2down.setDuration(100);
         up2down.setFillAfter(true);
         RotateAnimation down2up = new RotateAnimation(
                 180, 0, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
         );
-        down2up.setDuration(500);
+        down2up.setDuration(100);
         down2up.setFillAfter(true);
 
         switch (state) {
@@ -261,7 +261,7 @@ public class PullToRefreshListView extends LoadingMoreListView {
         refreshViewByState();
 
         TextView updateTime = (TextView) header.findViewById(R.id.tv_update_time);
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss", Locale.CHINA);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.CHINA);
         Date date = new Date();
         String time = sdf.format(date);
         updateTime.setText(time);
