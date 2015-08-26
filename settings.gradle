@@ -1,1 +1,1 @@
-include ':UsingTouchGestures',':TrackBatteryStatus',':RxAndroid',':ResumeDownload',':app',':ListView', ':AddingAnimations', ':AnimatingViewsUsingScenesAndTransitions', ':CommonAdapter', ':CreatingCustomViews', ':DisplayingBitmapsEfficiently', ':EventBus', ':Lab'
+include ':UsingTouchGestures',':TrackBatteryStatus',':RxAndroid',':ResumeDownload',':app',':ListView', ':AddingAnimations', ':AnimatingViewsUsingScenesAndTransitions', ':CommonAdapter', ':CreatingCustomViews', ':DisplayingBitmapsEfficiently', ':EventBus', ':Lab', ':VideoView'
