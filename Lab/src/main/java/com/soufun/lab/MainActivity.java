@@ -12,5 +12,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Non-Scrollable ExpandableListView", NonScrollableListViewActivity.class);
         addMenuItem("Count Up Timer", CountUpActivity.class);
         addMenuItem("ListView", ListViewActivity.class);
+        addMenuItem("Moving", MovingActivity.class);
     }
 }
