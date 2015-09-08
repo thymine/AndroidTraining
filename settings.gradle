@@ -1,5 +1,1 @@
-<<<<<<< HEAD
 include ':UsingTouchGestures', ':TrackBatteryStatus', ':ResumeDownload', ':app', ':ListView', ':AddingAnimations', ':AnimatingViewsUsingScenesAndTransitions', ':CommonAdapter', ':CreatingCustomViews', ':DisplayingBitmapsEfficiently', ':EventBus', ':Lab', ':VideoView', 'rxandroid'
-=======
-include ':VideoView',':AddingAnimations',':AnimatingViewsUsingScenesAndTransitions',':app',':CommonAdapter',':CreatingCustomViews',':DisplayingBitmapsEfficiently',':EventBus',':Lab',':ListView',':ResumeDownload',':RxAndroid',':TempFang',':TrackBatteryStatus',':UsingTouchGestures'
->>>>>>> 60a399ff4e2b108710b8f6700916d4eb018f8e6a
