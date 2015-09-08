@@ -12,11 +12,11 @@
       <module fileurl="file://$PROJECT_DIR$/Lab/Lab.iml" filepath="$PROJECT_DIR$/Lab/Lab.iml" />
       <module fileurl="file://$PROJECT_DIR$/ListView/ListView.iml" filepath="$PROJECT_DIR$/ListView/ListView.iml" />
       <module fileurl="file://$PROJECT_DIR$/ResumeDownload/ResumeDownload.iml" filepath="$PROJECT_DIR$/ResumeDownload/ResumeDownload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RxAndroid/RxAndroid.iml" filepath="$PROJECT_DIR$/RxAndroid/RxAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" filepath="$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" />
       <module fileurl="file://$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" filepath="$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" />
       <module fileurl="file://$PROJECT_DIR$/VideoView/VideoView.iml" filepath="$PROJECT_DIR$/VideoView/VideoView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rxandroid/rxandroid.iml" filepath="$PROJECT_DIR$/rxandroid/rxandroid.iml" />
     </modules>
   </component>
 </project>
