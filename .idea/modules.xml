@@ -12,11 +12,6 @@
       <module fileurl="file://$PROJECT_DIR$/Lab/Lab.iml" filepath="$PROJECT_DIR$/Lab/Lab.iml" />
       <module fileurl="file://$PROJECT_DIR$/ListView/ListView.iml" filepath="$PROJECT_DIR$/ListView/ListView.iml" />
       <module fileurl="file://$PROJECT_DIR$/ResumeDownload/ResumeDownload.iml" filepath="$PROJECT_DIR$/ResumeDownload/ResumeDownload.iml" />
-<<<<<<< HEAD
-=======
-      <module fileurl="file://$PROJECT_DIR$/RxAndroid/RxAndroid.iml" filepath="$PROJECT_DIR$/RxAndroid/RxAndroid.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TempFang/TempFang.iml" filepath="$PROJECT_DIR$/TempFang/TempFang.iml" />
->>>>>>> 60a399ff4e2b108710b8f6700916d4eb018f8e6a
       <module fileurl="file://$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" filepath="$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" />
       <module fileurl="file://$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" filepath="$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" />
       <module fileurl="file://$PROJECT_DIR$/VideoView/VideoView.iml" filepath="$PROJECT_DIR$/VideoView/VideoView.iml" />
