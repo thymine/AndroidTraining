@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.soufun.custom.LovelyView
+    <me.zhang.custom.LovelyView
         android:id="@+id/lv_mine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

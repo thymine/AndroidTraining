@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity">
 
-    <com.soufun.custom.PieChart
+    <me.zhang.custom.PieChart
         custom:showText="true"
         custom:labelPosition="left"
         android:layout_width="wrap_content"
