@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.soufun.lab.FixedExpandableListView
+        <me.zhang.lab.FixedExpandableListView
             android:id="@+id/list_expandable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

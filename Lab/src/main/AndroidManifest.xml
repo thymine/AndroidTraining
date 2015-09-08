@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.soufun.lab">
+    package="me.zhang.lab">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="me.zhang.lab.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CountDownActivity" />
-        <activity android:name=".NonScrollableListViewActivity" />
-        <activity android:name=".CountUpActivity" />
-        <activity android:name=".ListViewActivity" />
-        <activity android:name=".MovingActivity" />
+        <activity android:name="me.zhang.lab.CountDownActivity" />
+        <activity android:name="me.zhang.lab.NonScrollableListViewActivity" />
+        <activity android:name="me.zhang.lab.CountUpActivity" />
+        <activity android:name="me.zhang.lab.ListViewActivity" />
+        <activity android:name="me.zhang.lab.MovingActivity" />
+        <activity android:name="me.zhang.lab.recyclerview.HorizontalListActivity" />
     </application>
 
 </manifest>
