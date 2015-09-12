@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Count Down</string>
+    <string name="app_name">Lab</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -10,4 +10,5 @@
     <string name="text_child">Child</string>
     <string name="s_post">发布</string>
     <string name="s_count">计时</string>
+    <string name="desc_preview">预览图片</string>
 </resources>
