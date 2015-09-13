@@ -11,4 +11,10 @@
     <string name="s_post">发布</string>
     <string name="s_count">计时</string>
     <string name="desc_preview">预览图片</string>
+
+    <string name="wheel">Steering Wheel</string>
+    <string name="ground">The Ground</string>
+    <string name="window">Window Frame</string>
+    <string name="sun">The Sun</string>
+    <string name="cloud">A Cloud</string>
 </resources>

@@ -1,5 +1,6 @@
 package me.zhang.lab;
 
+import me.zhang.lab.propertyanimation.PropertyAnimatedActivity;
 import me.zhang.lab.recyclerview.HorizontalListActivity;
 
 /**
@@ -16,5 +17,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("ListView", ListViewActivity.class);
         addMenuItem("Moving", MovingActivity.class);
         addMenuItem("RecyclerView Horizontal", HorizontalListActivity.class);
+        addMenuItem("Property Animation", PropertyAnimatedActivity.class);
     }
 }
