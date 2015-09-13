@@ -25,21 +25,51 @@ public class PropertyAnimatedActivity extends Activity {
 
         animateWheel();
 
-        animteSun();
+        animateSun();
 
         animateSky();
 
         animateCloud1();
 
         animateCloud2();
+
+        animateHour();
+
+        animateMinute();
+
+        animateMoon();
+    }
+
+    private void animateMoon() {
+        ImageView moon = (ImageView) findViewById(R.id.moon);
+        AnimatorSet sunSet =
+                (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.moon_swing);
+        sunSet.setTarget(moon);
+        sunSet.start();
+    }
+
+    private void animateMinute() {
+        ImageView minute = (ImageView) findViewById(R.id.clock_minute);
+        AnimatorSet minuteSet =
+                (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.minute_spin);
+        minuteSet.setTarget(minute);
+        minuteSet.start();
+    }
+
+    private void animateHour() {
+        ImageView hour = (ImageView) findViewById(R.id.clock_hour);
+        AnimatorSet minuteSet =
+                (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.hour_spin);
+        minuteSet.setTarget(hour);
+        minuteSet.start();
     }
 
     private void animateCloud2() {
         ImageView cloud2 = (ImageView) findViewById(R.id.cloud2);
         ObjectAnimator cloud2Anim = ObjectAnimator.ofFloat(
                 cloud2,
-                "x",
-                -300
+                "y",
+                500
         );
         cloud2Anim.setDuration(getResources().getInteger(R.integer.animation_period));
         cloud2Anim.setRepeatCount(ValueAnimator.INFINITE);
@@ -52,8 +82,8 @@ public class PropertyAnimatedActivity extends Activity {
         ImageView cloud1 = (ImageView) findViewById(R.id.cloud1);
         ObjectAnimator cloud1Anim = ObjectAnimator.ofFloat(
                 cloud1,
-                "x",
-                -350
+                "y",
+                550
         );
         cloud1Anim.setDuration(getResources().getInteger(R.integer.animation_period));
         cloud1Anim.setRepeatCount(ValueAnimator.INFINITE);
@@ -77,7 +107,7 @@ public class PropertyAnimatedActivity extends Activity {
         skyAnim.start();
     }
 
-    private void animteSun() {
+    private void animateSun() {
         ImageView sun = (ImageView) findViewById(R.id.sun);
         AnimatorSet sunSet =
                 (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.sun_swing);

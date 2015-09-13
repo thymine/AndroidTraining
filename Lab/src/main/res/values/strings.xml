@@ -16,5 +16,8 @@
     <string name="ground">The Ground</string>
     <string name="window">Window Frame</string>
     <string name="sun">The Sun</string>
+    <string name="moon">The Moon</string>
     <string name="cloud">A Cloud</string>
+    <string name="minute_hand">Minute Hand</string>
+    <string name="hour_hand">Hour Hand</string>
 </resources>
