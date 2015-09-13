@@ -26,7 +26,9 @@
         <activity android:name="me.zhang.lab.ListViewActivity" />
         <activity android:name="me.zhang.lab.MovingActivity" />
         <activity android:name="me.zhang.lab.recyclerview.HorizontalListActivity" />
-        <activity android:name=".propertyanimation.PropertyAnimatedActivity" />
+        <activity
+            android:name=".propertyanimation.PropertyAnimatedActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

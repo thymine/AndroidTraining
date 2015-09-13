@@ -18,6 +18,18 @@
         android:src="@drawable/sun" />
 
     <ImageView
+        android:id="@+id/moon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/moon"
+        android:paddingEnd="0dp"
+        android:paddingLeft="110dp"
+        android:paddingRight="0dp"
+        android:paddingStart="110dp"
+        android:paddingTop="55dp"
+        android:src="@drawable/moon" />
+
+    <ImageView
         android:id="@+id/cloud1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +56,7 @@
     <ImageView
         android:id="@+id/ground"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:layout_alignParentBottom="true"
         android:contentDescription="@string/ground"
         android:src="@drawable/ground" />
@@ -56,6 +68,29 @@
         android:contentDescription="@string/window"
         android:src="@drawable/window" />
 
+    <FrameLayout
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/activity_clock_padding">
+
+        <ImageView
+            android:id="@+id/clock_minute"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/minute_hand"
+            android:src="@drawable/clock_minute" />
+
+        <ImageView
+            android:id="@+id/clock_hour"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/hour_hand"
+            android:src="@drawable/clock_hour" />
+    </FrameLayout>
+
     <ImageView
         android:id="@+id/wheel"
         android:layout_width="wrap_content"
@@ -64,6 +99,7 @@
         android:layout_centerHorizontal="true"
         android:contentDescription="@string/wheel"
         android:padding="3dp"
-        android:src="@drawable/steering_wheel" />
+        android:src="@drawable/steering_wheel"
+        android:visibility="gone" />
 
 </RelativeLayout>

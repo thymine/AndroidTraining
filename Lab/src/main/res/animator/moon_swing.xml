@@ -4,11 +4,12 @@
     android:ordering="sequentially">
 
     <objectAnimator
-        android:duration="@integer/animation_period"
-        android:propertyName="y"
+        android:duration="@integer/animation_hour_period"
+        android:propertyName="x"
         android:repeatCount="infinite"
         android:repeatMode="reverse"
-        android:valueTo="600"
+        android:valueFrom="-600"
+        android:valueTo="1200"
         android:valueType="floatType" />
 
 </set>
