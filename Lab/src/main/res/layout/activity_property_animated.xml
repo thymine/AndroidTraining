@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/car_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6cf">
+
+    <ImageView
+        android:id="@+id/sun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/sun"
+        android:paddingEnd="0dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="0dp"
+        android:paddingStart="100dp"
+        android:paddingTop="45dp"
+        android:src="@drawable/sun" />
+
+    <ImageView
+        android:id="@+id/cloud1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cloud"
+        android:paddingEnd="0dp"
+        android:paddingLeft="170dp"
+        android:paddingRight="0dp"
+        android:paddingStart="170dp"
+        android:paddingTop="70dp"
+        android:src="@drawable/cloud" />
+
+    <ImageView
+        android:id="@+id/cloud2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cloud"
+        android:paddingEnd="0dp"
+        android:paddingLeft="200dp"
+        android:paddingRight="0dp"
+        android:paddingStart="200dp"
+        android:paddingTop="90dp"
+        android:src="@drawable/cloud" />
+
+    <ImageView
+        android:id="@+id/ground"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/ground"
+        android:src="@drawable/ground" />
+
+    <ImageView
+        android:id="@+id/window"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/window"
+        android:src="@drawable/window" />
+
+    <ImageView
+        android:id="@+id/wheel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/wheel"
+        android:padding="3dp"
+        android:src="@drawable/steering_wheel" />
+
+</RelativeLayout>
