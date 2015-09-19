@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" filepath="$PROJECT_DIR$/AddingAnimations/AddingAnimations.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidTraining.iml" filepath="$PROJECT_DIR$/AndroidTraining.iml" />
-      <module fileurl="file://$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" filepath="$PROJECT_DIR$/AnimatingViewsUsingScenesAndTransitions/AnimatingViewsUsingScenesAndTransitions.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CommonAdapter/CommonAdapter.iml" filepath="$PROJECT_DIR$/CommonAdapter/CommonAdapter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" filepath="$PROJECT_DIR$/CreatingCustomViews/CreatingCustomViews.iml" />
-      <module fileurl="file://$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" filepath="$PROJECT_DIR$/DisplayingBitmapsEfficiently/DisplayingBitmapsEfficiently.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EventBus/EventBus.iml" filepath="$PROJECT_DIR$/EventBus/EventBus.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab/Lab.iml" filepath="$PROJECT_DIR$/Lab/Lab.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ListView/ListView.iml" filepath="$PROJECT_DIR$/ListView/ListView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ResumeDownload/ResumeDownload.iml" filepath="$PROJECT_DIR$/ResumeDownload/ResumeDownload.iml" />
-      <module fileurl="file://$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" filepath="$PROJECT_DIR$/TrackBatteryStatus/TrackBatteryStatus.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" filepath="$PROJECT_DIR$/UsingTouchGestures/UsingTouchGestures.iml" />
-      <module fileurl="file://$PROJECT_DIR$/VideoView/VideoView.iml" filepath="$PROJECT_DIR$/VideoView/VideoView.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
