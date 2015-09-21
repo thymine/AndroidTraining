@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <me.zhang.lab.MyListView
+    <me.zhang.lab.listview.MyListView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

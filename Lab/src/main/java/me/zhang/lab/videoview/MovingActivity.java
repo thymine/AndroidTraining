@@ -1,4 +1,4 @@
-package me.zhang.lab;
+package me.zhang.lab.videoview;
 
 import android.app.Activity;
 import android.os.Bundle;
