@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import me.zhang.lab.R;
-import me.zhang.lab.Utils;
+import me.zhang.lab.utils.DesignerUtils;
 
 /**
  * Created by Zhang on 2015/9/8 上午 11:20 .
@@ -72,8 +72,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
 
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
-        int width = (int) Utils.dp2px(72, context);
-        int height = (int) Utils.dp2px(72, context);
+        int width = (int) DesignerUtils.dp2px(72, context);
+        int height = (int) DesignerUtils.dp2px(72, context);
         Picasso
                 .with(context)
                 .load(dataSet.get(position)).resize(width, height)

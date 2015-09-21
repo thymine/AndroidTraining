@@ -1,4 +1,4 @@
-package me.zhang.lab;
+package me.zhang.lab.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -7,9 +7,9 @@ import android.util.DisplayMetrics;
 /**
  * Created by Zhang on 2015/9/8 下午 4:35 .
  */
-public class Utils {
+public class DesignerUtils {
 
-    private Utils() {
+    private DesignerUtils() {
     }
 
     /**

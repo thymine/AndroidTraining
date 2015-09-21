@@ -1,4 +1,4 @@
-package me.zhang.lab;
+package me.zhang.lab.timer;
 
 import android.app.Activity;
 import android.content.Context;

@@ -20,4 +20,5 @@
     <string name="cloud">A Cloud</string>
     <string name="minute_hand">Minute Hand</string>
     <string name="hour_hand">Hour Hand</string>
+    <string name="capture">Capture</string>
 </resources>

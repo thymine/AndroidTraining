@@ -1,4 +1,4 @@
-package me.zhang.lab;
+package me.zhang.lab.base;
 
 import android.app.ListActivity;
 import android.content.Intent;

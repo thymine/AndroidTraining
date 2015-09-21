@@ -1,4 +1,4 @@
-package me.zhang.lab;
+package me.zhang.lab.utils;
 
 /**
  * Created by Zhang on 2015/9/8 下午 4:22 .
