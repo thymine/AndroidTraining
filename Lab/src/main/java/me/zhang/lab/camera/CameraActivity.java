@@ -7,8 +7,11 @@ import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
@@ -28,7 +31,6 @@ public class CameraActivity extends Activity {
     private static final String TAG = "CameraActivity";
 
     private Camera camera;
-    private boolean isCaptured = false;
     private CameraView preview;
 
     private MediaRecorder recorder;
@@ -66,6 +68,8 @@ public class CameraActivity extends Activity {
         }
     };
 
+    private Handler handler = new Handler();
+
     private void playShutterSound() {
         SoundPool pool = new SoundPool(1, AudioManager.STREAM_NOTIFICATION, 0);
         int shutterSound = pool.load(CameraActivity.this, R.raw.camera_click, 0);
@@ -75,6 +79,14 @@ public class CameraActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // remove title
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+        );
+
         setContentView(R.layout.activity_camera);
 
         // Create an instance of Camera
@@ -90,22 +102,19 @@ public class CameraActivity extends Activity {
         captureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isCaptured) {
-                    // restart preview
-                    camera.stopPreview();
-                    camera.startPreview();
+                // get an image from the camera
+                camera.takePicture(shutterCallback, null, pictureCallback);
 
-                    // inform user that you can take picture now
-                    captureButton.setText("Capture");
-                    isCaptured = false;
-                } else {
-                    // get an image from the camera
-                    camera.takePicture(shutterCallback, null, pictureCallback);
-
-                    // inform user that a picture has been captured
-//                    captureButton.setText("Captured"); // TODO: 2015/9/25 修复 startPreview failed
-                    isCaptured = true;
-                }
+                handler.postDelayed(
+                        new Runnable() {
+                            @Override
+                            public void run() {
+                                camera.stopPreview();
+                                camera.startPreview();
+                            }
+                        },
+                        500
+                );
             }
 
         });
