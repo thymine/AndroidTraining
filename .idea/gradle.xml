@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Lab" />
-            <option value="$PROJECT_DIR$/Lock" />
+            <option value="$PROJECT_DIR$/ScreenOff" />
           </set>
         </option>
       </GradleProjectSettings>

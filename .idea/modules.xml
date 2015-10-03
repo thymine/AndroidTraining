@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AndroidLab.iml" filepath="$PROJECT_DIR$/AndroidLab.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lab/Lab.iml" filepath="$PROJECT_DIR$/Lab/Lab.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Lock/Lock.iml" filepath="$PROJECT_DIR$/Lock/Lock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScreenOff/ScreenOff.iml" filepath="$PROJECT_DIR$/ScreenOff/ScreenOff.iml" />
     </modules>
   </component>
 </project>

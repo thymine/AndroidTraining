@@ -1,4 +1,4 @@
-package me.zhang.lock;
+package me.zhang.screenoff;
 
 import org.junit.Test;
 
