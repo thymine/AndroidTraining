@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="me.zhang.lock">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.USES_POLICY_FORCE_LOCK" />
 
@@ -38,7 +38,7 @@
             </intent-filter>
         </receiver>-->
 
-        <receiver
+        <!--<receiver
             android:name=".ScreenOffAdminReceiver"
             android:description="@string/device_admin_description"
             android:label="@string/app_name"
@@ -50,7 +50,7 @@
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
     </application>
 
