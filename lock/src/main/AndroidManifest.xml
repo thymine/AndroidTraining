@@ -32,11 +32,11 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ScreenOffEventReceiver">
+        <!--<receiver android:name=".ScreenOffEventReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <receiver
             android:name=".ScreenOffAdminReceiver"
