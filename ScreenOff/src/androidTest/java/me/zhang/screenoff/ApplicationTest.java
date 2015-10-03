@@ -1,4 +1,4 @@
-package me.zhang.lock;
+package me.zhang.screenoff;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
