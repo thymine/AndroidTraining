@@ -22,4 +22,6 @@
     <string name="hour_hand">Hour Hand</string>
     <string name="capture">Capture</string>
     <string name="record">Record</string>
+    <string name="example_top">Top</string>
+    <string name="example_bottom">Bottom</string>
 </resources>
