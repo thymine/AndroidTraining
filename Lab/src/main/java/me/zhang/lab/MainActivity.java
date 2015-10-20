@@ -1,6 +1,7 @@
 package me.zhang.lab;
 
 import me.zhang.lab.camera.CameraActivity;
+import me.zhang.lab.fragment.ExampleActivity;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
 import me.zhang.lab.propertyanimation.PropertyAnimatedActivity;
@@ -17,6 +18,7 @@ public class MainActivity extends MenuActivity {
 
     @Override
     protected void prepareMenu() {
+        addMenuItem("Fragment Example", ExampleActivity.class);
         addMenuItem("Count Down Timer", CountDownActivity.class);
         addMenuItem("Non-Scrollable ExpandableListView", NonScrollableListViewActivity.class);
         addMenuItem("Count Up Timer", CountUpActivity.class);
