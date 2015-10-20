@@ -38,6 +38,7 @@
             android:name=".camera.CameraActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".fragment.ExampleActivity" />
+        <activity android:name=".fragment.FragmentRetainInstanceActivity" />
     </application>
 
 </manifest>
