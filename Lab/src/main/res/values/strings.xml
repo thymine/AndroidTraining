@@ -2,6 +2,7 @@
     <string name="app_name">Lab</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="bla_bla">For items that are user-supplied secondary (infrequently used) options. For items that are alternative actions on the data that is currently displayed. Only place this item in the app bar if there is room for it. If there is not room for all the items marked ifRoom, the items with the lowest orderInCategory values are displayed as actions, and the remaining items are displayed in the overflow menu. Always place this item in the app bar. Avoid using this unless its critical that the item always appear in the action bar. Setting multiple items to always appear as action items can result in them overlapping with other UI in the app bar.</string>
     <string name="action_settings">Settings</string>
     <string name="action_post">Post</string>
 
@@ -31,4 +32,6 @@
     restarts if fragment is re-created.</string>
     <string name="restart">Restart</string>
     <string name="button_post">Post</string>
+    <string name="text_location">所在位置</string>
+    <string name="desc_location_icon">位置图标</string>
 </resources>
