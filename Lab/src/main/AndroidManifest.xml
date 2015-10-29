@@ -39,6 +39,9 @@
             android:screenOrientation="landscape" />
         <activity android:name=".fragment.ExampleActivity" />
         <activity android:name=".fragment.FragmentRetainInstanceActivity" />
+        <activity
+            android:name=".picselector.PostActivity"
+            android:theme="@style/PicSelector" />
     </application>
 
 </manifest>

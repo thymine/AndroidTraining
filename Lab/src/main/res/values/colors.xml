@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="backgound_toolbar_darker">#22292C</color>
+    <color name="backgound_toolbar_darker_red">#831b1b</color>
+    <color name="accent">#6f20af</color>
+
+    <color name="button_normal">#45C01A</color>
+    <color name="button_pressed">#298409</color>
+    <color name="button_disabled">#337423</color>
+</resources>

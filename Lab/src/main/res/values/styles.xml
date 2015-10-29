@@ -5,6 +5,49 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="PicSelector" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat's actionBarStyle -->
+        <item name="actionBarStyle">@style/MyApp.ActionBarStyle</item>
+
+        <item name="actionBarTheme">@style/MyApp.ActionBarTheme</item>
+
+        <!-- Set AppCompat's color theming attrs -->
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@color/backgound_toolbar_darker</item>
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/backgound_toolbar_darker_red</item>
+        <!-- colorAccent is used as the default value for colorControlActivated,
+         which is used to tint widgets -->
+        <item name="colorAccent">@color/accent</item>
+
+        <item name="titleTextColor">@android:color/white</item>
+
+        <item name="actionMenuTextColor">@android:color/white</item>
+
+        <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight, and colorSwitchThumbNormal. -->
+    </style>
+
+    <style name="ToolbarColoredBackArrow" parent="PicSelector">
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
+    <style name="MyApp.ActionBarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- THIS is where you can color the arrow! -->
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
+    <style name="MyApp.ActionBarStyle" parent="@style/Widget.AppCompat.Light.ActionBar">
+        <!--<item name="elevation">0dp</item>-->
+        <!-- style for actionBar title -->
+        <!--<item name="titleTextStyle">@style/ActionBarTitleText</item>-->
+        <!-- style for actionBar subtitle -->
+        <!--<item name="subtitleTextStyle">@style/ActionBarSubtitleText</item>-->
+
+        <!-- the actionBarTheme doesn't use the colorControlNormal attribute -->
+        <item name="colorControlNormal">@android:color/white</item>
+    </style>
+
     <style name="FragmentContainerStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">0dp</item>
