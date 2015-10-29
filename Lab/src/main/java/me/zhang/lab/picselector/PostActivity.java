@@ -1,5 +1,7 @@
 package me.zhang.lab.picselector;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -20,9 +22,13 @@ public class PostActivity extends BaseActivity {
     private static final String TAG = "PostActivity";
 
     @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_post;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
 
         // Toolbar is defined in the layout file
         Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
@@ -34,6 +40,11 @@ public class PostActivity extends BaseActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setTitle("");
         }
+
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.fl_container, PostFragment.newInstance(null));
+        transaction.commit();
 
     }
 
