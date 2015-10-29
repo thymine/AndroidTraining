@@ -4,6 +4,7 @@ import me.zhang.lab.camera.CameraActivity;
 import me.zhang.lab.fragment.ExampleActivity;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
+import me.zhang.lab.picselector.PostActivity;
 import me.zhang.lab.propertyanimation.PropertyAnimatedActivity;
 import me.zhang.lab.recyclerview.HorizontalListActivity;
 import me.zhang.lab.timer.CountDownActivity;
@@ -27,5 +28,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("RecyclerView Horizontal", HorizontalListActivity.class);
         addMenuItem("Property Animation", PropertyAnimatedActivity.class);
         addMenuItem("Camera", CameraActivity.class);
+        addMenuItem("Picture Selector", PostActivity.class);
     }
 }
