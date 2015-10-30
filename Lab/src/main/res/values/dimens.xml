@@ -10,8 +10,10 @@
 
     <dimen name="fragment_horizontal_margin">12dp</dimen>
     <dimen name="fragment_vertical_margin">10dp</dimen>
+    <dimen name="fragment_hrizontal_padding">12dp</dimen>
+    <dimen name="fragment_vertical_padding">10dp</dimen>
 
     <dimen name="button_corner_radius">2dp</dimen>
     <dimen name="gridview_horizontal_spacing">3dp</dimen>
-    <dimen name="gridview_vertical_spacing">3dp</dimen>
+    <dimen name="gridview_vertical_spacing">6dp</dimen>
 </resources>

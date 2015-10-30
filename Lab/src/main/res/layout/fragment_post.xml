@@ -33,9 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:paddingBottom="@dimen/fragment_vertical_padding"
+        android:paddingEnd="@dimen/fragment_hrizontal_padding"
         android:paddingLeft="@dimen/fragment_horizontal_margin"
-        android:paddingRight="@dimen/fragment_horizontal_margin"
-        android:paddingTop="@dimen/fragment_vertical_margin"
+        android:paddingRight="@dimen/fragment_hrizontal_padding"
+        android:paddingStart="@dimen/fragment_hrizontal_padding"
+        android:paddingTop="@dimen/fragment_vertical_padding"
         android:visibility="visible">
 
         <FrameLayout
@@ -43,14 +46,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_alignParentRight="true">
+            android:layout_marginStart="@dimen/activity_horizontal_margin">
 
             <ImageView
-                android:contentDescription="@string/desc_image_placeholder"
                 android:layout_width="128dp"
                 android:layout_height="96dp"
+                android:contentDescription="@string/desc_image_placeholder"
                 android:scaleType="centerInside"
                 android:src="@drawable/instagram_circle_gray" />
 
@@ -61,15 +64,18 @@
                 android:visibility="gone" />
         </FrameLayout>
 
-
         <GridView
             android:id="@+id/gv_pics_selected"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/fl_video"
             android:layout_toStartOf="@id/fl_video"
+            android:columnWidth="60dp"
             android:horizontalSpacing="@dimen/gridview_horizontal_spacing"
             android:numColumns="4"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:stretchMode="none"
             android:verticalSpacing="@dimen/gridview_vertical_spacing" />
 
     </RelativeLayout>
@@ -91,6 +97,7 @@
             android:paddingRight="@dimen/activity_horizontal_padding">
 
             <ImageView
+                android:id="@+id/iv_location"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:contentDescription="@string/desc_location_icon"
