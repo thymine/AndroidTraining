@@ -34,4 +34,6 @@
     <string name="button_post">Post</string>
     <string name="text_location">所在位置</string>
     <string name="desc_location_icon">位置图标</string>
+    <string name="text_post_hint">这一刻的想法…</string>
+    <string name="desc_image_placeholder">Placeholder</string>
 </resources>

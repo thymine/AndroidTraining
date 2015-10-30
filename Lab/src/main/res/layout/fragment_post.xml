@@ -1,85 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_post"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="84dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@android:color/white"
         android:overScrollMode="never"
+        android:paddingLeft="@dimen/fragment_horizontal_margin"
+        android:paddingRight="@dimen/fragment_horizontal_margin"
+        android:paddingTop="@dimen/fragment_vertical_margin"
         android:scrollbars="none">
 
-        <TextView
+        <EditText
+            android:id="@+id/et_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bla_bla" />
+            android:background="@android:color/transparent"
+            android:hint="@string/text_post_hint"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:textCursorDrawable="@null"
+            android:textSize="16sp"
+            tools:text="@string/bla_bla" />
     </ScrollView>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin">
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:paddingLeft="@dimen/fragment_horizontal_margin"
+        android:paddingRight="@dimen/fragment_horizontal_margin"
+        android:paddingTop="@dimen/fragment_vertical_margin"
+        android:visibility="visible">
 
-        <VideoView
-            android:id="@+id/vv_video"
-            android:layout_width="128dp"
-            android:layout_height="96dp"
+        <FrameLayout
+            android:id="@+id/fl_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:visibility="invisible" />
+            android:layout_alignParentRight="true">
 
-        <LinearLayout
-            android:id="@+id/ll_stub"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_horizontal_padding"
-            android:paddingRight="@dimen/activity_horizontal_padding">
+            <ImageView
+                android:contentDescription="@string/desc_image_placeholder"
+                android:layout_width="128dp"
+                android:layout_height="96dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/instagram_circle_gray" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="@string/desc_location_icon"
-                    android:scaleType="centerInside"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:text="@string/text_location"
-                    android:textSize="20sp" />
-            </LinearLayout>
-        </LinearLayout>
+            <VideoView
+                android:id="@+id/vv_video"
+                android:layout_width="128dp"
+                android:layout_height="96dp"
+                android:visibility="gone" />
+        </FrameLayout>
 
 
         <GridView
             android:id="@+id/gv_pics_selected"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/ll_stub"
-            android:layout_toLeftOf="@id/vv_video"
-            android:layout_toStartOf="@id/vv_video"
+            android:layout_toLeftOf="@id/fl_video"
+            android:layout_toStartOf="@id/fl_video"
             android:horizontalSpacing="@dimen/gridview_horizontal_spacing"
             android:numColumns="4"
             android:verticalSpacing="@dimen/gridview_vertical_spacing" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_stub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_location"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_padding"
+            android:paddingRight="@dimen/activity_horizontal_padding">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/desc_location_icon"
+                android:scaleType="centerInside"
+                android:src="@drawable/location_d" />
+
+            <TextView
+                android:id="@+id/tv_selected_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:text="@string/text_location"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
