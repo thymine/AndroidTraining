@@ -7,4 +7,7 @@
     <color name="button_normal">#45C01A</color>
     <color name="button_pressed">#298409</color>
     <color name="button_disabled">#337423</color>
+
+    <color name="location_hover">#D9D9D9</color>
+    <color name="background_post">#EBEBEB</color>
 </resources>
