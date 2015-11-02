@@ -72,9 +72,26 @@ public class PostFragment extends BaseFragment {
         selPictures.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                pickImages(position);
+                if (position == imageItemList.size() - 1) { // Click on the image add icon
+                    pickImages();
+                } else {
+                    // Show image details
+                    showImageDetails();
+                }
             }
         });
+    }
+
+    public void pickImages() {
+        // Jump to gallery and select multiple images
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), RESULT_LOAD_IMAGE);
+    }
+
+    private void showImageDetails() {
+
     }
 
     @Override
@@ -103,18 +120,6 @@ public class PostFragment extends BaseFragment {
         if (size > 0) {
             int pos = size - 1;
             imageItemList.add(pos, item);
-        }
-    }
-
-    public void pickImages(int position) {
-        if (position == imageItemList.size() - 1) { // Click the last image add icon
-            // Jump to gallery and select multiple images
-            Intent intent = new Intent();
-            intent.setType("image/*");
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), RESULT_LOAD_IMAGE);
-        } else {
-            // Show image details
         }
     }
 
