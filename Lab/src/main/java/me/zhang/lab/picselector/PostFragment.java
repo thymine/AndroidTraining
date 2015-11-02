@@ -2,7 +2,6 @@ package me.zhang.lab.picselector;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +24,7 @@ import me.zhang.lab.R;
 /**
  * Created by Zhang on 2015/10/29 下午 5:19 .
  */
-public class PostFragment extends BaseFragment implements SelectedPicsAdapter.OnAddButtonClickListener {
+public class PostFragment extends BaseFragment {
 
     private static final String TAG = "PostFragment";
     private static final int RESULT_LOAD_IMAGE = 7;
@@ -55,6 +54,12 @@ public class PostFragment extends BaseFragment implements SelectedPicsAdapter.On
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        selectedPicsAdapter = new SelectedPicsAdapter(getActivity(), imageItemList);
+    }
+
+    @Override
     protected int getLayoutResourceId() {
         return R.layout.fragment_post;
     }
@@ -63,40 +68,54 @@ public class PostFragment extends BaseFragment implements SelectedPicsAdapter.On
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ButterKnife.bind(this, view);
 
-        selectedPicsAdapter = new SelectedPicsAdapter(getActivity(), imageItemList, this);
         selPictures.setAdapter(selectedPicsAdapter);
         selPictures.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.i(TAG, "onItemClick, position:" + position);
+                pickImages(position);
             }
         });
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i(TAG, "onActivityResult");
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == RESULT_LOAD_IMAGE) {
-                /* Add selected pictures to list */
-                ClipData clipData = data.getClipData();
-                if (clipData != null) {
-                    for (int i = 0; i < clipData.getItemCount(); i++) {
-                        Uri uri = clipData.getItemAt(i).getUri();
+                if (data != null) {
+                    Uri selectedImageUri = data.getData();
+                    if (selectedImageUri != null) {
+                        Log.i(TAG, "selectedImageUri: " + selectedImageUri);
                         ImageItem item = new ImageItem();
-                        item.path = uri;
-                        imageItemList.add(item);
+                        item.path = selectedImageUri;
+                        addItemToTail(item);
+                        selectedPicsAdapter.notifyDataSetChanged();
+                    } else {
+                        Log.i(TAG, "selectedImageUri == null");
                     }
-                    selectedPicsAdapter.notifyDataSetChanged();
-                } else {
-                    Log.i(TAG, "clipData is null");
                 }
             }
         }
     }
 
-    @Override
-    public void onAddButtonClick() {
-        // Jump to gallery and select multiple images
+    private void addItemToTail(ImageItem item) {
+        int size = imageItemList.size();
+        if (size > 0) {
+            int pos = size - 1;
+            imageItemList.add(pos, item);
+        }
+    }
+
+    public void pickImages(int position) {
+        if (position == imageItemList.size() - 1) { // Click the last image add icon
+            // Jump to gallery and select multiple images
+            Intent intent = new Intent();
+            intent.setType("image/*");
+            intent.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), RESULT_LOAD_IMAGE);
+        } else {
+            // Show image details
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package me.zhang.lab.picselector;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -22,16 +23,14 @@ public class SelectedPicsAdapter extends BaseAdapter {
     private static final String TAG = "SelectedPicsAdapter";
     private final Context context;
     private final List<ImageItem> imageItemList;
-    private final OnAddButtonClickListener listener;
 
-    public SelectedPicsAdapter(Context context, List<ImageItem> imageItemList, OnAddButtonClickListener listener) {
+    public SelectedPicsAdapter(Context context, List<ImageItem> imageItemList) {
+        ImageItem addIcon = new ImageItem();
+        addIcon.path = Uri.EMPTY;
+        imageItemList.add(addIcon);
+
         this.context = context;
         this.imageItemList = imageItemList;
-        this.listener = listener;
-
-        ImageItem addItem = new ImageItem();
-        addItem.path = Uri.EMPTY;
-        this.imageItemList.add(addItem);
     }
 
     @Override
@@ -50,7 +49,7 @@ public class SelectedPicsAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
@@ -61,27 +60,16 @@ public class SelectedPicsAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
+        Log.i(TAG, "position: " + position);
         ImageItem item = getItem(position);
+
         if (Uri.EMPTY.equals(item.path)) {
-            imageView.setImageResource(R.drawable.image_add);
+            Picasso.with(context).load(R.drawable.image_add).into(imageView);
         } else {
             Picasso.with(context).load(item.path).into(imageView);
         }
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (position == imageItemList.size() - 1) {
-                    listener.onAddButtonClick();
-                }
-            }
-        });
-
         return imageView;
-    }
-
-    public interface OnAddButtonClickListener {
-        void onAddButtonClick();
     }
 
 }
