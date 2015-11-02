@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import java.util.Arrays;
 import java.util.List;
 
-import me.zhang.lab.utils.Images;
+import me.zhang.lab.provider.Images;
 import me.zhang.lab.R;
 
 /**
