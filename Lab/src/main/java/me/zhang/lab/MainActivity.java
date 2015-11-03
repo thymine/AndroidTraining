@@ -2,6 +2,7 @@ package me.zhang.lab;
 
 import me.zhang.lab.camera.CameraActivity;
 import me.zhang.lab.fragment.ExampleActivity;
+import me.zhang.lab.gesture.TouchActivity;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
 import me.zhang.lab.picselector.PostActivity;
@@ -29,5 +30,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Property Animation", PropertyAnimatedActivity.class);
         addMenuItem("Camera", CameraActivity.class);
         addMenuItem("Picture Selector", PostActivity.class);
+        addMenuItem("Gestures", TouchActivity.class);
     }
 }

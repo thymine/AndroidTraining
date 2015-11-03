@@ -43,6 +43,9 @@
             android:name=".picselector.PostActivity"
             android:exported="true"
             android:theme="@style/PicSelector" />
+        <activity
+            android:name=".gesture.TouchActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
