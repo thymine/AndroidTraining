@@ -46,6 +46,9 @@
         <activity
             android:name=".gesture.TouchActivity"
             android:exported="true" />
+        <activity
+            android:name=".swiperefresh.SwipeRefreshActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
