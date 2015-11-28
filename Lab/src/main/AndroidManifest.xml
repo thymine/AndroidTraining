@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="me.zhang.lab.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
         <activity android:name=".timer.CountUpActivity" />
         <activity android:name=".listview.ListViewActivity" />
         <activity android:name=".videoview.MovingActivity" />
-        <activity android:name="me.zhang.lab.recyclerview.HorizontalListActivity" />
+        <activity android:name=".recyclerview.HorizontalListActivity" />
         <activity
             android:name=".propertyanimation.PropertyAnimatedActivity"
             android:screenOrientation="portrait" />
@@ -49,6 +49,7 @@
         <activity
             android:name=".swiperefresh.SwipeRefreshActivity"
             android:exported="true" />
+        <activity android:name=".realm.RealmActivity" />
     </application>
 
 </manifest>

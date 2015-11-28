@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
 }
 
 dependencies {
@@ -31,4 +35,5 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     // https://github.com/JakeWharton/butterknife
     compile 'com.jakewharton:butterknife:7.0.1'
+    // https://github.com/realm/realm-java
 }
