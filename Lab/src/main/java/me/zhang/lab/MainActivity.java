@@ -7,6 +7,7 @@ import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
 import me.zhang.lab.picselector.PostActivity;
 import me.zhang.lab.propertyanimation.PropertyAnimatedActivity;
+import me.zhang.lab.realm.RealmActivity;
 import me.zhang.lab.recyclerview.HorizontalListActivity;
 import me.zhang.lab.swiperefresh.SwipeRefreshActivity;
 import me.zhang.lab.timer.CountDownActivity;
@@ -33,5 +34,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Picture Selector", PostActivity.class);
         addMenuItem("Gestures", TouchActivity.class);
         addMenuItem("Swipe Refresh", SwipeRefreshActivity.class);
+        addMenuItem("Realm", RealmActivity.class);
     }
 }
