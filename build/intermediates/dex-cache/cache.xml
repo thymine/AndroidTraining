@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="D:\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-9e5639e8226e7e6422cb6c0e211195132dd67f56.jar" />
+    </item>
+    <item
+        jar="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-4f863fa17f3deff56d695c03d02f118135d12918.jar" />
+    </item>
+    <item
+        jar="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\classes-b53db7ff4ec851b930ee4404e7d64f34b8455537.jar" />
+    </item>
+    <item
+        jar="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\exploded-aar\com.larswerkman\HoloColorPicker\1.4\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5d5a825cbf0f67237377034c2c4edf9ba7e60fbe">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\classes-14ac4262e9bd8d0a6c208388910770b0ebf70ceb.jar" />
+    </item>
+
+</items>

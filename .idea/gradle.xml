@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/FloatingMenu" />
             <option value="$PROJECT_DIR$/Lab" />
             <option value="$PROJECT_DIR$/ScreenOff" />
           </set>

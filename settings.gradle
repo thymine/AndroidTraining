@@ -1,1 +1,1 @@
-include ':Lab', ':ScreenOff'
+include ':Lab', ':ScreenOff', ':FloatingMenu'
