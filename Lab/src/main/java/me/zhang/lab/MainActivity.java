@@ -1,8 +1,11 @@
 package me.zhang.lab;
 
+import me.zhang.lab.animation.AnimationActivity;
+import me.zhang.lab.base.MenuActivity;
 import me.zhang.lab.camera.CameraActivity;
 import me.zhang.lab.fragment.ExampleActivity;
 import me.zhang.lab.gesture.TouchActivity;
+import me.zhang.lab.input.InputActivity;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
 import me.zhang.lab.picselector.PostActivity;
@@ -12,7 +15,6 @@ import me.zhang.lab.recyclerview.HorizontalListActivity;
 import me.zhang.lab.swiperefresh.SwipeRefreshActivity;
 import me.zhang.lab.timer.CountDownActivity;
 import me.zhang.lab.timer.CountUpActivity;
-import me.zhang.lab.base.MenuActivity;
 import me.zhang.lab.videoview.MovingActivity;
 
 /**
@@ -35,5 +37,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Gestures", TouchActivity.class);
         addMenuItem("Swipe Refresh", SwipeRefreshActivity.class);
         addMenuItem("Realm", RealmActivity.class);
+        addMenuItem("Animation", AnimationActivity.class);
+        addMenuItem("Input", InputActivity.class);
     }
 }
