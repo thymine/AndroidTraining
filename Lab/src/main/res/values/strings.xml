@@ -38,4 +38,9 @@
     <string name="desc_image_placeholder">Placeholder</string>
     <string name="desc_wechat">Wechat Icon Button</string>
     <string name="title_activity_animation">AnimationActivity</string>
+
+    <string name="button_description">Emoticons Button</string>
+    <string name="chat_hint">Enter text here</string>
+    <string name="post">Post</string>
+    <string name="back">Backspace</string>
 </resources>

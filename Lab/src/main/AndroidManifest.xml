@@ -59,6 +59,10 @@
             android:name=".input.InputActivity"
             android:exported="true"
             android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity
+            android:name=".emoticons.EmoticonsActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
     </application>
 
 </manifest>
