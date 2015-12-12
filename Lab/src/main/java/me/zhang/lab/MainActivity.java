@@ -3,6 +3,7 @@ package me.zhang.lab;
 import me.zhang.lab.animation.AnimationActivity;
 import me.zhang.lab.base.MenuActivity;
 import me.zhang.lab.camera.CameraActivity;
+import me.zhang.lab.emoticons.EmoticonsActivity;
 import me.zhang.lab.fragment.ExampleActivity;
 import me.zhang.lab.gesture.TouchActivity;
 import me.zhang.lab.input.InputActivity;
@@ -39,5 +40,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Realm", RealmActivity.class);
         addMenuItem("Animation", AnimationActivity.class);
         addMenuItem("Input", InputActivity.class);
+        addMenuItem("Emoticons", EmoticonsActivity.class);
     }
 }

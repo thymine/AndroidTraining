@@ -17,4 +17,6 @@
     <dimen name="gridview_horizontal_spacing">3dp</dimen>
     <dimen name="gridview_vertical_spacing">6dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="keyboard_height">230dp</dimen>
 </resources>
