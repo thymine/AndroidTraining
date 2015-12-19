@@ -17,6 +17,7 @@ import me.zhang.lab.swiperefresh.SwipeRefreshActivity;
 import me.zhang.lab.timer.CountDownActivity;
 import me.zhang.lab.timer.CountUpActivity;
 import me.zhang.lab.videoview.MovingActivity;
+import me.zhang.lab.webview.WebViewActivity;
 
 /**
  * Created by Zhang on 2015/7/27 下午 4:30 .
@@ -41,5 +42,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Animation", AnimationActivity.class);
         addMenuItem("Input", InputActivity.class);
         addMenuItem("Emoticons", EmoticonsActivity.class);
+        addMenuItem("WebView", WebViewActivity.class);
     }
 }
