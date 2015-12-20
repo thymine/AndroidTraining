@@ -69,6 +69,9 @@
             android:exported="true"
             android:theme="@style/AppTheme" />
         <activity android:name=".webview.LocalPageActivity" />
+        <activity
+            android:name=".printing.PrintingActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
