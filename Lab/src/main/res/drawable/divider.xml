@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:height="5dp" />
+    <solid android:color="@color/accent" />
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/accent"
+        android:endColor="@color/swipe_color_1"
+        android:startColor="@color/swipe_color_4" />
+</shape>
