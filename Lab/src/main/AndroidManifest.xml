@@ -72,6 +72,9 @@
         <activity
             android:name=".printing.PrintingActivity"
             android:exported="true" />
+        <activity
+            android:name=".popup.PopUpActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
