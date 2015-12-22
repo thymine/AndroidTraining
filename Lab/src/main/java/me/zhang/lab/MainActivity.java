@@ -10,6 +10,7 @@ import me.zhang.lab.input.InputActivity;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
 import me.zhang.lab.picselector.PostActivity;
+import me.zhang.lab.popup.PopUpActivity;
 import me.zhang.lab.printing.PrintingActivity;
 import me.zhang.lab.propertyanimation.PropertyAnimatedActivity;
 import me.zhang.lab.realm.RealmActivity;
@@ -45,5 +46,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Emoticons", EmoticonsActivity.class);
         addMenuItem("WebView", WebViewActivity.class);
         addMenuItem("Printing", PrintingActivity.class);
+        addMenuItem("PopupWindow", PopUpActivity.class);
     }
 }
