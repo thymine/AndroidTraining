@@ -23,4 +23,5 @@
     <dimen name="keyboard_height">230dp</dimen>
 
     <dimen name="common_text_size">16sp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
 </resources>
