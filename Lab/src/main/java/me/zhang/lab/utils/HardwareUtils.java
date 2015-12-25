@@ -1,11 +1,15 @@
 package me.zhang.lab.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -115,9 +119,30 @@ public class HardwareUtils {
 
     /**
      * 3. Checking camera features
-     *
-     *  Camera.getParameters()
-     *  Camera.getCameraInfo()
+     * <p/>
+     * Camera.getParameters()
+     * Camera.getCameraInfo()
      */
+
+    /**
+     * Get screen dimens
+     *
+     * @param context you know
+     * @param dimens  length must be 2
+     */
+    public static void getScreenDimens(Context context, int[] dimens) {
+        if (dimens == null)
+            dimens = new int[2];
+
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(outMetrics);
+
+        int width = outMetrics.widthPixels;
+        int height = outMetrics.heightPixels;
+
+        dimens[0] = width;
+        dimens[1] = height;
+    }
 
 }

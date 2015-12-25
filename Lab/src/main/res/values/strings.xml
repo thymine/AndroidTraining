@@ -45,4 +45,5 @@
     <string name="back">Backspace</string>
     <string name="btn_local">Local</string>
     <string name="text_touch_me">Touch Me</string>
+    <string name="title_activity_view">ViewActivity</string>
 </resources>
