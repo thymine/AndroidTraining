@@ -2,25 +2,32 @@
 <items version="2" >
 
     <item
-        jar="D:\AndroidStudioProjects\AndroidLab\Lab\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jar="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="D:\AndroidStudioProjects\AndroidLab\Lab\build\intermediates\pre-dexed\debug\classes-0d72856a1a618dfbe24f26912087e1c806f510bc.jar" />
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-4f863fa17f3deff56d695c03d02f118135d12918.jar" />
     </item>
     <item
-        jar="D:\AndroidStudioProjects\AndroidLab\Lab\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jar="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\exploded-aar\com.larswerkman\HoloColorPicker\1.4\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="D:\AndroidStudioProjects\AndroidLab\Lab\build\intermediates\pre-dexed\debug\classes-f3daff1df55563b215b4be7bf1b029496e4ca687.jar" />
+        sha1="5d5a825cbf0f67237377034c2c4edf9ba7e60fbe">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\classes-14ac4262e9bd8d0a6c208388910770b0ebf70ceb.jar" />
     </item>
     <item
-        jar="D:\AndroidStudioProjects\AndroidLab\Lab\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jar="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="D:\AndroidStudioProjects\AndroidLab\Lab\build\intermediates\pre-dexed\debug\classes-24071a67ba1ff9856b20df517cdc866952058d36.jar" />
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\classes-b53db7ff4ec851b930ee4404e7d64f34b8455537.jar" />
+    </item>
+    <item
+        jar="D:\Android\android-sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="D:\AndroidStudioProjects\AndroidLab\FloatingMenu\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-9e5639e8226e7e6422cb6c0e211195132dd67f56.jar" />
     </item>
 
 </items>

@@ -4,6 +4,7 @@ import me.zhang.lab.animation.AnimationActivity;
 import me.zhang.lab.base.MenuActivity;
 import me.zhang.lab.camera.CameraActivity;
 import me.zhang.lab.emoticons.EmoticonsActivity;
+import me.zhang.lab.event.EventDispatchActivity;
 import me.zhang.lab.fragment.ExampleActivity;
 import me.zhang.lab.gesture.TouchActivity;
 import me.zhang.lab.input.InputActivity;
@@ -47,5 +48,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("WebView", WebViewActivity.class);
         addMenuItem("Printing", PrintingActivity.class);
         addMenuItem("PopupWindow", PopUpActivity.class);
+        addMenuItem("Event", EventDispatchActivity.class);
     }
 }
