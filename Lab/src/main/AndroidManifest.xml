@@ -75,6 +75,9 @@
         <activity
             android:name=".popup.PopUpActivity"
             android:exported="true" />
+        <activity
+            android:name=".event.EventDispatchActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
