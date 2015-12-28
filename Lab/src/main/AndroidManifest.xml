@@ -76,6 +76,9 @@
             android:name=".popup.PopUpActivity"
             android:exported="true" />
         <activity
+            android:name=".event.EventDispatchActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.ViewActivity"
             android:exported="true"
             android:label="@string/title_activity_view" />
