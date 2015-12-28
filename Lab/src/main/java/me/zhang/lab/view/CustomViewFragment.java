@@ -46,8 +46,6 @@ public class CustomViewFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         customView = (CustomView) view.findViewById(R.id.custom);
-
-        new Thread(customView).start();
     }
 
     @Override
