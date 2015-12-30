@@ -82,6 +82,9 @@
             android:name=".view.ViewActivity"
             android:exported="true"
             android:label="@string/title_activity_view" />
+        <activity
+            android:name=".event.TouchEventActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
