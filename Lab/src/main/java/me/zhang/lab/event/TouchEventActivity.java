@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 import me.zhang.lab.R;
 
@@ -26,9 +28,16 @@ public class TouchEventActivity extends Activity {
 
         setContentView(R.layout.touch_event_intercept);
 
-        View myView = findViewById(R.id.my_button);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        String[] country = new String[] {"Select Country", "Australia", "USA", "UK", "New Zealand", "EU", "Europe", "China", "Hong Kong",
+                "India", "Malaysia", "Canada", "International", "Asia", "Africa"};
 
-        ValueAnimator colorAnim = ObjectAnimator.ofInt(myView,
+        ArrayAdapter<String> adapter0 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, country);
+        adapter0.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner.setAdapter(adapter0);
+
+        View touchView = findViewById(R.id.touch);
+        ValueAnimator colorAnim = ObjectAnimator.ofInt(touchView,
                 "backgroundColor", /* Red */
                 0xFFFF8080, /* Blue */0xFF8080FF);
         colorAnim.setDuration(3000);
@@ -36,14 +45,13 @@ public class TouchEventActivity extends Activity {
         colorAnim.setRepeatCount(ValueAnimator.INFINITE);
         colorAnim.setRepeatMode(ValueAnimator.REVERSE);
         colorAnim.start();
-
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(myView, "scaleX",
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(touchView, "scaleX",
                 0.5f);
         objectAnimator.setDuration(3000);
         objectAnimator.setRepeatMode(ObjectAnimator.REVERSE);
         objectAnimator.start();
 
-        Log.d("", "### Activiti中getWindow()获取的类型是 : " + this.getWindow());
+        Log.v("", "### Activiti中getWindow()获取的类型是 : " + this.getWindow());
 
         // state list
         StateListDrawable stateListDrawable = new StateListDrawable();
@@ -58,13 +66,13 @@ public class TouchEventActivity extends Activity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.i(TAG, "### activity dispatchTouchEvent");
+        Log.v(TAG, "### activity dispatchTouchEvent " + ev.getAction());
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.i(TAG, "## activity onTouchEvent " + event.getAction());
+        Log.v(TAG, "### activity onTouchEvent " + event.getAction());
         return super.onTouchEvent(event);
     }
 
