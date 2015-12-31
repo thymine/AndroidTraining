@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.TextView;
+import android.view.View;
 
 /**
  * Created by Zhang on 2015/12/30 上午 10:32 .
  */
-public class TouchTv extends TextView {
+public class TouchTv extends View {
 
     private String TAG = TouchTv.class.getSimpleName();
 
@@ -28,17 +28,15 @@ public class TouchTv extends TextView {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         Log.i(TAG, "### dispatchTouchEvent " + ev.getAction());
-        boolean result = super.dispatchTouchEvent(ev);
-        Log.d(TAG, "### dispatchTouchEvent result = " + result);
-        return result;
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         Log.i(TAG, "### onTouchEvent " + ev.getAction());
-        boolean result = super.onTouchEvent(ev);
-        Log.i(TAG, "### onTouchEvent result = " + result);
-        return result;
+        return super.onTouchEvent(ev);
+//        return false;
+//        return true;
     }
 }
 

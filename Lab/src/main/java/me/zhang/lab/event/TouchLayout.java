@@ -1,7 +1,6 @@
 package me.zhang.lab.event;
 
 import android.content.Context;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -28,28 +27,30 @@ public class TouchLayout extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.d(TAG, "### dispatchTouchEvent " + ev.getAction());
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        final int action = MotionEventCompat.getActionMasked(ev);
-        // Always handle the case of the touch gesture being complete.
-        if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
-            // Do not intercept touch event, let the child handle it
-            return false;
-        }
-
-        Log.i(TAG, "### onInterceptTouchEvent " + action);
-        return false;
+        Log.d(TAG, "### onInterceptTouchEvent " + ev.getAction());
+//        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+//            return false;
+//        }
+//        if (ev.getAction() == MotionEvent.ACTION_MOVE) { // 拦截ACTION_MOVE事件
+//            return true;
+//        }
+        return super.onInterceptTouchEvent(ev);
+//        return false;
+//        return true;
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        Log.i(TAG, "### onTouchEvent " + ev.getAction());
-        Log.i(TAG, "### is Clickable = " + isClickable());
+        Log.d(TAG, "### onTouchEvent " + ev.getAction());
         return super.onTouchEvent(ev);
 //        return true;
+//        return false;
     }
 
 }

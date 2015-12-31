@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<me.zhang.lab.event.TouchLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
@@ -8,14 +8,26 @@
     tools:context="com.example.touch_event.MainActivity"
     tools:ignore="MergeRootFrame">
 
-    <me.zhang.lab.event.TouchTv
-        android:id="@+id/my_button"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:background="#00aa00"
-        android:gravity="center"
-        android:textSize="30sp" />
+        android:layout_height="64dp" />
 
-</me.zhang.lab.event.TouchLayout>
+    <me.zhang.lab.event.TouchLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/spinner">
+
+        <me.zhang.lab.event.TouchTv
+            android:id="@+id/touch"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="#00aa00"
+            android:gravity="center"
+            android:textSize="30sp" />
+
+    </me.zhang.lab.event.TouchLayout>
+
+</RelativeLayout>
