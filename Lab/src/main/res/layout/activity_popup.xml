@@ -11,7 +11,7 @@
         android:layout_width="240dp"
         android:layout_height="480dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/pizza"
+        android:src="@drawable/cloud"
         tools:ignore="ContentDescription" />
 
 </LinearLayout>
