@@ -33,7 +33,7 @@ public class ScreenOffPhoneListener extends PhoneStateListener {
     }
 
     private void turnScreenOff(final long delay) {
-        Thread t = new Thread() {
+        new Thread() {
             public void run() {
                 try {
                     sleep(delay);
@@ -42,7 +42,6 @@ public class ScreenOffPhoneListener extends PhoneStateListener {
                 }
                 ScreenOffActivity.turnScreenOff(context);
             }
-        };
-        t.start();
+        }.start();
     }
 }

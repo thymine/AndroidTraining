@@ -22,21 +22,21 @@ public class ScreenOffActivity extends Activity {
     }
 
     private void turnScreenOffAndExit() {
-        // first lock screen
-        turnScreenOff(getApplicationContext());
-
-        // then provide feedback
-//        ((Vibrator) getSystemService(Context.VIBRATOR_SERVICE)).vibrate(100);
-
         // schedule end of activity
         final Activity activity = this;
+        // add transition
+        activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         Thread t = new Thread() {
             public void run() {
                 try {
-                    sleep(500);
+                    sleep(400);
                 } catch (InterruptedException e) {
                     /* ignore this */
                 }
+                // first lock screen
+                turnScreenOff(getApplicationContext());
+                // then provide feedback
+                // ((Vibrator) getSystemService(Context.VIBRATOR_SERVICE)).vibrate(100);
                 activity.finish();
             }
         };
@@ -50,18 +50,15 @@ public class ScreenOffActivity extends Activity {
      * @param context - The application context
      */
     static void turnScreenOff(final Context context) {
-        DevicePolicyManager policyManager = (DevicePolicyManager) context
-                .getSystemService(Context.DEVICE_POLICY_SERVICE);
-        ComponentName adminReceiver = new ComponentName(context,
-                ScreenOffAdminReceiver.class);
+        DevicePolicyManager policyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        ComponentName adminReceiver = new ComponentName(context, ScreenOffAdminReceiver.class);
         boolean admin = policyManager.isAdminActive(adminReceiver);
         if (admin) {
-            Log.i(LOG_TAG, "Going to sleep now.");
             policyManager.lockNow();
+            Log.i(LOG_TAG, "Going to sleep now.");
         } else {
-            Log.i(LOG_TAG, "Not an admin");
-            Toast.makeText(context, R.string.device_admin_not_enabled,
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.device_admin_not_enabled, Toast.LENGTH_LONG).show();
+            Log.i(LOG_TAG, "Not an admin.");
         }
     }
 

@@ -14,11 +14,8 @@ public class ScreenOffEventReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        TelephonyManager telephony = (TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE);
-        telephony.listen(new ScreenOffPhoneListener(context),
-                PhoneStateListener.LISTEN_CALL_STATE);
-
+        TelephonyManager telephony = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        telephony.listen(new ScreenOffPhoneListener(context), PhoneStateListener.LISTEN_CALL_STATE);
     }
 
 }
