@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Main application activity
  */
@@ -22,25 +25,12 @@ public class ScreenOffActivity extends Activity {
     }
 
     private void turnScreenOffAndExit() {
-        // schedule end of activity
-        final Activity activity = this;
-        // add transition
-        activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        Thread t = new Thread() {
-            public void run() {
-                try {
-                    sleep(400);
-                } catch (InterruptedException e) {
-                    /* ignore this */
-                }
-                // first lock screen
-                turnScreenOff(getApplicationContext());
-                // then provide feedback
-                // ((Vibrator) getSystemService(Context.VIBRATOR_SERVICE)).vibrate(100);
-                activity.finish();
-            }
-        };
-        t.start();
+        // first lock screen
+        turnScreenOff(getApplicationContext());
+        // then provide feedback
+        // ((Vibrator) getSystemService(Context.VIBRATOR_SERVICE)).vibrate(100);
+
+        finish();
     }
 
     /**
@@ -50,12 +40,17 @@ public class ScreenOffActivity extends Activity {
      * @param context - The application context
      */
     static void turnScreenOff(final Context context) {
-        DevicePolicyManager policyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
+        final DevicePolicyManager policyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
         ComponentName adminReceiver = new ComponentName(context, ScreenOffAdminReceiver.class);
         boolean admin = policyManager.isAdminActive(adminReceiver);
         if (admin) {
-            policyManager.lockNow();
-            Log.i(LOG_TAG, "Going to sleep now.");
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    policyManager.lockNow();
+                    Log.i(LOG_TAG, "Going to sleep now.");
+                }
+            }, 400);
         } else {
             Toast.makeText(context, R.string.device_admin_not_enabled, Toast.LENGTH_LONG).show();
             Log.i(LOG_TAG, "Not an admin.");
