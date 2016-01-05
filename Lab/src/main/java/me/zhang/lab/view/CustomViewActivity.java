@@ -15,7 +15,7 @@ import android.view.View;
 
 import me.zhang.lab.R;
 
-public class ViewActivity extends AppCompatActivity {
+public class CustomViewActivity extends AppCompatActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -98,7 +98,10 @@ public class ViewActivity extends AppCompatActivity {
             Fragment fragment = null;
             switch (position) {
                 case 0:
-                    fragment = CustomViewFragment.newInstance();
+                    fragment = PulsationViewFragment.newInstance();
+                    break;
+                case 1:
+                    fragment = BitmapViewFragment.newInstance();
                     break;
             }
             return fragment;
@@ -106,7 +109,7 @@ public class ViewActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 1;
+            return 2;
         }
 
     }

@@ -21,6 +21,7 @@ import me.zhang.lab.swiperefresh.SwipeRefreshActivity;
 import me.zhang.lab.timer.CountDownActivity;
 import me.zhang.lab.timer.CountUpActivity;
 import me.zhang.lab.videoview.MovingActivity;
+import me.zhang.lab.view.CustomViewActivity;
 import me.zhang.lab.webview.WebViewActivity;
 
 /**
@@ -51,5 +52,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("PopupWindow", PopUpActivity.class);
         addMenuItem("Event", EventDispatchActivity.class);
         addMenuItem("TouchEvent", TouchEventActivity.class);
+        addMenuItem("CustomView", CustomViewActivity.class);
     }
 }
