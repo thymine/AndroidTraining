@@ -1,6 +1,7 @@
 package me.zhang.lab.view;
 
 import android.content.Context;
+import android.graphics.AvoidXfermode;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -32,6 +33,10 @@ public class BitmapView extends View {
     private Paint paint8;
     private Paint paint9;
     private Paint[] paints = new Paint[9];
+    private Paint paint10;
+
+    @SuppressWarnings("deprecation")
+    private AvoidXfermode avoidXfermode;// AV模式
 
     private Context context;
     private Bitmap bitmap;
@@ -46,11 +51,18 @@ public class BitmapView extends View {
         init();
     }
 
+    @SuppressWarnings("deprecation")
     private void init() {
 
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inSampleSize = 5;
         bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.pizza, options);
+
+        /*
+         * 当画布中有跟0XFFFFFFFF色不一样的地方时候才“染”色
+         */
+//        avoidXfermode = new AvoidXfermode(0XFFFFFFFF, 0, AvoidXfermode.Mode.TARGET);
+        avoidXfermode = new AvoidXfermode(0XFFFFFFFF, 0, AvoidXfermode.Mode.AVOID);
 
         paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
         paints[0] = paint1;
@@ -70,6 +82,7 @@ public class BitmapView extends View {
         paints[7] = paint8;
         paint9 = new Paint(Paint.ANTI_ALIAS_FLAG);
         paints[8] = paint9;
+        paint10 = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         /*
          * 设置画笔样式为描边
@@ -170,12 +183,24 @@ public class BitmapView extends View {
         canvas.drawBitmap(bitmap, 0, 0, paint1);
         canvas.drawBitmap(bitmap, bitmap.getWidth(), 0, paint2);
         canvas.drawBitmap(bitmap, bitmap.getWidth() * 2, 0, paint3);
+
         canvas.drawBitmap(bitmap, 0, bitmap.getHeight(), paint4);
         canvas.drawBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), paint5);
         canvas.drawBitmap(bitmap, bitmap.getWidth() * 2, bitmap.getHeight(), paint6);
+
         canvas.drawBitmap(bitmap, 0, bitmap.getHeight() * 2, paint7);
         canvas.drawBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight() * 2, paint8);
         canvas.drawBitmap(bitmap, bitmap.getWidth() * 2, bitmap.getHeight() * 2, paint9);
+
+        canvas.drawBitmap(bitmap, 0, bitmap.getHeight() * 3, paint10);
+        // “染”什么色是由我们自己决定的
+        paint10.setARGB(255, 211, 53, 243);
+
+        // 设置AV模式
+        paint10.setXfermode(avoidXfermode);
+
+        // 画一个位图大小一样的矩形
+        canvas.drawRect(0, bitmap.getHeight() * 3, bitmap.getWidth(), bitmap.getHeight() * 4, paint10);
     }
 
 }
