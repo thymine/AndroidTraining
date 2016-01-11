@@ -1,6 +1,8 @@
 package me.zhang.workbench.webview;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ApplicationInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +31,14 @@ public class WebViewActivity extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webview);
         buttonTip = (Button) findViewById(R.id.btn_tip);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            // If you want to enable WebView debugging only when debuggable is true, test the flag at runtime.
+            if (0 != (getApplicationInfo().flags &= ApplicationInfo.FLAG_DEBUGGABLE)) {
+                // ***This setting applies to all of the application's WebViews.***
+                WebView.setWebContentsDebuggingEnabled(true);
+            }
+        }
 
         webView.setWebChromeClient(new WebChromeClient());
         // Enable Javascript
