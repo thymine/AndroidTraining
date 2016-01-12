@@ -31,7 +31,7 @@ public class PorterDuffBO implements IBO {
         for (int row = 0; row < mPoint.y; ++row) {
             for (int col = 0; col < mPoint.x; ++col) {
                 int color = color((float) (mPoint.y - row) / mPoint.y, (float) (mPoint.x - col) / mPoint.x, (float) (mPoint.x - col) / mPoint.x, (float) col / mPoint.x);
-                Log.i(TAG, "[" + row + ", " + col + "] src color: " + color);
+//                Log.i(TAG, "[" + row + ", " + col + "] src color: " + color);
                 pixels[dst++] = color;
             }
         }
@@ -44,7 +44,7 @@ public class PorterDuffBO implements IBO {
         for (int row = 0; row < mPoint.y; ++row) {
             for (int col = 0; col < mPoint.x; ++col) {
                 int color = color((float) (mPoint.x - col) / mPoint.x, (float) (mPoint.y - row) / mPoint.x, (float) row / mPoint.y, (float) row / mPoint.y);
-                Log.i(TAG, "[" + row + ", " + col + "] dst color: " + color);
+//                Log.i(TAG, "[" + row + ", " + col + "] dst color: " + color);
                 pixels[dst++] = color;
             }
         }

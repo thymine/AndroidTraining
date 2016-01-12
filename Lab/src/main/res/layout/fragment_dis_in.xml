@@ -1,0 +1,11 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/custom_view_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <me.zhang.lab.view.DisInView
+        android:id="@+id/custom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

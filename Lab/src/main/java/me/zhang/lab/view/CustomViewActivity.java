@@ -42,7 +42,7 @@ public class CustomViewActivity extends AppCompatActivity {
          */
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setCurrentItem(2);
+        mViewPager.setCurrentItem(6);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -102,13 +102,25 @@ public class CustomViewActivity extends AppCompatActivity {
                 case 2:
                     fragment = PorterDuffViewFragment.newInstance();
                     break;
+                case 3:
+                    fragment = DisInViewFragment.newInstance();
+                    break;
+                case 4:
+                    fragment = DisOutViewFragment.newInstance();
+                    break;
+                case 5:
+                    fragment = ScreenViewFragment.newInstance();
+                    break;
+                case 6:
+                    fragment = EraserViewFragment.newInstance();
+                    break;
             }
             return fragment;
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 7;
         }
 
     }
