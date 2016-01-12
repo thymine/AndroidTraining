@@ -1,4 +1,4 @@
-package me.zhang.lab.view;
+package me.zhang.lab.view.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.zhang.lab.R;
+import me.zhang.lab.view.PulsationView;
 
 
 /**
@@ -17,17 +18,17 @@ import me.zhang.lab.R;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class ScreenViewFragment extends Fragment {
+public class PulsationViewFragment extends Fragment {
 
-    public ScreenViewFragment() {
+    public PulsationViewFragment() {
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static ScreenViewFragment newInstance() {
-        return new ScreenViewFragment();
+    public static PulsationViewFragment newInstance() {
+        return new PulsationViewFragment();
     }
 
     @Override
@@ -38,11 +39,13 @@ public class ScreenViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_screen, container, false);
+        return inflater.inflate(R.layout.fragment_pulsation, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        PulsationView pulsationView = (PulsationView) view.findViewById(R.id.pulsation);
+        new Thread(pulsationView).start();
     }
 
     @Override

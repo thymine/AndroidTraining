@@ -13,6 +13,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import me.zhang.lab.utils.MeasureUtil;
+import me.zhang.lab.view.bo.PorterDuffBO;
 
 /**
  * 测试不同PorterDuff模式的View

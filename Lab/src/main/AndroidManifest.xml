@@ -79,7 +79,7 @@
             android:name=".event.EventDispatchActivity"
             android:exported="true" />
         <activity
-            android:name=".view.CustomViewActivity"
+            android:name=".view.ui.CustomViewActivity"
             android:exported="true"
             android:label="@string/title_activity_view" />
         <activity
