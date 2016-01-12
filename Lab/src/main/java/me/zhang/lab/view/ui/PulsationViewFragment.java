@@ -1,6 +1,10 @@
 package me.zhang.lab.view.ui;
 
+import android.os.Bundle;
+import android.view.View;
+
 import me.zhang.lab.R;
+import me.zhang.lab.view.PulsationView;
 
 
 /**
@@ -23,5 +27,11 @@ public class PulsationViewFragment extends BaseFragment {
     @Override
     protected int supplyLayoutResource() {
         return R.layout.fragment_pulsation;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        PulsationView pulsationView = (PulsationView) view.findViewById(R.id.pulsation);
+        new Thread(pulsationView).start();
     }
 }
