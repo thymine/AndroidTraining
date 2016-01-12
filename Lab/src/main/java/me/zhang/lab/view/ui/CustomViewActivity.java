@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import me.zhang.lab.R;
+import me.zhang.lab.view.StaticLayoutView;
 
 public class CustomViewActivity extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class CustomViewActivity extends AppCompatActivity {
          */
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setCurrentItem(7);
+        mViewPager.setCurrentItem(8);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -117,13 +118,16 @@ public class CustomViewActivity extends AppCompatActivity {
                 case 7:
                     fragment = FontViewFragment.newInstance();
                     break;
+                case 8:
+                    fragment = StaticLayoutViewFragment.newInstance();
+                    break;
             }
             return fragment;
         }
 
         @Override
         public int getCount() {
-            return 8;
+            return 9;
         }
 
     }
