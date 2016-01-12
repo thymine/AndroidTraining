@@ -1,8 +1,7 @@
-package me.zhang.lab.view;
+package me.zhang.lab.view.bo;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
-import android.util.Log;
 
 /**
  * PorterDuffView的业务逻辑对象

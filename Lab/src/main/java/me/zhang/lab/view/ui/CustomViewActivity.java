@@ -1,4 +1,4 @@
-package me.zhang.lab.view;
+package me.zhang.lab.view.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -42,7 +42,7 @@ public class CustomViewActivity extends AppCompatActivity {
          */
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setCurrentItem(6);
+        mViewPager.setCurrentItem(7);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -114,13 +114,16 @@ public class CustomViewActivity extends AppCompatActivity {
                 case 6:
                     fragment = EraserViewFragment.newInstance();
                     break;
+                case 7:
+                    fragment = FontViewFragment.newInstance();
+                    break;
             }
             return fragment;
         }
 
         @Override
         public int getCount() {
-            return 7;
+            return 8;
         }
 
     }

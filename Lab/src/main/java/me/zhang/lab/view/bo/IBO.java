@@ -1,4 +1,4 @@
-package me.zhang.lab.view;
+package me.zhang.lab.view.bo;
 
 /**
  * 业务逻辑层接口

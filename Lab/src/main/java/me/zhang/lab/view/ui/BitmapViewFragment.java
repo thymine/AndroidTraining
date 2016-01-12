@@ -1,4 +1,4 @@
-package me.zhang.lab.view;
+package me.zhang.lab.view.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,17 +17,17 @@ import me.zhang.lab.R;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PulsationViewFragment extends Fragment {
+public class BitmapViewFragment extends Fragment {
 
-    public PulsationViewFragment() {
+    public BitmapViewFragment() {
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static PulsationViewFragment newInstance() {
-        return new PulsationViewFragment();
+    public static BitmapViewFragment newInstance() {
+        return new BitmapViewFragment();
     }
 
     @Override
@@ -38,13 +38,11 @@ public class PulsationViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_pulsation, container, false);
+        return inflater.inflate(R.layout.fragment_bitmap, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        PulsationView pulsationView = (PulsationView) view.findViewById(R.id.pulsation);
-        new Thread(pulsationView).start();
     }
 
     @Override

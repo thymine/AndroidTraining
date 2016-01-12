@@ -1,4 +1,4 @@
-package me.zhang.lab.view;
+package me.zhang.lab.view.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,17 +17,17 @@ import me.zhang.lab.R;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class BitmapViewFragment extends Fragment {
+public class ScreenViewFragment extends Fragment {
 
-    public BitmapViewFragment() {
+    public ScreenViewFragment() {
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static BitmapViewFragment newInstance() {
-        return new BitmapViewFragment();
+    public static ScreenViewFragment newInstance() {
+        return new ScreenViewFragment();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class BitmapViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_bitmap, container, false);
+        return inflater.inflate(R.layout.fragment_screen, container, false);
     }
 
     @Override

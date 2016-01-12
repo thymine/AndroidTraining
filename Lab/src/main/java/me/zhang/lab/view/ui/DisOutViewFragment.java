@@ -1,4 +1,4 @@
-package me.zhang.lab.view;
+package me.zhang.lab.view.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,17 +17,17 @@ import me.zhang.lab.R;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PorterDuffViewFragment extends Fragment {
+public class DisOutViewFragment extends Fragment {
 
-    public PorterDuffViewFragment() {
+    public DisOutViewFragment() {
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static PorterDuffViewFragment newInstance() {
-        return new PorterDuffViewFragment();
+    public static DisOutViewFragment newInstance() {
+        return new DisOutViewFragment();
     }
 
     @Override
@@ -38,7 +38,7 @@ public class PorterDuffViewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_porterduff, container, false);
+        return inflater.inflate(R.layout.fragment_dis_out, container, false);
     }
 
     @Override

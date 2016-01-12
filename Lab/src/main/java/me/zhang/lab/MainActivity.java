@@ -21,7 +21,7 @@ import me.zhang.lab.swiperefresh.SwipeRefreshActivity;
 import me.zhang.lab.timer.CountDownActivity;
 import me.zhang.lab.timer.CountUpActivity;
 import me.zhang.lab.videoview.MovingActivity;
-import me.zhang.lab.view.CustomViewActivity;
+import me.zhang.lab.view.ui.CustomViewActivity;
 import me.zhang.lab.webview.WebViewActivity;
 
 /**
