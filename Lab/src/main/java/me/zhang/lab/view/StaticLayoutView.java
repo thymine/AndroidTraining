@@ -10,6 +10,8 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import me.zhang.lab.utils.HardwareUtils;
+
 /**
  * 自定义View
  * 
@@ -29,23 +31,25 @@ public class StaticLayoutView extends View {
 		super(context, attrs);
 
 		// 初始化画笔
-		initPaint();
+		initPaint(context);
 	}
 
 	/**
 	 * 初始化画笔
 	 */
-	private void initPaint() {
+	private void initPaint(Context context) {
 		// 实例化画笔
 		mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
 		mTextPaint.setTextSize(50);
 		mTextPaint.setColor(Color.BLACK);
+        int[] dimens = new int[2];
+        HardwareUtils.getScreenDimens(context, dimens);
+		mStaticLayout = new StaticLayout(TEXT, mTextPaint, dimens[0], Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
 	}
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		mStaticLayout = new StaticLayout(TEXT, mTextPaint, canvas.getWidth(), Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
 		mStaticLayout.draw(canvas);
 		canvas.restore();
 	}
