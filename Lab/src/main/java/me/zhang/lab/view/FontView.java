@@ -45,6 +45,19 @@ public class FontView extends View {
         textPaint.setColor(Color.BLACK);
         // 设置画笔字体
         textPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), "STLITI.TTF"));
+        // 设置画笔文本水平方向倾斜
+        textPaint.setTextSkewX(-0.25f);
+        // 设置画笔文本水平方向缩放
+        textPaint.setTextScaleX(0.75f);
+        // 设置画笔文本对齐方式
+//        textPaint.setTextAlign(Paint.Align.LEFT);
+        textPaint.setTextAlign(Paint.Align.CENTER);
+//        textPaint.setTextAlign(Paint.Align.RIGHT);
+        // 设置画笔文本亚像素显示
+        textPaint.setSubpixelText(true);
+        // 设置文本删除线
+        textPaint.setStrikeThruText(true);
+
         mFontMetrics = textPaint.getFontMetrics();
         Log.d(TAG, "ascent：" + mFontMetrics.ascent);
         Log.d(TAG, "top：" + mFontMetrics.top);
@@ -63,7 +76,10 @@ public class FontView extends View {
         super.onDraw(canvas);
 
         // 计算Baseline绘制的起点X轴坐标
-        baseX = (int) (canvas.getWidth() / 2 - textPaint.measureText(TEXT) / 2);
+//        baseX = (int) (canvas.getWidth() / 2 - textPaint.measureText(TEXT) / 2);
+//        baseX = 0; // 左
+        baseX = canvas.getWidth() / 2; // 中
+//        baseX = canvas.getWidth(); // 右
 
         // 计算Baseline绘制的Y坐标
 //        baseY = (int) ((canvas.getHeight() / 2) - ((textPaint.descent() + textPaint.ascent()) / 2));
