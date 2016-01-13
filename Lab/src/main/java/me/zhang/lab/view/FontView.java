@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -31,17 +32,19 @@ public class FontView extends View {
         super(context, attrs);
 
         // 初始化画笔
-        initPaint();
+        initPaint(context);
     }
 
     /**
      * 初始化画笔
      */
-    private void initPaint() {
+    private void initPaint(Context context) {
         // 实例化画笔
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextSize(50);
         textPaint.setColor(Color.BLACK);
+        // 设置画笔字体
+        textPaint.setTypeface(Typeface.createFromAsset(context.getAssets(), "STLITI.TTF"));
         mFontMetrics = textPaint.getFontMetrics();
         Log.d(TAG, "ascent：" + mFontMetrics.ascent);
         Log.d(TAG, "top：" + mFontMetrics.top);
