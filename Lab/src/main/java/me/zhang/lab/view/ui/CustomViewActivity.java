@@ -1,22 +1,21 @@
 package me.zhang.lab.view.ui;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.zhang.lab.R;
-import me.zhang.lab.view.StaticLayoutView;
 
 public class CustomViewActivity extends AppCompatActivity {
+
+    private List<Fragment> fragments = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +24,23 @@ public class CustomViewActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fragments.add(PulsationViewFragment.newInstance());
+        fragments.add(BitmapViewFragment.newInstance());
+        fragments.add(PorterDuffViewFragment.newInstance());
+        fragments.add(DisInViewFragment.newInstance());
+        fragments.add(DisOutViewFragment.newInstance());
+        fragments.add(ScreenViewFragment.newInstance());
+        fragments.add(EraserViewFragment.newInstance());
+        fragments.add(FontViewFragment.newInstance());
+        fragments.add(StaticLayoutViewFragment.newInstance());
+        fragments.add(MaskFilterViewFragment.newInstance());
+        fragments.add(BlurMaskFilterViewFragment.newInstance());
+        fragments.add(EmbossMaskFilterViewFragment.newInstance());
+        fragments.add(PathEffectViewFragment.newInstance());
+        fragments.add(ECGViewFragment.newInstance());
+        fragments.add(ShadowViewFragment.newInstance());
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         /*
@@ -43,40 +59,8 @@ public class CustomViewActivity extends AppCompatActivity {
          */
         ViewPager mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setCurrentItem(8);
+        mViewPager.setCurrentItem(fragments.size() - 1);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_view, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -91,43 +75,12 @@ public class CustomViewActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            Fragment fragment = null;
-            switch (position) {
-                case 0:
-                    fragment = PulsationViewFragment.newInstance();
-                    break;
-                case 1:
-                    fragment = BitmapViewFragment.newInstance();
-                    break;
-                case 2:
-                    fragment = PorterDuffViewFragment.newInstance();
-                    break;
-                case 3:
-                    fragment = DisInViewFragment.newInstance();
-                    break;
-                case 4:
-                    fragment = DisOutViewFragment.newInstance();
-                    break;
-                case 5:
-                    fragment = ScreenViewFragment.newInstance();
-                    break;
-                case 6:
-                    fragment = EraserViewFragment.newInstance();
-                    break;
-                case 7:
-                    fragment = FontViewFragment.newInstance();
-                    break;
-                case 8:
-                    fragment = StaticLayoutViewFragment.newInstance();
-                    break;
-            }
-            return fragment;
+            return fragments.get(position);
         }
 
         @Override
         public int getCount() {
-            return 9;
+            return fragments.size();
         }
 
     }

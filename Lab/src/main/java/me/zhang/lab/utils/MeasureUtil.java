@@ -1,6 +1,8 @@
 package me.zhang.lab.utils;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
 import android.util.DisplayMetrics;
 
 /**
@@ -20,5 +22,14 @@ public final class MeasureUtil {
         DisplayMetrics metrics = new DisplayMetrics();
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         return new int[]{metrics.widthPixels, metrics.heightPixels};
+    }
+
+    public static int getNavBarHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            return resources.getDimensionPixelSize(resourceId);
+        }
+        return 0;
     }
 }

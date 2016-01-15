@@ -15,7 +15,7 @@ import me.zhang.lab.utils.MeasureUtil;
 
 /**
  * EmbossMaskFilter
- * 
+ *
  * @author Aige
  * @since 2014/11/23
  */
@@ -49,11 +49,16 @@ public class EmbossMaskFilterView extends View {
 	 */
 	private void initPaint() {
 		// 实例化画笔
-		mPaint = new Paint();
 		mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
 		mPaint.setStyle(Paint.Style.FILL);
 		mPaint.setColor(0xFF603811);
 
+		/**
+		 * 数组必须要有而且只能有三个值即float[x,y,z]，这三个值代表了一个空间坐标系，我们的光照方向则由其定义，那么它是怎么定义的呢？首先x和y很好理解，
+		 * 平面的两个维度嘛是吧，上面我们使用的是[1,1]也就是个45度角，而z轴表示光源是在屏幕后方还是屏幕前方，上面我们是用的是1，正值表示光源往屏幕外偏移1个单位，
+		 * 负值表示往屏幕里面偏移，这么一说如果我把其值改为[1,1,-1]那么我们的巧克力朝着我们的一面应该就看不到了对吧，试试看撒~~~这个效果我就不截图了，
+		 * 因为一片漆黑……但是你依然能够看到一点点灰度~就是因为我们的环境光ambient！，如果我们把值改为[1,1,2]往屏幕外偏移两个单位，那么我们巧克力正面光照将更强
+		 */
 		// 设置画笔遮罩滤镜
 		mPaint.setMaskFilter(new EmbossMaskFilter(new float[] { 1, 1, 1F }, 0.1F, 10F, 20F));
 	}
