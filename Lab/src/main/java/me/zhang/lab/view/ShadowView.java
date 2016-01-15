@@ -15,7 +15,6 @@ import me.zhang.lab.utils.MeasureUtil;
 
 @SuppressLint("NewApi")
 public class ShadowView extends View {
-	private static final int RECT_SIZE = 800;// 方形大小
 	private Paint mPaint;// 画笔
 
 	private int left, top, right, bottom;// 绘制时坐标
@@ -50,10 +49,10 @@ public class ShadowView extends View {
 		/*
 		 * 计算位图绘制时左上角的坐标使其位于屏幕中心
 		 */
-		left = MeasureUtil.getScreenSize((Activity) context)[0] / 2 - RECT_SIZE / 2;
-		top = MeasureUtil.getScreenSize((Activity) context)[1] / 2 - RECT_SIZE / 2;
-		right = MeasureUtil.getScreenSize((Activity) context)[0] / 2 + RECT_SIZE / 2;
-		bottom = MeasureUtil.getScreenSize((Activity) context)[1] / 2 + RECT_SIZE / 2;
+		left = MeasureUtil.getScreenSize((Activity) context)[0] / 4;
+		top = MeasureUtil.getScreenSize((Activity) context)[1] / 4;
+		right = MeasureUtil.getScreenSize((Activity) context)[0] * 3 / 4;
+		bottom = MeasureUtil.getScreenSize((Activity) context)[1] * 3 / 4;
 	}
 
 	@Override

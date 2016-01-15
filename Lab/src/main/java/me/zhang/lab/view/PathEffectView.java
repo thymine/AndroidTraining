@@ -17,9 +17,11 @@ import android.graphics.SumPathEffect;
 import android.util.AttributeSet;
 import android.view.View;
 
+import me.zhang.lab.utils.HardwareUtils;
+
 /**
  * PathEffect
- * 
+ *
  * @author Aige
  * @since 2014/11/23
  */
@@ -27,16 +29,26 @@ import android.view.View;
 public class PathEffectView extends View {
 	private float mPhase;// 偏移值
 	private Paint mPaint;// 画笔对象
+	private Paint mTextPaint;// 画笔对象
 	private Path mPath;// 路径对象
 	private PathEffect[] mEffects;// 路径效果数组
+	private String[] mTexts; // 路径描述
+    private int[] dimens;
 
 	public PathEffectView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
-		/*
+        dimens = new int[2];
+        HardwareUtils.getScreenDimens(context, dimens);
+        /*
 		 * 实例化画笔并设置属性
 		 */
-		mPaint = new Paint();
+        mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mTextPaint.setColor(Color.RED);
+		mTextPaint.setStrokeWidth(3);
+        mTextPaint.setTextAlign(Paint.Align.CENTER);
+
+        mPaint = new Paint();
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeWidth(5);
 		mPaint.setColor(Color.DKGRAY);
@@ -54,6 +66,7 @@ public class PathEffectView extends View {
 
 		// 创建路径效果数组
 		mEffects = new PathEffect[7];
+		mTexts = new String[7];
 	}
 
 	@Override
@@ -73,15 +86,24 @@ public class PathEffectView extends View {
 		mEffects[5] = new ComposePathEffect(mEffects[2], mEffects[4]);
 		mEffects[6] = new SumPathEffect(mEffects[4], mEffects[3]);
 
+		mTexts[0] = "PathEffect";
+		mTexts[1] = "CornerPathEffect";
+		mTexts[2] = "DiscretePathEffect";
+		mTexts[3] = "DashPathEffect";
+		mTexts[4] = "PathDashPathEffect";
+		mTexts[5] = "ComposePathEffect";
+		mTexts[6] = "SumPathEffect";
+
 		/*
 		 * 绘制路径
 		 */
 		for (int i = 0; i < mEffects.length; i++) {
 			mPaint.setPathEffect(mEffects[i]);
 			canvas.drawPath(mPath, mPaint);
+			canvas.drawText(mTexts[i], dimens[0] / 2, 50, mTextPaint);
 
-			// 每绘制一条将画布向下平移250个像素
-			canvas.translate(0, 250);
+			// 每绘制一条将画布向下平移150个像素
+			canvas.translate(0, 150);
 		}
 
 		// 刷新偏移值并重绘视图实现动画效果

@@ -1,7 +1,6 @@
 package me.zhang.lab.view;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,10 +9,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import me.zhang.lab.R;
-import me.zhang.lab.utils.MeasureUtil;
+import me.zhang.lab.utils.HardwareUtils;
 
 /**
  * BlurMaskFilter
@@ -23,6 +23,9 @@ import me.zhang.lab.utils.MeasureUtil;
  */
 @SuppressLint("NewApi")
 public class BlurMaskFilterView extends View {
+
+    private static final String TAG = BlurMaskFilterView.class.getSimpleName();
+
     private Paint shadowPaint;// 画笔
     private Context mContext;// 上下文环境引用
     private Bitmap srcBitmap, shadowBitmap;// 位图和阴影位图
@@ -43,7 +46,7 @@ public class BlurMaskFilterView extends View {
         initPaint();
 
         // 初始化资源
-        initRes(context);
+        initRes();
     }
 
     /**
@@ -59,18 +62,37 @@ public class BlurMaskFilterView extends View {
     /**
      * 初始化资源
      */
-    private void initRes(Context context) {
+    private void initRes() {
+
+        /*
+         * 计算位图绘制时左上角的坐标使其位于屏幕中心
+		 */
+        int[] dimens = new int[2];
+        HardwareUtils.getScreenDimens(mContext, dimens);
+        x = dimens[0] / 4;
+        y = dimens[1] / 4;
+
         // 获取位图
-        srcBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.a);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(mContext.getResources(), R.drawable.a, options);
+        /* 原始位图宽和高 */
+        final float h = options.outHeight;
+        final float w = options.outWidth;
+        Log.i(TAG, "w: " + w);
+        Log.i(TAG, "h: " + h);
+        options.inJustDecodeBounds = false;
+        float ratio = w > h ? (w > dimens[0] ? w / dimens[0] : dimens[0] / w) : (h > dimens[1] ? h / dimens[1] : dimens[1] / h);
+        Log.i(TAG, "ratio: " + ratio);
+        int inSampleSize = (int) Math.ceil(ratio);
+        Log.i(TAG, "inSampleSize: " + inSampleSize);
+        options.inSampleSize = inSampleSize;
+
+        srcBitmap = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.a, options);
 
         // 获取位图的Alpha通道图
         shadowBitmap = srcBitmap.extractAlpha();
 
-		/*
-         * 计算位图绘制时左上角的坐标使其位于屏幕中心
-		 */
-        x = MeasureUtil.getScreenSize((Activity) mContext)[0] / 2 - srcBitmap.getWidth() / 2;
-        y = MeasureUtil.getScreenSize((Activity) mContext)[1] / 2 - srcBitmap.getHeight() / 2;
     }
 
     @Override
