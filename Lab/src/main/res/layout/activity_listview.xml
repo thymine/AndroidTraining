@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/ll_sender"
+        android:cacheColorHint="@color/opaque"
         android:drawSelectorOnTop="false"
         android:listSelector="@drawable/list_selector_background"
         android:stackFromBottom="true"
