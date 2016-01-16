@@ -37,6 +37,7 @@
         android:cacheColorHint="@color/opaque"
         android:drawSelectorOnTop="false"
         android:listSelector="@drawable/list_selector_background"
+        android:smoothScrollbar="false"
         android:stackFromBottom="true"
         android:transcriptMode="normal" />
 

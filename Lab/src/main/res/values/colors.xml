@@ -18,5 +18,6 @@
 
     <color name="transparent">#00000000</color>
     <color name="opaque">#ffd5ffb1</color>
+    <color name="opaque1">#ffa0cbff</color>
     <color name="opaque_selector">#baff7f</color>
 </resources>
