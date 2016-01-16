@@ -7,4 +7,6 @@ public class Item {
 
     String title;
 
+    boolean isEnabled = true;
+
 }
