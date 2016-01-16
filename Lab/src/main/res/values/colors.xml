@@ -15,4 +15,8 @@
     <color name="swipe_color_2">#cc0003</color>
     <color name="swipe_color_3">#bd0003</color>
     <color name="swipe_color_4">#af0003</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="opaque">#ffd5ffb1</color>
+    <color name="opaque_selector">#baff7f</color>
 </resources>

@@ -1,28 +1,30 @@
 package me.zhang.lab.listview;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
+
+import me.zhang.lab.R;
 
 /**
  * Created by Zhang on 8/6/2015 9:19 下午.
  */
-public class LVAdapter extends BaseAdapter {
+public class CustomAdapter extends BaseAdapter {
 
     private static final String TAG = "LVAdapter";
 
     private final List<Item> datas;
     private final Context context;
-    private ViewHolder holder;
 
-    public LVAdapter(Context context, List<Item> datas) {
+    public CustomAdapter(Context context, List<Item> datas) {
         this.context = context;
         this.datas = datas;
     }
@@ -47,46 +49,35 @@ public class LVAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         Log.i(TAG, "getView(...)");
-
-        convertView = initView(convertView, parent);
-
-        Item item = datas.get(position);
-
-        /* 加载数据 */
-        fillData(holder, item);
-
-//        if (position == 3) {
-//            return null;
-//        }
-
-        return convertView;
-    }
-
-    @NonNull
-    private View initView(View convertView, ViewGroup parent) {
+        ViewHolder holder;
         if (convertView == null) {
             Log.i("Zhang", "convertView == null");
-
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(context).inflate(me.zhang.lab.R.layout.item_list, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_custom, parent, false);
+            convertView.setBackgroundResource(R.drawable.item_selector_background);
 
-            holder.tv_title = (TextView) convertView.findViewById(me.zhang.lab.R.id.tv_title);
+            holder.bigTitle = (TextView) convertView.findViewById(R.id.big_title);
+            holder.dontClick = (Button) convertView.findViewById(R.id.dont_click);
 
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        final Item item = datas.get(position);
+        holder.bigTitle.setText(item.title);
+        holder.dontClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Don't Click ~ " + item.title, Toast.LENGTH_SHORT).show();
+            }
+        });
         return convertView;
     }
 
-    private void fillData(ViewHolder holder, Item item) {
-        holder.tv_title.setText(item.title);
-    }
-
-    class ViewHolder {
-        TextView tv_title;
+    static class ViewHolder {
+        TextView bigTitle;
+        Button dontClick;
     }
 
 }

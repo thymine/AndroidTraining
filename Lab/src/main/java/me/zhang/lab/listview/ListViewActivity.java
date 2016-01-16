@@ -3,9 +3,13 @@ package me.zhang.lab.listview;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Zhang on 8/6/2015 9:18 下午.
@@ -13,7 +17,7 @@ import java.util.List;
 public class ListViewActivity extends Activity {
 
     private List<Item> items;
-    private LVAdapter lvAdapter;
+    private CustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,27 +25,36 @@ public class ListViewActivity extends Activity {
 
         setContentView(me.zhang.lab.R.layout.activity_listview);
 
-        MyListView listView = (MyListView) findViewById(me.zhang.lab.R.id.lv_list);
+        ListView listView = (ListView) findViewById(me.zhang.lab.R.id.lv_list);
+        listView.setItemsCanFocus(true);
+
         items = new ArrayList<>();
-        lvAdapter = new LVAdapter(this, items);
-        listView.setAdapter(lvAdapter);
-        new ListTask().execute();
+        adapter = new CustomAdapter(this, items);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Item item = items.get(position);
+                item.title = String.valueOf(Integer.parseInt(item.title) + 1);
+                adapter.notifyDataSetChanged();
+            }
+
+        });
+
+        new ProduceDataTask().execute();
     }
 
-    class ListTask extends AsyncTask<Void, Void, List<Item>> {
+    class ProduceDataTask extends AsyncTask<Void, Void, List<Item>> {
 
         @Override
         protected List<Item> doInBackground(Void... params) {
+            Random random = new Random(System.currentTimeMillis());
             List<Item> items = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 100; i++) {
                 Item item = new Item();
-                item.title = Integer.toString(i + 1);
+                item.title = String.valueOf(random.nextInt(100));
                 items.add(item);
-            }
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
             return items;
         }
@@ -53,7 +66,7 @@ public class ListViewActivity extends Activity {
             if (result != null && result.size() > 0) {
                 items.clear();
                 items.addAll(result);
-                lvAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
         }
     }

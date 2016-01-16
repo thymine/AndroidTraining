@@ -30,7 +30,9 @@
         <activity android:name=".timer.CountDownActivity" />
         <activity android:name=".listview.NonScrollableListViewActivity" />
         <activity android:name=".timer.CountUpActivity" />
-        <activity android:name=".listview.ListViewActivity" />
+        <activity
+            android:name=".listview.ListViewActivity"
+            android:exported="true" />
         <activity android:name=".videoview.MovingActivity" />
         <activity android:name=".recyclerview.HorizontalListActivity" />
         <activity
