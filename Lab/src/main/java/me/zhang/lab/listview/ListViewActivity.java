@@ -9,7 +9,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Created by Zhang on 8/6/2015 9:18 下午.
@@ -45,15 +44,23 @@ public class ListViewActivity extends Activity {
         new ProduceDataTask().execute();
     }
 
+    public void send(View view) {
+        Item i = new Item();
+        i.title = String.valueOf(items.size());
+        items.add(i);
+        adapter.notifyDataSetChanged();
+    }
+
     class ProduceDataTask extends AsyncTask<Void, Void, List<Item>> {
 
         @Override
         protected List<Item> doInBackground(Void... params) {
-            Random random = new Random(System.currentTimeMillis());
+//            Random random = new Random(System.currentTimeMillis());
             List<Item> items = new ArrayList<>();
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 3; i++) {
                 Item item = new Item();
-                item.title = String.valueOf(random.nextInt(100));
+//                item.title = String.valueOf(random.nextInt(100));
+                item.title = String.valueOf(i);
                 items.add(item);
             }
             return items;
