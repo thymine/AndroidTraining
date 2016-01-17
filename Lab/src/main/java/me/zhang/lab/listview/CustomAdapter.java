@@ -2,6 +2,7 @@ package me.zhang.lab.listview;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +23,16 @@ public class CustomAdapter extends BaseAdapter {
     private static final int VIEW_TYPE_COUNT = 2;
     private static final int VIEW_TYPE_0 = 0;
     private static final int VIEW_TYPE_1 = 1;
+    private static final String TAG = CustomAdapter.class.getSimpleName();
 
     private final List<Item> datas;
     private final Context context;
+    private LayoutInflater inflater;
 
     public CustomAdapter(Context context, List<Item> datas) {
         this.context = context;
         this.datas = datas;
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -72,6 +76,7 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.i(TAG, "getView(...), " + position);
         final Item item = datas.get(position);
         switch (getItemViewType(position)) {
             case VIEW_TYPE_0:
@@ -89,7 +94,7 @@ public class CustomAdapter extends BaseAdapter {
         ViewHolder1 holder1;
         if (convertView == null) {
             holder1 = new ViewHolder1();
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_custom1, parent, false);
+            convertView = inflater.inflate(R.layout.item_custom1, parent, false);
             convertView.setBackgroundResource(R.drawable.item_selector_background1);
 
             holder1.evenBiggerTitle = (TextView) convertView.findViewById(R.id.even_bigger_title);
@@ -107,7 +112,7 @@ public class CustomAdapter extends BaseAdapter {
         ViewHolder0 holder;
         if (convertView == null) {
             holder = new ViewHolder0();
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_custom, parent, false);
+            convertView = inflater.inflate(R.layout.item_custom, parent, false);
             convertView.setBackgroundResource(R.drawable.item_selector_background);
 
             holder.bigTitle = (TextView) convertView.findViewById(R.id.big_title);
