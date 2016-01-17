@@ -32,7 +32,8 @@
         <activity android:name=".timer.CountUpActivity" />
         <activity
             android:name=".listview.ListViewActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".videoview.MovingActivity" />
         <activity android:name=".recyclerview.HorizontalListActivity" />
         <activity

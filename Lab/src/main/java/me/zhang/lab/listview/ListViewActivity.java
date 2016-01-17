@@ -57,7 +57,7 @@ public class ListViewActivity extends Activity {
         protected List<Item> doInBackground(Void... params) {
 //            Random random = new Random(System.currentTimeMillis());
             List<Item> items = new ArrayList<>();
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 5; i++) {
                 Item item = new Item();
 //                item.title = String.valueOf(random.nextInt(100));
                 item.title = String.valueOf(i);
