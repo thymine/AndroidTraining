@@ -10,7 +10,9 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
 import android.graphics.Shader;
+import android.graphics.SweepGradient;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -84,9 +86,10 @@ public class ShaderView extends View {
         // 设置着色器
         mPaint.setShader(bitmapShader);
         // mPaint.setShader(new LinearGradient(left, top, right - RECT_SIZE, bottom - RECT_SIZE, Color.RED, Color.YELLOW, Shader.TileMode.MIRROR));
-         mPaint.setShader(new LinearGradient(left, top, right, bottom, new int[] { Color.RED, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE }, null, Shader.TileMode.MIRROR));
-        // mPaint.setShader(new SweepGradient(screenX, screenY, Color.RED, Color.YELLOW));
-        // mPaint.setShader(new SweepGradient(screenX, screenY, new int[] { Color.GREEN, Color.WHITE, Color.GREEN }, null));
+//         mPaint.setShader(new LinearGradient(left, top, right, bottom, new int[] { Color.RED, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE }, null, Shader.TileMode.MIRROR));
+//         mPaint.setShader(new SweepGradient(screenX, screenY, Color.RED, Color.YELLOW));
+//         mPaint.setShader(new SweepGradient(screenX, screenY, new int[] { Color.GREEN, Color.WHITE, Color.GREEN }, null));
+        mPaint.setShader(new RadialGradient(screenX, screenY, RECT_SIZE, Color.RED, Color.YELLOW, Shader.TileMode.REPEAT));
     }
 
     @Override
