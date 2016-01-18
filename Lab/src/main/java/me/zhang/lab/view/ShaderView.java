@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
@@ -24,7 +26,7 @@ import me.zhang.lab.utils.MeasureUtil;
  * @since 2014/11/24
  */
 public class ShaderView extends View {
-    private static final int RECT_SIZE = 200;// 矩形尺寸的一半
+    private static final int RECT_SIZE = 400;// 矩形尺寸的一半
 
     private Paint mPaint;// 画笔
 
@@ -82,7 +84,7 @@ public class ShaderView extends View {
         // 设置着色器
         mPaint.setShader(bitmapShader);
         // mPaint.setShader(new LinearGradient(left, top, right - RECT_SIZE, bottom - RECT_SIZE, Color.RED, Color.YELLOW, Shader.TileMode.MIRROR));
-        // mPaint.setShader(new LinearGradient(left, top, right, bottom, new int[] { Color.RED, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE }, null, Shader.TileMode.MIRROR));
+         mPaint.setShader(new LinearGradient(left, top, right, bottom, new int[] { Color.RED, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE }, null, Shader.TileMode.MIRROR));
         // mPaint.setShader(new SweepGradient(screenX, screenY, Color.RED, Color.YELLOW));
         // mPaint.setShader(new SweepGradient(screenX, screenY, new int[] { Color.GREEN, Color.WHITE, Color.GREEN }, null));
     }
