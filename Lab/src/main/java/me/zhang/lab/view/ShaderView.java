@@ -24,7 +24,7 @@ import me.zhang.lab.utils.MeasureUtil;
  * @since 2014/11/24
  */
 public class ShaderView extends View {
-    private static final int RECT_SIZE = 400;// 矩形尺寸的一半
+    private static final int RECT_SIZE = 200;// 矩形尺寸的一半
 
     private Paint mPaint;// 画笔
 
@@ -51,10 +51,15 @@ public class ShaderView extends View {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
         // 获取位图
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.a);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize = 4;
+        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.a, options);
 
         // 实例化一个Shader
-        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+//        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+//        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.MIRROR, Shader.TileMode.MIRROR);
+//        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.CLAMP, Shader.TileMode.MIRROR);
+        BitmapShader bitmapShader = new BitmapShader(bitmap, Shader.TileMode.MIRROR, Shader.TileMode.CLAMP);
 
         // 实例一个矩阵对象
         Matrix matrix = new Matrix();

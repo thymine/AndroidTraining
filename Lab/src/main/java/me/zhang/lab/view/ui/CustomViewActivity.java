@@ -40,6 +40,7 @@ public class CustomViewActivity extends AppCompatActivity {
         fragments.add(PathEffectViewFragment.newInstance());
         fragments.add(ECGViewFragment.newInstance());
         fragments.add(ShadowViewFragment.newInstance());
+        fragments.add(ShaderViewFragment.newInstance());
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
