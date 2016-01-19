@@ -44,6 +44,7 @@ public class CustomViewActivity extends AppCompatActivity {
         fragments.add(BrickViewFragment.newInstance());
         fragments.add(ReflectViewFragment.newInstance());
         fragments.add(DreamEffectViewFragment.newInstance());
+        fragments.add(EditTextFragment.newInstance());
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
