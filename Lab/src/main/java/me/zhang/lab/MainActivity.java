@@ -11,6 +11,7 @@ import me.zhang.lab.gesture.TouchActivity;
 import me.zhang.lab.input.InputActivity;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
+import me.zhang.lab.memory.LeakActivity;
 import me.zhang.lab.picselector.PostActivity;
 import me.zhang.lab.popup.PopUpActivity;
 import me.zhang.lab.printing.PrintingActivity;
@@ -53,5 +54,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Event", EventDispatchActivity.class);
         addMenuItem("TouchEvent", TouchEventActivity.class);
         addMenuItem("CustomView", CustomViewActivity.class);
+        addMenuItem("MemoryLeak", LeakActivity.class);
     }
 }
