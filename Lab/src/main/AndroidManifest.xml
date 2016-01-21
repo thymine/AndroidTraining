@@ -90,6 +90,9 @@
         <activity
             android:name=".event.TouchEventActivity"
             android:exported="true" />
+        <activity
+            android:name=".memory.LeakActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
