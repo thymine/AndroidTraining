@@ -12,6 +12,7 @@
     <uses-feature android:name="android.hardware.camera" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
