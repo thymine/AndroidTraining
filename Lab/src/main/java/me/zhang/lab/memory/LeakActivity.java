@@ -7,7 +7,8 @@ import me.zhang.lab.R;
 
 public class LeakActivity extends AppCompatActivity {
 
-    static Leaky leaky = null;
+//    static Leaky leaky = null;
+    Leaky leaky = null;
 
     class Leaky {
 
