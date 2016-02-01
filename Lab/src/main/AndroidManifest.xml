@@ -94,6 +94,9 @@
         <activity
             android:name=".memory.LeakActivity"
             android:exported="true" />
+        <activity
+            android:name=".layout.RequestDuringLayout"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -46,4 +46,10 @@
     <string name="btn_local">Local</string>
     <string name="text_touch_me">Touch Me</string>
     <string name="title_activity_view">ViewActivity</string>
+
+    <string name="button">Button</string>
+    <string name="menu_settings">Settings</string>
+    <string name="addView">Add</string>
+    <string name="removeView">Remove</string>
+    <string name="forceLayout">Layout</string>
 </resources>
