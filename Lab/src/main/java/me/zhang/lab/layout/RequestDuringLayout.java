@@ -81,6 +81,12 @@ public class RequestDuringLayout extends Activity {
         int numButtons = 0;
         boolean mAddRequestPending = false;
         boolean mRemoveRequestPending = false;
+        Runnable requestLayoutRunnable = new Runnable() {
+            @Override
+            public void run() {
+                requestLayout();
+            }
+        };
 
         public MyLayout(Context context, AttributeSet attrs, int defStyle) {
             super(context, attrs, defStyle);
@@ -110,6 +116,14 @@ public class RequestDuringLayout extends Activity {
                 addButton();
                 mAddRequestPending = false;
             }
+
+            /**
+             * Romain Guy suggested posting a Runnable that calls requestLayout() within onLayout() if you absolutely have to
+             *      (e.g. you've changed something that requires a new measure and layout pass).
+             * This will call requestLayout() after onLayout() has returned
+             *      (once the main thread gets back to executing what's on the Looper's queue).
+             */
+            post(requestLayoutRunnable);
         }
 
         private void removeButton() {
