@@ -97,6 +97,9 @@
         <activity
             android:name=".layout.RequestDuringLayout"
             android:exported="true" />
+        <activity
+            android:name=".animation.ListViewAnimations"
+            android:exported="true" />
     </application>
 
 </manifest>

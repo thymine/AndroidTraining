@@ -1,6 +1,7 @@
 package me.zhang.lab;
 
 import me.zhang.lab.animation.AnimationActivity;
+import me.zhang.lab.animation.ListViewAnimations;
 import me.zhang.lab.base.MenuActivity;
 import me.zhang.lab.camera.CameraActivity;
 import me.zhang.lab.emoticons.EmoticonsActivity;
@@ -9,6 +10,7 @@ import me.zhang.lab.event.TouchEventActivity;
 import me.zhang.lab.fragment.ExampleActivity;
 import me.zhang.lab.gesture.TouchActivity;
 import me.zhang.lab.input.InputActivity;
+import me.zhang.lab.layout.RequestDuringLayout;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
 import me.zhang.lab.memory.LeakActivity;
@@ -55,5 +57,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("TouchEvent", TouchEventActivity.class);
         addMenuItem("CustomView", CustomViewActivity.class);
         addMenuItem("MemoryLeak", LeakActivity.class);
+        addMenuItem("ListViewAnimations", ListViewAnimations.class);
+        addMenuItem("RequestDuringLayout", RequestDuringLayout.class);
     }
 }

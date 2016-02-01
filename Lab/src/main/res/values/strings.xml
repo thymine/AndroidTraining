@@ -52,4 +52,7 @@
     <string name="addView">Add</string>
     <string name="removeView">Remove</string>
     <string name="forceLayout">Layout</string>
+
+    <string name="viewpropertyanimator">ViewPropertyAnimator</string>
+    <string name="transient_state">Transient State</string>
 </resources>
