@@ -21,6 +21,7 @@ import me.zhang.lab.propertyanimation.PropertyAnimatedActivity;
 import me.zhang.lab.realm.RealmActivity;
 import me.zhang.lab.recyclerview.HorizontalListActivity;
 import me.zhang.lab.swiperefresh.SwipeRefreshActivity;
+import me.zhang.lab.thread.WorkerThreads;
 import me.zhang.lab.timer.CountDownActivity;
 import me.zhang.lab.timer.CountUpActivity;
 import me.zhang.lab.videoview.MovingActivity;
@@ -59,5 +60,6 @@ public class MainActivity extends MenuActivity {
         addMenuItem("MemoryLeak", LeakActivity.class);
         addMenuItem("ListViewAnimations", ListViewAnimations.class);
         addMenuItem("RequestDuringLayout", RequestDuringLayout.class);
+        addMenuItem("WorkerThreads", WorkerThreads.class);
     }
 }
