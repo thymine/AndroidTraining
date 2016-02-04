@@ -2,6 +2,7 @@ package me.zhang.lab;
 
 import me.zhang.lab.animation.AnimationActivity;
 import me.zhang.lab.animation.ListViewAnimations;
+import me.zhang.lab.animation.ListViewDeletion;
 import me.zhang.lab.base.MenuActivity;
 import me.zhang.lab.camera.CameraActivity;
 import me.zhang.lab.emoticons.EmoticonsActivity;
@@ -59,6 +60,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("CustomView", CustomViewActivity.class);
         addMenuItem("MemoryLeak", LeakActivity.class);
         addMenuItem("ListViewAnimations", ListViewAnimations.class);
+        addMenuItem("ListViewDeletion", ListViewDeletion.class);
         addMenuItem("RequestDuringLayout", RequestDuringLayout.class);
         addMenuItem("WorkerThreads", WorkerThreads.class);
     }

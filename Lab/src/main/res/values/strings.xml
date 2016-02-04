@@ -56,4 +56,7 @@
     <string name="viewpropertyanimator">ViewPropertyAnimator</string>
     <string name="transient_state">Transient State</string>
     <string name="longer_animate_duration">400ms</string>
+
+    <string name="use_positions">Use Positions</string>
+    <string name="delete_selected">Delete Selected</string>
 </resources>
