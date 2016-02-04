@@ -103,6 +103,9 @@
         <activity
             android:name=".thread.WorkerThreads"
             android:exported="true" />
+        <activity
+            android:name=".animation.ListViewDeletion"
+            android:exported="true" />
     </application>
 
 </manifest>
