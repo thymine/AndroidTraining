@@ -46,6 +46,9 @@ import me.zhang.lab.R;
  */
 public class ListViewAnimations extends Activity {
 
+    public static final int DURATION = 1000;
+    public static final int LONGER_DURATION = 4000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,7 @@ public class ListViewAnimations extends Activity {
 
         final CheckBox vpaCB = (CheckBox) findViewById(R.id.vpaCB);
         final CheckBox setTransientStateCB = (CheckBox) findViewById(R.id.setTransientStateCB);
+        final CheckBox setLongerAnimateDuration = (CheckBox) findViewById(R.id.setLongerAnimateDuration);
         final ListView listview = (ListView) findViewById(R.id.listview);
 
         final ArrayList<String> cheeseList = new ArrayList<>();
@@ -67,8 +71,15 @@ public class ListViewAnimations extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 final String item = (String) parent.getItemAtPosition(position);
+
+                // Whether use longer duration
+                int duration = DURATION;
+                if (setLongerAnimateDuration.isChecked()) {
+                    duration = LONGER_DURATION;
+                }
+
                 if (vpaCB.isChecked()) {
-                    view.animate().setDuration(1000).alpha(0).
+                    view.animate().setDuration(duration).alpha(0).
                             withEndAction(new Runnable() {
                                 @Override
                                 public void run() {
@@ -83,7 +94,7 @@ public class ListViewAnimations extends Activity {
                     // and the animation will continue to fade a view that now contains unrelated
                     // content.
                     ObjectAnimator anim = ObjectAnimator.ofFloat(view, View.ALPHA, 0);
-                    anim.setDuration(1000);
+                    anim.setDuration(duration);
                     if (setTransientStateCB.isChecked()) {
                         // Here's the correct way to do this: if you tell a view that it has
                         // transientState, then ListView ill avoid recycling it until the
