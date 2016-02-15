@@ -11,5 +11,7 @@
     <string name="pref_sync">pref_sync</string>
     <string name="pref_syncConnectionTypes_default">pref_syncConnectionTypes_default</string>
     <string name="pref_syncConnectionType">pref_syncConnectionType</string>
+    <string name="title_choice">选择样式：</string>
+    <string name="btn_ensure">确定</string>
 
 </resources>
