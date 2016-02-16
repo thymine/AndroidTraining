@@ -17,7 +17,7 @@ public class ScreenOffWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        Log.i(TAG, "onUpdate(...)");
+        Log.i(TAG, "onUpdate(...)");// TODO: 2016/2/15 The onUpdate() method will not be called when the App Widget is created?
         // Perform this loop procedure for each App Widget that belongs to this provider
         for (int appWidgetId : appWidgetIds) {
             // Create an Intent to launch ScreenOffActivity
