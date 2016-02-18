@@ -1,7 +1,7 @@
 package me.zhang.lab.editor;
 
 import android.app.Activity;
-import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -44,15 +44,16 @@ public class EditorActivity extends Activity {
     }
 
 
+    Random random = new Random(System.currentTimeMillis());
+    Object[] emojis = emoticons.keySet().toArray();
+
     public void insertImage(View view) {
-        Random random = new Random(System.currentTimeMillis());
-        Object[] emojis = emoticons.keySet().toArray();
-        editText.append(getSmiledText(this, (String) emojis[random.nextInt(emoticons.size())]));
+        editText.append(getSmiledText((String) emojis[random.nextInt(emoticons.size())]));
 
         Log.i(TAG, editText.getText().toString());
     }
 
-    private Spannable getSmiledText(Context context, String text) {
+    private Spannable getSmiledText(String text) {
         SpannableStringBuilder builder = new SpannableStringBuilder(text);
         int index;
         for (index = 0; index < builder.length(); index++) {
@@ -61,9 +62,13 @@ public class EditorActivity extends Activity {
                 if (index + length > builder.length())
                     continue;
                 if (builder.subSequence(index, index + length).toString().equals(entry.getKey())) {
-                    builder.setSpan(new ImageSpan(context, entry.getValue()), index, index + length,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                    index += length - 1;
+                    Drawable drawable = getResources().getDrawable(entry.getValue());
+                    if (drawable != null) {
+                        drawable.setBounds(0, 0, editText.getLineHeight(), editText.getLineHeight());
+                        builder.setSpan(new ImageSpan(drawable), index, index + length,
+                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        index += length - 1;
+                    }
                     break;
                 }
             }
