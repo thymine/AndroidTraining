@@ -48,7 +48,7 @@ public class EditorActivity extends Activity {
     Object[] emojis = emoticons.keySet().toArray();
 
     public void insertImage(View view) {
-        editText.append(getSmiledText((String) emojis[random.nextInt(emoticons.size())]));
+        editText.getText().insert(editText.getSelectionStart(), getSmiledText((String) emojis[random.nextInt(emoticons.size())]));
 
         Log.i(TAG, editText.getText().toString());
     }
@@ -64,9 +64,28 @@ public class EditorActivity extends Activity {
                 if (builder.subSequence(index, index + length).toString().equals(entry.getKey())) {
                     @SuppressWarnings("deprecation") Drawable drawable = getResources().getDrawable(entry.getValue());
                     if (drawable != null) {
-                        drawable.setBounds(0, 0, editText.getLineHeight(), editText.getLineHeight());
-                        builder.setSpan(new ImageSpan(drawable), index, index + length,
-                                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        /* 获取文本高度 */
+//                        Rect bounds = new Rect();
+//                        editText.getPaint().getTextBounds("高", 0, 1, bounds); // 使用中文的高度
+//                        int size = Math.abs(bounds.height());
+                        drawable.setBounds(0, 0, editText.getLineHeight() * 2, editText.getLineHeight() * 2);
+                        builder.setSpan(new ImageSpan(drawable, ImageSpan.ALIGN_BOTTOM) {
+//                                            public void draw(Canvas canvas, CharSequence text, int start,
+//                                                             int end, float x, int top, int y, int bottom,
+//                                                             Paint paint) {
+//                                                Drawable b = getDrawable();
+//                                                canvas.save();
+//
+//                                                int transY = bottom - b.getBounds().bottom;
+//                                                // this is the key
+//                                                transY -= paint.getFontMetricsInt().descent / 2;
+//
+//                                                canvas.translate(x, transY);
+//                                                b.draw(canvas);
+//                                                canvas.restore();
+//                                            }
+                                        }, index, index + length,
+                                Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
                         index += length - 1;
                     }
                     break;
