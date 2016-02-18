@@ -13,6 +13,7 @@
         android:gravity="start"
         android:inputType="textMultiLine"
         android:padding="5dp"
+        android:scrollbars="vertical"
         android:text="@string/hello_world" />
 
     <Button
