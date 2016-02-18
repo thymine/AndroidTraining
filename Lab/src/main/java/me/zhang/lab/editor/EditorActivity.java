@@ -62,7 +62,7 @@ public class EditorActivity extends Activity {
                 if (index + length > builder.length())
                     continue;
                 if (builder.subSequence(index, index + length).toString().equals(entry.getKey())) {
-                    Drawable drawable = getResources().getDrawable(entry.getValue());
+                    @SuppressWarnings("deprecation") Drawable drawable = getResources().getDrawable(entry.getValue());
                     if (drawable != null) {
                         drawable.setBounds(0, 0, editText.getLineHeight(), editText.getLineHeight());
                         builder.setSpan(new ImageSpan(drawable), index, index + length,
@@ -75,4 +75,54 @@ public class EditorActivity extends Activity {
         }
         return builder;
     }
+
+    /****************************** speed improvement ********************************/
+
+    /*private static final Spannable.Factory spannableFactory = Spannable.Factory
+            .getInstance();
+
+    private static final Map<Pattern, Integer> emojiicons = new HashMap<>();
+
+    static {
+        addPattern(emojiicons, ":)", R.drawable.emo_im_happy);
+        addPattern(emojiicons, ":-)", R.drawable.emo_im_happy);
+        // ...
+    }
+
+    private static void addPattern(Map<Pattern, Integer> map, String smile,
+                                   int resource) {
+        map.put(Pattern.compile(Pattern.quote(smile)), resource);
+    }
+
+    public static boolean addSmiles(Context context, Spannable spannable) {
+        boolean hasChanges = false;
+        for (Map.Entry<Pattern, Integer> entry : emojiicons.entrySet()) {
+            Matcher matcher = entry.getKey().matcher(spannable);
+            while (matcher.find()) {
+                boolean set = true;
+                for (ImageSpan span : spannable.getSpans(matcher.start(),
+                        matcher.end(), ImageSpan.class))
+                    if (spannable.getSpanStart(span) >= matcher.start()
+                            && spannable.getSpanEnd(span) <= matcher.end())
+                        spannable.removeSpan(span);
+                    else {
+                        set = false;
+                        break;
+                    }
+                if (set) {
+                    hasChanges = true;
+                    spannable.setSpan(new ImageSpan(context, entry.getValue()),
+                            matcher.start(), matcher.end(),
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                }
+            }
+        }
+        return hasChanges;
+    }
+
+    public static Spannable getSmiledText(Context context, CharSequence text) {
+        Spannable spannable = spannableFactory.newSpannable(text);
+        addSmiles(context, spannable);
+        return spannable;
+    }*/
 }
