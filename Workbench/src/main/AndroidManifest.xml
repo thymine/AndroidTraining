@@ -22,6 +22,9 @@
         <activity
             android:name=".webview.WebViewActivity"
             android:exported="true" />
+        <activity
+            android:name=".view.VisibilityActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
