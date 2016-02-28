@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <me.zhang.lock.SeekBarPreference
-        android:defaultValue="22"
-        android:key="seekBarDetention"
-        android:title="Set the default delay time" />
-
-</PreferenceScreen>
