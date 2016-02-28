@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -14,10 +15,20 @@ import android.widget.RemoteViews;
  * Created by Zhang on 2016/2/15 下午 2:20 .
  */
 public class ScreenOffWidgetConfigure extends Activity {
+
     private int mAppWidgetId;
     private RadioGroup groupButtonStyle;
     private Button buttonEnsure;
     private RemoteViews views;
+
+    private static final SparseArray<Integer> imageResources = new SparseArray<>();
+
+    static {
+        imageResources.put(R.id.ic_screen_lock_landscape_black_48dp, R.drawable.ic_screen_lock_landscape_black_48dp);
+        imageResources.put(R.id.ic_screen_lock_landscape_white_48dp, R.drawable.ic_screen_lock_landscape_white_48dp);
+        imageResources.put(R.id.ic_screen_lock_portrait_black_48dp, R.drawable.ic_screen_lock_portrait_black_48dp);
+        imageResources.put(R.id.ic_screen_lock_portrait_white_48dp, R.drawable.ic_screen_lock_portrait_white_48dp);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +58,7 @@ public class ScreenOffWidgetConfigure extends Activity {
         groupButtonStyle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.btn_original:
-                        setBackgroundResource(R.drawable.launcher);
-                        break;
-                    case R.id.btn_blue:
-                        setBackgroundResource(R.drawable.launcher_blue);
-                        break;
-                    case R.id.btn_green:
-                        setBackgroundResource(R.drawable.launcher_green);
-                        break;
-                }
+                setImageResource(imageResources.get(checkedId));
             }
         });
 
@@ -76,8 +77,8 @@ public class ScreenOffWidgetConfigure extends Activity {
         });
     }
 
-    private void setBackgroundResource(int background) {
-        views.setInt(R.id.layout_screenoff, "setBackgroundResource", background);
+    private void setImageResource(int background) {
+        views.setInt(R.id.layout_screenoff, "setImageResource", background);
     }
 
     @Override
