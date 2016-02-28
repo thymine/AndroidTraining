@@ -11,6 +11,8 @@ import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import me.zhang.lock.util.DelayUtils;
+
 /**
  * Main application activity
  */
@@ -50,7 +52,7 @@ public class ScreenOffActivity extends Activity {
                     policyManager.lockNow();
                     Log.i(LOG_TAG, "Going to sleep now.");
                 }
-            }, 400);
+            }, DelayUtils.getDelayValue(context));
         } else {
             Toast.makeText(context, R.string.device_admin_not_enabled, Toast.LENGTH_LONG).show();
             Log.i(LOG_TAG, "Not an admin.");
