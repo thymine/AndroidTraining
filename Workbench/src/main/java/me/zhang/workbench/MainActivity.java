@@ -1,5 +1,6 @@
 package me.zhang.workbench;
 
+import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.view.VisibilityActivity;
 import me.zhang.workbench.webview.WebViewActivity;
@@ -10,6 +11,7 @@ public class MainActivity extends MenuActivity {
     protected void prepareMenu() {
         addMenuItem("WebView", WebViewActivity.class);
         addMenuItem("Visibility", VisibilityActivity.class);
+        addMenuItem("Card Flip", CardFlipActivity.class);
     }
 
 }

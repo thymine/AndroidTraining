@@ -25,6 +25,9 @@
         <activity
             android:name=".view.VisibilityActivity"
             android:exported="true" />
+        <activity
+            android:name=".animation.CardFlipActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
