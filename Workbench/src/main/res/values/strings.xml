@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Workbench</string>
+
     <string name="text_alert">Alert</string>
     <string name="text_perform">Perform</string>
+    <string name="btn_showpop">Show Pop</string>
+    <string name="btn_hidepop">Hide Pop</string>
+    <string name="btn_submit">Submit</string>
+    <string name="hint_gender">Gender</string>
+    <string name="hint_age">Age</string>
+    <string name="hint_name">Name</string>
 </resources>

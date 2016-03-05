@@ -1,11 +1,11 @@
 package me.zhang.workbench.webview;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import me.zhang.workbench.R;
 
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends Activity {
 
     private WebView webView;
     private Button buttonTip;
