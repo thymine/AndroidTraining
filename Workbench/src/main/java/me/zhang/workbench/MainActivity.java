@@ -12,6 +12,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("WebView", WebViewActivity.class);
         addMenuItem("Visibility", VisibilityActivity.class);
         addMenuItem("Card Flip", CardFlipActivity.class);
+        addMenuItem("Animate Layout Changes", CardFlipActivity.class);
     }
 
 }
