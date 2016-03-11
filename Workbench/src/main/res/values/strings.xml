@@ -9,4 +9,6 @@
     <string name="hint_gender">Gender</string>
     <string name="hint_age">Age</string>
     <string name="hint_name">Name</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_remove">Remove %d</string>
 </resources>
