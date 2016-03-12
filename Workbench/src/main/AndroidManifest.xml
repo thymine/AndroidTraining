@@ -31,6 +31,9 @@
         <activity
             android:name=".animation.AnimateLayoutChangesActivity"
             android:exported="true" />
+        <activity
+            android:name=".animation.LogoWhiteAnimActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
