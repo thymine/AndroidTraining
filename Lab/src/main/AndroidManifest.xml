@@ -110,6 +110,11 @@
         <activity
             android:name=".editor.EditorActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".intent.AvailableIntentActivity"
+            android:exported="true"
+            android:theme="@style/AppThemeWithActionBar" />
     </application>
 
 </manifest>
