@@ -11,6 +11,7 @@ import me.zhang.lab.event.TouchEventActivity;
 import me.zhang.lab.fragment.ExampleActivity;
 import me.zhang.lab.gesture.TouchActivity;
 import me.zhang.lab.input.InputActivity;
+import me.zhang.lab.intent.AvailableIntentActivity;
 import me.zhang.lab.layout.RequestDuringLayout;
 import me.zhang.lab.listview.ListViewActivity;
 import me.zhang.lab.listview.NonScrollableListViewActivity;
@@ -37,6 +38,7 @@ public class MainActivity extends MenuActivity {
     @Override
     protected void prepareMenu() {
         addMenuItem("Fragment Example", ExampleActivity.class);
+        addMenuItem("Available Intent", AvailableIntentActivity.class);
         addMenuItem("Count Down Timer", CountDownActivity.class);
         addMenuItem("Non-Scrollable ExpandableListView", NonScrollableListViewActivity.class);
         addMenuItem("Count Up Timer", CountUpActivity.class);
