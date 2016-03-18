@@ -1,1 +1,1 @@
-include ':Lab', ':ScreenOff', ':FloatingMenu', ':Gradle', ':Workbench', ':ApiDemos', ':NewsApp'
+include ':Lab', ':ScreenOff', ':FloatingMenu', ':Gradle', ':Workbench', ':ApiDemos', ':NewsApp', ':Sunshine'
