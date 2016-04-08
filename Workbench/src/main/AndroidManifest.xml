@@ -34,6 +34,7 @@
         <activity
             android:name=".animation.LogoWhiteAnimActivity"
             android:exported="true" />
+        <activity android:name=".gestures.GesturesActivity"></activity>
     </application>
 
 </manifest>
