@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import me.zhang.lab.R;
 
@@ -19,7 +17,7 @@ import me.zhang.lab.R;
  */
 public class TouchEventActivity extends Activity {
 
-    private static final String TAG = "TouchActivity";
+    static final String TAG = "TouchEvent";
 
     @SuppressWarnings("deprecation")
     @Override
@@ -27,14 +25,6 @@ public class TouchEventActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.touch_event_intercept);
-
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        String[] country = new String[] {"Select Country", "Australia", "USA", "UK", "New Zealand", "EU", "Europe", "China", "Hong Kong",
-                "India", "Malaysia", "Canada", "International", "Asia", "Africa"};
-
-        ArrayAdapter<String> adapter0 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, country);
-        adapter0.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(adapter0);
 
         View touchView = findViewById(R.id.touch);
         ValueAnimator colorAnim = ObjectAnimator.ofInt(touchView,
@@ -66,13 +56,13 @@ public class TouchEventActivity extends Activity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.v(TAG, "### activity dispatchTouchEvent " + ev.getAction());
+        Log.v(TAG, "### activity dispatchTouchEvent() " + ev.getAction());
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.v(TAG, "### activity onTouchEvent " + event.getAction());
+        Log.v(TAG, "### activity onTouchEvent() " + event.getAction());
         return super.onTouchEvent(event);
     }
 

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import me.zhang.workbench.R;
 
@@ -30,7 +31,16 @@ public class GesturesActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(DEBUG_TAG, "onClick(...)");
+                Toast.makeText(GesturesActivity.this, "onClick()", Toast.LENGTH_SHORT).show();
+                Log.d(DEBUG_TAG, "onClick()");
+            }
+        });
+        button.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(GesturesActivity.this, "onLongClick()", Toast.LENGTH_SHORT).show();
+                Log.d(DEBUG_TAG, "onLongClick()");
+                return false;
             }
         });
     }
