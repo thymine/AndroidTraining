@@ -1,5 +1,6 @@
 package me.zhang.workbench;
 
+import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.base.MenuActivity;
@@ -15,7 +16,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("GesturesActivity", GesturesActivity.class);
         addMenuItem("Visibility", VisibilityActivity.class);
         addMenuItem("Card Flip", CardFlipActivity.class);
-        addMenuItem("Animate Layout Changes", CardFlipActivity.class);
+        addMenuItem("Animate Layout Changes", AnimateLayoutChangesActivity.class);
         addMenuItem("I/O Logo White Animation", LogoWhiteAnimActivity.class);
     }
 
