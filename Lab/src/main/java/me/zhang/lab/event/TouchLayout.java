@@ -6,12 +6,12 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
 
+import static me.zhang.lab.event.TouchEventActivity.TAG;
+
 /**
  * Created by Zhang on 2015/12/30 上午 10:12 .
  */
 public class TouchLayout extends FrameLayout {
-
-    private static final String TAG = TouchLayout.class.getSimpleName();
 
     public TouchLayout(Context context) {
         super(context);
@@ -27,13 +27,13 @@ public class TouchLayout extends FrameLayout {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        Log.d(TAG, "### dispatchTouchEvent " + ev.getAction());
+        Log.d(TAG, "### viewgroup dispatchTouchEvent() " + ev.getAction());
         return super.dispatchTouchEvent(ev);
     }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        Log.d(TAG, "### onInterceptTouchEvent " + ev.getAction());
+        Log.d(TAG, "### viewgroup onInterceptTouchEvent() " + ev.getAction());
 //        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
 //            return false;
 //        }
@@ -47,7 +47,7 @@ public class TouchLayout extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        Log.d(TAG, "### onTouchEvent " + ev.getAction());
+        Log.d(TAG, "### viewgroup onTouchEvent() " + ev.getAction());
         return super.onTouchEvent(ev);
 //        return true;
 //        return false;

@@ -5,20 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context="com.example.touch_event.MainActivity"
     tools:ignore="MergeRootFrame">
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="64dp" />
 
     <me.zhang.lab.event.TouchLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/spinner">
+        android:layout_height="match_parent">
 
-        <me.zhang.lab.event.TouchTv
+        <me.zhang.lab.event.TouchView
             android:id="@+id/touch"
             android:layout_width="match_parent"
             android:layout_height="160dp"
