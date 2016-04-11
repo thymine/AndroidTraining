@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="me.zhang.workbench.gestures.GesturesActivity">
 
-    <Button
+    <me.zhang.workbench.gestures.MyButton
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
