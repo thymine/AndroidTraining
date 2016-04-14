@@ -34,7 +34,8 @@
         <activity
             android:name=".animation.LogoWhiteAnimActivity"
             android:exported="true" />
-        <activity android:name=".gestures.GesturesActivity"></activity>
+        <activity android:name=".gestures.GesturesActivity" />
+        <activity android:name=".layout.LayoutActivity"></activity>
     </application>
 
 </manifest>
