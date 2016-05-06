@@ -36,5 +36,11 @@
             android:layout_height="wrap_content"
             android:hint="@string/app_name"
             android:inputType="textMultiLine"/>
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editor"/>
     </RelativeLayout>
 </RelativeLayout>
