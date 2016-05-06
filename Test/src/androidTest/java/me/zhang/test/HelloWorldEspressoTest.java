@@ -15,6 +15,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.core.IsNot.not;
 
 /**
  * Created by Zhang on 2016/5/5 下午 4:43 .
@@ -36,9 +38,12 @@ public class HelloWorldEspressoTest {
         onView(isClickable()).check(matches(isClickable()));
     }
 
+    @Test
     public void buttonClick() {
         onView(
-                withId(R.id.button) // withId(R.id.my_view) is a ViewMatcher
+                allOf(
+                        withId(R.id.button), withText("Click"), not(withText("TextView"))
+                )
         ).perform(
                 click() // click() is a ViewAction
         ).check(
