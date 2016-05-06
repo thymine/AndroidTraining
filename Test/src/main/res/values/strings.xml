@@ -2,4 +2,6 @@
     <string name="app_name">Test</string>
     <string name="click">Click</string>
     <string name="textview">TextView</string>
+    <string name="change_text">Change Text</string>
+    <string name="new_text">Hello Espresso!</string>
 </resources>
