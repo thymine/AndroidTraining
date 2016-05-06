@@ -21,16 +21,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:clickable="true"
-        android:text="@string/click"/>
+        android:onClick="click"
+        android:text="@string/click"
+        android:visibility="visible"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
-        <TextView
-            android:id="@id/button"
-            android:text="@string/textview"
+        <EditText
+            android:id="@+id/editor"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="@string/app_name"
+            android:inputType="textMultiLine"/>
     </RelativeLayout>
 </RelativeLayout>
