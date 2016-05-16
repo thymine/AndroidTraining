@@ -3,11 +3,11 @@ package me.zhang.test;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,10 +17,11 @@ import butterknife.ButterKnife;
  */
 public class AdapterViewActivity extends AppCompatActivity {
 
-    @BindView(R.id.listView)
-    ListView listView;
+    @BindView(R.id.spinner)
+    Spinner spinner0;
 
-    Random random = new Random(System.currentTimeMillis());
+    @BindView(R.id.text)
+    TextView text;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,12 +30,24 @@ public class AdapterViewActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        List<Data> datas = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            datas.add(new Data(String.format("%s", random.nextInt(10000))));
-        }
+        final String[] country = new String[]{"Select Country", "Australia", "USA", "UK", "New Zealand", "EU", "Europe", "China", "Hong Kong",
+                "India", "Malaysia", "Canada", "International", "Asia", "Africa"};
 
-        listView.setAdapter(new MyAdapter(this, datas));
+        ArrayAdapter<String> adapter0 = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, country);
+        adapter0.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinner0.setAdapter(adapter0);
+
+        spinner0.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                text.setText(country[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 }
