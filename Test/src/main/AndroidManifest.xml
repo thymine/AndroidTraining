@@ -23,6 +23,9 @@
         <activity
             android:name=".AdapterViewActivity"
             android:exported="true"/>
+        <activity
+            android:name=".IntentsActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
