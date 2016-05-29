@@ -13,7 +13,7 @@ import me.zhang.workbench.R;
 /**
  * Created by Li on 5/29/2016 4:16 PM.
  */
-public class LeakActivity extends AppCompatActivity {
+public class LeakyActivity extends AppCompatActivity {
 
     private static Drawable background; // Cause leaks
 
