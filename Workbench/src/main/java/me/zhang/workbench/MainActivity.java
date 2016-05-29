@@ -6,6 +6,7 @@ import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
 import me.zhang.workbench.layout.LayoutActivity;
+import me.zhang.workbench.leaks.LeakActivity;
 import me.zhang.workbench.view.VisibilityActivity;
 import me.zhang.workbench.webview.WebViewActivity;
 
@@ -14,6 +15,7 @@ public class MainActivity extends MenuActivity {
     @Override
     protected void prepareMenu() {
         addMenuItem("Layout", LayoutActivity.class);
+        addMenuItem("Leaks", LeakActivity.class);
         addMenuItem("WebView", WebViewActivity.class);
         addMenuItem("GesturesActivity", GesturesActivity.class);
         addMenuItem("Visibility", VisibilityActivity.class);

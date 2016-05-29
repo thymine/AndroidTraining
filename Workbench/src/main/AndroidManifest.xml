@@ -35,7 +35,8 @@
             android:name=".animation.LogoWhiteAnimActivity"
             android:exported="true" />
         <activity android:name=".gestures.GesturesActivity" />
-        <activity android:name=".layout.LayoutActivity"></activity>
+        <activity android:name=".layout.LayoutActivity"/>
+        <activity android:name=".leaks.LeakActivity" />
     </application>
 
 </manifest>
