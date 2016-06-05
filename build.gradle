@@ -18,3 +18,15 @@ allprojects {
         jcenter()
     }
 }
+
+ext {
+    // Version
+    supportLibrary = '23.4.0'
+
+    // Support Libraries dependencies
+    supportDependencies = [
+            appCompat: "com.android.support:appcompat-v7:${supportLibrary}",
+            design   : "com.android.support:design:${supportLibrary}",
+            v4       : "com.android.support:support-v4:${supportLibrary}",
+    ]
+}
