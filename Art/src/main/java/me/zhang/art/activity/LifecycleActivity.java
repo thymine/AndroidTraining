@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import me.zhang.art.R;
 
@@ -16,6 +17,9 @@ import me.zhang.art.R;
 public class LifecycleActivity extends AppCompatActivity {
 
     private static final String TAG = LifecycleActivity.class.getSimpleName();
+    public static final String SAVE_TEXT = "save_text";
+
+    private EditText type;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,12 +50,31 @@ public class LifecycleActivity extends AppCompatActivity {
                 }
             });
         }
+
+        type = (EditText) findViewById(R.id.et_type);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Log.i(TAG, "onStart()");
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i(TAG, "onRestoreInstanceState(Bundle savedInstanceState)");
+
+        if (useDefaultRestoreInstanceState()) {
+            /* Since EditText (TextView) will save and restore instance state for us, here is just a simple demostration*/
+            // Restore saved text
+            String saveText = savedInstanceState.getString(SAVE_TEXT);
+            type.setText(String.format("%s+", saveText));
+        }
+    }
+
+    protected boolean useDefaultRestoreInstanceState() {
+        return true;
     }
 
     @Override
@@ -64,6 +87,16 @@ public class LifecycleActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         Log.i(TAG, "onPause()");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i(TAG, "onSaveInstanceState(Bundle outState)");
+
+        // save typed contents
+        String saveText = type.getText().toString();
+        outState.putString(SAVE_TEXT, saveText);
     }
 
     @Override

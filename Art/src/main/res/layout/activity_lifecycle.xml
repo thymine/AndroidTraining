@@ -4,6 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/et_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type here..."
+        android:inputType="textMultiLine"
+        tools:ignore="HardcodedText" />
+
     <Button
         android:id="@+id/btn_open_normal_activity"
         android:layout_width="match_parent"
