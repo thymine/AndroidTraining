@@ -18,7 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.ActivityActivity" />
-        <activity android:name=".activity.LifecycleActivity" />
+        <!-- https://developer.android.com/guide/topics/manifest/activity-element.html -->
+        <activity
+            android:name=".activity.LifecycleActivity"
+            android:configChanges="orientation|screenSize" /> <!-- Prevent activity from being recreated -->
         <activity android:name=".activity.AnotherActivity" />
         <activity
             android:name=".activity.DialogActivity"
