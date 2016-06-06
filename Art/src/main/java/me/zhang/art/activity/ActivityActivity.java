@@ -9,5 +9,6 @@ public class ActivityActivity extends MenuActivity {
     @Override
     protected void prepareMenu() {
         addMenuItem("Lifecycle", LifecycleActivity.class);
+        addMenuItem("Standard", StandardActivity.class);
     }
 }

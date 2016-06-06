@@ -27,6 +27,9 @@
             android:name=".activity.DialogActivity"
             android:label="XmlDialogActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
+            android:name=".activity.StandardActivity"
+            android:launchMode="standard" />
     </application>
 
 </manifest>
