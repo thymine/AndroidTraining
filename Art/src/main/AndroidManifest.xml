@@ -27,15 +27,31 @@
             android:name=".activity.lifecycle.DialogActivity"
             android:label="XmlDialogActivity"
             android:theme="@style/Theme.AppCompat.Dialog" />
+
         <activity
             android:name=".activity.standard.StandardActivity"
             android:launchMode="standard" />
+
         <activity
             android:name=".activity.singleTop.SingleTopActivity"
             android:launchMode="singleTop" />
         <activity android:name=".activity.singleTop.AActivity" />
         <activity android:name=".activity.singleTop.BActivity" />
 
+        <activity
+            android:name=".activity.singleTask.SingleTaskActivity"
+            android:launchMode="singleTask" />
+        <activity android:name=".activity.singleTask.AlphaActivity" />
+        <activity
+            android:name=".activity.singleTask.BetaActivity"
+            android:launchMode="singleTask"
+            android:taskAffinity="me.zhang.art1" />
+        <activity
+            android:name=".activity.singleTask.GammaActivity"
+            android:taskAffinity="me.zhang.art1" />
+        <activity
+            android:name=".activity.singleTask.AnotherSingleTaskActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>
