@@ -1,5 +1,8 @@
 package me.zhang.art.activity;
 
+import me.zhang.art.activity.lifecycle.LifecycleActivity;
+import me.zhang.art.activity.singleTop.SingleTopActivity;
+import me.zhang.art.activity.standard.StandardActivity;
 import me.zhang.art.base.MenuActivity;
 
 /**
@@ -10,5 +13,6 @@ public class ActivityActivity extends MenuActivity {
     protected void prepareMenu() {
         addMenuItem("Lifecycle", LifecycleActivity.class);
         addMenuItem("Standard", StandardActivity.class);
+        addMenuItem("SingleTop", SingleTopActivity.class);
     }
 }

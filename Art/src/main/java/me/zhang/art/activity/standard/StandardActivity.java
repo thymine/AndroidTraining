@@ -1,4 +1,4 @@
-package me.zhang.art.activity;
+package me.zhang.art.activity.standard;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
