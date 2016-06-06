@@ -52,6 +52,14 @@
         <activity
             android:name=".activity.singleTask.AnotherSingleTaskActivity"
             android:launchMode="singleTask" />
+
+        <activity
+            android:name=".activity.singleInstance.SingleInstanceActivity"
+            android:launchMode="singleInstance" />
+        <activity android:name=".activity.singleInstance.XActivity" />
+        <activity android:name=".activity.singleInstance.YActivity" />
+        <activity android:name=".activity.singleInstance.ZActivity" />
+
     </application>
 
 </manifest>

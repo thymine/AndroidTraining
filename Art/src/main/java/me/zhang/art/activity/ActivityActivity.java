@@ -1,6 +1,7 @@
 package me.zhang.art.activity;
 
 import me.zhang.art.activity.lifecycle.LifecycleActivity;
+import me.zhang.art.activity.singleInstance.SingleInstanceActivity;
 import me.zhang.art.activity.singleTask.SingleTaskActivity;
 import me.zhang.art.activity.singleTop.SingleTopActivity;
 import me.zhang.art.activity.standard.StandardActivity;
@@ -16,5 +17,6 @@ public class ActivityActivity extends MenuActivity {
         addMenuItem("Standard", StandardActivity.class);
         addMenuItem("SingleTop", SingleTopActivity.class);
         addMenuItem("SingleTask", SingleTaskActivity.class);
+        addMenuItem("SingleInstance", SingleInstanceActivity.class);
     }
 }
