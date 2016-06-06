@@ -1,4 +1,4 @@
-package me.zhang.art.activity;
+package me.zhang.art.activity.lifecycle;
 
 import android.content.Intent;
 import android.os.Bundle;
