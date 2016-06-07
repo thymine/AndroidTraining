@@ -1,5 +1,6 @@
 package me.zhang.art.activity;
 
+import me.zhang.art.activity.flags.FlagsActivity;
 import me.zhang.art.activity.lifecycle.LifecycleActivity;
 import me.zhang.art.activity.singleInstance.SingleInstanceActivity;
 import me.zhang.art.activity.singleTask.SingleTaskActivity;
@@ -18,5 +19,6 @@ public class ActivityActivity extends MenuActivity {
         addMenuItem("SingleTop", SingleTopActivity.class);
         addMenuItem("SingleTask", SingleTaskActivity.class);
         addMenuItem("SingleInstance", SingleInstanceActivity.class);
+        addMenuItem("Flags", FlagsActivity.class);
     }
 }

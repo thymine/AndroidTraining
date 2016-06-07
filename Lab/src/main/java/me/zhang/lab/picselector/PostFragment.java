@@ -17,7 +17,7 @@ import android.widget.VideoView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.zhang.lab.R;
 
@@ -29,19 +29,19 @@ public class PostFragment extends BaseFragment {
     private static final String TAG = "PostFragment";
     private static final int RESULT_LOAD_IMAGE = 7;
 
-    @Bind(R.id.et_content)
+    @BindView(R.id.et_content)
     EditText content;
 
-    @Bind(R.id.vv_video)
+    @BindView(R.id.vv_video)
     VideoView video;
 
-    @Bind(R.id.gv_pics_selected)
+    @BindView(R.id.gv_pics_selected)
     GridView selPictures;
 
-    @Bind(R.id.iv_location)
+    @BindView(R.id.iv_location)
     ImageView locationIcon;
 
-    @Bind(R.id.tv_selected_location)
+    @BindView(R.id.tv_selected_location)
     TextView selLocation;
 
     private List<ImageItem> imageItemList = new ArrayList<>();

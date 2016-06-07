@@ -60,6 +60,11 @@
         <activity android:name=".activity.singleInstance.YActivity" />
         <activity android:name=".activity.singleInstance.ZActivity" />
 
+        <activity android:name=".activity.flags.FlagsActivity" />
+        <activity android:name=".activity.flags.ClearTopActivity" />
+        <activity android:name=".activity.flags.MActivity" />
+        <activity android:name=".activity.flags.NActivity" />
+        <activity android:name=".activity.flags.ExcludeFromRecentsActivity" />
     </application>
 
 </manifest>
