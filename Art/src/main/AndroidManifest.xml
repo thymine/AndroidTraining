@@ -80,6 +80,16 @@
             android:label="Action2Activity">
             <intent-filter>
                 <action android:name="me.zhang.art.OPEN_ACTION" />
+                <category android:name="me.zhang.art.category.M" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.intentfilter.Action3Activity"
+            android:label="Action3Activity">
+            <intent-filter>
+                <action android:name="me.zhang.art.ANOTHER_ACTION" />
+                <category android:name="me.zhang.art.category.M" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
