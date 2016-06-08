@@ -19,6 +19,8 @@ import static android.widget.LinearLayout.VERTICAL;
 public class IntentFilterActivity extends AppCompatActivity {
 
     private static final String ACTION_OPEN = "me.zhang.art.OPEN_ACTION";
+    private static final String ACTION_ANOTHER = "me.zhang.art.ANOTHER_ACTION";
+    private static final String CATEGORY_M = "me.zhang.art.category.M";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -40,7 +42,18 @@ public class IntentFilterActivity extends AppCompatActivity {
             }
         });
 
+        Button categoryButton = new Button(this);
+        categoryButton.setText("category filter");
+        categoryButton.setLayoutParams(new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        categoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ACTION_ANOTHER).addCategory(CATEGORY_M));
+            }
+        });
+
         container.addView(actionButton);
+        container.addView(categoryButton);
 
         setContentView(container);
     }
