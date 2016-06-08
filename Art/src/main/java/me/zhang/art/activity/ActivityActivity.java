@@ -1,6 +1,7 @@
 package me.zhang.art.activity;
 
 import me.zhang.art.activity.flags.FlagsActivity;
+import me.zhang.art.activity.intentfilter.IntentFilterActivity;
 import me.zhang.art.activity.lifecycle.LifecycleActivity;
 import me.zhang.art.activity.singleInstance.SingleInstanceActivity;
 import me.zhang.art.activity.singleTask.SingleTaskActivity;
@@ -16,9 +17,10 @@ public class ActivityActivity extends MenuActivity {
     protected void prepareMenu() {
         addMenuItem("Lifecycle", LifecycleActivity.class);
         addMenuItem("Standard", StandardActivity.class);
-        addMenuItem("SingleTop", SingleTopActivity.class);
-        addMenuItem("SingleTask", SingleTaskActivity.class);
-        addMenuItem("SingleInstance", SingleInstanceActivity.class);
+        addMenuItem("Single Top", SingleTopActivity.class);
+        addMenuItem("Single Task", SingleTaskActivity.class);
+        addMenuItem("Single Instance", SingleInstanceActivity.class);
         addMenuItem("Flags", FlagsActivity.class);
+        addMenuItem("Intent Filter", IntentFilterActivity.class);
     }
 }
