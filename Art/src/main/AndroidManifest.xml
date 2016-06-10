@@ -4,6 +4,7 @@
     package="me.zhang.art">
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -100,13 +101,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ipc.IPCActivity" />
+        <activity android:name=".ipc.IpcActivity" />
         <activity android:name=".ipc.DefaultProcessActivity" />
         <activity
             android:name=".ipc.SecondProcessActivity"
             android:process="me.zhang.art.second" />
-        <activity android:name=".ipc.ThirdProcessActivity"
-            android:process=":third"/>
+        <activity
+            android:name=".ipc.ThirdProcessActivity"
+            android:process=":third" />
     </application>
 
 </manifest>

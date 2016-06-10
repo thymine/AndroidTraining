@@ -5,7 +5,7 @@ import me.zhang.art.base.MenuActivity;
 /**
  * Created by Li on 6/9/2016 12:22 PM.
  */
-public class IPCActivity extends MenuActivity {
+public class IpcActivity extends MenuActivity {
 
     @Override
     protected void prepareMenu() {
