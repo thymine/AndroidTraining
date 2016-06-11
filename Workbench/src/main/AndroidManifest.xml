@@ -38,6 +38,7 @@
         <activity android:name=".layout.LayoutActivity"/>
         <activity android:name=".leaks.LeakyActivity" />
         <activity android:name="me.zhang.art.ipc.parcel.ClientActivity" />
+        <activity android:name="me.zhang.art.ipc.messenger.MessengerClientActivity" />
     </application>
 
 </manifest>

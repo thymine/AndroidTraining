@@ -118,6 +118,15 @@
                 <action android:name="me.zhang.art.ipc.parcel.RemoteService" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".ipc.messenger.MessengerService"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="me.zhang.art.ipc.messenger.MessengerService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

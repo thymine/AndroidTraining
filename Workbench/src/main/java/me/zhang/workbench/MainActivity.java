@@ -1,5 +1,6 @@
 package me.zhang.workbench;
 
+import me.zhang.art.ipc.messenger.MessengerClientActivity;
 import me.zhang.art.ipc.parcel.ClientActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
@@ -24,6 +25,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Animate Layout Changes", AnimateLayoutChangesActivity.class);
         addMenuItem("I/O Logo White Animation", LogoWhiteAnimActivity.class);
         addMenuItem("Client", ClientActivity.class);
+        addMenuItem("Messenger Client", MessengerClientActivity.class);
     }
 
 }
