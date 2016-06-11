@@ -1,4 +1,4 @@
-package me.zhang.art.ipc.parcelable;
+package me.zhang.art.ipc.parcel;
 
 import android.os.Parcel;
 import android.os.Parcelable;
