@@ -2,15 +2,18 @@ package me.zhang.art.ipc.messenger;
 
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -26,6 +29,7 @@ public class MessengerClientActivity extends AppCompatActivity {
     private static final int MSG_FROM_CLIENT = 0x00000110;
     private static final String MSG = "msg";
     private Messenger messenger;
+    private Messenger getReplyMessenger;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -47,6 +51,7 @@ public class MessengerClientActivity extends AppCompatActivity {
                 data.putString(MSG, "Hello, this is client, can you hear me?");
                 msg.setData(data);
 
+                msg.replyTo = getReplyMessenger; // Set for reply purpose
                 try {
                     messenger.send(msg);
                     Toast.makeText(MessengerClientActivity.this, "Message is already sent", Toast.LENGTH_SHORT).show();
@@ -59,6 +64,8 @@ public class MessengerClientActivity extends AppCompatActivity {
         container.addView(sendToServer);
 
         setContentView(container);
+
+        getReplyMessenger = new Messenger(new MessengerHandler(getApplicationContext()));
     }
 
     @Override
@@ -84,5 +91,31 @@ public class MessengerClientActivity extends AppCompatActivity {
             messenger = null;
         }
     };
+
+    private static class MessengerHandler extends Handler {
+
+        public static final String REPLY = "reply";
+        private static final String TAG = MessengerHandler.class.getSimpleName();
+
+        private Context context;
+
+        public MessengerHandler(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_FROM_CLIENT:
+                    String reply = msg.getData().getString(REPLY);
+                    Log.i(TAG, "handleMessage: (message from server) " + reply);
+                    Toast.makeText(context, "(from server) " + reply, Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    super.handleMessage(msg);
+            }
+        }
+    }
+
 
 }
