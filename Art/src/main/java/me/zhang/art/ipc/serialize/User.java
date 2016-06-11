@@ -1,4 +1,4 @@
-package me.zhang.art.ipc.serializable;
+package me.zhang.art.ipc.serialize;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

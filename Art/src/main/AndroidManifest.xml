@@ -109,6 +109,15 @@
         <activity
             android:name=".ipc.ThirdProcessActivity"
             android:process=":third" />
+
+        <service
+            android:name=".ipc.parcel.RemoteService"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="me.zhang.art.ipc.parcel.RemoteService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

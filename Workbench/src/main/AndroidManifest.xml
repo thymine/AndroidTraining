@@ -37,6 +37,7 @@
         <activity android:name=".gestures.GesturesActivity" />
         <activity android:name=".layout.LayoutActivity"/>
         <activity android:name=".leaks.LeakyActivity" />
+        <activity android:name="me.zhang.art.ipc.parcel.ClientActivity" />
     </application>
 
 </manifest>
