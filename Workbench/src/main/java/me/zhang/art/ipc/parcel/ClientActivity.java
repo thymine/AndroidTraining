@@ -84,29 +84,43 @@ public class ClientActivity extends AppCompatActivity {
 
         container.addView(addBookButton);
         container.addView(getBookListButton);
-
         setContentView(container);
 
+        bindService(new Intent("me.zhang.art.ipc.parcel.RemoteService"), connection, BIND_AUTO_CREATE);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        bindService(new Intent("me.zhang.art.ipc.parcel.RemoteService"), connection, BIND_AUTO_CREATE);
+        // register remote callback
+        if (manager != null && manager.asBinder().isBinderAlive()) {
+            try {
+                manager.registerListener(onNewBookArrivedListener);
+                Log.i(TAG, "onResume: register listener");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        // unregister remote callback
         if (manager != null && manager.asBinder().isBinderAlive()) {
             try {
                 manager.unregisterListener(onNewBookArrivedListener);
-                Log.i(TAG, "onDestroy: unregister listener");
+                Log.i(TAG, "onPause: unregister listener");
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
         unbindService(connection);
+        super.onDestroy();
     }
 
     private Handler handler = new Handler(new Handler.Callback() {

@@ -1,8 +1,11 @@
 package me.zhang.art.ipc.parcel;
 
+import android.annotation.TargetApi;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
+import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -21,7 +24,7 @@ public class BookManagerService extends Service {
 
     private AtomicBoolean isServiceDestroyed = new AtomicBoolean(false);
     private List<Book> bookList = new LinkedList<>();
-    private List<IOnNewBookArrivedListener> listenerList = new LinkedList<>();
+    private RemoteCallbackList<IOnNewBookArrivedListener> callbackList = new RemoteCallbackList<>();
 
     private final IBookManager.Stub mBinder = new IBookManager.Stub() {
         @Override
@@ -44,19 +47,29 @@ public class BookManagerService extends Service {
 
         @Override
         public void registerListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (listenerList.contains(listener)) return;
-            listenerList.add(listener);
-            Log.i(TAG, "registerListener: listener added, size: " + listenerList.size());
+            callbackList.register(listener);
+            int count;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                count = callbackList.getRegisteredCallbackCount();
+            } else {
+                count = callbackList.beginBroadcast();
+                callbackList.finishBroadcast();
+            }
+            Log.i(TAG, "registerListener: listener added, count: " + count);
         }
 
+        @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
         @Override
         public void unregisterListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            if (listenerList.contains(listener)) {
-                listenerList.remove(listener);
-                Log.i(TAG, "unregisterListener: listener removed, size: " + listenerList.size());
+            callbackList.unregister(listener);
+            int count;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                count = callbackList.getRegisteredCallbackCount();
             } else {
-                Log.i(TAG, "unregisterListener: failed!");
+                count = callbackList.beginBroadcast();
+                callbackList.finishBroadcast();
             }
+            Log.i(TAG, "unregisterListener: listener removed, count: " + count);
         }
     };
 
@@ -92,9 +105,11 @@ public class BookManagerService extends Service {
         bookList.add(newBook);
 
         Log.i(TAG, "onNewBookArrived: notify listeners");
-        for (IOnNewBookArrivedListener listener : listenerList) {
-            listener.onNewBookArrived(newBook);
+        final int n = callbackList.beginBroadcast();
+        for (int i = 0; i < n; i++) {
+            callbackList.getBroadcastItem(i).onNewBookArrived(newBook);
         }
+        callbackList.finishBroadcast();
     }
 
     @Override
