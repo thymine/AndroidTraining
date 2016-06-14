@@ -5,7 +5,9 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +29,7 @@ import static android.widget.LinearLayout.VERTICAL;
 public class ClientActivity extends AppCompatActivity {
 
     private static final String TAG = ClientActivity.class.getSimpleName();
+    private static final int MSG_NEW_BOOK_ARRIVED = 0x00000001;
 
     private IBookManager manager;
 
@@ -95,16 +98,37 @@ public class ClientActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        if (manager != null && manager.asBinder().isBinderAlive()) {
+            try {
+                manager.unregisterListener(onNewBookArrivedListener);
+                Log.i(TAG, "onDestroy: unregister listener");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
         unbindService(connection);
     }
+
+    private Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_NEW_BOOK_ARRIVED:
+                    Book book = (Book) msg.obj;
+                    Toast.makeText(ClientActivity.this, book.bookName, Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return false;
+        }
+    });
 
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             manager = IBookManager.Stub.asInterface(service);
-
             try {
                 Toast.makeText(ClientActivity.this, manager.sayHello(), Toast.LENGTH_SHORT).show();
+                manager.registerListener(onNewBookArrivedListener);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -113,6 +137,13 @@ public class ClientActivity extends AppCompatActivity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             manager = null;
+        }
+    };
+
+    private IOnNewBookArrivedListener onNewBookArrivedListener = new IOnNewBookArrivedListener.Stub() {
+        @Override
+        public void onNewBookArrived(Book newBook) throws RemoteException {
+            handler.obtainMessage(MSG_NEW_BOOK_ARRIVED, newBook).sendToTarget();
         }
     };
 

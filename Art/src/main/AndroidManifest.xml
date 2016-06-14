@@ -111,7 +111,7 @@
             android:process=":third" />
 
         <service
-            android:name=".ipc.parcel.RemoteService"
+            android:name=".ipc.parcel.BookManagerService"
             android:exported="true"
             tools:ignore="ExportedService">
             <intent-filter>
