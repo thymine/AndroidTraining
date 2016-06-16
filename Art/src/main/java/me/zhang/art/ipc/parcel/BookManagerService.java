@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -34,6 +35,8 @@ public class BookManagerService extends Service {
 
         @Override
         public void addBook(Book book) throws RemoteException {
+            // 方法运行于Binder线程池中，不需要额外的异步处理
+            SystemClock.sleep(5000);
             if (book != null) {
                 bookList.add(book);
                 Log.i(TAG, "addBook: book added");

@@ -157,6 +157,7 @@ public class ClientActivity extends AppCompatActivity {
     private IOnNewBookArrivedListener onNewBookArrivedListener = new IOnNewBookArrivedListener.Stub() {
         @Override
         public void onNewBookArrived(Book newBook) throws RemoteException {
+            // 该方法运行于客户端的Binder线程池中，不能直接和UI交互
             handler.obtainMessage(MSG_NEW_BOOK_ARRIVED, newBook).sendToTarget();
         }
     };
