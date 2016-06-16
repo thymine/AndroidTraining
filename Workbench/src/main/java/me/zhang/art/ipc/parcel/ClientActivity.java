@@ -86,7 +86,7 @@ public class ClientActivity extends AppCompatActivity {
         container.addView(getBookListButton);
         setContentView(container);
 
-        bindService(new Intent("me.zhang.art.ipc.parcel.RemoteService"), connection, BIND_AUTO_CREATE);
+        bind();
     }
 
     @Override
@@ -136,11 +136,28 @@ public class ClientActivity extends AppCompatActivity {
         }
     });
 
+    private IBinder.DeathRecipient deathRecipient = new IBinder.DeathRecipient() {
+        @Override
+        public void binderDied() {
+            Log.i(TAG, "binderDied: currentThread### " + Thread.currentThread().getName());
+
+            if (manager == null) return;
+            manager.asBinder().unlinkToDeath(deathRecipient, 0);
+            manager = null;
+            // 1. 重新绑定远程服务
+            bind();
+        }
+    };
+
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.i(TAG, "onServiceConnected: currentThread### " + Thread.currentThread().getName());
+
             manager = IBookManager.Stub.asInterface(service);
             try {
+                service.linkToDeath(deathRecipient, 0); // 为binder设置“死亡代理”
+
                 Toast.makeText(ClientActivity.this, manager.sayHello(), Toast.LENGTH_SHORT).show();
                 manager.registerListener(onNewBookArrivedListener);
             } catch (RemoteException e) {
@@ -150,7 +167,11 @@ public class ClientActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
+            Log.i(TAG, "onServiceDisconnected: currentThread### " + Thread.currentThread().getName());
             manager = null;
+
+            // 2. 重新绑定远程服务
+//            bind();
         }
     };
 
@@ -161,5 +182,9 @@ public class ClientActivity extends AppCompatActivity {
             handler.obtainMessage(MSG_NEW_BOOK_ARRIVED, newBook).sendToTarget();
         }
     };
+
+    private void bind() {
+        bindService(new Intent("me.zhang.art.ipc.parcel.RemoteService"), connection, BIND_AUTO_CREATE);
+    }
 
 }
