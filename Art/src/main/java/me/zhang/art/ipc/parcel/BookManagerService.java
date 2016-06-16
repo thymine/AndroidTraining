@@ -3,9 +3,9 @@ package me.zhang.art.ipc.parcel;
 import android.annotation.TargetApi;
 import android.app.Service;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.Parcel;
 import android.os.RemoteCallbackList;
 import android.os.RemoteException;
 import android.os.SystemClock;
@@ -75,15 +75,29 @@ public class BookManagerService extends Service {
             }
             Log.i(TAG, "unregisterListener: listener removed, count: " + count);
         }
+
+        @Override
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
+            String packageName;
+            String[] packages = getPackageManager().getPackagesForUid(getCallingUid());
+            if (packages != null && packages.length > 0) {
+                packageName = packages[0];
+                if (!packageName.startsWith("me.zhang.art")) {
+                    return false;
+                }
+            }
+
+            return super.onTransact(code, data, reply, flags);
+        }
     };
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        int check = checkCallingOrSelfPermission("me.zhang.art.permission.ACCESS_BOOK_SERVICE");
-        if (check == PackageManager.PERMISSION_DENIED) {
-            return null;
-        }
+//        int check = checkCallingOrSelfPermission("me.zhang.art.permission.ACCESS_BOOK_SERVICE");
+//        if (check == PackageManager.PERMISSION_DENIED) {
+//            return null;
+//        }
         return mBinder;
     }
 

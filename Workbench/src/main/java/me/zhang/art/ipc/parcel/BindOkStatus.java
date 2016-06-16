@@ -1,7 +1,6 @@
 package me.zhang.art.ipc.parcel;
 
 import android.os.RemoteException;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
@@ -12,8 +11,6 @@ import me.zhang.workbench.MainApp;
  * Created by Li on 6/16/2016 9:33 PM.
  */
 public class BindOkStatus implements BindStatus {
-
-    private static final String TAG = BindOkStatus.class.getSimpleName();
 
     private IBookManager manager;
 
@@ -44,8 +41,7 @@ public class BindOkStatus implements BindStatus {
                         builder.append(", ");
                     }
                 }
-                Log.i(TAG, "onClick: Book List: " + builder.toString());
-                Toast.makeText(MainApp.me, "See all added books in logcat", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainApp.me, builder.toString(), Toast.LENGTH_SHORT).show();
             }
         } catch (RemoteException e) {
             e.printStackTrace();
