@@ -17,8 +17,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.util.List;
-
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.widget.LinearLayout.VERTICAL;
@@ -32,11 +30,14 @@ public class ClientActivity extends AppCompatActivity {
     private static final int MSG_NEW_BOOK_ARRIVED = 0x00000001;
 
     private IBookManager manager;
+    private BindStatus bindStatus;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        bindStatus = new BindBeforeStatus(); // before bind
 
         LinearLayout container = new LinearLayout(this);
         container.setOrientation(VERTICAL);
@@ -47,13 +48,7 @@ public class ClientActivity extends AppCompatActivity {
         addBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Book book = new Book("Book " + System.currentTimeMillis(), System.currentTimeMillis());
-                try {
-                    manager.addBook(book);
-                    Toast.makeText(ClientActivity.this, "Book added", Toast.LENGTH_SHORT).show();
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+                bindStatus.performAddBook();
             }
         });
 
@@ -63,22 +58,7 @@ public class ClientActivity extends AppCompatActivity {
         getBookListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    List<Book> bookList = manager.getBookList();
-                    if (bookList != null) {
-                        StringBuilder builder = new StringBuilder();
-                        for (int i = 0; i < bookList.size(); i++) {
-                            builder.append(bookList.get(i).bookName);
-                            if (i != bookList.size() - 1) {
-                                builder.append(", ");
-                            }
-                        }
-                        Log.i(TAG, "onClick: Book List: " + builder.toString());
-                        Toast.makeText(ClientActivity.this, "See all added books in logcat", Toast.LENGTH_SHORT).show();
-                    }
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
+                bindStatus.performGetBookList();
             }
         });
 
@@ -155,6 +135,8 @@ public class ClientActivity extends AppCompatActivity {
             Log.i(TAG, "onServiceConnected: currentThread### " + Thread.currentThread().getName());
 
             manager = IBookManager.Stub.asInterface(service);
+            bindStatus = new BindOkStatus(manager); // switch to bind ok status
+
             try {
                 service.linkToDeath(deathRecipient, 0); // 为binder设置“死亡代理”
 

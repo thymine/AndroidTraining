@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="me.zhang.art">
 
+    <permission
+        android:name="me.zhang.art.permission.ACCESS_BOOK_SERVICE"
+        android:protectionLevel="normal" />
+    <uses-permission android:name="me.zhang.art.permission.ACCESS_BOOK_SERVICE" />
+
     <application
         android:name=".MainApplication"
         android:allowBackup="true"
