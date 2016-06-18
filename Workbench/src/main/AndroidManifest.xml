@@ -42,7 +42,9 @@
         <activity android:name=".leaks.LeakyActivity" />
         <activity android:name="me.zhang.art.ipc.parcel.ClientActivity" />
         <activity android:name="me.zhang.art.ipc.messenger.MessengerClientActivity" />
-        <activity android:name="me.zhang.art.ipc.provider.ProviderExternalUserActivity" />
+        <activity
+            android:name="me.zhang.art.ipc.provider.ProviderExternalUserActivity"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>
