@@ -4,6 +4,8 @@
     package="me.zhang.workbench">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="me.zhang.art.BOOK_PROVIDER.WRITE" />
+    <uses-permission android:name="me.zhang.art.BOOK_PROVIDER.READ" />
 
     <application
         android:name=".MainApp"
@@ -40,6 +42,7 @@
         <activity android:name=".leaks.LeakyActivity" />
         <activity android:name="me.zhang.art.ipc.parcel.ClientActivity" />
         <activity android:name="me.zhang.art.ipc.messenger.MessengerClientActivity" />
+        <activity android:name="me.zhang.art.ipc.provider.ProviderExternalUserActivity" />
     </application>
 
 </manifest>

@@ -6,7 +6,12 @@
     <permission
         android:name="me.zhang.art.permission.ACCESS_BOOK_SERVICE"
         android:protectionLevel="normal" />
-    <uses-permission android:name="me.zhang.art.permission.ACCESS_BOOK_SERVICE" />
+    <permission
+        android:name="me.zhang.art.BOOK_PROVIDER.READ"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="me.zhang.art.BOOK_PROVIDER.WRITE"
+        android:protectionLevel="normal" />
 
     <application
         android:name=".MainApplication"
@@ -132,6 +137,15 @@
                 <action android:name="me.zhang.art.ipc.messenger.MessengerService" />
             </intent-filter>
         </service>
+
+        <provider
+            android:name=".ipc.provider.BookProvider"
+            android:authorities="me.zhang.art.BOOK_PROVIDER"
+            android:exported="true"
+            android:readPermission="me.zhang.art.BOOK_PROVIDER.READ"
+            android:writePermission="me.zhang.art.BOOK_PROVIDER.WRITE"
+            android:process=":book_provider" />
+        <activity android:name=".ipc.provider.ProviderInternalUserActivity" />
     </application>
 
 </manifest>
