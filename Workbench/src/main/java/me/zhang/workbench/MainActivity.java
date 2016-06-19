@@ -3,6 +3,7 @@ package me.zhang.workbench;
 import me.zhang.art.ipc.messenger.MessengerClientActivity;
 import me.zhang.art.ipc.parcel.ClientActivity;
 import me.zhang.art.ipc.provider.ProviderExternalUserActivity;
+import me.zhang.art.ipc.socket.TcpClientActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
@@ -28,6 +29,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Client", ClientActivity.class);
         addMenuItem("Messenger Client", MessengerClientActivity.class);
         addMenuItem("Use Provider", ProviderExternalUserActivity.class);
+        addMenuItem("Tcp client", TcpClientActivity.class);
     }
 
 }

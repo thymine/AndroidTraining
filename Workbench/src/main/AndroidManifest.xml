@@ -45,6 +45,9 @@
         <activity
             android:name="me.zhang.art.ipc.provider.ProviderExternalUserActivity"
             android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name="me.zhang.art.ipc.socket.TcpClientActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>
