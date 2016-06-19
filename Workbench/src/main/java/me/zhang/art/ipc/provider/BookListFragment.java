@@ -1,6 +1,9 @@
 package me.zhang.art.ipc.provider;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.net.Uri;
@@ -8,13 +11,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,8 +95,30 @@ public class BookListFragment extends BaseFragment {
     }
 
     private void createNewBook() {
-        // TODO: 6/18/2016 create new book here
-        Toast.makeText(mContext, "Create New Book", Toast.LENGTH_SHORT).show();
+        // create new book here
+        @SuppressLint("InflateParams") View view = LayoutInflater.from(mContext).inflate(R.layout.view_new_book, null);
+        final EditText et_new_book_name = (EditText) view.findViewById(R.id.et_new_book_name);
+        AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setTitle("Create New Book")
+                .setView(view)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (!et_new_book_name.getText().toString().trim().equals("")) {
+                            ContentValues values = new ContentValues();
+                            values.put("name", et_new_book_name.getText().toString().trim());
+                            mContentResolver.insert(bookUri, values);
+                        }
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+
+        dialog.show();
     }
 
     private ContentObserver mContentObserver = new ContentObserver(mHandler) {
