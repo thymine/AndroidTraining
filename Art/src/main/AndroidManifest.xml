@@ -158,6 +158,11 @@
                 <action android:name="me.zhang.art.ipc.socket.TCP_SERVER" />
             </intent-filter>
         </service>
+
+        <activity android:name=".ipc.parcel.BinderPoolActivity" />
+        <service
+            android:name=".ipc.parcel.BinderPoolService"
+            android:process=":bind_pool" />
     </application>
 
 </manifest>
