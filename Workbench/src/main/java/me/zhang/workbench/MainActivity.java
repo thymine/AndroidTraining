@@ -11,6 +11,7 @@ import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
+import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.view.VisibilityActivity;
 import me.zhang.workbench.webview.WebViewActivity;
 
@@ -30,6 +31,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Messenger Client", MessengerClientActivity.class);
         addMenuItem("Use Provider", ProviderExternalUserActivity.class);
         addMenuItem("Tcp client", TcpClientActivity.class);
+        addMenuItem("Simple Layout", SimpleLayoutActivity.class);
     }
 
 }
