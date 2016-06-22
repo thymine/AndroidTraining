@@ -49,6 +49,8 @@
             android:name="me.zhang.art.ipc.socket.TcpClientActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".layout.SimpleLayoutActivity" />
+
+        <activity android:name=".view.ViewScrollActivity" />
     </application>
 
 </manifest>
