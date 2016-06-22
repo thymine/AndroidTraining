@@ -11,4 +11,36 @@
     <string name="hint_name">Name</string>
     <string name="btn_add">Add</string>
     <string name="btn_remove">Remove %d</string>
+
+    <string name="large_text">
+        What is reputation? How do I earn (and lose) it?
+
+Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.
+
+The primary way to gain reputation is by posting good questions and useful answers. Votes on these posts cause you to gain (or sometimes lose) reputation. Please note that votes for posts marked “community wiki” do not generate any reputation.
+
+You can earn a maximum of 200 reputation per day from any combination of the activities below. Bounty awards, accepted answers, and association bonuses are not subject to the daily reputation limit.
+
+You gain reputation when:
+
+question is voted up: +5
+answer is voted up: +10
+answer is marked “accepted”: +15 (+2 to acceptor)
+suggested edit is accepted: +2 (up to +1000 total per user)
+bounty awarded to your answer: + full bounty amount
+one of your answers is awarded a bounty automatically: + half of the bounty amount (see more details about how bounties work)
+site association bonus: +100 on each site (awarded a maximum of one time per site)
+If you are an experienced Stack Exchange network user with 200 or more reputation on at least one site, you will receive a starting +100 reputation bonus to get you past basic new user restrictions. This will happen automatically on all current Stack Exchange sites where you have an account, and on any other Stack Exchange sites at the time you log in.
+
+You lose reputation when:
+
+your question is voted down: −2
+your answer is voted down: −2
+you vote down an answer: −1
+you place a bounty on a question: − full bounty amount
+one of your posts receives 6 spam or offensive flags: −100
+All users start with one reputation point, and reputation can never drop below 1. Accepting your own answer does not increase your reputation. Deleted posts do not affect reputation, for voters, authors or anyone else involved, in most cases. If a user reverses a vote, the corresponding reputation loss or gain will be reversed as well. Vote reversal as a result of voting fraud will also return lost or gained reputation.
+
+At the high end of this reputation spectrum there is little difference between users with high reputation and ♦ moderators. That is intentional. We don’t run this site. The community does.
+    </string>
 </resources>
