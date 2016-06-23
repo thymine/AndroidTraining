@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import me.zhang.workbench.R;
 
@@ -39,6 +40,17 @@ public class TranslateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 propertyAnimator.start();
+            }
+        });
+
+        final Button lpButton = (Button) findViewById(R.id.lpButton);
+        assert lpButton != null;
+        lpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) lpButton.getLayoutParams();
+                lp.rightMargin += 100;
+                lpButton.requestLayout();
             }
         });
 
