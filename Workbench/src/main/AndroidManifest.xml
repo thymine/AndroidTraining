@@ -51,6 +51,7 @@
         <activity android:name=".layout.SimpleLayoutActivity" />
 
         <activity android:name=".view.ViewScrollActivity" />
+        <activity android:name=".animation.TranslateActivity" />
     </application>
 
 </manifest>
