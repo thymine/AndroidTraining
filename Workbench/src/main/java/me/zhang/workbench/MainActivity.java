@@ -7,6 +7,7 @@ import me.zhang.art.ipc.socket.TcpClientActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
+import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
 import me.zhang.workbench.layout.LayoutActivity;
@@ -34,6 +35,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Tcp client", TcpClientActivity.class);
         addMenuItem("Simple Layout", SimpleLayoutActivity.class);
         addMenuItem("View Scroll", ViewScrollActivity.class);
+        addMenuItem("Translate Animation", TranslateActivity.class);
     }
 
 }
