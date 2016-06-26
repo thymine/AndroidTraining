@@ -28,7 +28,8 @@ public class MyView extends TextView {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.i(TAG, "View, onTouchEvent: action = " + event.getAction());
-        boolean touch = super.onTouchEvent(event);
+        boolean touch = event.getAction() == MotionEvent.ACTION_DOWN || super.onTouchEvent(event);
+//        boolean touch = super.onTouchEvent(event);
         Log.i(TAG, "\tView, onTouchEvent: " + touch);
         return touch;
     }

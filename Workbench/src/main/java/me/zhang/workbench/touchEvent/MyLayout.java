@@ -6,8 +6,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 
-import static android.view.MotionEvent.ACTION_DOWN;
-
 /**
  * Created by Li on 6/26/2016 10:45 AM.
  */
@@ -30,7 +28,8 @@ public class MyLayout extends RelativeLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         Log.i(TAG, "Layout, onInterceptTouchEvent: action = " + ev.getAction());
-        boolean intercept = ev.getAction() == ACTION_DOWN || super.onInterceptTouchEvent(ev);
+//        boolean intercept = ev.getAction() == ACTION_DOWN || super.onInterceptTouchEvent(ev);
+        boolean intercept = super.onInterceptTouchEvent(ev);
         Log.i(TAG, "\tLayout, onInterceptTouchEvent: " + intercept);
         return intercept;
     }
