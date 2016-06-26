@@ -53,6 +53,7 @@
         <activity android:name=".view.ViewScrollActivity" />
         <activity android:name=".animation.TranslateActivity" />
         <activity android:name=".view.SmoothScrollActivity" />
+        <activity android:name=".touchEvent.TouchEventActivity" />
     </application>
 
 </manifest>
