@@ -13,6 +13,7 @@ import me.zhang.workbench.gestures.GesturesActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
+import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.view.SmoothScrollActivity;
 import me.zhang.workbench.view.ViewScrollActivity;
 import me.zhang.workbench.view.VisibilityActivity;
@@ -38,6 +39,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("View Scroll", ViewScrollActivity.class);
         addMenuItem("Translate Animation", TranslateActivity.class);
         addMenuItem("Smooth Scroll", SmoothScrollActivity.class);
+        addMenuItem("Touch Event", TouchEventActivity.class);
     }
 
 }
