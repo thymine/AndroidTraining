@@ -21,7 +21,7 @@ import me.zhang.workbench.R;
 /**
  * Created by Li on 6/28/2016 9:53 PM.
  */
-public class HVConflictActivity extends AppCompatActivity {
+public class HVConflictExternalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class HVConflictActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(HVConflictActivity.this, "click item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HVConflictExternalActivity.this, "click item", Toast.LENGTH_SHORT).show();
             }
         });
     }
