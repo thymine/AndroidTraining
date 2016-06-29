@@ -54,7 +54,8 @@
         <activity android:name=".animation.TranslateActivity" />
         <activity android:name=".view.SmoothScrollActivity" />
         <activity android:name=".touchEvent.TouchEventActivity" />
-        <activity android:name=".touchEvent.conflict.HVConflictActivity" />
+        <activity android:name=".touchEvent.conflict.HVConflictExternalActivity" />
+        <activity android:name=".touchEvent.conflict.HVConflictInternalActivity" />
     </application>
 
 </manifest>
