@@ -25,10 +25,20 @@ public class GetViewDimensActivity extends AppCompatActivity {
         mMyTextView = (MyTextView) findViewById(R.id.myTextView);
         mTextView = (TextView) findViewById(R.id.textView);
 
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        if (hasFocus) {
+            getDimens();
+        }
+    }
+
+    private void getDimens() {
         // get MyTextView dimens here ?
         int width = mMyTextView.getWidth();
         int height = mMyTextView.getHeight();
 
-        mTextView.setText(String.format(Locale.getDefault(), "Width: %s, Height: %s", width, height));
+        mTextView.setText(String.format(Locale.getDefault(), "Width: %dpx, Height: %dpx", width, height));
     }
 }
