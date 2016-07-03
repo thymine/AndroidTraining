@@ -25,12 +25,18 @@ public class GetViewDimensActivity extends AppCompatActivity {
         mMyTextView = (MyTextView) findViewById(R.id.myTextView);
         mTextView = (TextView) findViewById(R.id.textView);
 
+        mMyTextView.post(new Runnable() {
+            @Override
+            public void run() {
+                getDimens();
+            }
+        });
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         if (hasFocus) {
-            getDimens();
+//            getDimens();
         }
     }
 
