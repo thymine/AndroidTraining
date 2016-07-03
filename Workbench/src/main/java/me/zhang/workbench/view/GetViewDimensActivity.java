@@ -1,8 +1,10 @@
 package me.zhang.workbench.view;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -25,20 +27,34 @@ public class GetViewDimensActivity extends AppCompatActivity {
         mMyTextView = (MyTextView) findViewById(R.id.myTextView);
         mTextView = (TextView) findViewById(R.id.textView);
 
-        mMyTextView.post(new Runnable() {
+//        mMyTextView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                getDimens();
+//            }
+//        });
+
+        mMyTextView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
-            public void run() {
+            public void onGlobalLayout() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    mMyTextView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    //noinspection deprecation
+                    mMyTextView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
+
                 getDimens();
             }
         });
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        if (hasFocus) {
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        if (hasFocus) {
 //            getDimens();
-        }
-    }
+//        }
+//    }
 
     private void getDimens() {
         // get MyTextView dimens here ?
