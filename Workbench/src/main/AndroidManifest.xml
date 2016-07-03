@@ -56,6 +56,7 @@
         <activity android:name=".touchEvent.TouchEventActivity" />
         <activity android:name=".touchEvent.conflict.HVConflictExternalActivity" />
         <activity android:name=".touchEvent.conflict.HVConflictInternalActivity" />
+        <activity android:name=".view.GetViewDimensActivity" />
     </application>
 
 </manifest>
