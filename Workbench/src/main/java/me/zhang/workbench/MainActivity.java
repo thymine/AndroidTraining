@@ -16,6 +16,7 @@ import me.zhang.workbench.leaks.LeakyActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
+import me.zhang.workbench.view.CustomViewActivity;
 import me.zhang.workbench.view.GetViewDimensActivity;
 import me.zhang.workbench.view.ScrollViewActivity;
 import me.zhang.workbench.view.SmoothScrollActivity;
@@ -48,6 +49,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("HV Conflict Internal", HVConflictInternalActivity.class);
         addMenuItem("Get View Dimens", GetViewDimensActivity.class);
         addMenuItem("ScrollView Dimens", ScrollViewActivity.class);
+        addMenuItem("Custom View", CustomViewActivity.class);
     }
 
 }
