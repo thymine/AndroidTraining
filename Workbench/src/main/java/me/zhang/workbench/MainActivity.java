@@ -17,6 +17,7 @@ import me.zhang.workbench.leaks.LeakyActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
+import me.zhang.workbench.ui.CircleViewActivity;
 import me.zhang.workbench.view.CustomViewActivity;
 import me.zhang.workbench.view.GetViewDimensActivity;
 import me.zhang.workbench.view.ScrollViewActivity;
@@ -52,6 +53,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("ScrollView Dimens", ScrollViewActivity.class);
         addMenuItem("Custom View", CustomViewActivity.class);
         addMenuItem("Custom Layout", CustomLayoutActivity.class);
+        addMenuItem("Circle View", CircleViewActivity.class);
     }
 
 }
