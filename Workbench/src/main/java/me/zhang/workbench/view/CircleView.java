@@ -1,10 +1,13 @@
 package me.zhang.workbench.view;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+
+import me.zhang.workbench.R;
 
 import static android.graphics.Color.RED;
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
@@ -25,6 +28,10 @@ public class CircleView extends View {
 
     public CircleView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
+        mColor = a.getColor(R.styleable.CircleView_circle_color, RED);
+        a.recycle();
+
         mPaint.setColor(mColor);
     }
 
