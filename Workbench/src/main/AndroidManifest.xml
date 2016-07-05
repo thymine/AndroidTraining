@@ -59,6 +59,9 @@
         <activity android:name=".view.GetViewDimensActivity" />
         <activity android:name=".view.ScrollViewActivity" />
         <activity android:name=".view.CustomViewActivity" />
+        <activity
+            android:name=".layout.CustomLayoutActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>

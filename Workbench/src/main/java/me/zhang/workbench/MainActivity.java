@@ -10,6 +10,7 @@ import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
+import me.zhang.workbench.layout.CustomLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
@@ -50,6 +51,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Get View Dimens", GetViewDimensActivity.class);
         addMenuItem("ScrollView Dimens", ScrollViewActivity.class);
         addMenuItem("Custom View", CustomViewActivity.class);
+        addMenuItem("Custom Layout", CustomLayoutActivity.class);
     }
 
 }
