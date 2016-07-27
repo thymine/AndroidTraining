@@ -43,4 +43,9 @@ All users start with one reputation point, and reputation can never drop below 1
 
 At the high end of this reputation spectrum there is little difference between users with high reputation and ♦ moderators. That is intentional. We don’t run this site. The community does.
     </string>
+    <string name="normal_text">
+        What is reputation? How do I earn (and lose) it?
+
+Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.
+    </string>
 </resources>
