@@ -14,6 +14,7 @@ import me.zhang.workbench.layout.CustomLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
+import me.zhang.workbench.remoteViews.NotificationActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
@@ -54,6 +55,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Custom View", CustomViewActivity.class);
         addMenuItem("Custom Layout", CustomLayoutActivity.class);
         addMenuItem("Circle View", CircleViewActivity.class);
+        addMenuItem("Notification", NotificationActivity.class);
     }
 
 }
