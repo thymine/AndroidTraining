@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:listPreferredItemHeight"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/notification_icon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="Android Icon"
+        android:src="@mipmap/ic_launcher"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/content_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/notification_icon"
+        android:layout_toStartOf="@id/notification_icon"
+        android:text="This is a notification"
+        android:textAppearance="?android:textAppearanceLarge"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>

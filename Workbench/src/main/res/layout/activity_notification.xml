@@ -9,7 +9,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="notify"
-        android:text="Notify"
+        android:text="Notify(Default)"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="notifyRemote"
+        android:text="Notify(RemoteViews)"
         tools:ignore="HardcodedText" />
 
 </LinearLayout>

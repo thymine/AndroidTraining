@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.RemoteViews;
 
 import me.zhang.workbench.R;
 
@@ -54,6 +55,30 @@ public class NotificationActivity extends AppCompatActivity {
         // Gets an instance of the NotificationManager service
         NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // Builds the notification and issues it.
+        mNotifyMgr.notify(mNotificationId, mBuilder.build());
+    }
+
+    public void notifyRemote(View view) {
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.layout_notifications);
+        remoteViews.setTextViewText(R.id.content_text, "Hello + " + ++sCount);
+        remoteViews.setImageViewResource(R.id.notification_icon, R.mipmap.ic_launcher);
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContent(remoteViews);
+
+        Intent resultIntent = new Intent(this, ResultActivity.class);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                this,
+                0,
+                resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        int mNotificationId = 0x02;
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         mNotifyMgr.notify(mNotificationId, mBuilder.build());
     }
 }
