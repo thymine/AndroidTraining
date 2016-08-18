@@ -10,6 +10,7 @@ import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
+import me.zhang.workbench.handler.HandlerActivity;
 import me.zhang.workbench.layout.CustomLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
@@ -56,7 +57,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Custom Layout", CustomLayoutActivity.class);
         addMenuItem("Circle View", CircleViewActivity.class);
         addMenuItem("Notification", NotificationActivity.class);
-        addMenuItem("Handler", me.zhang.workbench.handler.MainActivity.class);
+        addMenuItem("Handler", HandlerActivity.class);
     }
 
 }

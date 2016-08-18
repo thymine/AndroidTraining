@@ -65,7 +65,7 @@
         <activity android:name=".ui.CircleViewActivity" />
         <activity android:name=".remoteViews.NotificationActivity" />
         <activity android:name=".remoteViews.ResultActivity" />
-        <activity android:name=".handler.MainActivity" />
+        <activity android:name=".handler.HandlerActivity" />
     </application>
 
 </manifest>

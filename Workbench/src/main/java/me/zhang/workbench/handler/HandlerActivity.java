@@ -15,7 +15,7 @@ import me.zhang.workbench.R;
 /**
  * Created by Zhang on 8/18/2016 2:54 PM.
  */
-public class MainActivity extends AppCompatActivity implements WorkerThread.Callback {
+public class HandlerActivity extends AppCompatActivity implements WorkerThread.Callback {
 
     private static boolean isVisible;
     public static final int LEFT_SIDE = 0;
