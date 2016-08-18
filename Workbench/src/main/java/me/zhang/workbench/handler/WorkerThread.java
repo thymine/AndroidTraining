@@ -47,7 +47,7 @@ public class WorkerThread extends HandlerThread {
             @Override
             public boolean handleMessage(Message msg) {
                 ImageView imageView = (ImageView) msg.obj;
-                String side = msg.what == MainActivity.LEFT_SIDE ? "left side" : "right side";
+                String side = msg.what == HandlerActivity.LEFT_SIDE ? "left side" : "right side";
                 Log.i(TAG, String.format("Processing %s, %s", mRequestMap.get(imageView), side));
                 handleRequest(imageView, msg.what);
                 return true;
