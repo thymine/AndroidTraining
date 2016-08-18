@@ -63,6 +63,7 @@
             android:name=".layout.CustomLayoutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.CircleViewActivity" />
+        <activity android:name=".handler.MainActivity" />
     </application>
 
 </manifest>

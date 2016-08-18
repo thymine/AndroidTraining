@@ -54,6 +54,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Custom View", CustomViewActivity.class);
         addMenuItem("Custom Layout", CustomLayoutActivity.class);
         addMenuItem("Circle View", CircleViewActivity.class);
+        addMenuItem("Handler", me.zhang.workbench.handler.MainActivity.class);
     }
 
 }
