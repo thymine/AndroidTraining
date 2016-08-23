@@ -67,6 +67,7 @@
         <activity android:name=".remoteViews.ResultActivity" />
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".remoteViews.WidgetActivity" />
+        <activity android:name=".design.BottomSheetActivity" />
 
         <receiver android:name=".remoteViews.MyAppWidgetProvider">
             <intent-filter>

@@ -48,4 +48,6 @@ At the high end of this reputation spectrum there is little difference between u
 
 Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.
     </string>
+    <string name="bottom_sheet_peek">Bottom Sheet Peek</string>
+    <string name="bottom_sheet_content">Bottom Sheet Content</string>
 </resources>
