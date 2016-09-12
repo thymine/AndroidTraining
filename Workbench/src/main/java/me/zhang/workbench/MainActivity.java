@@ -10,6 +10,7 @@ import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
+import me.zhang.workbench.drawable.LevelListActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
 import me.zhang.workbench.handler.HandlerActivity;
 import me.zhang.workbench.layout.CustomLayoutActivity;
@@ -60,6 +61,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Notification", NotificationActivity.class);
         addMenuItem("Handler", HandlerActivity.class);
         addMenuItem("Bottom Sheet", BottomSheetActivity.class);
+        addMenuItem("Level List Drawable", LevelListActivity.class);
     }
 
 }
