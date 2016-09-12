@@ -68,6 +68,7 @@
         <activity android:name=".handler.HandlerActivity" />
         <activity android:name=".remoteViews.WidgetActivity" />
         <activity android:name=".design.BottomSheetActivity" />
+        <activity android:name=".drawable.LevelListActivity" />
 
         <receiver android:name=".remoteViews.MyAppWidgetProvider">
             <intent-filter>
