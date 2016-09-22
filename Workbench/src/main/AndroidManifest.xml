@@ -70,6 +70,7 @@
         <activity android:name=".design.BottomSheetActivity" />
         <activity android:name=".drawable.LevelListActivity" />
         <activity android:name=".drawable.TransitionActivity" />
+        <activity android:name=".retrofit.TestActivity" />
 
         <receiver android:name=".remoteViews.MyAppWidgetProvider">
             <intent-filter>
