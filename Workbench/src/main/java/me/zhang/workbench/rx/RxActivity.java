@@ -4,7 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.jakewharton.rxbinding.view.RxView;
 
 import me.zhang.workbench.R;
 import rx.Observable;
@@ -17,9 +21,7 @@ import rx.functions.Func1;
 import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
-import static me.zhang.workbench.R.id.concatContent;
 import static me.zhang.workbench.R.id.zippedContent;
-import static rx.Observable.zip;
 
 /**
  * Created by zhangxiangdong on 2016/9/22.
@@ -184,6 +186,16 @@ public class RxActivity extends AppCompatActivity {
                     @Override
                     public void call(String s) {
                         concatContentTextView.setText(s);
+                    }
+                });
+
+        Button observeButton = (Button) findViewById(R.id.observeButton);
+        RxView
+                .clicks(observeButton)
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        Toast.makeText(RxActivity.this, "Button clicked.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
