@@ -4,6 +4,7 @@ import me.zhang.art.ipc.messenger.MessengerClientActivity;
 import me.zhang.art.ipc.parcel.ClientActivity;
 import me.zhang.art.ipc.provider.ProviderExternalUserActivity;
 import me.zhang.art.ipc.socket.TcpClientActivity;
+import me.zhang.workbench.layout.ConstraintActivity;
 import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
@@ -68,6 +69,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Transition Drawable", TransitionActivity.class);
         addMenuItem("Retrofit Test", TestActivity.class);
         addMenuItem("Rx", RxActivity.class);
+        addMenuItem("Contraint Layout", ConstraintActivity.class);
     }
 
 }
