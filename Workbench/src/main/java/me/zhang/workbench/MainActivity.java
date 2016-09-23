@@ -20,6 +20,7 @@ import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
 import me.zhang.workbench.remoteViews.NotificationActivity;
+import me.zhang.workbench.rx.RxActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
@@ -66,6 +67,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Level List Drawable", LevelListActivity.class);
         addMenuItem("Transition Drawable", TransitionActivity.class);
         addMenuItem("Retrofit Test", TestActivity.class);
+        addMenuItem("Rx", RxActivity.class);
     }
 
 }
