@@ -4,12 +4,22 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
+import me.zhang.workbench.R;
 import rx.Observable;
 import rx.Observer;
+import rx.Subscriber;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.functions.Func2;
+import rx.schedulers.Schedulers;
+
+import static me.zhang.workbench.R.id.concatContent;
+import static me.zhang.workbench.R.id.zippedContent;
+import static rx.Observable.zip;
 
 /**
  * Created by zhangxiangdong on 2016/9/22.
@@ -22,6 +32,8 @@ public class RxActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_rx);
 
         Observable<String> myStringObservable = Observable.just("Hello, world!"); // Emits "Hello, world!"
 
@@ -102,5 +114,86 @@ public class RxActivity extends AppCompatActivity {
                 Log.i(TAG, "skip+filter call: " + integer);
             }
         });
+
+        Observable<String> fetchFromBaiduObservable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+
+                try {
+                    String content = fetchContent("https://www.baidu.com/");
+                    subscriber.onNext(content); // Emits content to subscriber
+                    subscriber.onCompleted(); // Nothing more to emit
+                } catch (Exception e) {
+                    // In case there are network errors
+                    subscriber.onError(e);
+                }
+            }
+        });
+
+        final TextView netContentTextView = (TextView) findViewById(R.id.netContent);
+        // use subscribeOn and observeOn to specify the threads it should use and subscribe to it
+        fetchFromBaiduObservable
+                .subscribeOn(Schedulers.newThread()) // Create a new Thread
+                .observeOn(AndroidSchedulers.mainThread()) // Use the UI thread
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        netContentTextView.setText(s); // Change a View
+                    }
+                });
+
+        Observable<String> fetchFromGoogleObservable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+
+                try {
+                    String content = fetchContent("https://www.google.com/");
+                    subscriber.onNext(content); // Emits content to subscriber
+                    subscriber.onCompleted(); // Nothing more to emit
+                } catch (Exception e) {
+                    // In case there are network errors
+                    subscriber.onError(e);
+                }
+            }
+        });
+
+        Observable<String> fromBaidu = fetchFromBaiduObservable.subscribeOn(Schedulers.newThread());
+        Observable<String> fromGoogle = fetchFromGoogleObservable.subscribeOn(Schedulers.newThread());
+        final TextView zippedContentTextView = (TextView) findViewById(zippedContent);
+        Observable
+                .zip(fromBaidu, fromGoogle, new Func2<String, String, String>() {
+                    @Override
+                    public String call(String s1, String s2) {
+                        return s1 + "\n*\n" + s2;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        zippedContentTextView.setText(s);
+                    }
+                });
+
+        final TextView concatContentTextView = (TextView) findViewById(R.id.concatContent);
+        Observable
+                // use the concat operator to run the threads one after another
+                .concat(fromBaidu, fromGoogle)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        concatContentTextView.setText(s);
+                    }
+                });
+    }
+
+    private String fetchContent(String s) throws InterruptedException {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new InterruptedException(e.getMessage());
+        }
+        return "From: " + s;
     }
 }
