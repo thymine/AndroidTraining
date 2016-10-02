@@ -11,6 +11,14 @@
     tools:context="me.zhang.workbench.animation.AnimationsActivity">
 
     <ImageView
+        android:id="@+id/rorate3dImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/droid_96px"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
         android:id="@+id/animTargetImage"
         android:layout_width="200dp"
         android:layout_height="200dp"
