@@ -10,6 +10,7 @@ import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
+import me.zhang.workbench.drawable.ClipDrawableActivity;
 import me.zhang.workbench.drawable.LevelListActivity;
 import me.zhang.workbench.drawable.ScaleDrawableActivity;
 import me.zhang.workbench.drawable.TransitionActivity;
@@ -72,6 +73,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Rx", RxActivity.class);
         addMenuItem("Contraint Layout", ConstraintActivity.class);
         addMenuItem("Scale Drawable", ScaleDrawableActivity.class);
+        addMenuItem("Clip Drawable", ClipDrawableActivity.class);
     }
 
 }

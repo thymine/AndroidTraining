@@ -71,6 +71,7 @@
         <activity android:name=".drawable.TransitionActivity" />
         <activity android:name=".retrofit.TestActivity" />
         <activity android:name=".drawable.ScaleDrawableActivity" />
+        <activity android:name=".drawable.ClipDrawableActivity" />
         <activity android:name=".rx.RxActivity" />
 
         <receiver android:name=".remoteViews.MyAppWidgetProvider">
