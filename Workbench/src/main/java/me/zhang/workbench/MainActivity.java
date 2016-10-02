@@ -4,8 +4,6 @@ import me.zhang.art.ipc.messenger.MessengerClientActivity;
 import me.zhang.art.ipc.parcel.ClientActivity;
 import me.zhang.art.ipc.provider.ProviderExternalUserActivity;
 import me.zhang.art.ipc.socket.TcpClientActivity;
-import me.zhang.workbench.layout.ConstraintActivity;
-import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
@@ -13,14 +11,17 @@ import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
 import me.zhang.workbench.drawable.LevelListActivity;
+import me.zhang.workbench.drawable.ScaleDrawableActivity;
 import me.zhang.workbench.drawable.TransitionActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
 import me.zhang.workbench.handler.HandlerActivity;
+import me.zhang.workbench.layout.ConstraintActivity;
 import me.zhang.workbench.layout.CustomLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
 import me.zhang.workbench.remoteViews.NotificationActivity;
+import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
@@ -70,6 +71,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Retrofit Test", TestActivity.class);
         addMenuItem("Rx", RxActivity.class);
         addMenuItem("Contraint Layout", ConstraintActivity.class);
+        addMenuItem("Scale Drawable", ScaleDrawableActivity.class);
     }
 
 }
