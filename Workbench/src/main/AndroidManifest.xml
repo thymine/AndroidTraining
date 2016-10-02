@@ -85,7 +85,8 @@
                 android:resource="@xml/appwidget_provider_info" />
         </receiver>
 
-        <activity android:name=".layout.ConstraintActivity"></activity>
+        <activity android:name=".layout.ConstraintActivity" />
+        <activity android:name=".animation.AnimationsActivity"></activity>
     </application>
 
 </manifest>

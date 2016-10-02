@@ -5,6 +5,7 @@ import me.zhang.art.ipc.parcel.ClientActivity;
 import me.zhang.art.ipc.provider.ProviderExternalUserActivity;
 import me.zhang.art.ipc.socket.TcpClientActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
+import me.zhang.workbench.animation.AnimationsActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.animation.TranslateActivity;
@@ -76,6 +77,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Scale Drawable", ScaleDrawableActivity.class);
         addMenuItem("Clip Drawable", ClipDrawableActivity.class);
         addMenuItem("Custom Drawable", CustomDrawableActivity.class);
+        addMenuItem("Animations", AnimationsActivity.class);
     }
 
 }
