@@ -31,6 +31,13 @@
         android:src="@drawable/large_bitmap"
         tools:ignore="ContentDescription" />
 
+    <ImageView
+        android:id="@+id/frameAnimImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/animTargetImage"
+        android:layout_centerHorizontal="true"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:layout_width="match_parent"
