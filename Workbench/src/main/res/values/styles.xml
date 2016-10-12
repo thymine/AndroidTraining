@@ -23,4 +23,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Font Style -->
+    <style name="FontStyle">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

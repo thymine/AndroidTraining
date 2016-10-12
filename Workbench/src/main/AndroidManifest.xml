@@ -86,7 +86,8 @@
         </receiver>
 
         <activity android:name=".layout.ConstraintActivity" />
-        <activity android:name=".animation.AnimationsActivity"></activity>
+        <activity android:name=".animation.AnimationsActivity" />
+        <activity android:name=".adapter.AdapterActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="128dp"
+    android:background="@color/colorAccent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/FontStyle"
+        android:text="@string/car"
+        android:textSize="@dimen/car_text_size" />
+
+</LinearLayout>
