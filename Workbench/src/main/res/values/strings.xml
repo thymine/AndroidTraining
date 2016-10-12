@@ -50,4 +50,8 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     </string>
     <string name="bottom_sheet_peek">Bottom Sheet Peek</string>
     <string name="bottom_sheet_content">Bottom Sheet Content</string>
+    <string name="car">Car</string>
+    <string name="dog">Dog</string>
+    <string name="mouse">Mouse</string>
+    <string name="duck">Duck</string>
 </resources>

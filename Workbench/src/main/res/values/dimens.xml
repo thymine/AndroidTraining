@@ -7,4 +7,10 @@
     <dimen name="welcome_image_height">80dp</dimen>
     <dimen name="welcome_appbar_height">224dp</dimen>
     <!-- 4 * ?actionBarSize -->
+
+    <!-- Text Size -->
+    <dimen name="car_text_size">28sp</dimen>
+    <dimen name="dog_text_size">22sp</dimen>
+    <dimen name="mouse_text_size">24sp</dimen>
+    <dimen name="duck_text_size">32sp</dimen>
 </resources>
