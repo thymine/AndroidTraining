@@ -1,73 +1,56 @@
 package me.zhang.workbench.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.List;
 
-import me.zhang.workbench.R;
+import me.zhang.workbench.adapter.contract.BaseViewHolder;
+import me.zhang.workbench.adapter.contract.Heardable;
+import me.zhang.workbench.adapter.contract.HolderFactory;
 
 /**
  * Created by zhangxiangdong on 2016/10/12.
  */
-public class Adapter extends RecyclerView.Adapter {
+public class Adapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    private static final int TYPE_CAR = 0;
-    private static final int TYPE_DUCK = 1;
-    private static final int TYPE_MOUSE = 2;
-    private static final int TYPE_DOG = 3;
-    private List<String> mStringList;
+    private List<Heardable> mModels;
     private LayoutInflater mInflater;
+    private HolderFactory mFactory;
+    private SparseArray<Heardable> mSparseArray;
 
-    public Adapter(List<String> mStringList) {
-        this.mStringList = mStringList;
+    public Adapter(Context context, List<Heardable> models) {
+        this.mModels = models;
+        this.mInflater = LayoutInflater.from(context.getApplicationContext());
+        this.mFactory = new HolderFactoryForList();
+        this.mSparseArray = new SparseArray<>();
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (mInflater == null) {
-            mInflater = LayoutInflater.from(parent.getContext());
-        }
-        View itemView = null;
-        RecyclerView.ViewHolder viewHolder = null;
-        switch (viewType) {
-            case TYPE_CAR:
-                mInflater.inflate(R.layout.item_car, parent, false);
-                break;
-            case TYPE_DUCK:
-                break;
-            case TYPE_DOG:
-                break;
-            case TYPE_MOUSE:
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown type");
-        }
-        return viewHolder;
+    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return mSparseArray.get(viewType).holder(
+                mInflater.inflate(viewType, parent, false), mFactory);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(BaseViewHolder holder, int position) {
+        holder.bind(mModels.get(position));
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position % 3 == 0) {
-            return TYPE_CAR;
-        } else if (position % 5 == 0) {
-            return TYPE_DOG;
-        } else if (position % 7 == 0) {
-            return TYPE_DUCK;
-        } else {
-            return TYPE_MOUSE;
-        }
+        Heardable heardable = mModels.get(position);
+        int viewType = heardable.type(new TypeFactoryForList());
+        mSparseArray.put(viewType, heardable);
+        return viewType;
     }
 
     @Override
     public int getItemCount() {
-        return mStringList.size();
+        return mModels.size();
     }
+
 }

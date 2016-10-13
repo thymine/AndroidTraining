@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="64dp"
     android:background="@color/colorAccentDark"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/soundText"
         style="@style/FontStyle"
-        android:text="@string/dog"
-        android:textSize="@dimen/dog_text_size" />
+        android:textSize="@dimen/dog_text_size"
+        tools:text="@string/dog" />
 
 </LinearLayout>

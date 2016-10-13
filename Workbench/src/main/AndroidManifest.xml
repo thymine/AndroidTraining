@@ -87,7 +87,7 @@
 
         <activity android:name=".layout.ConstraintActivity" />
         <activity android:name=".animation.AnimationsActivity" />
-        <activity android:name=".adapter.AdapterActivity"></activity>
+        <activity android:name=".adapter.AdapterActivity" />
     </application>
 
 </manifest>
