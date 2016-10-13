@@ -1073,7 +1073,7 @@
         ViewGroup.onInterceptHoverEvent, and View.setOnHoverListener.
     </string>
     <string name="hover_intercept_checkbox">Make container intercept hover events</string>
-    <string name="hover_message_initial">Try using a mouse or touch pad to hover over views within this activity.</string>
+    <string name="hover_message_initial">Try using a rat or touch pad to hover over views within this activity.</string>
     <string name="hover_message_entered_at">Entered the container at (%1$f,%2$f).</string>
     <string name="hover_message_moved_at">Moved within the container at (%1$f,%2$f).</string>
     <string name="hover_message_exited_at">Exited the container at (%1$f,%2$f).  The pointer may be inside the bounds of a child instead.</string>
