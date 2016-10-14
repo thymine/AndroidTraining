@@ -31,4 +31,9 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="AnotherFontStyle">
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
