@@ -9,6 +9,7 @@ import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.AnimationsActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
+import me.zhang.workbench.animation.RecyclerViewAnimationActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
@@ -82,6 +83,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Animations", AnimationsActivity.class);
         addMenuItem("Adapter", AdapterActivity.class);
         addMenuItem("Floating Action Button", FabActivity.class);
+        addMenuItem("RecyclerView Animation", RecyclerViewAnimationActivity.class);
     }
 
 }
