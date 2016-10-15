@@ -27,9 +27,19 @@ class AnimationAdapter extends RecyclerView.Adapter<AnimationAdapter.AnimHolder>
     }
 
     @Override
-    public void onBindViewHolder(AnimHolder holder, int position) {
+    public void onBindViewHolder(final AnimHolder holder, int position) {
         String colorName = mColorNames.get(position);
         holder.mAnimItemLayout.setBackgroundColor(RecyclerViewAnimationActivity.sColorNameMap.get(colorName));
+        holder.mAnimItemLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int adapterPosition = holder.getAdapterPosition();
+                if (adapterPosition != RecyclerView.NO_POSITION) {
+                    mColorNames.remove(adapterPosition);
+                    notifyItemRemoved(adapterPosition);
+                }
+            }
+        });
         holder.mColorNameText.setText(colorName);
     }
 
