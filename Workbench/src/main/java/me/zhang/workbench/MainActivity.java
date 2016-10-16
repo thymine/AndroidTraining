@@ -15,6 +15,7 @@ import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
 import me.zhang.workbench.design.CustomFabActivity;
 import me.zhang.workbench.design.FabActivity;
+import me.zhang.workbench.design.SimplePaperTransformations;
 import me.zhang.workbench.drawable.ClipDrawableActivity;
 import me.zhang.workbench.drawable.CustomDrawableActivity;
 import me.zhang.workbench.drawable.LevelListActivity;
@@ -85,6 +86,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Adapter", AdapterActivity.class);
         addMenuItem("Floating Action Button", FabActivity.class);
         addMenuItem("Custom Floating Action Button", CustomFabActivity.class);
+        addMenuItem("Simple Paper Transformations", SimplePaperTransformations.class);
         addMenuItem("RecyclerView Animation", RecyclerViewAnimationActivity.class);
     }
 
