@@ -92,7 +92,10 @@
         <activity android:name=".design.FabActivity" />
         <activity android:name=".animation.RecyclerViewAnimationActivity" />
         <activity android:name=".design.CustomFabActivity" />
-        <activity android:name=".design.SimplePaperTransformations"></activity>
+        <activity android:name=".design.SimplePaperTransformations" />
+        <activity
+            android:name=".design.DynamicSurfacesActivity"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>

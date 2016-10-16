@@ -14,6 +14,7 @@ import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
 import me.zhang.workbench.design.CustomFabActivity;
+import me.zhang.workbench.design.DynamicSurfacesActivity;
 import me.zhang.workbench.design.FabActivity;
 import me.zhang.workbench.design.SimplePaperTransformations;
 import me.zhang.workbench.drawable.ClipDrawableActivity;
@@ -88,6 +89,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Custom Floating Action Button", CustomFabActivity.class);
         addMenuItem("Simple Paper Transformations", SimplePaperTransformations.class);
         addMenuItem("RecyclerView Animation", RecyclerViewAnimationActivity.class);
+        addMenuItem("Dynamic Surfaces", DynamicSurfacesActivity.class);
     }
 
 }
