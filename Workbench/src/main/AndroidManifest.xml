@@ -90,7 +90,8 @@
         <activity android:name=".adapter.AdapterActivity" />
         <activity android:name=".design.CustomStyleActivity" />
         <activity android:name=".design.FabActivity" />
-        <activity android:name=".animation.RecyclerViewAnimationActivity"></activity>
+        <activity android:name=".animation.RecyclerViewAnimationActivity" />
+        <activity android:name=".design.CustomFabActivity"></activity>
     </application>
 
 </manifest>

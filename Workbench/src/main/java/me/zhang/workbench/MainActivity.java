@@ -13,6 +13,7 @@ import me.zhang.workbench.animation.RecyclerViewAnimationActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
+import me.zhang.workbench.design.CustomFabActivity;
 import me.zhang.workbench.design.FabActivity;
 import me.zhang.workbench.drawable.ClipDrawableActivity;
 import me.zhang.workbench.drawable.CustomDrawableActivity;
@@ -83,6 +84,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Animations", AnimationsActivity.class);
         addMenuItem("Adapter", AdapterActivity.class);
         addMenuItem("Floating Action Button", FabActivity.class);
+        addMenuItem("Custom Floating Action Button", CustomFabActivity.class);
         addMenuItem("RecyclerView Animation", RecyclerViewAnimationActivity.class);
     }
 
