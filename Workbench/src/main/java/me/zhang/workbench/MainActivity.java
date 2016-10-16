@@ -8,6 +8,7 @@ import me.zhang.workbench.adapter.AdapterActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.AnimationsActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
+import me.zhang.workbench.animation.LayoutAnimationActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.animation.RecyclerViewAnimationActivity;
 import me.zhang.workbench.animation.TranslateActivity;
@@ -90,6 +91,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Simple Paper Transformations", SimplePaperTransformations.class);
         addMenuItem("RecyclerView Animation", RecyclerViewAnimationActivity.class);
         addMenuItem("Dynamic Surfaces", DynamicSurfacesActivity.class);
+        addMenuItem("Layout Animation", LayoutAnimationActivity.class);
     }
 
 }
