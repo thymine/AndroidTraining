@@ -54,4 +54,5 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="dog">Dog</string>
     <string name="rat">Mouse</string>
     <string name="duck">Duck</string>
+    <string name="custom_floating_action_button">Custom Floating Action Button</string>
 </resources>
