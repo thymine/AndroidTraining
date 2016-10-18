@@ -23,6 +23,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppThemeOpt" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/indigo_500</item>
+        <item name="colorPrimaryDark">@color/indigo_700</item>
+        <item name="colorAccent">@color/pink_a200</item>
+    </style>
+
     <!-- Font Style -->
     <style name="FontStyle">
         <item name="android:layout_height">match_parent</item>
