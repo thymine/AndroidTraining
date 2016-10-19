@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/pickImage"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_image" />
+
+    <Button
+        android:id="@+id/takeImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/take_photo" />
+
+</LinearLayout>

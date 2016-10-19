@@ -99,6 +99,7 @@
             android:name=".design.DynamicSurfacesActivity"
             android:theme="@style/AppThemeNoActionBar" />
         <activity android:name=".animation.LayoutAnimationActivity" />
+        <activity android:name=".design.PaletteActivity"></activity>
     </application>
 
 </manifest>

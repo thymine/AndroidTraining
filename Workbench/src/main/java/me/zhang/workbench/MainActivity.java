@@ -17,6 +17,7 @@ import me.zhang.workbench.design.BottomSheetActivity;
 import me.zhang.workbench.design.CustomFabActivity;
 import me.zhang.workbench.design.DynamicSurfacesActivity;
 import me.zhang.workbench.design.FabActivity;
+import me.zhang.workbench.design.PaletteActivity;
 import me.zhang.workbench.design.SimplePaperTransformations;
 import me.zhang.workbench.drawable.ClipDrawableActivity;
 import me.zhang.workbench.drawable.CustomDrawableActivity;
@@ -92,6 +93,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("RecyclerView Animation", RecyclerViewAnimationActivity.class);
         addMenuItem("Dynamic Surfaces", DynamicSurfacesActivity.class);
         addMenuItem("Layout Animation", LayoutAnimationActivity.class);
+        addMenuItem("Palette", PaletteActivity.class);
     }
 
 }
