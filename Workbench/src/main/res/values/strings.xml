@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Workbench</string>
 
+    <string name="pick_image">Pick An Image</string>
+    <string name="take_photo">Take A Photo</string>
+
     <string name="text_alert">Alert</string>
     <string name="text_perform">Perform</string>
     <string name="btn_showpop">Show Pop</string>
