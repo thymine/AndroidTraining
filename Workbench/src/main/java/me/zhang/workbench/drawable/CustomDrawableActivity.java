@@ -22,5 +22,10 @@ public class CustomDrawableActivity extends AppCompatActivity {
 
         ImageView customImage = (ImageView) findViewById(R.id.customImage);
         customImage.setImageDrawable(new CustomDrawable(Color.BLUE));
+
+        ImageView tagImage = (ImageView) findViewById(R.id.tagImage);
+
+        TagDrawable tagDrawable = new TagDrawable(Color.parseColor("#a2c21d"), "TAG");
+        tagImage.setImageDrawable(tagDrawable);
     }
 }
