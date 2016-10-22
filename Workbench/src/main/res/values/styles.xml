@@ -37,6 +37,15 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="Font">
+        <item name="android:padding">6dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:text">@string/hello_world</item>
+    </style>
+
     <style name="AnotherFontStyle">
         <item name="android:textColor">@android:color/holo_blue_dark</item>
         <item name="android:textStyle">bold</item>
