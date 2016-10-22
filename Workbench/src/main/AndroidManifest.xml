@@ -103,7 +103,8 @@
         <activity
             android:name=".design.font.FontActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".design.image.ImmersiveImagesActivity"></activity>
+        <activity android:name=".design.image.ImmersiveImagesActivity" />
+        <activity android:name=".design.image.RoundedImagesActivity"></activity>
     </application>
 
 </manifest>

@@ -21,6 +21,7 @@ import me.zhang.workbench.design.PaletteActivity;
 import me.zhang.workbench.design.SimplePaperTransformations;
 import me.zhang.workbench.design.font.FontActivity;
 import me.zhang.workbench.design.image.ImmersiveImagesActivity;
+import me.zhang.workbench.design.image.RoundedImagesActivity;
 import me.zhang.workbench.drawable.ClipDrawableActivity;
 import me.zhang.workbench.drawable.CustomDrawableActivity;
 import me.zhang.workbench.drawable.LevelListActivity;
@@ -98,6 +99,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Palette", PaletteActivity.class);
         addMenuItem("Font", FontActivity.class);
         addMenuItem("Immersive Images", ImmersiveImagesActivity.class);
+        addMenuItem("Rounded Images", RoundedImagesActivity.class);
     }
 
 }
