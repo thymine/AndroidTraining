@@ -104,7 +104,8 @@
             android:name=".design.font.FontActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".design.image.ImmersiveImagesActivity" />
-        <activity android:name=".design.image.RoundedImagesActivity"></activity>
+        <activity android:name=".design.image.RoundedImagesActivity" />
+        <activity android:name=".design.image.ThreeTwoImageActivity"></activity>
     </application>
 
 </manifest>
