@@ -19,6 +19,7 @@ import me.zhang.workbench.design.DynamicSurfacesActivity;
 import me.zhang.workbench.design.FabActivity;
 import me.zhang.workbench.design.PaletteActivity;
 import me.zhang.workbench.design.SimplePaperTransformations;
+import me.zhang.workbench.design.animation.AnimateActivity;
 import me.zhang.workbench.design.font.FontActivity;
 import me.zhang.workbench.design.image.ImmersiveImagesActivity;
 import me.zhang.workbench.design.image.RoundedImagesActivity;
@@ -102,6 +103,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Immersive Images", ImmersiveImagesActivity.class);
         addMenuItem("Rounded Images", RoundedImagesActivity.class);
         addMenuItem("ThreeTwo ImageView", ThreeTwoImageActivity.class);
+        addMenuItem("Animate", AnimateActivity.class);
     }
 
 }
