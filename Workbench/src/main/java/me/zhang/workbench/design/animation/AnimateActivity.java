@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import me.zhang.workbench.R;
@@ -27,10 +25,7 @@ public class AnimateActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        AnimationSet animationSet = new AnimationSet(this, null);
-        animationSet.addAnimation(new AlphaAnimation(1f, 0f));
-        animationSet.setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
-        animationSet.addAnimation(new TranslateAnimation(0, 0, 0, -mButton.getHeight()));
+        Animation animationSet = AnimationUtils.loadAnimation(this, R.anim.slideoutbutton);
         animationSet.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -53,4 +48,11 @@ public class AnimateActivity extends AppCompatActivity implements View.OnClickLi
 
         mButton.startAnimation(animationSet);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mButton.setVisibility(View.VISIBLE);
+    }
+
 }
