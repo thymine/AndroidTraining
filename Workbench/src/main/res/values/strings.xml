@@ -75,4 +75,5 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
 
     <string name="caption">Caption</string>
     <string name="button">Button</string>
+    <string name="moon">Moon</string>
 </resources>
