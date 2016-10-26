@@ -17,6 +17,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -42,7 +43,7 @@ public class AnimateActivity extends AppCompatActivity {
                 animationSet.setAnimationListener(new AnimationListenerStub() {
                     @Override
                     public void onAnimationEnd(Animation animation) {
-                        mXmlButton.setVisibility(View.GONE);
+                        mXmlButton.setVisibility(View.INVISIBLE);
                         startNewActivity();
                     }
                 });
@@ -60,7 +61,7 @@ public class AnimateActivity extends AppCompatActivity {
         animationSet.setAnimationListener(new AnimationListenerStub() {
             @Override
             public void onAnimationEnd(Animation animation) {
-                view.setVisibility(View.GONE);
+                view.setVisibility(View.INVISIBLE);
                 startNewActivity();
             }
         });
@@ -75,7 +76,7 @@ public class AnimateActivity extends AppCompatActivity {
                 .withEndAction(new Runnable() {
                     @Override
                     public void run() {
-                        view.setVisibility(View.GONE);
+                        view.setVisibility(View.INVISIBLE);
                         startNewActivity();
                     }
                 });
@@ -105,4 +106,12 @@ public class AnimateActivity extends AppCompatActivity {
         view.setVisibility(View.INVISIBLE);
     }
 
+    public void def(View view) {
+        ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
+        TransitionManager.beginDelayedTransition(root);
+
+        LinearLayout.LayoutParams lps = (LinearLayout.LayoutParams) view.getLayoutParams();
+        lps.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        view.setLayoutParams(lps);
+    }
 }
