@@ -1,6 +1,9 @@
 package me.zhang.workbench.design.animation;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -72,6 +75,16 @@ public class AnimateActivity extends AppCompatActivity {
                         startNewActivity();
                     }
                 });
+
+        ObjectAnimator.ofObject(
+                view, // object we're animating
+                "textColor", // property to animate
+                new ArgbEvaluator(), // interpolation function
+                Color.BLACK, // start value
+                Color.RED // end value
+        )
+                .setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime))
+                .start();
     }
 
     private void startNewActivity() {

@@ -32,6 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:onClick="animProp"
-        android:text="@string/from_prop" />
+        android:text="@string/from_prop"
+        android:textColor="@color/black" />
 
 </LinearLayout>
