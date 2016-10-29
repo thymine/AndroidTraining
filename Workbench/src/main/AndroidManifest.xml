@@ -108,6 +108,10 @@
         <activity android:name=".design.image.ThreeTwoImageActivity" />
         <activity android:name=".design.animation.AnimateActivity" />
         <activity android:name=".design.animation.TargetActivity" />
+        <activity android:name=".design.transition.GridActivity" />
+        <activity
+            android:name=".design.transition.DetailActivity"
+            android:theme="@style/AppTheme.Details" />
     </application>
 
 </manifest>
