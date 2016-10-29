@@ -113,7 +113,13 @@
             android:name=".design.transition.DetailActivity"
             android:theme="@style/AppTheme.Details" />
         <activity android:name=".design.transition.DummyActivity" />
-        <activity android:name=".design.interpolator.InterpolatorActivity"></activity>
+        <activity android:name=".design.interpolator.InterpolatorActivity" />
+        <activity android:name=".design.coordinate.CoordinateActivity" />
+        <activity android:name=".design.coordinate.MultipleElements" />
+        <activity android:name=".design.coordinate.MultipleChaoticElements" />
+        <activity android:name=".design.coordinate.CurveMotionList" />
+        <activity android:name=".design.coordinate.CurvedMotionDetail" />
+        <activity android:name=".design.coordinate.SizeChange" />
     </application>
 
 </manifest>
