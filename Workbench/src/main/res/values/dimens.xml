@@ -18,4 +18,5 @@
     <dimen name="fab_size_big">64dp</dimen>
     <dimen name="fab_size_normal">56dp</dimen>
     <dimen name="default_fab_elevation">6dp</dimen>
+    <dimen name="window_height">480dp</dimen>
 </resources>

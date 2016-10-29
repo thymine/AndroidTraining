@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_dummy"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="me.zhang.workbench.design.transition.DummyActivity">
 
-    <me.zhang.workbench.design.image.widget.ThreeTwoImageView
+    <ImageView
+        android:id="@+id/windowImage"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/window_height"
+        android:scaleType="centerCrop"
         android:src="@drawable/natural" />
 
     <ScrollView
+        android:id="@+id/detailScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:padding="@dimen/activity_horizontal_padding">
+        android:paddingTop="@dimen/window_height">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/large_text" />
+            android:background="@color/white"
+            android:elevation="8dp"
+            android:padding="@dimen/activity_vertical_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/large_text"
+                android:textSize="18sp" />
+        </LinearLayout>
+
 
     </ScrollView>
 
-</LinearLayout>
+</FrameLayout>
