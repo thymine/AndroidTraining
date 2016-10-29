@@ -1,7 +1,10 @@
 package me.zhang.workbench.design.transition;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import me.zhang.workbench.R;
 
@@ -11,5 +14,10 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+    }
+
+    public void exit(View view) {
+        Intent intent = new Intent(this, DummyActivity.class);
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 }

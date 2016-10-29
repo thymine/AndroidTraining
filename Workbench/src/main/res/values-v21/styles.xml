@@ -4,6 +4,8 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <!-- If you're already inheriting from a material theme or AppCompat then this will automatically be set for you -->
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="AppTheme.Home">
@@ -15,6 +17,7 @@
         <item name="android:windowTransitionBackgroundFadeDuration">400</item>
         <!--<item name="android:windowSharedElementEnterTransition">@transition/hero</item>-->
         <item name="android:statusBarColor">@color/colorAccentDark</item>
+        <item name="android:windowExitTransition">@transition/grid_exit</item>
     </style>
 
 </resources>

@@ -4,6 +4,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:onClick="exit"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:background="#ffb74d"
