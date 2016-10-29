@@ -103,4 +103,6 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
         <item>1500ms</item>
         <item>3000ms</item>
     </string-array>
+
+    <string name="transition_avatar">avatar</string>
 </resources>

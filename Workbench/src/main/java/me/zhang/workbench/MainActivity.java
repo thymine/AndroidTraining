@@ -20,6 +20,7 @@ import me.zhang.workbench.design.FabActivity;
 import me.zhang.workbench.design.PaletteActivity;
 import me.zhang.workbench.design.SimplePaperTransformations;
 import me.zhang.workbench.design.animation.AnimateActivity;
+import me.zhang.workbench.design.coordinate.CoordinateActivity;
 import me.zhang.workbench.design.font.FontActivity;
 import me.zhang.workbench.design.image.ImmersiveImagesActivity;
 import me.zhang.workbench.design.image.RoundedImagesActivity;
@@ -108,6 +109,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Animate", AnimateActivity.class);
         addMenuItem("Transition", GridActivity.class);
         addMenuItem("Interpolator", InterpolatorActivity.class);
+        addMenuItem("Coordinate", CoordinateActivity.class);
     }
 
 }
