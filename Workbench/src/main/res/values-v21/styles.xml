@@ -18,6 +18,7 @@
         <!--<item name="android:windowSharedElementEnterTransition">@transition/hero</item>-->
         <item name="android:statusBarColor">@color/colorAccentDark</item>
         <item name="android:windowExitTransition">@transition/grid_exit</item>
+        <item name="android:windowReenterTransition">@transition/slide_top</item>
     </style>
 
 </resources>
