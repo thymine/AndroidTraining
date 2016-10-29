@@ -80,4 +80,27 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="from_xml">From xml</string>
     <string name="from_code">From code</string>
     <string name="from_prop">From prop</string>
+
+    <string-array name="interpolators">
+        <item>FastOutLinearInInterpolator</item>
+        <item>FastOutSlowInInterpolator</item>
+        <item>LinearOutSlowInInterpolator</item>
+        <item>----------</item>
+        <item>AccelerateDecelerateInterpolator</item>
+        <item>AccelerateInterpolator</item>
+        <item>AnticipateInterpolator</item>
+        <item>AnticipateOvershootInterpolator</item>
+        <item>BounceInterpolator</item>
+        <item>DecelerateInterpolator</item>
+        <item>LinearInterpolator</item>
+        <item>OvershootInterpolator</item>
+    </string-array>
+
+    <string-array name="durations">
+        <item>100ms</item>
+        <item>300ms</item>
+        <item>900ms</item>
+        <item>1500ms</item>
+        <item>3000ms</item>
+    </string-array>
 </resources>
