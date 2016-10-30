@@ -1,5 +1,6 @@
 package me.zhang.workbench.animation;
 
+import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
@@ -52,6 +53,12 @@ public class PropertyAnimationActivity extends AppCompatActivity {
                     ObjectAnimator.ofFloat(mDemoView, "alpha", 1, 0.25f, 1)
             );
             set.setDuration(5 * 1000).start();
+
+            ValueAnimator rotateAnimator = (ValueAnimator) AnimatorInflater.loadAnimator(this,
+                    R.animator.rotate);
+            rotateAnimator.setTarget(mDemoView);
+            rotateAnimator.setDuration(1000);
+            rotateAnimator.start();
         }
     }
 
