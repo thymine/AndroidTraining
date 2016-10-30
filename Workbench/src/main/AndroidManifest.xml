@@ -120,6 +120,7 @@
         <activity android:name=".design.coordinate.CurveMotionList" />
         <activity android:name=".design.coordinate.CurvedMotionDetail" />
         <activity android:name=".design.coordinate.SizeChange" />
+        <activity android:name=".design.vector.VectorDrawableActivity" />
     </application>
 
 </manifest>

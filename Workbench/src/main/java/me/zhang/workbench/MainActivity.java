@@ -27,6 +27,7 @@ import me.zhang.workbench.design.image.RoundedImagesActivity;
 import me.zhang.workbench.design.image.ThreeTwoImageActivity;
 import me.zhang.workbench.design.interpolator.InterpolatorActivity;
 import me.zhang.workbench.design.transition.GridActivity;
+import me.zhang.workbench.design.vector.VectorDrawableActivity;
 import me.zhang.workbench.drawable.ClipDrawableActivity;
 import me.zhang.workbench.drawable.CustomDrawableActivity;
 import me.zhang.workbench.drawable.LevelListActivity;
@@ -110,6 +111,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Transition", GridActivity.class);
         addMenuItem("Interpolator", InterpolatorActivity.class);
         addMenuItem("Coordinate", CoordinateActivity.class);
+        addMenuItem("Vector Drawabls", VectorDrawableActivity.class);
     }
 
 }
