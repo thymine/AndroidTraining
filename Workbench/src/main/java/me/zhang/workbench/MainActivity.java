@@ -10,6 +10,7 @@ import me.zhang.workbench.animation.AnimationsActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
 import me.zhang.workbench.animation.LayoutAnimationActivity;
 import me.zhang.workbench.animation.LogoWhiteAnimActivity;
+import me.zhang.workbench.animation.PropertyAnimationActivity;
 import me.zhang.workbench.animation.RecyclerViewAnimationActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.base.MenuActivity;
@@ -112,6 +113,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Interpolator", InterpolatorActivity.class);
         addMenuItem("Coordinate", CoordinateActivity.class);
         addMenuItem("Vector Drawabls", VectorDrawableActivity.class);
+        addMenuItem("Property Animation", PropertyAnimationActivity.class);
     }
 
 }
