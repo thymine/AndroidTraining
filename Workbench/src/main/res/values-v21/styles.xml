@@ -16,9 +16,15 @@
         <item name="android:windowEnterTransition">@transition/slide_right</item>
         <item name="android:windowTransitionBackgroundFadeDuration">400</item>
         <!--<item name="android:windowSharedElementEnterTransition">@transition/hero</item>-->
-        <item name="android:statusBarColor">@color/colorAccentDark</item>
+        <item name="android:statusBarColor">@color/indigo_100</item>
         <item name="android:windowExitTransition">@transition/grid_exit</item>
         <item name="android:windowReenterTransition">@transition/slide_top</item>
+    </style>
+
+    <style name="AppTheme.Details.Light" />
+
+    <style name="AppTheme.Grid">
+        <item name="android:statusBarColor">@color/indigo_500</item>
     </style>
 
 </resources>

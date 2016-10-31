@@ -53,4 +53,8 @@
 
     <style name="AppTheme.Details" />
 
+    <style name="AppTheme.Details.Light" />
+
+    <style name="AppTheme.Grid" />
+
 </resources>
