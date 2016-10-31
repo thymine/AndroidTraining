@@ -108,10 +108,10 @@
         <activity android:name=".design.image.ThreeTwoImageActivity" />
         <activity android:name=".design.animation.AnimateActivity" />
         <activity android:name=".design.animation.TargetActivity" />
-        <activity android:name=".design.transition.GridActivity" />
         <activity
-            android:name=".design.transition.DetailActivity"
-            android:theme="@style/AppTheme.Details" />
+            android:name=".design.transition.GridActivity"
+            android:theme="@style/AppTheme.Grid.Light" />
+        <activity android:name=".design.transition.DetailActivity" />
         <activity android:name=".design.transition.DummyActivity" />
         <activity android:name=".design.interpolator.InterpolatorActivity" />
         <activity android:name=".design.coordinate.CoordinateActivity" />

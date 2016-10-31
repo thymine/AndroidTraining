@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Details.Light">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="AppTheme.Grid.Light">
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+</resources>
