@@ -15,6 +15,7 @@
     <color name="red">#bc3338</color>
     <color name="white">#f2f2f2</color>
     <color name="black">#000000</color>
+    <color name="darker">#383838</color>
 
     <color name="label">#4e4dba</color>
 </resources>

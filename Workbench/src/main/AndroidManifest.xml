@@ -122,6 +122,16 @@
         <activity android:name=".design.coordinate.SizeChange" />
         <activity android:name=".design.vector.VectorDrawableActivity" />
         <activity android:name=".animation.PropertyAnimationActivity" />
+        <activity
+            android:name=".style.PreviewActivity"
+            android:icon="@mipmap/ic_preview"
+            android:label="@string/label_preview"
+            android:theme="@style/AppTheme.Base.Preview">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
