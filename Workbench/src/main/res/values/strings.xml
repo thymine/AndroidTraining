@@ -106,4 +106,6 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
 
     <string name="transition_avatar">avatar</string>
     <string name="label_preview">Preview</string>
+    <string name="invoke0">Invoke0</string>
+    <string name="invoke1">Invoke1</string>
 </resources>
