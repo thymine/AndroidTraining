@@ -11,7 +11,7 @@
     <style name="AppTheme.Base" />
 
     <style name="AppTheme.Base.Preview">
-        <item name="android:windowBackground">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/dark</item>
     </style>
 
     <style name="AppTheme.Base.NoPreview">
