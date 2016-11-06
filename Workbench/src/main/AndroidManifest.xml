@@ -134,6 +134,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".others.InvokeStarDetailActivity" />
+        <activity android:name=".memory.MemoryManagement" />
     </application>
 
 </manifest>
