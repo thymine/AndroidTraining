@@ -23,7 +23,7 @@ public class MemoryManagement extends AppCompatActivity {
     @InjectView(R.id.recycledImage)
     ImageView mRecycledImage;
 
-    static Bitmap mBitmap;
+    Bitmap mBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
