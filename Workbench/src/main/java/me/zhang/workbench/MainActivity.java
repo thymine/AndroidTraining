@@ -41,6 +41,7 @@ import me.zhang.workbench.layout.CustomLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
+import me.zhang.workbench.memory.MemoryManagement;
 import me.zhang.workbench.others.InvokeStarDetailActivity;
 import me.zhang.workbench.remoteViews.NotificationActivity;
 import me.zhang.workbench.retrofit.TestActivity;
@@ -116,6 +117,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Vector Drawabls", VectorDrawableActivity.class);
         addMenuItem("Property Animation", PropertyAnimationActivity.class);
         addMenuItem("Invoke Star", InvokeStarDetailActivity.class);
+        addMenuItem("Memory Management", MemoryManagement.class);
     }
 
 }
