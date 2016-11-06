@@ -18,11 +18,18 @@
         tools:text="Heap Size: 64Mb" />
 
     <TextView
-        android:id="@+id/leageHeapSizeText"
+        android:id="@+id/largeHeapSizeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/heapSizeText"
         android:textSize="24sp"
         tools:text="Large Heap Size: 128Mb" />
+
+    <ImageView
+        android:id="@+id/recycledImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/largeHeapSizeText"
+        tools:ignore="ContentDescription" />
 
 </RelativeLayout>
