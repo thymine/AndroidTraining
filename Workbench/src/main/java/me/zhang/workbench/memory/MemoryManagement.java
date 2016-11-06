@@ -14,6 +14,9 @@ public class MemoryManagement extends AppCompatActivity {
     @InjectView(R.id.heapSizeText)
     TextView mHeapSizeText;
 
+    @InjectView(R.id.leageHeapSizeText)
+    TextView mLargeHeapSizeText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,5 +26,7 @@ public class MemoryManagement extends AppCompatActivity {
 
         ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         mHeapSizeText.setText(getString(R.string.heap_size, manager.getMemoryClass()));
+
+        mLargeHeapSizeText.setText(getString(R.string.large_heap_size, manager.getLargeMemoryClass()));
     }
 }
