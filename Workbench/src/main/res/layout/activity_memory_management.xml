@@ -17,4 +17,12 @@
         android:textSize="24sp"
         tools:text="Heap Size: 64Mb" />
 
+    <TextView
+        android:id="@+id/leageHeapSizeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/heapSizeText"
+        android:textSize="24sp"
+        tools:text="Large Heap Size: 128Mb" />
+
 </RelativeLayout>
