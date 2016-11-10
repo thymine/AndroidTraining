@@ -111,4 +111,5 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
 
     <string name="heap_size">Heap Size: %dMb</string>
     <string name="large_heap_size">Large Heap Size: %dMb</string>
+    <string name="new_activity">Start new activity</string>
 </resources>
