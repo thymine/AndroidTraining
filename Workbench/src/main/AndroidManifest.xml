@@ -136,7 +136,8 @@
         </activity>
         <activity android:name=".others.InvokeStarDetailActivity" />
         <activity android:name=".memory.MemoryManagement" />
-        <activity android:name=".lifecycle.LifecycleActivity"></activity>
+        <activity android:name=".lifecycle.LifecycleActivity" />
+        <activity android:name=".binding.DataBindingActivity" />
     </application>
 
 </manifest>
