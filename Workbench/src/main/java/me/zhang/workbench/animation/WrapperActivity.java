@@ -1,8 +1,11 @@
 package me.zhang.workbench.animation;
 
+import android.animation.IntEvaluator;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,6 +17,7 @@ import me.zhang.workbench.R;
 public class WrapperActivity extends AppCompatActivity {
 
     public static final int DURATION = 3000;
+    private static final String TAG = WrapperActivity.class.getSimpleName();
     @InjectView(R.id.wrapperButton)
     Button mWrapperButton;
 
@@ -22,6 +26,9 @@ public class WrapperActivity extends AppCompatActivity {
 
     @InjectView(R.id.wrapperView)
     View mWrapperView;
+
+    @InjectView(R.id.valueAnimatorView)
+    View mValueAnimatorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,31 @@ public class WrapperActivity extends AppCompatActivity {
                 ViewWrapper wrapper = new ViewWrapper(mWrapperView);
                 ObjectAnimator.ofInt(wrapper, "width", mWrapperView.getWidth() * 2)
                         .setDuration(DURATION).start();
+            }
+        });
+
+        mValueAnimatorView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final int start = mValueAnimatorView.getWidth();
+                final int end = mValueAnimatorView.getWidth() * 2;
+                ValueAnimator animator = ValueAnimator.ofInt(1, 100);
+                animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+                    IntEvaluator mEvaluator = new IntEvaluator();
+
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        int currentValue = (int) animation.getAnimatedValue();
+                        Log.i(TAG, "onAnimationUpdate: " + currentValue);
+
+                        float fraction = animation.getAnimatedFraction();
+                        mValueAnimatorView.getLayoutParams().width = mEvaluator.evaluate(fraction,
+                                start, end);
+                        mValueAnimatorView.requestLayout();
+                    }
+                });
+                animator.setDuration(DURATION).start();
             }
         });
     }
