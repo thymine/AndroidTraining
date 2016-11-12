@@ -13,6 +13,7 @@ import me.zhang.workbench.animation.LogoWhiteAnimActivity;
 import me.zhang.workbench.animation.PropertyAnimationActivity;
 import me.zhang.workbench.animation.RecyclerViewAnimationActivity;
 import me.zhang.workbench.animation.TranslateActivity;
+import me.zhang.workbench.animation.WrapperActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.binding.DataBindingActivity;
 import me.zhang.workbench.design.BottomSheetActivity;
@@ -122,6 +123,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Memory Management", MemoryManagement.class);
         addMenuItem("Activity Lifecycle", LifecycleActivity.class);
         addMenuItem("Data Binding", DataBindingActivity.class);
+        addMenuItem("Wrapper Property", WrapperActivity.class);
     }
 
 }
