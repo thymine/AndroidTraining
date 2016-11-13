@@ -10,7 +10,7 @@
     <application
         android:name=".MainApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_preview"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
@@ -125,21 +125,13 @@
         <activity android:name=".animation.PropertyAnimationActivity" />
         <activity
             android:name=".style.PreviewActivity"
-            android:icon="@mipmap/ic_preview"
-            android:label="@string/label_preview"
-            android:theme="@style/AppTheme.Base.Preview">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.Base.Preview" />
         <activity android:name=".others.InvokeStarDetailActivity" />
         <activity android:name=".memory.MemoryManagement" />
         <activity android:name=".lifecycle.LifecycleActivity" />
         <activity android:name=".binding.DataBindingActivity" />
         <activity android:name=".animation.WrapperActivity" />
-        <activity android:name=".graphics.BitmapScaling"></activity>
+        <activity android:name=".graphics.BitmapScaling" />
     </application>
 
 </manifest>

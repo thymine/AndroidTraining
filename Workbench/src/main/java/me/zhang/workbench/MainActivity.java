@@ -50,6 +50,7 @@ import me.zhang.workbench.others.InvokeStarDetailActivity;
 import me.zhang.workbench.remoteViews.NotificationActivity;
 import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
+import me.zhang.workbench.style.PreviewActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
@@ -66,6 +67,7 @@ public class MainActivity extends MenuActivity {
 
     @Override
     protected void prepareMenu() {
+        addMenuItem("Preview Window", PreviewActivity.class);
         addMenuItem("Layout", LayoutActivity.class);
         addMenuItem("Leaks", LeakyActivity.class);
         addMenuItem("WebView", WebViewActivity.class);
