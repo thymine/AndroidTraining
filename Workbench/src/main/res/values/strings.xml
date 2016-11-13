@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Workbench</string>
+    <string name="lab">A small lab for android development</string>
     <string name="hello_world">你好, world!</string>
 
     <string name="pick_image">Pick An Image</string>
