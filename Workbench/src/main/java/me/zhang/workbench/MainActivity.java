@@ -37,6 +37,7 @@ import me.zhang.workbench.drawable.LevelListActivity;
 import me.zhang.workbench.drawable.ScaleDrawableActivity;
 import me.zhang.workbench.drawable.TransitionActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
+import me.zhang.workbench.graphics.BitmapScaling;
 import me.zhang.workbench.handler.HandlerActivity;
 import me.zhang.workbench.layout.ConstraintActivity;
 import me.zhang.workbench.layout.CustomLayoutActivity;
@@ -124,6 +125,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Activity Lifecycle", LifecycleActivity.class);
         addMenuItem("Data Binding", DataBindingActivity.class);
         addMenuItem("Wrapper Property", WrapperActivity.class);
+        addMenuItem("Bitmap Scaling", BitmapScaling.class);
     }
 
 }

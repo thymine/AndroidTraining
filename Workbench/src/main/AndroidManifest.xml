@@ -139,6 +139,7 @@
         <activity android:name=".lifecycle.LifecycleActivity" />
         <activity android:name=".binding.DataBindingActivity" />
         <activity android:name=".animation.WrapperActivity" />
+        <activity android:name=".graphics.BitmapScaling"></activity>
     </application>
 
 </manifest>
