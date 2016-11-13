@@ -27,6 +27,8 @@ public abstract class MenuActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        setTitle(R.string.lab); // define title inside AndroidManifest.xml
+
         prepareMenu();
 
         String[] keys = actions.keySet().toArray(
