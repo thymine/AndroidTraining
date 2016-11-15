@@ -135,6 +135,7 @@
         <activity android:name=".binding.DataBindingActivity" />
         <activity android:name=".animation.WrapperActivity" />
         <activity android:name=".graphics.BitmapScaling" />
+        <activity android:name=".lifecycle.FragmentLifecycleInsideViewPager" />
     </application>
 
 </manifest>

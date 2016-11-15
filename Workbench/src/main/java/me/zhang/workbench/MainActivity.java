@@ -44,6 +44,7 @@ import me.zhang.workbench.layout.CustomLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
+import me.zhang.workbench.lifecycle.FragmentLifecycleInsideViewPager;
 import me.zhang.workbench.lifecycle.LifecycleActivity;
 import me.zhang.workbench.memory.MemoryManagement;
 import me.zhang.workbench.others.InvokeStarDetailActivity;
@@ -128,6 +129,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Data Binding", DataBindingActivity.class);
         addMenuItem("Wrapper Property", WrapperActivity.class);
         addMenuItem("Bitmap Scaling", BitmapScaling.class);
+        addMenuItem("Lifecycle of Fragment inside ViewPager", FragmentLifecycleInsideViewPager.class);
     }
 
 }
