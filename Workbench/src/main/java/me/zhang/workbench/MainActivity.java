@@ -5,6 +5,7 @@ import me.zhang.art.ipc.parcel.ClientActivity;
 import me.zhang.art.ipc.provider.ProviderExternalUserActivity;
 import me.zhang.art.ipc.socket.TcpClientActivity;
 import me.zhang.workbench.adapter.AdapterActivity;
+import me.zhang.workbench.adapter.RecyclerActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.AnimationsActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
@@ -129,6 +130,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Data Binding", DataBindingActivity.class);
         addMenuItem("Wrapper Property", WrapperActivity.class);
         addMenuItem("Bitmap Scaling", BitmapScaling.class);
+        addMenuItem("Recycler View", RecyclerActivity.class);
         addMenuItem("Lifecycle of Fragment inside ViewPager", FragmentLifecycleInsideViewPager.class);
     }
 
