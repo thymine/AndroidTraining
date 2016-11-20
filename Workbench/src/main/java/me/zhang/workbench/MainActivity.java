@@ -64,6 +64,7 @@ import me.zhang.workbench.view.SmoothScrollActivity;
 import me.zhang.workbench.view.ViewScrollActivity;
 import me.zhang.workbench.view.VisibilityActivity;
 import me.zhang.workbench.webview.WebViewActivity;
+import me.zhang.workbench.window.UseWindow;
 
 public class MainActivity extends MenuActivity {
 
@@ -132,6 +133,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Bitmap Scaling", BitmapScaling.class);
         addMenuItem("Recycler View", RecyclerActivity.class);
         addMenuItem("Lifecycle of Fragment inside ViewPager", FragmentLifecycleInsideViewPager.class);
+        addMenuItem("Window", UseWindow.class);
     }
 
 }
