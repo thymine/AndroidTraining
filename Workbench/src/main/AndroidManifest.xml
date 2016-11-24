@@ -140,6 +140,9 @@
         <activity android:name=".lifecycle.FragmentLifecycleInsideViewPager" />
         <activity android:name=".adapter.RecyclerActivity" />
         <activity android:name=".window.UseWindow" />
+        <activity
+            android:name=".configuration.ChangeOrientation"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
