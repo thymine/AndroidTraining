@@ -17,6 +17,7 @@ import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.animation.WrapperActivity;
 import me.zhang.workbench.base.MenuActivity;
 import me.zhang.workbench.binding.DataBindingActivity;
+import me.zhang.workbench.configuration.ChangeOrientation;
 import me.zhang.workbench.design.BottomSheetActivity;
 import me.zhang.workbench.design.CustomFabActivity;
 import me.zhang.workbench.design.DynamicSurfacesActivity;
@@ -134,6 +135,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Recycler View", RecyclerActivity.class);
         addMenuItem("Lifecycle of Fragment inside ViewPager", FragmentLifecycleInsideViewPager.class);
         addMenuItem("Window", UseWindow.class);
+        addMenuItem("Change Orientation", ChangeOrientation.class);
     }
 
 }

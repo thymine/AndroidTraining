@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="button_width">@dimen/wrap_content</dimen>
+    <dimen name="text_hint">28sp</dimen>
+</resources>

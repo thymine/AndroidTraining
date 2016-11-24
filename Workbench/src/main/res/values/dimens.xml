@@ -20,4 +20,7 @@
     <dimen name="default_fab_elevation">6dp</dimen>
     <dimen name="window_height">480dp</dimen>
     <dimen name="offset_y">300dp</dimen>
+    <dimen name="button_width">@dimen/match_parent</dimen>
+
+    <dimen name="text_hint">36sp</dimen>
 </resources>
