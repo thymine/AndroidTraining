@@ -51,6 +51,7 @@ import me.zhang.workbench.lifecycle.LifecycleActivity;
 import me.zhang.workbench.memory.MemoryManagement;
 import me.zhang.workbench.others.InvokeStarDetailActivity;
 import me.zhang.workbench.remoteViews.NotificationActivity;
+import me.zhang.workbench.resources.TestGetDimens;
 import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
 import me.zhang.workbench.style.PreviewActivity;
@@ -136,6 +137,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Lifecycle of Fragment inside ViewPager", FragmentLifecycleInsideViewPager.class);
         addMenuItem("Window", UseWindow.class);
         addMenuItem("Change Orientation", ChangeOrientation.class);
+        addMenuItem("Get Dimension", TestGetDimens.class);
     }
 
 }
