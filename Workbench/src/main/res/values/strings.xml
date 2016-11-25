@@ -120,4 +120,9 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="create_window_button">Create Window Button</string>
     <string name="change_orientation">To Landscape</string>
     <string name="hint">Portrait</string>
+    <string name="px">px: %fpx</string>
+    <string name="dp">dp: %fpx</string>
+    <string name="ipx">ipx: %dpx</string>
+    <string name="idp">idp: %dpx</string>
+    <string name="sp">sp: %dpx</string>
 </resources>
