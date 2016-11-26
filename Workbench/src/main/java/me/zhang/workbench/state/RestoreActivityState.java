@@ -23,15 +23,18 @@ public class RestoreActivityState extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restore_state);
         ButterKnife.inject(this);
+
+        // savedInstanceState, 必须在尝试读取它之前检查状态 Bundle 是否为 null
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        // 始终调用 onRestoreInstanceState() 的超类实现，以便默认实现可以恢复视图层次结构的状态。
         super.onRestoreInstanceState(savedInstanceState);
-        if (savedInstanceState != null) {
-            mInputText = savedInstanceState.getString(INPUT_TEXT);
-            showInputText();
-        }
+
+        // 系统只在存在要恢复的已保存状态时调用 onRestoreInstanceState()，因此无需检查 Bundle 是否为 null
+        mInputText = savedInstanceState.getString(INPUT_TEXT);
+        showInputText();
     }
 
     @Override
