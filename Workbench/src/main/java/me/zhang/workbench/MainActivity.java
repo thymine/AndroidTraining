@@ -54,6 +54,7 @@ import me.zhang.workbench.remoteViews.NotificationActivity;
 import me.zhang.workbench.resources.TestGetDimens;
 import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
+import me.zhang.workbench.state.RestoreActivityState;
 import me.zhang.workbench.style.PreviewActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
@@ -138,6 +139,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Window", UseWindow.class);
         addMenuItem("Change Orientation", ChangeOrientation.class);
         addMenuItem("Get Dimension", TestGetDimens.class);
+        addMenuItem("Restore State", RestoreActivityState.class);
     }
 
 }

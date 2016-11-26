@@ -125,4 +125,12 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="ipx">ipx: %dpx</string>
     <string name="idp">idp: %dpx</string>
     <string name="sp">sp: %dpx</string>
+    <string name="has_id">Has Id</string>
+    <string name="no_id">No Id</string>
+
+    <string-array name="array_name">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
 </resources>
