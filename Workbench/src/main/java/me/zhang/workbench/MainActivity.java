@@ -67,6 +67,7 @@ import me.zhang.workbench.view.SmoothScrollActivity;
 import me.zhang.workbench.view.ViewScrollActivity;
 import me.zhang.workbench.view.VisibilityActivity;
 import me.zhang.workbench.webview.WebViewActivity;
+import me.zhang.workbench.window.ShowDialog;
 import me.zhang.workbench.window.UseWindow;
 
 public class MainActivity extends MenuActivity {
@@ -140,6 +141,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Change Orientation", ChangeOrientation.class);
         addMenuItem("Get Dimension", TestGetDimens.class);
         addMenuItem("Restore State", RestoreActivityState.class);
+        addMenuItem("Show Dialog", ShowDialog.class);
     }
 
 }
