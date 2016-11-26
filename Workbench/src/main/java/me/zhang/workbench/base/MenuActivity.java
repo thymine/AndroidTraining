@@ -39,6 +39,8 @@ public abstract class MenuActivity extends ListActivity {
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, keys)
         );
 
+        getListView().setFastScrollEnabled(true);
+
     }
 
     protected void addMenuItem(String label, Class<?> cls) {
