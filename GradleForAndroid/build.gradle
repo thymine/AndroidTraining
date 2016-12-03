@@ -45,3 +45,15 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.jakewharton:butterknife:6.1.0'
 }
+
+ext {
+    local = 'Hello from build.gradle'
+}
+
+task printProperties << {
+    println local // Local extra property
+    println propertiesFile // Property from file
+    if (project.hasProperty('cmd')) {
+        println cmd // Command line property
+    }
+}
