@@ -27,3 +27,6 @@ build/
 ehthumbs.db
 Thumbs.db
 captures/
+
+# Key stores
+*.jks
