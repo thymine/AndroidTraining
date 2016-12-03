@@ -14,12 +14,26 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+
     buildTypes {
-        release {
+        debug {
+            buildConfigField("String", "AUTHOR", "\"DEBUG_ZHANG\"")
+            resValue("string", "app_name", "Gradle for Android")
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        release {
+            buildConfigField("String", "AUTHOR", "\"RELEASE_ZHANG\"")
+            resValue("string", "app_name", "Gradle for Android Pro")
+
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
+
+    return void
 }
 
 dependencies {
@@ -29,4 +43,5 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     testCompile 'junit:junit:4.12'
+    compile 'com.jakewharton:butterknife:6.1.0'
 }
