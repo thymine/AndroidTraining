@@ -1,1 +1,1 @@
-include ':Lab', ':ScreenOff', ':FloatingMenu', ':Workbench', ':ApiDemos', ':Test', ':Art'
+include ':Lab', ':ScreenOff', ':FloatingMenu', ':Workbench', ':ApiDemos', ':Test', ':Art', ':GradleForAndroid'
