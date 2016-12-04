@@ -19,13 +19,13 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class AnimateActivity extends AppCompatActivity {
 
-    @InjectView(R.id.animXmlButton)
+    @BindView(R.id.animXmlButton)
     Button mXmlButton;
 
     @Override
@@ -33,7 +33,7 @@ public class AnimateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_animate);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mXmlButton.setOnClickListener(new View.OnClickListener() {
             @Override

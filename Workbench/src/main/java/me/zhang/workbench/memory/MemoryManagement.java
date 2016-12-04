@@ -9,18 +9,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import me.zhang.workbench.R;
 
 public class MemoryManagement extends AppCompatActivity {
 
-    @InjectView(R.id.heapSizeText)
+    @BindView(R.id.heapSizeText)
     TextView mHeapSizeText;
 
-    @InjectView(R.id.largeHeapSizeText)
+    @BindView(R.id.largeHeapSizeText)
     TextView mLargeHeapSizeText;
 
-    @InjectView(R.id.recycledImage)
+    @BindView(R.id.recycledImage)
     ImageView mRecycledImage;
 
     Bitmap mBitmap;
@@ -34,7 +34,7 @@ public class MemoryManagement extends AppCompatActivity {
             mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.large_bitmap);
         }
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         ActivityManager manager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         mHeapSizeText.setText(getString(R.string.heap_size, manager.getMemoryClass()));

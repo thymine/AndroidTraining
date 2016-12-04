@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 import me.zhang.workbench.design.transition.DummyActivity;
 
@@ -16,7 +16,7 @@ public class LifecycleActivity extends AppCompatActivity {
 
     private static final String TAG = LifecycleActivity.class.getSimpleName();
 
-    @InjectView(R.id.startNewActivityButton)
+    @BindView(R.id.startNewActivityButton)
     Button mStartNewActivityButton;
 
     @Override
@@ -25,7 +25,7 @@ public class LifecycleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lifecycle);
         Log.i(TAG, "onCreate: ");
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mStartNewActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override

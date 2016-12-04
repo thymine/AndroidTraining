@@ -11,20 +11,20 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class GridActivity extends AppCompatActivity {
 
-    @InjectView(R.id.grid)
+    @BindView(R.id.grid)
     GridView grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         grid.setAdapter(new GridAdapter());
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {

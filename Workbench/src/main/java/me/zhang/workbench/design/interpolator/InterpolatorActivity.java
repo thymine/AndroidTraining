@@ -7,20 +7,20 @@ import android.view.animation.Interpolator;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnItemSelected;
 import me.zhang.workbench.R;
 
 public class InterpolatorActivity extends AppCompatActivity {
 
-    @InjectView(R.id.interpolator_spinner)
+    @BindView(R.id.interpolator_spinner)
     Spinner interpolatorSpinner;
 
-    @InjectView(R.id.duration_spinner)
+    @BindView(R.id.duration_spinner)
     Spinner duratorSpinner;
 
-    @InjectView(R.id.textView)
+    @BindView(R.id.textView)
     TextView textView;
 
     private static final String PACKAGE = "android.view.animation.";
@@ -33,7 +33,7 @@ public class InterpolatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interpolator);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     @OnItemSelected({R.id.duration_spinner})

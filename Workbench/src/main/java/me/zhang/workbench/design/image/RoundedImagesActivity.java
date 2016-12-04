@@ -11,19 +11,19 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class RoundedImagesActivity extends AppCompatActivity {
 
-    @InjectView(R.id.roundedImage)
+    @BindView(R.id.roundedImage)
     ImageView mRoundedImage;
 
-    @InjectView(R.id.shapeSwitcher)
+    @BindView(R.id.shapeSwitcher)
     RadioGroup mShapeSwitcher;
 
-    @InjectView(R.id.cornerRadiusSeeker)
+    @BindView(R.id.cornerRadiusSeeker)
     SeekBar mCornerRadiusSeeker;
 
     private int mRoundedImageHeight;
@@ -33,7 +33,7 @@ public class RoundedImagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rounded_images);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         final RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(
                 getResources(), BitmapFactory.decodeResource(getResources(), R.drawable.moroccan)

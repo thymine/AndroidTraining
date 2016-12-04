@@ -5,19 +5,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class FontActivity extends AppCompatActivity {
 
-    @InjectView(R.id.display4)
+    @BindView(R.id.display4)
     TextView display4View;
 
-    @InjectView(R.id.display2)
+    @BindView(R.id.display2)
     TextView display2View;
 
-    @InjectView(R.id.headline)
+    @BindView(R.id.headline)
     TextView headlineView;
 
     @Override
@@ -25,7 +25,7 @@ public class FontActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_font);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         Typeface courgette = Typeface.createFromAsset(getAssets(), "Courgette-Regular.ttf");
         Typeface indieFlower = Typeface.createFromAsset(getAssets(), "IndieFlower.ttf");

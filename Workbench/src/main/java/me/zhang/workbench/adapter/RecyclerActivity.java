@@ -9,21 +9,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 import me.zhang.workbench.utils.UiUtils;
 
 public class RecyclerActivity extends AppCompatActivity {
 
-    @InjectView(R.id.recyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecyclerView.addItemDecoration(new SpacesItemDecoration((int) UiUtils.convertDpToPixel(2, this)));

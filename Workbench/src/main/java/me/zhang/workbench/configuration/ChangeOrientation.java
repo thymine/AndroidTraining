@@ -8,15 +8,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class ChangeOrientation extends AppCompatActivity {
 
     private static final String TAG = "ChangeOrientation";
 
-    @InjectView(R.id.orientation_button)
+    @BindView(R.id.orientation_button)
     Button mOrientationButton;
 
     @Override
@@ -26,7 +26,7 @@ public class ChangeOrientation extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_change_orientation);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mOrientationButton.setOnClickListener(new View.OnClickListener() {
             @Override
