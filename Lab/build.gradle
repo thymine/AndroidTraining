@@ -42,12 +42,12 @@ dependencies {
     compile supportDependencies.design
     compile gmsDependencies.playServicesAppindexing
 
-    // http://square.github.io/picasso/
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    // https://github.com/JakeWharton/butterknife
-    compile 'com.jakewharton:butterknife:8.0.1'
-    // https://github.com/square/leakcanary
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1' // or 1.4-beta1
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1' // or 1.4-beta1
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1' // or 1.4-beta1
+    compile squareDependencies.picasso
+
+    compile jakeWhartonDependencies.butterknife
+    annotationProcessor jakeWhartonDependencies.butterknifeCompiler
+
+    debugCompile squareDependencies.leakcanaryAndroid
+    releaseCompile squareDependencies.leakcanaryAndroidNoOp
+    testCompile squareDependencies.leakcanaryAndroidNoOp
 }
