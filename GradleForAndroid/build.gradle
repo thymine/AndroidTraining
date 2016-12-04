@@ -43,8 +43,8 @@ dependencies {
     })
     compile supportDependencies.appCompatV7 // Refer from dependencies.gradle
     testCompile junitDependencies.junit
-    compile jakewhartonDependencies.butterKnife
-    annotationProcessor jakewhartonDependencies.butterknifeCompiler
+    compile jakeWhartonDependencies.butterknife
+    annotationProcessor jakeWhartonDependencies.butterknifeCompiler
 }
 
 ext {
