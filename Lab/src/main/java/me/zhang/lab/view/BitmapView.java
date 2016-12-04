@@ -1,7 +1,6 @@
 package me.zhang.lab.view;
 
 import android.content.Context;
-import android.graphics.AvoidXfermode;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -36,7 +35,7 @@ public class BitmapView extends View {
     private Paint paint10;
 
     @SuppressWarnings("deprecation")
-    private AvoidXfermode avoidXfermode;// AV模式
+//    private AvoidXfermode avoidXfermode;// AV模式
 
     private Context context;
     private Bitmap bitmap;
@@ -62,7 +61,7 @@ public class BitmapView extends View {
          * 当画布中有跟0XFFFFFFFF色不一样的地方时候才“染”色
          */
 //        avoidXfermode = new AvoidXfermode(0XFFFFFFFF, 0, AvoidXfermode.Mode.TARGET);
-        avoidXfermode = new AvoidXfermode(0XFFFFFFFF, 0, AvoidXfermode.Mode.AVOID);
+//        avoidXfermode = new AvoidXfermode(0XFFFFFFFF, 0, AvoidXfermode.Mode.AVOID);
 
         paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
         paints[0] = paint1;
@@ -197,7 +196,7 @@ public class BitmapView extends View {
         paint10.setARGB(255, 211, 53, 243);
 
         // 设置AV模式
-        paint10.setXfermode(avoidXfermode);
+//        paint10.setXfermode(avoidXfermode);
 
         // 画一个位图大小一样的矩形
         canvas.drawRect(0, bitmap.getHeight() * 3, bitmap.getWidth(), bitmap.getHeight() * 4, paint10);
