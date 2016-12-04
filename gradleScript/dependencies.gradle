@@ -1,0 +1,31 @@
+ext {
+    // Support Libraries dependencies
+    supportLibVersion = '25.0.1'
+    supportDependencies = [
+            supportV4         : 'com.android.support:support-v4:' + supportLibVersion,
+            recyclerViewV7    : "com.android.support:recyclerview-v7:${supportLibVersion}",
+            cardViewV7        : "com.android.support:cardview-v7:${supportLibVersion}",
+            appCompatV7       : "com.android.support:appcompat-v7:${supportLibVersion}",
+            paletteV7         : "com.android.support:palette-v7:${supportLibVersion}",
+            supportAnnotations: "com.android.support:support-annotations:${supportLibVersion}",
+            design            : "com.android.support:design:${supportLibVersion}",
+            multidex          : 'com.android.support:multidex:1.0.1',
+    ]
+
+    // Unit test
+    junitDependencies = [
+            junit: 'junit:junit:4.12',
+    ]
+
+    // From Google
+    googlePlayServicesVersion = '9.0.2'
+    gmsDependencies = [
+            playServicesAnalytics: 'com.google.android.gms:play-services-analytics:' + googlePlayServicesVersion,
+    ]
+
+    // From Jake Wharton
+    jakewhartonDependencies = [
+            butterKnife        : 'com.jakewharton:butterknife:8.4.0',
+            butterknifeCompiler: 'com.jakewharton:butterknife-compiler:8.4.0',
+    ]
+}

@@ -6,8 +6,8 @@ android {
 
     defaultConfig {
         applicationId "me.zhang.gradleforandroid"
-        minSdkVersion 14
-        targetSdkVersion 24
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -41,9 +41,10 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    testCompile 'junit:junit:4.12'
-    compile 'com.jakewharton:butterknife:6.1.0'
+    compile supportDependencies.appCompatV7 // Refer from dependencies.gradle
+    testCompile junitDependencies.junit
+    compile jakewhartonDependencies.butterKnife
+    annotationProcessor jakewhartonDependencies.butterknifeCompiler
 }
 
 ext {

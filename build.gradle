@@ -20,16 +20,11 @@ allprojects {
 }
 
 ext {
-    compileSdkVersion = 24
+    compileSdkVersion = 25
     buildToolsVersion = "25.0.1"
-
-    // Version
-    supportLibrary = '23.4.0'
-
-    // Support Libraries dependencies
-    supportDependencies = [
-            appCompat: "com.android.support:appcompat-v7:${supportLibrary}",
-            design   : "com.android.support:design:${supportLibrary}",
-            v4       : "com.android.support:support-v4:${supportLibrary}",
-    ]
+    minSdkVersion = 14
+    targetSdkVersion = 25
 }
+
+// Load dependencies
+apply from: 'gradleScript/dependencies.gradle'
