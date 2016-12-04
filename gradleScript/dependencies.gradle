@@ -5,6 +5,7 @@ ext {
             supportV4         : 'com.android.support:support-v4:' + supportLibVersion,
             recyclerViewV7    : "com.android.support:recyclerview-v7:${supportLibVersion}",
             cardViewV7        : "com.android.support:cardview-v7:${supportLibVersion}",
+            gridLayoutV7      : "com.android.support:gridlayout-v7:${supportLibVersion}",
             appCompatV7       : "com.android.support:appcompat-v7:${supportLibVersion}",
             paletteV7         : "com.android.support:palette-v7:${supportLibVersion}",
             supportAnnotations: "com.android.support:support-annotations:${supportLibVersion}",
@@ -17,15 +18,40 @@ ext {
             junit: 'junit:junit:4.12',
     ]
 
-    // From Google
+    // Google
     googlePlayServicesVersion = '9.0.2'
     gmsDependencies = [
-            playServicesAnalytics: 'com.google.android.gms:play-services-analytics:' + googlePlayServicesVersion,
+            playServicesAnalytics  : 'com.google.android.gms:play-services-analytics:' + googlePlayServicesVersion,
+            playServicesAppindexing: 'com.google.android.gms:play-services-appindexing:' + googlePlayServicesVersion,
     ]
 
-    // From Jake Wharton
-    jakewhartonDependencies = [
-            butterKnife        : 'com.jakewharton:butterknife:8.4.0',
+    // Jake Wharton
+    jakeWhartonDependencies = [
+            // https://github.com/JakeWharton/butterknife
+            butterknife        : 'com.jakewharton:butterknife:8.4.0',
             butterknifeCompiler: 'com.jakewharton:butterknife-compiler:8.4.0',
+            // https://github.com/JakeWharton/RxBinding
+            rxbinding          : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
+    ]
+
+    // Square
+    squareDependencies = [
+            picasso      : 'com.squareup.picasso:picasso:2.5.2',
+            retrofit     : 'com.squareup.retrofit2:retrofit:2.1.0',
+            converterGson: 'com.squareup.retrofit2:converter-gson:2.1.0',
+    ]
+
+    // ReactiveX
+    reactiveXDependencies = [
+            rxandroid: 'io.reactivex:rxandroid:1.2.1',
+            // Because RxAndroid releases are few and far between, it is recommended you also
+            // explicitly depend on RxJava's latest version for bug fixes and new features.
+            rxjava   : 'io.reactivex:rxjava:1.1.6',
+    ]
+
+    // bumptech
+    bumptechDependencies = [
+            // https://github.com/bumptech/glide
+            glide: 'com.github.bumptech.glide:glide:3.7.0',
     ]
 }
