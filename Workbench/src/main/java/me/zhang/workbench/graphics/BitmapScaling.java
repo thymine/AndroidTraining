@@ -8,22 +8,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class BitmapScaling extends AppCompatActivity {
 
-    @InjectView(R.id.scaledImageContainer)
+    @BindView(R.id.scaledImageContainer)
     LinearLayout mScaledImageContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bitmap_scaling);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         for (int i = 2; i < 10; i++) {
             addScaledImageView(i);

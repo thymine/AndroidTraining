@@ -8,34 +8,34 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import me.zhang.workbench.R;
 
 public class ImmersiveImagesActivity extends AppCompatActivity {
 
-    @InjectView(R.id.imageView)
+    @BindView(R.id.imageView)
     ImageView imageView;
 
     // Radio Buttons
-    @InjectView(R.id.noneBtn)
+    @BindView(R.id.noneBtn)
     RadioButton noneBtn;
-    @InjectView(R.id.centerBtn)
+    @BindView(R.id.centerBtn)
     RadioButton centerBtn;
-    @InjectView(R.id.centerCropBtn)
+    @BindView(R.id.centerCropBtn)
     RadioButton centerCropBtn;
-    @InjectView(R.id.centerInsideBtn)
+    @BindView(R.id.centerInsideBtn)
     RadioButton centerInsideBtn;
-    @InjectView(R.id.fitCenterBtn)
+    @BindView(R.id.fitCenterBtn)
     RadioButton fitCenterBtn;
-    @InjectView(R.id.fitEndBtn)
+    @BindView(R.id.fitEndBtn)
     RadioButton fitEndBtn;
-    @InjectView(R.id.fitStartBtn)
+    @BindView(R.id.fitStartBtn)
     RadioButton fitStartBtn;
-    @InjectView(R.id.fitXYBtn)
+    @BindView(R.id.fitXYBtn)
     RadioButton fitXYBtn;
-    @InjectView(R.id.matrixBtn)
+    @BindView(R.id.matrixBtn)
     RadioButton matrixBtn;
 
     Matrix matrix;
@@ -45,7 +45,7 @@ public class ImmersiveImagesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_immersive_images);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         fitCenterBtn.setChecked(true);
         matrix = new Matrix();

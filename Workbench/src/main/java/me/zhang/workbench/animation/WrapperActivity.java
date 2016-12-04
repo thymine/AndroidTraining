@@ -10,31 +10,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class WrapperActivity extends AppCompatActivity {
 
     public static final int DURATION = 3000;
     private static final String TAG = WrapperActivity.class.getSimpleName();
-    @InjectView(R.id.wrapperButton)
+    @BindView(R.id.wrapperButton)
     Button mWrapperButton;
 
-    @InjectView(R.id.wrapperText)
+    @BindView(R.id.wrapperText)
     TextView mWrapperText;
 
-    @InjectView(R.id.wrapperView)
+    @BindView(R.id.wrapperView)
     View mWrapperView;
 
-    @InjectView(R.id.valueAnimatorView)
+    @BindView(R.id.valueAnimatorView)
     View mValueAnimatorView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wrapper);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mWrapperButton.setOnClickListener(new View.OnClickListener() {
             @Override

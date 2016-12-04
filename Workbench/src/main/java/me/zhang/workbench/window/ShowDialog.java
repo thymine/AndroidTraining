@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
-import butterknife.ButterKnife;
 import me.zhang.workbench.R;
 
 public class ShowDialog extends AppCompatActivity {
@@ -18,7 +17,6 @@ public class ShowDialog extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_dialog);
-        ButterKnife.inject(this);
 
         mActivityDialog = new Dialog(this, 0);
         mActivityDialog.setContentView(R.layout.dialog_content);

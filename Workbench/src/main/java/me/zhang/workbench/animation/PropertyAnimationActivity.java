@@ -9,13 +9,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class PropertyAnimationActivity extends AppCompatActivity {
 
-    @InjectView(R.id.demoView)
+    @BindView(R.id.demoView)
     View mDemoView;
 
     @Override
@@ -23,7 +23,7 @@ public class PropertyAnimationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_animation);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     @Override

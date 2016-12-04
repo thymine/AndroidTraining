@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class RestoreActivityState extends AppCompatActivity {
 
     public static final String INPUT_TEXT = "new_text";
-    @InjectView(R.id.new_edittext)
+    @BindView(R.id.new_edittext)
     EditText mNewEditText;
 
     private String mInputText;
@@ -22,7 +22,7 @@ public class RestoreActivityState extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restore_state);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         // savedInstanceState, 必须在尝试读取它之前检查状态 Bundle 是否为 null
     }

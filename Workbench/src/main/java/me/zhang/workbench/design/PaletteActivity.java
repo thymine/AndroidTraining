@@ -22,22 +22,22 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import me.zhang.workbench.R;
 
 public class PaletteActivity extends AppCompatActivity {
 
-    @InjectView(R.id.fab)
+    @BindView(R.id.fab)
     FloatingActionButton fab;
     SwatchAdapter swatchAdapter;
-    @InjectView(R.id.grid_view)
+    @BindView(R.id.grid_view)
     GridView gridView;
-    @InjectView(R.id.tool_bar)
+    @BindView(R.id.tool_bar)
     Toolbar toolbar;
-    @InjectView(R.id.imageView)
+    @BindView(R.id.imageView)
     ImageView imageView;
     int numPixels;
 
@@ -47,7 +47,7 @@ public class PaletteActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_palette);
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         toolbar.setTitle(getString(R.string.app_name));
 

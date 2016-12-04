@@ -10,13 +10,13 @@ import android.view.Gravity;
 import android.view.animation.AnimationUtils;
 import android.widget.ScrollView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import me.zhang.workbench.R;
 
 public class DummyActivity extends AppCompatActivity {
 
-    @InjectView(R.id.detailScrollView)
+    @BindView(R.id.detailScrollView)
     ScrollView mScrollView;
 
     @Override
@@ -33,7 +33,7 @@ public class DummyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_dummy);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     @Override

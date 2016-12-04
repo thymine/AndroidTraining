@@ -5,31 +5,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 import me.zhang.workbench.R;
 
 public class TestGetDimens extends AppCompatActivity {
 
-    @InjectView(R.id.dp)
+    @BindView(R.id.dp)
     TextView mDp;
 
-    @InjectView(R.id.px)
+    @BindView(R.id.px)
     TextView mPx;
 
-    @InjectView(R.id.idp)
+    @BindView(R.id.idp)
     TextView mIdp;
 
-    @InjectView(R.id.ipx)
+    @BindView(R.id.ipx)
     TextView mIpx;
 
-    @InjectView(R.id.sp)
+    @BindView(R.id.sp)
     TextView mSp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_get_dimens);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         mDp.setText(getString(R.string.dp, getResources().getDimension(R.dimen.dp)));
         mPx.setText(getString(R.string.px, getResources().getDimension(R.dimen.px)));
