@@ -2,7 +2,6 @@ package me.zhang.lab.view;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.AvoidXfermode;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -24,7 +23,7 @@ public class CustomView extends View {
     private Paint mPaint;// 画笔
     private Context mContext;// 上下文环境引用
     private Bitmap bitmap;// 位图
-    private AvoidXfermode avoidXfermode;// AV模式
+//    private AvoidXfermode avoidXfermode;// AV模式
 
     private int x, y, w, h;// 位图绘制时左上角的起点坐标
 
@@ -53,7 +52,7 @@ public class CustomView extends View {
 		/*
          * 当画布中有跟0XFFFFFFFF色不一样的地方时候才“染”色
 		 */
-        avoidXfermode = new AvoidXfermode(0XFFFFFFFF, 255, AvoidXfermode.Mode.AVOID);
+//        avoidXfermode = new AvoidXfermode(0XFFFFFFFF, 255, AvoidXfermode.Mode.AVOID);
     }
 
     /**
@@ -85,7 +84,7 @@ public class CustomView extends View {
         mPaint.setARGB(255, 211, 53, 243);
 
         // 设置AV模式
-        mPaint.setXfermode(avoidXfermode);
+//        mPaint.setXfermode(avoidXfermode);
 
         // 画一个位图大小一样的矩形
         canvas.drawRect(x, y, w, h, mPaint);
