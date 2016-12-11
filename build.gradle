@@ -20,10 +20,10 @@ allprojects {
 }
 
 ext {
-    compileSdkVersion = 25
-    buildToolsVersion = "25.0.1"
+    compileSdkVersion = 24
+    buildToolsVersion = "24.0.3"
     minSdkVersion = 14
-    targetSdkVersion = 25
+    targetSdkVersion = 24
 }
 
 // Load dependencies
