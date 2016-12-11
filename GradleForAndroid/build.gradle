@@ -31,7 +31,17 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+
+        debugRelease.initWith(buildTypes.release)
+        debugRelease {
+            debuggable true
+            applicationIdSuffix '.debugrelease'
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+
     }
+    sourceSets.debugRelease.setRoot('src/release')
 
     return void
 }
