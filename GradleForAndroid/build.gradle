@@ -43,6 +43,19 @@ android {
     }
     sourceSets.debugRelease.setRoot('src/release')
 
+    productFlavors {
+        free {
+            targetSdkVersion 23
+
+            return void
+        }
+
+        paid {
+
+            return void
+        }
+    }
+
     return void
 }
 

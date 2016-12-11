@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.zhang.gradleforandroid.http.HttpApi;
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.packageName)
     TextView mPackageName;
 
+    @BindView(R.id.minSdkVersion)
+    TextView mMinSdkVersion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,5 +34,6 @@ public class MainActivity extends AppCompatActivity {
         mServer.setText(HttpApi.SERVER);
 
         mPackageName.setText(getApplicationContext().getPackageName());
+        mMinSdkVersion.setText(String.format(Locale.getDefault(), "targetSdkVersion: %d", getApplicationContext().getApplicationInfo().targetSdkVersion));
     }
 }
