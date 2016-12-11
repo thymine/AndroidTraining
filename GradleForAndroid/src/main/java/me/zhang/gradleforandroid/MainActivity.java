@@ -6,11 +6,15 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.zhang.gradleforandroid.http.HttpApi;
 
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.author)
     TextView mAuthor;
+
+    @BindView(R.id.server)
+    TextView mServer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,5 +23,6 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mAuthor.setText(BuildConfig.AUTHOR);
+        mServer.setText(HttpApi.SERVER);
     }
 }
