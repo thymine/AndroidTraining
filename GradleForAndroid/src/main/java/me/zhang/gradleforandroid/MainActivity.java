@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.server)
     TextView mServer;
 
+    @BindView(R.id.packageName)
+    TextView mPackageName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,5 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAuthor.setText(BuildConfig.AUTHOR);
         mServer.setText(HttpApi.SERVER);
+
+        mPackageName.setText(getApplicationContext().getPackageName());
     }
 }
