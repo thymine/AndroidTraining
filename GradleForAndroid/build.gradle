@@ -46,6 +46,11 @@ android {
     return void
 }
 
+// Manipulate the Model
+android.buildTypes.each {
+    type -> type.applicationIdSuffix = ".$type.name"
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
