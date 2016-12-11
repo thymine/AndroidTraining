@@ -43,14 +43,21 @@ android {
     }
     sourceSets.debugRelease.setRoot('src/release')
 
+    flavorDimensions('abi', 'version')
     productFlavors {
+        arm {
+            dimension 'abi'
+        }
+
         free {
+            dimension 'version'
             targetSdkVersion 23
 
             return void
         }
 
         paid {
+            dimension 'version'
 
             return void
         }
