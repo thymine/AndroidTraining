@@ -43,6 +43,7 @@ import me.zhang.workbench.graphics.BitmapScaling;
 import me.zhang.workbench.handler.HandlerActivity;
 import me.zhang.workbench.layout.ConstraintActivity;
 import me.zhang.workbench.layout.CustomLayoutActivity;
+import me.zhang.workbench.layout.GridLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
@@ -142,6 +143,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Get Dimension", TestGetDimens.class);
         addMenuItem("Restore State", RestoreActivityState.class);
         addMenuItem("Show Dialog", ShowDialog.class);
+        addMenuItem("GridLayout", GridLayoutActivity.class);
     }
 
 }
