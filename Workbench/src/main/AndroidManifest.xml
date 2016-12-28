@@ -147,7 +147,8 @@
             android:configChanges="orientation|screenSize" />
         <activity android:name=".resources.TestGetDimens" />
         <activity android:name=".state.RestoreActivityState" />
-        <activity android:name=".window.ShowDialog"></activity>
+        <activity android:name=".window.ShowDialog" />
+        <activity android:name=".layout.GridLayoutActivity" />
     </application>
 
 </manifest>
