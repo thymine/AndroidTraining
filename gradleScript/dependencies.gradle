@@ -57,4 +57,10 @@ ext {
             // https://github.com/bumptech/glide
             glide: 'com.github.bumptech.glide:glide:3.7.0',
     ]
+
+    // astuetz
+    astuetzDependencies = [
+            // https://github.com/astuetz/PagerSlidingTabStrip
+            PagerSlidingTabStrip: 'com.astuetz:pagerslidingtabstrip:1.0.1',
+    ]
 }

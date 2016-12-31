@@ -47,4 +47,6 @@ dependencies {
     compile reactiveXDependencies.rxjava
 
     compile bumptechDependencies.glide
+
+    compile astuetzDependencies.PagerSlidingTabStrip
 }
