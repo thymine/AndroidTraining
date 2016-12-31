@@ -6,6 +6,7 @@ import me.zhang.art.ipc.provider.ProviderExternalUserActivity;
 import me.zhang.art.ipc.socket.TcpClientActivity;
 import me.zhang.workbench.adapter.AdapterActivity;
 import me.zhang.workbench.adapter.RecyclerActivity;
+import me.zhang.workbench.adapter.viewPagerList.ViewPagerListActivity;
 import me.zhang.workbench.animation.AnimateLayoutChangesActivity;
 import me.zhang.workbench.animation.AnimationsActivity;
 import me.zhang.workbench.animation.CardFlipActivity;
@@ -144,6 +145,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Restore State", RestoreActivityState.class);
         addMenuItem("Show Dialog", ShowDialog.class);
         addMenuItem("GridLayout", GridLayoutActivity.class);
+        addMenuItem("ViewPager List", ViewPagerListActivity.class);
     }
 
 }
