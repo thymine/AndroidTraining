@@ -158,6 +158,7 @@
         <activity android:name=".layout.GridLayoutActivity" />
         <activity android:name=".adapter.viewPagerList.ViewPagerListActivity" />
         <activity android:name=".graphics.OpenGLES20Activity" />
+        <activity android:name=".hello.HelloWorldActivity"></activity>
     </application>
 
 </manifest>
