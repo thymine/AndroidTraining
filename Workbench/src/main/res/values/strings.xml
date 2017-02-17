@@ -128,6 +128,9 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="no_id">No Id</string>
     <string name="show_activity_dialog">Show Activity Dialog</string>
     <string name="show_application_dialog">Show Application Dialog</string>
+    <string name="search_title">Filter</string>
+    <string name="search_hint">Filter entries…</string>
+    <string name="no_results">No Results</string>
 
     <string-array name="array_name">
         <item>Array Item One</item>
