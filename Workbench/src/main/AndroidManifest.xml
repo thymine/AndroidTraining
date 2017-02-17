@@ -27,14 +27,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity
-            android:name=".MainActivity"
-            android:theme="@android:style/Theme.Holo.Light.DarkActionBar">
+        <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
         </activity>
         <activity
             android:name=".webview.WebViewActivity"
@@ -157,7 +160,7 @@
         <activity android:name=".layout.GridLayoutActivity" />
         <activity android:name=".adapter.viewPagerList.ViewPagerListActivity" />
         <activity android:name=".graphics.OpenGLES20Activity" />
-        <activity android:name=".hello.HelloWorldActivity"></activity>
+        <activity android:name=".hello.HelloWorldActivity" />
     </application>
 
 </manifest>
