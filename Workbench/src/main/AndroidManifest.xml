@@ -161,6 +161,16 @@
         <activity android:name=".adapter.viewPagerList.ViewPagerListActivity" />
         <activity android:name=".graphics.OpenGLES20Activity" />
         <activity android:name=".hello.HelloWorldActivity" />
+        <activity
+            android:name=".launchMode.AlphaActivity"
+            android:label="@string/alpha"
+            android:launchMode="singleTask"
+            android:taskAffinity=".alpha" />
+        <activity
+            android:name=".launchMode.BetaActivity"
+            android:label="@string/beta"
+            android:launchMode="singleTask"
+            android:taskAffinity=".beta" />
     </application>
 
 </manifest>
