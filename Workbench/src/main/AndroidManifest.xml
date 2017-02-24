@@ -28,16 +28,15 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
-
         </activity>
         <activity
             android:name=".webview.WebViewActivity"
@@ -171,6 +170,7 @@
             android:label="@string/beta"
             android:launchMode="singleTask"
             android:taskAffinity=".beta" />
+        <activity android:name=".intent.IntentActivity"></activity>
     </application>
 
 </manifest>

@@ -44,6 +44,7 @@ import me.zhang.workbench.graphics.BitmapScaling;
 import me.zhang.workbench.graphics.OpenGLES20Activity;
 import me.zhang.workbench.handler.HandlerActivity;
 import me.zhang.workbench.hello.HelloWorldActivity;
+import me.zhang.workbench.intent.IntentActivity;
 import me.zhang.workbench.launchMode.AlphaActivity;
 import me.zhang.workbench.layout.ConstraintActivity;
 import me.zhang.workbench.layout.CustomLayoutActivity;
@@ -152,6 +153,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("OpenGL ES", OpenGLES20Activity.class);
         addMenuItem("Hello World", HelloWorldActivity.class);
         addMenuItem("Launch Mode", AlphaActivity.class);
+        addMenuItem("Intent", IntentActivity.class);
     }
 
 }
