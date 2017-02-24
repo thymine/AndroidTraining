@@ -17,6 +17,7 @@
         android:name="android.permission.SYSTEM_ALERT_WINDOW"
         android:protectionLevel="signature|preinstalled|appop|pre23|development" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
         android:name=".MainApp"
@@ -170,7 +171,7 @@
             android:label="@string/beta"
             android:launchMode="singleTask"
             android:taskAffinity=".beta" />
-        <activity android:name=".intent.IntentActivity"></activity>
+        <activity android:name=".intent.IntentActivity" />
     </application>
 
 </manifest>
