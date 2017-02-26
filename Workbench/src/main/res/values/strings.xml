@@ -139,6 +139,8 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="set_alarm">Set Alarm</string>
     <string name="thread_local">Thread Local</string>
     <string name="asynctask">AsyncTask</string>
+    <string name="execute_serial">Execute Serial</string>
+    <string name="execute_parallel">Execute Parallel</string>
 
     <string-array name="array_name">
         <item>Array Item One</item>
