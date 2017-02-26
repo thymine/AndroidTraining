@@ -19,4 +19,61 @@
         android:max="100"
         tools:progress="30" />
 
+    <ProgressBar
+        android:id="@+id/downloadProgress1"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:max="100"
+        tools:progress="40" />
+
+    <ProgressBar
+        android:id="@+id/downloadProgress2"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:max="100"
+        tools:progress="50" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/executeSerial"
+            style="?buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="execute"
+            android:text="@string/execute_serial"
+            android:textAllCaps="false" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="?android:attr/dividerVertical" />
+
+        <Button
+            android:id="@+id/executeParallel"
+            style="?buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="execute"
+            android:text="@string/execute_parallel"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
 </LinearLayout>
