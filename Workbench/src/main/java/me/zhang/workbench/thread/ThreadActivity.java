@@ -20,6 +20,9 @@ public class ThreadActivity extends AppCompatActivity {
             case R.id.threadLocal:
                 startActivity(new Intent(this, ThreadLocalActivity.class));
                 break;
+            case R.id.asyncTask:
+                startActivity(new Intent(this, AsyncTaskActivity.class));
+                break;
         }
     }
 
