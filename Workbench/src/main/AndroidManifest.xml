@@ -174,7 +174,10 @@
         <activity android:name=".intent.IntentActivity" />
         <activity android:name=".thread.ThreadActivity" />
         <activity android:name=".thread.ThreadLocalActivity" />
-        <activity android:name=".thread.AsyncTaskActivity"></activity>
+        <activity android:name=".thread.AsyncTaskActivity" />
+        <activity android:name=".thread.IntentServiceActivity" />
+
+        <service android:name=".thread.IntentServiceActivity$LocalIntentServicie" />
     </application>
 
 </manifest>
