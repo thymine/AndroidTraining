@@ -46,6 +46,12 @@ public class AsyncTaskActivity extends AppCompatActivity {
         }
 
         @Override
+        protected void onCancelled() {
+            super.onCancelled();
+            Toast.makeText(AsyncTaskActivity.this, "下载取消！", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             Toast.makeText(AsyncTaskActivity.this, "下载完毕！", Toast.LENGTH_SHORT).show();
