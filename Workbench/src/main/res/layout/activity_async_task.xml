@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_thread"
+    android:id="@+id/activity_async_task"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,16 +9,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="me.zhang.workbench.thread.ThreadActivity">
+    tools:context="me.zhang.workbench.thread.AsyncTaskActivity">
 
-    <Button
-        android:id="@+id/threadLocal"
-        style="@style/ButtonStyle"
-        android:text="@string/thread_local" />
-
-    <Button
-        android:id="@+id/asyncTask"
-        style="@style/ButtonStyle"
-        android:text="@string/asynctask" />
+    <ProgressBar
+        android:id="@+id/downloadProgress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        tools:progress="30" />
 
 </LinearLayout>
