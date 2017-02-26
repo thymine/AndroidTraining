@@ -62,6 +62,7 @@ import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
 import me.zhang.workbench.state.RestoreActivityState;
 import me.zhang.workbench.style.PreviewActivity;
+import me.zhang.workbench.thread.ThreadActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
@@ -154,6 +155,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Hello World", HelloWorldActivity.class);
         addMenuItem("Launch Mode", AlphaActivity.class);
         addMenuItem("Intent", IntentActivity.class);
+        addMenuItem("Thread", ThreadActivity.class);
     }
 
 }
