@@ -172,6 +172,8 @@
             android:launchMode="singleTask"
             android:taskAffinity=".beta" />
         <activity android:name=".intent.IntentActivity" />
+        <activity android:name=".thread.ThreadActivity" />
+        <activity android:name=".thread.ThreadLocalActivity" />
     </application>
 
 </manifest>
