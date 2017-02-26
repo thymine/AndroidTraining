@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_thread"
+    android:id="@+id/activity_intent_service"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,21 +9,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="me.zhang.workbench.thread.ThreadActivity">
+    tools:context="me.zhang.workbench.thread.IntentServiceActivity">
 
     <Button
-        android:id="@+id/threadLocal"
+        android:id="@+id/startIntentService"
         style="@style/ButtonStyle"
-        android:text="@string/thread_local" />
-
-    <Button
-        android:id="@+id/asyncTask"
-        style="@style/ButtonStyle"
-        android:text="@string/asynctask" />
-
-    <Button
-        android:id="@+id/intentService"
-        style="@style/ButtonStyle"
-        android:text="@string/intent_service" />
+        android:text="@string/start_intent_service" />
 
 </LinearLayout>

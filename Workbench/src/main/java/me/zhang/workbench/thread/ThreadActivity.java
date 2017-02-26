@@ -23,6 +23,9 @@ public class ThreadActivity extends AppCompatActivity {
             case R.id.asyncTask:
                 startActivity(new Intent(this, AsyncTaskActivity.class));
                 break;
+            case R.id.intentService:
+                startActivity(new Intent(this, IntentServiceActivity.class));
+                break;
         }
     }
 
