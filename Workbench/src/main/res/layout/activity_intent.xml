@@ -44,4 +44,12 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/intentsCommon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:autoLink="web"
+        android:gravity="center"
+        android:text="@string/intents_common_url" />
+
 </LinearLayout>
