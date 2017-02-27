@@ -31,11 +31,22 @@ public class IntentActivity extends AppCompatActivity {
                         .build();
                 intent.setData(uri);
                 break;
+
+            /* Alarms */
             case R.id.setAlarm:
                 intent.setAction(AlarmClock.ACTION_SET_ALARM)
                         .putExtra(AlarmClock.EXTRA_MESSAGE, "Hi, clock!")
                         .putExtra(AlarmClock.EXTRA_HOUR, 13)
                         .putExtra(AlarmClock.EXTRA_MINUTES, 0);
+                break;
+            case R.id.setTimer:
+                intent.setAction(AlarmClock.ACTION_SET_TIMER)
+                        .putExtra(AlarmClock.EXTRA_MESSAGE, "Hi, timer!")
+//                        .putExtra(AlarmClock.EXTRA_LENGTH, 3)
+                        .putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+                break;
+            case R.id.showAlarms:
+                intent.setAction(AlarmClock.ACTION_SHOW_ALARMS);
                 break;
         }
 
