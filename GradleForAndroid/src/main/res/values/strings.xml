@@ -1,4 +1,6 @@
 <resources>
     <!-- No need here, since we configure string resources inside gradle file. -->
     <!--<string name="app_name">GradleForAndroid</string>-->
+    <string name="login">Login</string>
+    <string name="welcome">Welcome!</string>
 </resources>
