@@ -18,6 +18,11 @@ ext {
             junit: 'junit:junit:4.12',
     ]
 
+    // Robolectric
+    robolectricDependencies = [
+            robolectric   : 'org.robolectric:robolectric:3.2.2',
+    ]
+
     // Google
     googlePlayServicesVersion = '9.0.2'
     gmsDependencies = [

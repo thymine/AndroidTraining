@@ -78,6 +78,7 @@ dependencies {
     })
     compile supportDependencies.appCompatV7 // Refer from dependencies.gradle
     testCompile junitDependencies.junit
+    testCompile robolectricDependencies.robolectric
     compile jakeWhartonDependencies.butterknife
     annotationProcessor jakeWhartonDependencies.butterknifeCompiler
 }
