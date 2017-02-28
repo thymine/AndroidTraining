@@ -1,5 +1,6 @@
 //apply plugin: 'com.android.application'
 project.apply([plugin: 'com.android.application'])
+project.apply([from: 'script/local.gradle'])
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
