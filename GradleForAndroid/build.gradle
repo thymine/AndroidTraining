@@ -1,4 +1,5 @@
-apply plugin: 'com.android.application'
+//apply plugin: 'com.android.application'
+project.apply([plugin: 'com.android.application'])
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -71,12 +72,16 @@ android.buildTypes.each {
     type -> type.applicationIdSuffix = ".$type.name"
 }
 
-dependencies {
+//dependencies {
+project.dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile supportDependencies.appCompatV7 // Refer from dependencies.gradle
+//    compile supportDependencies.appCompatV7 // Refer from dependencies.gradle
+    add('compile', supportDependencies.appCompatV7, {
+        // Configuration statements
+    })
     testCompile junitDependencies.junit
     testCompile robolectricDependencies.robolectric
     compile jakeWhartonDependencies.butterknife
