@@ -1,3 +1,21 @@
-task hello {
-    println 'Hello, world!'
+task hello << {
+    println 'Execution'
+}
+
+task init {
+    println 'Configuration'
+    return null
+}
+
+task(hi) << {
+    println('Hi')
+}
+
+task('hey') << {
+    def name = 'Jim'
+    println "Hey, $name"
+}
+
+tasks.create(name: 'great') << {
+    println('Nice')
 }
