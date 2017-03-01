@@ -2,8 +2,35 @@ task hello << {
     println 'Execution'
 }
 
+// doFirst() always adds an action to the very beginning of a task,
+// and doLast() adds an action to the very end.
 task init {
     println 'Configuration'
+
+    doFirst { // doFirst: #3
+        println 'Not really first.'
+    }
+
+    doFirst { // doFirst: #2
+        println "I'm first."
+    }
+
+    doLast { // doLast: #1
+        println 'Not really last.'
+    }
+
+    doLast { // doLast: #2
+        println 'Goodbye'
+    }
+
+    doLast { // doLast: #3
+        println("I'm last.")
+    }
+
+    doFirst { // doFirst: #1
+        println 'Hello'
+    }
+
     return null
 }
 
@@ -19,3 +46,9 @@ task('hey') << {
 tasks.create(name: 'great') << {
     println('Nice')
 }
+
+hi.mustRunAfter hey
+great.mustRunAfter hi
+
+great.dependsOn hi
+// hey.dependsOn hi // Circular dependency
