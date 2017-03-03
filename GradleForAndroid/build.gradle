@@ -88,6 +88,11 @@ android {
     return void
 }
 
+android.applicationVariants.all { variant ->
+    // Do something
+    println("applicationVariants $variant.name")
+}
+
 // Manipulate the Model
 android.buildTypes.each {
     type -> type.applicationIdSuffix = ".$type.name"

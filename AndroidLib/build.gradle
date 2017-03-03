@@ -20,6 +20,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    return void
+}
+
+android.libraryVariants.all { variant ->
+    println("libraryVariants $variant.name")
 }
 
 dependencies {
