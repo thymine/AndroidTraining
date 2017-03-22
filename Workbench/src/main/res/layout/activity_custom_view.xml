@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <me.zhang.workbench.view.CustomView
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button_click"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:background="@android:color/holo_blue_dark"
-        android:padding="6dp" />
+        android:layout_below="@+id/tally_counter"
+        android:layout_centerHorizontal="true"
+        android:text="@string/click"
+        android:textAllCaps="false" />
 
-</LinearLayout>
+    <me.zhang.workbench.view.TallyCounterView
+        android:id="@id/tally_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingLeft="@dimen/view_horizontal_padding"
+        android:paddingRight="@dimen/view_horizontal_padding" />
+
+    <Button
+        android:id="@+id/button_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tally_counter"
+        android:layout_centerHorizontal="true"
+        android:text="@string/reset"
+        android:textAllCaps="false" />
+
+</RelativeLayout>

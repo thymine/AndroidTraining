@@ -27,4 +27,7 @@
     <dimen name="dp">24.2dp</dimen>
     <dimen name="px">64.3px</dimen>
     <dimen name="sp">33sp</dimen>
+    <dimen name="view_horizontal_padding">32dp</dimen>
+    <dimen name="view_vertical_padding">32dp</dimen>
+
 </resources>

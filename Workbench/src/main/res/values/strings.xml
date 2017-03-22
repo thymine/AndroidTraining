@@ -147,6 +147,8 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="show_alarms">Show Alarms</string>
     <!-- https://developer.android.com/guide/components/intents-common.html -->
     <string name="intents_common_url">https://goo.gl/G6jR9b</string>
+    <string name="click">Click</string>
+    <string name="reset">Reset</string>
 
     <string-array name="array_name">
         <item>Array Item One</item>
