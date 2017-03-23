@@ -180,6 +180,7 @@
         <service android:name=".thread.IntentServiceActivity$LocalIntentServicie" />
 
         <activity android:name=".view.CustomViewGroupActivity" />
+        <activity android:name=".view.TabLayoutActivity"></activity>
     </application>
 
 </manifest>
