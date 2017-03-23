@@ -86,26 +86,26 @@ public class SimpleListItem extends ViewGroup {
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        MarginLayoutParams lp = (MarginLayoutParams) icon.getLayoutParams();
+        MarginLayoutParams lpI = (MarginLayoutParams) icon.getLayoutParams();
 
         // Figure out the x-coordinate and y-coordinate of the icon.
-        int x = getPaddingLeft() + lp.leftMargin;
-        int y = getPaddingTop() + lp.topMargin;
+        int x = getPaddingLeft() + lpI.leftMargin;
+        int y = getPaddingTop() + lpI.topMargin;
 
         // Layout the icon.
         icon.layout(x, y, x + icon.getMeasuredWidth(), y + icon.getMeasuredHeight());
 
         // Calculate the x-coordinate of the title: icon's right coordinate +
         // the icon's right margin.
-        x += icon.getMeasuredWidth() + lp.rightMargin;
+        x += icon.getMeasuredWidth() + lpI.rightMargin;
 
         // Add in the title's left margin.
-        lp = (MarginLayoutParams) titleView.getLayoutParams();
-        x += lp.leftMargin;
+        MarginLayoutParams lpT = (MarginLayoutParams) titleView.getLayoutParams();
+        x += lpT.leftMargin;
 
         // Calculate the y-coordinate of the title: this ViewGroup's top padding +
         // the title's top margin
-        y = getPaddingTop() + lp.topMargin;
+        y = getPaddingTop() + lpT.topMargin;
 
         // Layout the title.
         titleView.layout(x, y, x + titleView.getMeasuredWidth(), y + titleView.getMeasuredHeight());
@@ -114,7 +114,7 @@ public class SimpleListItem extends ViewGroup {
 
         // Calculate the y-coordinate of the subtitle: the title's bottom coordinate +
         // the title's bottom margin.
-        y += titleView.getMeasuredHeight() + lp.bottomMargin;
+        y += titleView.getMeasuredHeight() + lpT.bottomMargin;
 
         // Layout the subtitle.
         subtitleView.layout(x, y, x + subtitleView.getMeasuredWidth(), y + subtitleView.getMeasuredHeight());
