@@ -68,6 +68,7 @@ import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
 import me.zhang.workbench.ui.CircleViewActivity;
 import me.zhang.workbench.view.CustomViewActivity;
+import me.zhang.workbench.view.CustomViewGroupActivity;
 import me.zhang.workbench.view.GetViewDimensActivity;
 import me.zhang.workbench.view.ScrollViewActivity;
 import me.zhang.workbench.view.SmoothScrollActivity;
@@ -156,6 +157,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Launch Mode", AlphaActivity.class);
         addMenuItem("Intent", IntentActivity.class);
         addMenuItem("Thread", ThreadActivity.class);
+        addMenuItem("Custom ViewGroup", CustomViewGroupActivity.class);
     }
 
 }
