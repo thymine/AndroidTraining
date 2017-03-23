@@ -16,12 +16,17 @@ import me.zhang.workbench.R;
 /**
  * Created by zhangxiangdong on 2017/3/23.
  */
-class CustomViewGroupAdapter extends RecyclerView.Adapter<CustomViewGroupAdapter.ViewHolder> {
+class SimpleListItemAdapter extends RecyclerView.Adapter<SimpleListItemAdapter.ViewHolder> {
 
     private List<CustomItem> mCustomItems;
+    private OnItemClickListener mOnItemClickListener;
 
-    CustomViewGroupAdapter(List<CustomItem> customItems) {
+    SimpleListItemAdapter(List<CustomItem> customItems) {
         mCustomItems = customItems;
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mOnItemClickListener = listener;
     }
 
     @Override
@@ -50,7 +55,7 @@ class CustomViewGroupAdapter extends RecyclerView.Adapter<CustomViewGroupAdapter
         return mCustomItems.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.icon)
         ImageView mIcon;
@@ -74,8 +79,20 @@ class CustomViewGroupAdapter extends RecyclerView.Adapter<CustomViewGroupAdapter
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View v) {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(v, getAdapterPosition());
+            }
+        }
+
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View itemView, int position);
     }
 
 }
