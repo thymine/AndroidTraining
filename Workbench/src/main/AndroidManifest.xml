@@ -178,6 +178,8 @@
         <activity android:name=".thread.IntentServiceActivity" />
 
         <service android:name=".thread.IntentServiceActivity$LocalIntentServicie" />
+
+        <activity android:name=".view.CustomViewGroupActivity" />
     </application>
 
 </manifest>

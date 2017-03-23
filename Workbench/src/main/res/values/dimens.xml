@@ -29,5 +29,9 @@
     <dimen name="sp">33sp</dimen>
     <dimen name="view_horizontal_padding">32dp</dimen>
     <dimen name="view_vertical_padding">32dp</dimen>
+    <dimen name="list_item_icon_margin_end">6dp</dimen>
+    <dimen name="list_item_icon_margin_start">6dp</dimen>
+    <dimen name="list_item_icon_margin_top">6dp</dimen>
+    <dimen name="list_item_icon_margin_bottom">6dp</dimen>
 
 </resources>
