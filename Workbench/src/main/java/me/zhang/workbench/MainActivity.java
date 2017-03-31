@@ -45,6 +45,7 @@ import me.zhang.workbench.graphics.OpenGLES20Activity;
 import me.zhang.workbench.handler.HandlerActivity;
 import me.zhang.workbench.hello.HelloWorldActivity;
 import me.zhang.workbench.intent.IntentActivity;
+import me.zhang.workbench.keyboard.HideKeyboardActivity;
 import me.zhang.workbench.launchMode.AlphaActivity;
 import me.zhang.workbench.layout.ConstraintActivity;
 import me.zhang.workbench.layout.CustomLayoutActivity;
@@ -158,6 +159,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Intent", IntentActivity.class);
         addMenuItem("Thread", ThreadActivity.class);
         addMenuItem("Custom ViewGroup", CustomViewGroupActivity.class);
+        addMenuItem("Hide Keyboard", HideKeyboardActivity.class);
     }
 
 }
