@@ -130,3 +130,11 @@ task printProperties << {
         println cmd // Command line property
     }
 }
+
+task printVariantNames() {
+    doLast {
+        android.applicationVariants.all {
+            variant -> print variant.name
+        }
+    }
+}
