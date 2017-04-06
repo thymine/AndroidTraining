@@ -60,6 +60,7 @@ android {
             debuggable true
             applicationIdSuffix '.debugrelease'
             minifyEnabled false
+            shrinkResources false
             signingConfig signingConfigs.debug
         }
 
