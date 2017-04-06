@@ -150,7 +150,7 @@ task copyApks(type: Copy, dependsOn: "assembleDebug") { // Run assembleDebug fir
     from("$buildDir/outputs/apk") {
         exclude '**/*unsigned.apk', '**/*unaligned.apk'
     }
-    into 'apks'
+    into '../apks'
 }
 
 task installDebugFlavors() {

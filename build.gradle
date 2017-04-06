@@ -20,6 +20,10 @@ allprojects {
     }
 }
 
+task clean(type: Delete) {
+    delete rootProject.buildDir, 'apks'
+}
+
 ext {
     compileSdkVersion = 25
     buildToolsVersion = "25.0.2"
