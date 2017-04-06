@@ -86,6 +86,13 @@ android {
         }
     }
 
+    adbOptions {
+        // Change the ADB timeout period
+        // This extends the timeout limit to 30 seconds. Adjust this value if you are getting
+        // ShellCommandUnresponsiveException failures.
+        timeOutInMs = 30 * 1000
+    }
+
     return void
 }
 
