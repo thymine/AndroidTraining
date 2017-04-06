@@ -23,3 +23,7 @@ dependencies {
     compile 'com.larswerkman:HoloColorPicker:1.4'
     compile supportDependencies.supportV4
 }
+
+gradle.taskGraph.whenReady {
+    graph -> graph.allTasks.findAll { it.name ==~ /lint.*/ }*.enabled = false
+}
