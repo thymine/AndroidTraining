@@ -138,3 +138,10 @@ task printVariantNames() {
         }
     }
 }
+
+task copyApks(type: Copy) {
+    from("$buildDir/outputs/apk") {
+        exclude '**/*unsigned.apk', '**/*unaligned.apk'
+    }
+    into 'apks'
+}
