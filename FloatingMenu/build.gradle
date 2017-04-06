@@ -25,5 +25,8 @@ dependencies {
 }
 
 gradle.taskGraph.whenReady {
-    graph -> graph.allTasks.findAll { it.name ==~ /lint.*/ }*.enabled = false
+    graph ->
+        if (project.hasProperty('noLint')) { // >./gradlew build -PnoLint
+            graph.allTasks.findAll { it.name ==~ /lint.*/ }*.enabled = false
+        }
 }
