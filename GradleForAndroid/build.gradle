@@ -146,7 +146,7 @@ task printVariantNames() {
     }
 }
 
-task copyApks(type: Copy) {
+task copyApks(type: Copy, dependsOn: "assembleDebug") { // Run assembleDebug first
     from("$buildDir/outputs/apk") {
         exclude '**/*unsigned.apk', '**/*unaligned.apk'
     }
