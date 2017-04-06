@@ -145,3 +145,14 @@ task copyApks(type: Copy) {
     }
     into 'apks'
 }
+
+task installDebugFlavors() {
+    android.applicationVariants.all {
+        variant ->
+            def variantName = variant.name
+            if (variantName.endsWith("Debug")) {
+                String vName = variantName.capitalize()
+                dependsOn "install$vName"
+            }
+    }
+}
