@@ -182,6 +182,9 @@
         <activity android:name=".view.CustomViewGroupActivity" />
         <activity android:name=".view.TabLayoutActivity" />
         <activity android:name=".keyboard.HideKeyboardActivity" />
+        <activity
+            android:name=".basic.BasicUiActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
     </application>
 
 </manifest>

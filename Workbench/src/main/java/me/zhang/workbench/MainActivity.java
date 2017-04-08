@@ -17,6 +17,7 @@ import me.zhang.workbench.animation.RecyclerViewAnimationActivity;
 import me.zhang.workbench.animation.TranslateActivity;
 import me.zhang.workbench.animation.WrapperActivity;
 import me.zhang.workbench.base.MenuActivity;
+import me.zhang.workbench.basic.BasicUiActivity;
 import me.zhang.workbench.binding.DataBindingActivity;
 import me.zhang.workbench.configuration.ChangeOrientation;
 import me.zhang.workbench.design.BottomSheetActivity;
@@ -160,6 +161,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Thread", ThreadActivity.class);
         addMenuItem("Custom ViewGroup", CustomViewGroupActivity.class);
         addMenuItem("Hide Keyboard", HideKeyboardActivity.class);
+        addMenuItem("Basic UI", BasicUiActivity.class);
     }
 
 }
