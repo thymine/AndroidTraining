@@ -10,6 +10,6 @@ public class ConstraintActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_constraint_0000);
+        setContentView(R.layout.activity_constraint);
     }
 }
