@@ -152,6 +152,9 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="Add">add_title</string>
     <string name="second">Second</string>
     <string name="first">First</string>
+    <string name="birthday_image">Birthday Image</string>
+    <string name="happy_birthday_zhang">Happy Birthday Zhang!</string>
+    <string name="from_li">From, Li</string>
 
     <string-array name="array_name">
         <item>Array Item One</item>
