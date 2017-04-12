@@ -54,6 +54,7 @@ import me.zhang.workbench.layout.GridLayoutActivity;
 import me.zhang.workbench.layout.LayoutActivity;
 import me.zhang.workbench.layout.SimpleLayoutActivity;
 import me.zhang.workbench.leaks.LeakyActivity;
+import me.zhang.workbench.library.UseAndroidLibraryActivity;
 import me.zhang.workbench.lifecycle.FragmentLifecycleInsideViewPager;
 import me.zhang.workbench.lifecycle.LifecycleActivity;
 import me.zhang.workbench.memory.MemoryManagement;
@@ -162,6 +163,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Custom ViewGroup", CustomViewGroupActivity.class);
         addMenuItem("Hide Keyboard", HideKeyboardActivity.class);
         addMenuItem("Basic UI", BasicUiActivity.class);
+        addMenuItem("Use Android Library", UseAndroidLibraryActivity.class);
     }
 
 }

@@ -185,6 +185,7 @@
         <activity
             android:name=".basic.BasicUiActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".library.UseAndroidLibraryActivity"></activity>
     </application>
 
 </manifest>
