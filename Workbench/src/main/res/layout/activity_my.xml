@@ -41,6 +41,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="32dp"
+        android:onClick="sayHello"
         android:text="@string/button"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
