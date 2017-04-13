@@ -24,5 +24,9 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
+        TextView resultTextView = (TextView) findViewById(R.id.results_text_view);
+        String name = getIntent().getStringExtra(MyActivity.NAME_KEY);
+        resultTextView.setText(name);
+
     }
 }

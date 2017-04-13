@@ -96,4 +96,5 @@ dependencies {
     compile 'com.android.support:palette-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'org.robolectric:robolectric:3.3.2'
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.6.0'
 }
