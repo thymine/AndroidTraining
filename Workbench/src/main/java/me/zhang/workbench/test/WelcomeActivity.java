@@ -1,4 +1,4 @@
-package me.zhang.workbench.robolectric;
+package me.zhang.workbench.test;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

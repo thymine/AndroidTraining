@@ -1,4 +1,4 @@
-package me.zhang.workbench.robolectric;
+package me.zhang.workbench.test;
 
 import android.widget.Button;
 import android.widget.TextView;

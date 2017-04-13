@@ -186,7 +186,8 @@
             android:name=".basic.BasicUiActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity android:name=".library.UseAndroidLibraryActivity" />
-        <activity android:name=".robolectric.WelcomeActivity" />
+        <activity android:name=".test.WelcomeActivity" />
+        <activity android:name=".test.MyActivity"></activity>
     </application>
 
 </manifest>
