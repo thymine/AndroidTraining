@@ -33,3 +33,4 @@ ext {
 
 // Load dependencies
 apply from: 'gradleScript/dependencies.gradle'
+apply plugin: 'android-reporting' // > ./gradlew deviceCheck mergeAndroidReports --continue
