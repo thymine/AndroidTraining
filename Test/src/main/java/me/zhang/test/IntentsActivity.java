@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Zhang on 2016/5/17 上午 10:15 .
@@ -21,6 +22,7 @@ public class IntentsActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intents);
+        ButterKnife.bind(this);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
