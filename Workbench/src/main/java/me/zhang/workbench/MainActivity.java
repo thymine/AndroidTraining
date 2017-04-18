@@ -65,6 +65,7 @@ import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
 import me.zhang.workbench.state.RestoreActivityState;
 import me.zhang.workbench.style.PreviewActivity;
+import me.zhang.workbench.thread.LoggerActivity;
 import me.zhang.workbench.thread.ThreadActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
@@ -164,6 +165,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Hide Keyboard", HideKeyboardActivity.class);
         addMenuItem("Basic UI", BasicUiActivity.class);
         addMenuItem("Use Android Library", UseAndroidLibraryActivity.class);
+        addMenuItem("Coordinate Threads", LoggerActivity.class);
     }
 
 }
