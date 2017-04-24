@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.PrintWriterPrinter;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.io.PrintWriter;
 
 import me.zhang.workbench.R;
 
@@ -41,6 +44,8 @@ public class LoggerActivity extends AppCompatActivity {
         logScrollView = (ScrollView) findViewById(R.id.log_scrollview);
         logTextView = (TextView) findViewById(R.id.log_textview);
 
+        PrintWriterPrinter out = new PrintWriterPrinter(new PrintWriter(System.out, true));
+        handler.getLooper().setMessageLogging(out);
         logger = new Logger(handler);
         logger.start();
     }
