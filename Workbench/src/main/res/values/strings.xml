@@ -159,6 +159,7 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="log">Log</string>
+    <string name="preference_file_key">me.zhang.workbench.PREFERENCE_FILE_KEY</string>
 
     <string-array name="array_name">
         <item>Array Item One</item>

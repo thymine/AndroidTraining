@@ -178,6 +178,7 @@
         <activity android:name=".thread.IntentServiceActivity" />
 
         <service android:name=".thread.IntentServiceActivity$LocalIntentServicie" />
+        <service android:name=".service.SaveMyLocationService" />
 
         <activity android:name=".view.CustomViewGroupActivity" />
         <activity android:name=".view.TabLayoutActivity" />
@@ -189,6 +190,7 @@
         <activity android:name=".test.WelcomeActivity" />
         <activity android:name=".test.MyActivity" />
         <activity android:name=".thread.LoggerActivity" />
+        <activity android:name=".service.SaveMyLocationActivity"></activity>
     </application>
 
 </manifest>

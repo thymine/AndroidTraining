@@ -63,6 +63,7 @@ import me.zhang.workbench.remoteViews.NotificationActivity;
 import me.zhang.workbench.resources.TestGetDimens;
 import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
+import me.zhang.workbench.service.SaveMyLocationActivity;
 import me.zhang.workbench.state.RestoreActivityState;
 import me.zhang.workbench.style.PreviewActivity;
 import me.zhang.workbench.thread.LoggerActivity;
@@ -166,6 +167,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Basic UI", BasicUiActivity.class);
         addMenuItem("Use Android Library", UseAndroidLibraryActivity.class);
         addMenuItem("Coordinate Threads", LoggerActivity.class);
+        addMenuItem("Simple Service", SaveMyLocationActivity.class);
     }
 
 }
