@@ -2,6 +2,7 @@ package me.zhang.workbench.thread;
 
 import android.Manifest;
 import android.app.IntentService;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -31,10 +33,17 @@ public class IntentServiceActivity extends AppCompatActivity {
     private static final String TAG = IntentServiceActivity.class.getSimpleName();
     public static final String INTENT_EXTRA = "INTENT_EXTRA";
     private static final int MY_PERMISSION_REQUEST_READ_SMS = 0x01;
+    private static final int READ_SMS_REQUEST_CODE = 0x09;
+    public static final String PENDING_RESULT = "pending_result";
+    public static final String RESULT = "result";
+    public static final int RESULT_CODE = "countMsgs".hashCode();
     private int mStartOrder;
 
     @BindView(R.id.count_msgs_button)
     Button mCountMsgsButton;
+
+    @BindView(R.id.count_msgs_text)
+    TextView mCountMsgsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,9 +114,22 @@ public class IntentServiceActivity extends AppCompatActivity {
     }
 
     void triggerIntentService(String phone) {
+        PendingIntent callbackIntent = createPendingResult(READ_SMS_REQUEST_CODE, new Intent(),
+                PendingIntent.FLAG_ONE_SHOT);
         Intent intent = new Intent(this, CountMsgsIntentService.class);
         intent.putExtra(CountMsgsIntentService.NUMBER_KEY, phone);
+        intent.putExtra(PENDING_RESULT, callbackIntent);
         startService(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == READ_SMS_REQUEST_CODE && resultCode == RESULT_CODE) {
+            int msgsCount = data.getIntExtra(RESULT, -1);
+            String text = "Messages Count: " + msgsCount;
+            mCountMsgsText.setText(text);
+        }
     }
 
     public void onClickButton(View view) {
