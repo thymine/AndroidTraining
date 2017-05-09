@@ -8,13 +8,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
+import android.os.SystemClock;
 import android.provider.Telephony;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import java.util.Locale;
+
 import me.zhang.workbench.R;
 
+import static android.R.attr.id;
 import static me.zhang.workbench.thread.IntentServiceActivity.PENDING_RESULT;
 import static me.zhang.workbench.thread.IntentServiceActivity.RESULT;
 import static me.zhang.workbench.thread.IntentServiceActivity.RESULT_CODE;
@@ -49,21 +53,43 @@ public class CountMsgsIntentService extends IntentService {
             e.printStackTrace();
         }
 
-        notifyUser(phoneNumber, numberOfMsgs);
+//        notifyUser(phoneNumber, numberOfMsgs);
+
+        String msg = String.format(Locale.getDefault(),
+                "Found %d from the phone number %s", numberOfMsgs, phoneNumber);
+        NotificationCompat.Builder builder = newNoficationBuilder("");
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        for (int i = 0; i < 100; i++) {
+            SystemClock.sleep(100);
+            notifyWithProgress(i, nm, id, builder);
+        }
+        builder.setProgress(0, 0, false);
+        builder.setContentText(msg);
+        nm.notify(id, builder.build());
 
     }
 
     private void notifyUser(String phoneNumber, int msgsCount) {
-        String msg = String.format("Found %d from the phone number %s", msgsCount, phoneNumber);
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_sms_counter_not)
-                        .setContentTitle("Inbox Counter")
-                        .setContentText(msg);
+        String msg = String.format(Locale.getDefault(),
+                "Found %d from the phone number %s", msgsCount, phoneNumber);
+        NotificationCompat.Builder builder = newNoficationBuilder(msg);
         // Gets an instance of the NotificationManager service
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         // Sets an unique ID for this notification
         nm.notify(phoneNumber.hashCode(), builder.build());
+    }
+
+    private NotificationCompat.Builder newNoficationBuilder(String msg) {
+        return new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.ic_sms_counter_not)
+                .setContentTitle("Inbox Counter")
+                .setContentText(msg);
+    }
+
+    private void notifyWithProgress(int progress, NotificationManager nm, int id,
+                                    NotificationCompat.Builder builder) {
+        builder.setProgress(100, progress, false);
+        nm.notify(id, builder.build());
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
