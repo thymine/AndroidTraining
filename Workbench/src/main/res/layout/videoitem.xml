@@ -1,0 +1,45 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@android:color/darker_gray">
+
+    <ImageView
+        android:id="@+id/imv_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null" />
+
+    <me.zhang.workbench.listvideo.TextureVideoView
+        android:id="@+id/textureview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/imv_video_play"
+        android:layout_width="77dp"
+        android:layout_height="77dp"
+        android:layout_gravity="center"
+        android:contentDescription="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/play" />
+
+    <ProgressBar
+        android:id="@+id/pb_waiting"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/progress_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:background="@null"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/recorder_success_progress" />
+
+</FrameLayout>
