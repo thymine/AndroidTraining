@@ -57,6 +57,7 @@ import me.zhang.workbench.leaks.LeakyActivity;
 import me.zhang.workbench.library.UseAndroidLibraryActivity;
 import me.zhang.workbench.lifecycle.FragmentLifecycleInsideViewPager;
 import me.zhang.workbench.lifecycle.LifecycleActivity;
+import me.zhang.workbench.listvideo.VideoActivity;
 import me.zhang.workbench.memory.MemoryManagement;
 import me.zhang.workbench.others.InvokeStarDetailActivity;
 import me.zhang.workbench.remoteViews.NotificationActivity;
@@ -168,6 +169,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Use Android Library", UseAndroidLibraryActivity.class);
         addMenuItem("Coordinate Threads", LoggerActivity.class);
         addMenuItem("Simple Service", SaveMyLocationActivity.class);
+        addMenuItem("List Video", VideoActivity.class);
     }
 
 }
