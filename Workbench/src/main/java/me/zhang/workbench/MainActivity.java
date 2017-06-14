@@ -40,6 +40,7 @@ import me.zhang.workbench.drawable.CustomDrawableActivity;
 import me.zhang.workbench.drawable.LevelListActivity;
 import me.zhang.workbench.drawable.ScaleDrawableActivity;
 import me.zhang.workbench.drawable.TransitionActivity;
+import me.zhang.workbench.event.BusActivity;
 import me.zhang.workbench.gestures.GesturesActivity;
 import me.zhang.workbench.graphics.BitmapScaling;
 import me.zhang.workbench.graphics.OpenGLES20Activity;
@@ -170,6 +171,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Coordinate Threads", LoggerActivity.class);
         addMenuItem("Simple Service", SaveMyLocationActivity.class);
         addMenuItem("List Video", VideoActivity.class);
+        addMenuItem("EventBus", BusActivity.class);
     }
 
 }

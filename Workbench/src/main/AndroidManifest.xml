@@ -10,6 +10,7 @@
     <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
     <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="me.zhang.art.BOOK_PROVIDER.WRITE" />
     <uses-permission android:name="me.zhang.art.BOOK_PROVIDER.READ" />
@@ -101,6 +102,11 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/appwidget_provider_info" />
+        </receiver>
+        <receiver android:name=".event.MobileNetworkListener">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
         </receiver>
 
         <activity android:name=".layout.ConstraintActivity" />
@@ -196,6 +202,7 @@
             android:name=".service.SaveMyLocationActivity"
             android:exported="false" />
         <activity android:name=".listvideo.VideoActivity" />
+        <activity android:name=".event.BusActivity"></activity>
     </application>
 
 </manifest>
