@@ -67,6 +67,7 @@ dependencies {
     compile jakeWhartonDependencies.butterknife
     annotationProcessor jakeWhartonDependencies.butterknifeCompiler
     compile jakeWhartonDependencies.rxbinding
+    compile jakeWhartonDependencies.timber
 
     compile squareDependencies.picasso
     compile squareDependencies.retrofit

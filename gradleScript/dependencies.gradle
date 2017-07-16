@@ -20,7 +20,7 @@ ext {
 
     // Robolectric
     robolectricDependencies = [
-            robolectric   : 'org.robolectric:robolectric:3.2.2',
+            robolectric: 'org.robolectric:robolectric:3.2.2',
     ]
 
     // Google
@@ -37,6 +37,8 @@ ext {
             butterknifeCompiler: 'com.jakewharton:butterknife-compiler:8.4.0',
             // https://github.com/JakeWharton/RxBinding
             rxbinding          : 'com.jakewharton.rxbinding:rxbinding:0.4.0',
+            // https://github.com/JakeWharton/timber
+            timber             : 'com.jakewharton.timber:timber:4.5.1',
     ]
 
     // Square

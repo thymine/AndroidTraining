@@ -1,10 +1,13 @@
 package me.zhang.workbench.gestures;
 
 import android.os.Bundle;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 
 import me.zhang.workbench.R;
+import timber.log.Timber;
 
 public class GesturesActivity extends AppCompatActivity {
 
@@ -88,28 +91,31 @@ public class GesturesActivity extends AppCompatActivity {
 //        }
 //    }
 
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        int action = MotionEventCompat.getActionMasked(event);
-//
-//        switch (action) {
-//            case (MotionEvent.ACTION_DOWN):
-//                Log.d(DEBUG_TAG, "onTouchEvent() DOWN");
-//                return true;
-//            case (MotionEvent.ACTION_MOVE):
-//                Log.d(DEBUG_TAG, "onTouchEvent() MOVE");
-//                return true;
-//            case (MotionEvent.ACTION_UP):
-//                Log.d(DEBUG_TAG, "onTouchEvent() UP");
-//                return true;
-//            case (MotionEvent.ACTION_CANCEL):
-//                Log.d(DEBUG_TAG, "onTouchEvent() CANCEL");
-//                return true;
-//            case (MotionEvent.ACTION_OUTSIDE):
-//                Log.d(DEBUG_TAG, "onTouchEvent() Movement occurred outside bounds of current screen element");
-//                return true;
-//            default:
-//                return super.onTouchEvent(event);
-//        }
-//    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        int action = MotionEventCompat.getActionMasked(event);
+
+        switch (action) {
+            case (MotionEvent.ACTION_DOWN):
+                Timber.d("Action was DOWN");
+                return true;
+            case (MotionEvent.ACTION_MOVE):
+                Timber.d("Action was MOVE");
+                return true;
+            case (MotionEvent.ACTION_UP):
+                Timber.d("Action was UP");
+                return true;
+            case (MotionEvent.ACTION_CANCEL):
+                Timber.d("Action was CANCEL");
+                return true;
+            case (MotionEvent.ACTION_OUTSIDE):
+                Timber.d("Movement occurred outside bounds " +
+                        "of current screen element");
+                return true;
+            default:
+                return super.onTouchEvent(event);
+        }
+    }
+
 }
