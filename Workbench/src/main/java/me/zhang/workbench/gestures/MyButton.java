@@ -4,15 +4,15 @@ import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 
-import static me.zhang.workbench.gestures.GesturesActivity.DEBUG_TAG;
+import timber.log.Timber;
 
 /**
  * Created by Zhang on 2016/4/11 下午 6:00 .
  */
 public class MyButton extends AppCompatButton {
+
     public MyButton(Context context) {
         super(context);
     }
@@ -30,19 +30,19 @@ public class MyButton extends AppCompatButton {
         int action = MotionEventCompat.getActionMasked(event);
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
-                Log.d(DEBUG_TAG, "onTouchEvent() DOWN");
+                Timber.d("onTouchEvent() DOWN");
                 return false;
             case (MotionEvent.ACTION_MOVE):
-                Log.d(DEBUG_TAG, "onTouchEvent() MOVE");
+                Timber.d("onTouchEvent() MOVE");
                 break;
             case (MotionEvent.ACTION_UP):
-                Log.d(DEBUG_TAG, "onTouchEvent() UP");
+                Timber.d("onTouchEvent() UP");
                 break;
             case (MotionEvent.ACTION_CANCEL):
-                Log.d(DEBUG_TAG, "onTouchEvent() CANCEL");
+                Timber.d("onTouchEvent() CANCEL");
                 break;
             case (MotionEvent.ACTION_OUTSIDE):
-                Log.d(DEBUG_TAG, "onTouchEvent() Movement occurred outside bounds of current screen element");
+                Timber.d("onTouchEvent() Movement occurred outside bounds of current screen element");
                 break;
         }
         return super.onTouchEvent(event);
