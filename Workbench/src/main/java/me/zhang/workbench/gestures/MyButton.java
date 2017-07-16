@@ -2,17 +2,17 @@ package me.zhang.workbench.gestures;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.widget.Button;
 
 import static me.zhang.workbench.gestures.GesturesActivity.DEBUG_TAG;
 
 /**
  * Created by Zhang on 2016/4/11 下午 6:00 .
  */
-public class MyButton extends Button {
+public class MyButton extends AppCompatButton {
     public MyButton(Context context) {
         super(context);
     }
