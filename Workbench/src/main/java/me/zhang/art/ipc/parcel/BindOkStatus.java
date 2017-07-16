@@ -1,11 +1,10 @@
 package me.zhang.art.ipc.parcel;
 
+import android.content.Context;
 import android.os.RemoteException;
 import android.widget.Toast;
 
 import java.util.List;
-
-import me.zhang.workbench.MainApp;
 
 /**
  * Created by Li on 6/16/2016 9:33 PM.
@@ -19,18 +18,18 @@ public class BindOkStatus implements BindStatus {
     }
 
     @Override
-    public void performAddBook() {
+    public void performAddBook(Context context) {
         Book book = new Book("Book " + System.currentTimeMillis(), System.currentTimeMillis());
         try {
             manager.addBook(book);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        Toast.makeText(MainApp.me, "Book added", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "Book added", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void performGetBookList() {
+    public void performGetBookList(Context context) {
         try {
             List<Book> bookList = manager.getBookList();
             if (bookList != null) {
@@ -41,7 +40,7 @@ public class BindOkStatus implements BindStatus {
                         builder.append(", ");
                     }
                 }
-                Toast.makeText(MainApp.me, builder.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, builder.toString(), Toast.LENGTH_SHORT).show();
             }
         } catch (RemoteException e) {
             e.printStackTrace();

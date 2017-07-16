@@ -13,17 +13,9 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Click Me"
-        tools:ignore="HardcodedText" />
-
-    <ToggleButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:onClick="onTouchToggle"
+        android:text="Touch Me"
         android:textAllCaps="false"
-        android:textOff="OnTouchListener False"
-        android:textOn="OnTouchListener True"
         tools:ignore="HardcodedText" />
 
 </RelativeLayout>

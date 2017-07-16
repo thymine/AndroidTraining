@@ -48,7 +48,7 @@ public class ClientActivity extends AppCompatActivity {
         addBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bindStatus.performAddBook();
+                bindStatus.performAddBook(getApplicationContext());
             }
         });
 
@@ -58,7 +58,7 @@ public class ClientActivity extends AppCompatActivity {
         getBookListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bindStatus.performGetBookList();
+                bindStatus.performGetBookList(getApplicationContext());
             }
         });
 
