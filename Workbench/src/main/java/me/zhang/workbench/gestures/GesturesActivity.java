@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Scroller;
 import android.widget.TextView;
 
 import me.zhang.workbench.R;
@@ -24,6 +25,26 @@ public class GesturesActivity extends AppCompatActivity
 
         mGestureDetector = new GestureDetectorCompat(this, this);
         mGestureDetector.setOnDoubleTapListener(this);
+
+        final TextView autoScrollTextView = (TextView) findViewById(R.id.tv_auto_scroll);
+        final Scroller scroller = new Scroller(this);
+        autoScrollTextView.setScroller(scroller);
+        autoScrollTextView.setOnClickListener(new View.OnClickListener() {
+
+            int mDeltaY = 200;
+
+            @Override
+            public void onClick(View v) {
+                if (autoScrollTextView.getScrollY() >= autoScrollTextView.getHeight()) {
+                    mDeltaY = -mDeltaY;
+                } else if (autoScrollTextView.getScrollY() <= 0) {
+                    mDeltaY = Math.abs(mDeltaY);
+                }
+
+                scroller.startScroll(0, autoScrollTextView.getScrollY(), 0, mDeltaY, 400);
+                autoScrollTextView.invalidate();
+            }
+        });
 
         final View button = findViewById(R.id.button);
         button.setOnTouchListener(new View.OnTouchListener() {
