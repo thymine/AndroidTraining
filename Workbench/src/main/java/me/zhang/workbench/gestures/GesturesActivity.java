@@ -5,6 +5,7 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 
 import me.zhang.workbench.R;
 import timber.log.Timber;
@@ -22,6 +23,28 @@ public class GesturesActivity extends AppCompatActivity
 
         mGestureDetector = new GestureDetectorCompat(this, this);
         mGestureDetector.setOnDoubleTapListener(this);
+
+        final View button = findViewById(R.id.button);
+        button.setOnTouchListener(new View.OnTouchListener() {
+
+            float mPreX, mPreY;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final float rawX = event.getRawX();
+                final float rawY = event.getRawY();
+                final int action = event.getActionMasked();
+                switch (action) {
+                    case MotionEvent.ACTION_MOVE:
+                        button.setTranslationX(button.getTranslationX() + (rawX - mPreX));
+                        button.setTranslationY(button.getTranslationY() + (rawY - mPreY));
+                        break;
+                }
+                mPreX = rawX;
+                mPreY = rawY;
+                return true;
+            }
+        });
     }
 
     @Override
