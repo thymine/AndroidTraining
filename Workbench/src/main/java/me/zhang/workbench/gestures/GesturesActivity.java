@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import me.zhang.workbench.R;
 import timber.log.Timber;
@@ -42,6 +43,25 @@ public class GesturesActivity extends AppCompatActivity
                 }
                 mPreX = rawX;
                 mPreY = rawY;
+                return true;
+            }
+        });
+
+        final TextView scrollingTextView = (TextView) findViewById(R.id.tv_scrolling);
+        scrollingTextView.setOnTouchListener(new View.OnTouchListener() {
+
+            float mPreY;
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final float y = event.getY();
+                final int action = event.getActionMasked();
+                switch (action) {
+                    case MotionEvent.ACTION_MOVE:
+                        scrollingTextView.scrollBy(0, (int) (mPreY - y));
+                        break;
+                }
+                mPreY = y;
                 return true;
             }
         });
