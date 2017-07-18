@@ -1,11 +1,13 @@
 package me.zhang.workbench.gestures;
 
+import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Scroller;
 import android.widget.TextView;
 
@@ -17,6 +19,7 @@ public class GesturesActivity extends AppCompatActivity
         GestureDetector.OnDoubleTapListener {
 
     private GestureDetectorCompat mGestureDetector;
+    private ValueAnimator mAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,21 @@ public class GesturesActivity extends AppCompatActivity
                 autoScrollTextView.invalidate();
             }
         });
+
+        final TextView autoScrollTextView1 = (TextView) findViewById(R.id.tv_auto_scroll1);
+        mAnimator = ValueAnimator.ofFloat(0, 1).setDuration(400);
+        mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float fraction = animation.getAnimatedFraction();
+                Timber.i("fraction: %f", fraction);
+                autoScrollTextView1.scrollTo(0, (int) (200 * fraction));
+            }
+        });
+        mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+        mAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        mAnimator.setRepeatMode(ValueAnimator.REVERSE);
+        mAnimator.start();
 
         final View button = findViewById(R.id.button);
         button.setOnTouchListener(new View.OnTouchListener() {
@@ -86,6 +104,14 @@ public class GesturesActivity extends AppCompatActivity
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mAnimator != null) {
+            mAnimator.cancel();
+        }
+        super.onDestroy();
     }
 
     @Override
