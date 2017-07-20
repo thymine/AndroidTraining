@@ -31,7 +31,7 @@ public class MyButton extends AppCompatButton {
         switch (action) {
             case (MotionEvent.ACTION_DOWN):
                 Timber.d("onTouchEvent() DOWN");
-                return false;
+                return true;
             case (MotionEvent.ACTION_MOVE):
                 Timber.d("onTouchEvent() MOVE");
                 break;
@@ -45,6 +45,6 @@ public class MyButton extends AppCompatButton {
                 Timber.d("onTouchEvent() Movement occurred outside bounds of current screen element");
                 break;
         }
-        return super.onTouchEvent(event);
+        return false;
     }
 }
