@@ -50,18 +50,24 @@
         app:layout_constraintRight_toLeftOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <me.zhang.workbench.gestures.MyButton
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Move Me"
-        android:textAllCaps="false"
+    <me.zhang.workbench.gestures.MyLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline2"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toTopOf="@+id/guideline">
+
+        <me.zhang.workbench.gestures.MyButton
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Move Me"
+            android:textAllCaps="false"
+            tools:ignore="HardcodedText" />
+
+    </me.zhang.workbench.gestures.MyLayout>
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"

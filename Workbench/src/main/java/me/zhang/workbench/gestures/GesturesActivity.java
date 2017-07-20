@@ -2,9 +2,7 @@ package me.zhang.workbench.gestures;
 
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -14,20 +12,14 @@ import android.widget.TextView;
 import me.zhang.workbench.R;
 import timber.log.Timber;
 
-public class GesturesActivity extends AppCompatActivity
-        implements GestureDetector.OnGestureListener,
-        GestureDetector.OnDoubleTapListener {
+public class GesturesActivity extends AppCompatActivity {
 
-    private GestureDetectorCompat mGestureDetector;
     private ValueAnimator mAnimator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestures);
-
-        mGestureDetector = new GestureDetectorCompat(this, this);
-        mGestureDetector.setOnDoubleTapListener(this);
 
         final TextView autoScrollTextView = (TextView) findViewById(R.id.tv_auto_scroll);
         final Scroller scroller = new Scroller(this);
@@ -73,6 +65,7 @@ public class GesturesActivity extends AppCompatActivity
             public boolean onTouch(View v, MotionEvent event) {
                 final float rawX = event.getRawX();
                 final float rawY = event.getRawY();
+                Timber.w("onTouch(), %f, %f", rawX, rawY);
                 final int action = event.getActionMasked();
                 switch (action) {
                     case MotionEvent.ACTION_MOVE:
@@ -82,7 +75,7 @@ public class GesturesActivity extends AppCompatActivity
                 }
                 mPreX = rawX;
                 mPreY = rawY;
-                return true;
+                return false;
             }
         });
 
@@ -115,63 +108,15 @@ public class GesturesActivity extends AppCompatActivity
     }
 
     @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        Timber.w("dispatchTouchEvent(%s)", ev);
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent event) {
-        mGestureDetector.onTouchEvent(event);
+        Timber.w("onTouchEvent(%s)", event);
         return super.onTouchEvent(event);
-    }
-
-    @Override
-    public boolean onDown(MotionEvent event) {
-        Timber.d("onDown: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onFling(MotionEvent event1, MotionEvent event2,
-                           float velocityX, float velocityY) {
-        Timber.d("onFling: " + event1.toString() + event2.toString());
-        return true;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent event) {
-        Timber.d("onLongPress: " + event.toString());
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
-                            float distanceY) {
-        Timber.d("onScroll: " + e1.toString() + e2.toString());
-        return true;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent event) {
-        Timber.d("onShowPress: " + event.toString());
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent event) {
-        Timber.d("onSingleTapUp: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onDoubleTap(MotionEvent event) {
-        Timber.d("onDoubleTap: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onDoubleTapEvent(MotionEvent event) {
-        Timber.d("onDoubleTapEvent: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onSingleTapConfirmed(MotionEvent event) {
-        Timber.d("onSingleTapConfirmed: " + event.toString());
-        return true;
     }
 
 }
