@@ -167,4 +167,7 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
         <item>Array Item Two</item>
         <item>Array Item Three</item>
     </string-array>
+    
+    <string name="fragment_title_tally_counter">Tally Counter</string>
+    <string name="fragment_title_custom_view">Custom View</string>
 </resources>

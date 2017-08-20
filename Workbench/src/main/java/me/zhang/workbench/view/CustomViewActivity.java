@@ -2,13 +2,17 @@ package me.zhang.workbench.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import me.zhang.workbench.R;
 
 /**
@@ -16,32 +20,50 @@ import me.zhang.workbench.R;
  */
 public class CustomViewActivity extends AppCompatActivity {
 
-    @BindView(R.id.button_click)
-    Button mClick;
+    // Custom view pages' title.
+    public static final String FRAGMENT_TITLE = "fragment_title";
 
-    @BindView(R.id.tally_counter)
-    TallyCounterView mTallyCounter;
-
-    @BindView(R.id.button_reset)
-    Button mReset;
-
-    private int mCount;
+    @BindView(R.id.custom_views_pager)
+    ViewPager mCustomViewsPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view);
         ButterKnife.bind(this);
+
+        List<Fragment> pageTitles = new ArrayList<>();
+        pageTitles.add(TallyCounterFragment.newInstance(getString(R.string.fragment_title_tally_counter)));
+        pageTitles.add(CustomViewFragment.newInstance(getString(R.string.fragment_title_custom_view)));
+        mCustomViewsPager
+                .setAdapter(new CustomViewsPagerAdapter(getSupportFragmentManager(), pageTitles));
     }
 
-    @OnClick(R.id.button_click)
-    public void click(View view) {
-        mTallyCounter.setCount(++mCount);
-    }
+    private static class CustomViewsPagerAdapter extends FragmentStatePagerAdapter {
 
-    @OnClick(R.id.button_reset)
-    public void reset(View view) {
-        mTallyCounter.reset();
+        private List<Fragment> mCustomViewPages;
+
+        public CustomViewsPagerAdapter(FragmentManager fm, List<Fragment> pageTitles) {
+            super(fm);
+            mCustomViewPages = pageTitles;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mCustomViewPages.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mCustomViewPages.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            Fragment fragment = mCustomViewPages.get(position);
+            Bundle args = fragment.getArguments();
+            return args.getString(FRAGMENT_TITLE);
+        }
     }
 
 }
