@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,8 +39,12 @@ public class CustomViewFragment extends Fragment {
     @BindView(R.id.text_progress_bar)
     TextProgressBar mTextProgressBar;
 
+    @BindView(R.id.progress_seek_bar)
+    SeekBar mProgressSeekBar;
+
     private int mProgress;
     private boolean mIsAdd;
+    private boolean mIsAutoProgress;
 
     private Handler.Callback mCallback = new Handler.Callback() {
         @Override
@@ -85,18 +90,42 @@ public class CustomViewFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mTextProgressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mIsAutoProgress) {
+                    stopAutoProgressing();
+                } else {
+                    startAutoProgressing();
+                }
+            }
+        });
+        mProgressSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                realSetProgress(progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                stopAutoProgressing();
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
+    private void startAutoProgressing() {
+        mIsAutoProgress = true;
         mHandler.sendEmptyMessageDelayed(WHAT_PROGRESS, DELAY_MILLIS);
     }
 
-    @Override
-    public void onPause() {
+    private void stopAutoProgressing() {
+        mIsAutoProgress = false;
         mHandler.removeMessages(WHAT_PROGRESS);
-        super.onPause();
     }
 
 }
