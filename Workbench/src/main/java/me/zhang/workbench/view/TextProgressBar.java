@@ -17,26 +17,30 @@ import me.zhang.workbench.utils.UiUtils;
  * https://stackoverflow.com/questions/22943091/invert-paint-color-based-on-background
  */
 public class TextProgressBar extends ProgressBar {
-    private Paint pWhiteFill = new Paint();
-    private Paint pBlackFill = new Paint();
+    private Paint mBlackBorderPaint = new Paint();
+    private Paint mBlackFillPaint = new Paint();
 
-    private Paint pWhiteTxtM = new Paint();
-    private Paint pBlackTxtM = new Paint();
+    private Paint mWhiteTextPaint = new Paint();
+    private Paint mBlackTextPaint = new Paint();
 
-    private Rect mBlackRect = new Rect();
-    private Rect mWhiteRect = new Rect();
+    private Rect mProgressRect = new Rect();
+    private Rect mBorderRect = new Rect();
 
     {
-        pWhiteFill.setColor(Color.WHITE);
-        pBlackFill.setColor(Color.BLACK);
+        mBlackBorderPaint.setColor(Color.BLACK);
+        mBlackBorderPaint.setStrokeWidth(0);
+        mBlackBorderPaint.setStyle(Paint.Style.STROKE);
 
-        pWhiteTxtM.setAntiAlias(true);
-        pWhiteTxtM.setTextSize(UiUtils.convertDpToPixel(18, getContext()));
-        pWhiteTxtM.setColor(Color.WHITE);
+        mBlackFillPaint.setColor(Color.BLACK);
+        mBlackFillPaint.setStyle(Paint.Style.FILL);
 
-        pBlackTxtM.setAntiAlias(true);
-        pBlackTxtM.setTextSize(UiUtils.convertDpToPixel(18, getContext()));
-        pBlackTxtM.setColor(Color.BLACK);
+        mWhiteTextPaint.setAntiAlias(true);
+        mWhiteTextPaint.setTextSize(UiUtils.convertDpToPixel(18, getContext()));
+        mWhiteTextPaint.setColor(Color.WHITE);
+
+        mBlackTextPaint.setAntiAlias(true);
+        mBlackTextPaint.setTextSize(UiUtils.convertDpToPixel(18, getContext()));
+        mBlackTextPaint.setColor(Color.BLACK);
     }
 
     public TextProgressBar(Context context) {
@@ -60,31 +64,31 @@ public class TextProgressBar extends ProgressBar {
         // note that it's a bad idea to create the Rect during the drawing operation,
         // better do that only once in advance also note that it might be sufficient
         // and faster to draw only the white part of the bar
-        mWhiteRect.set(1, 1, getWidth() - 1, getHeight() - 1);
-        canvas.drawRect(mWhiteRect, pWhiteFill);
+        mBorderRect.set(1, 1, getWidth() - 1, getHeight() - 1);
+        canvas.drawRect(mBorderRect, mBlackBorderPaint);
 
         // this Rect should be created when the progress is set, not on every drawing operation
         int progressWidth = (int) ((1.0f * getProgress() / getMax()) * getWidth());
-        mBlackRect.set(1, 1, progressWidth, getHeight() - 1);
-        canvas.drawRect(mBlackRect, pBlackFill);
+        mProgressRect.set(1, 1, progressWidth, getHeight() - 1);
+        canvas.drawRect(mProgressRect, mBlackFillPaint);
 
         // set the clipping region to the black part of the bar
         String text = String.valueOf(getProgress()) + "%";
-        canvas.clipRect(mBlackRect);
+        canvas.clipRect(mProgressRect);
 
         // calculate text position inside progress bar
-        float textWidth = pWhiteTxtM.measureText(text);
+        float textWidth = mWhiteTextPaint.measureText(text);
         int xPosition = (int) (getWidth() / 2 - textWidth / 2);
-        float textHeight = (pWhiteTxtM.descent() + pWhiteTxtM.ascent()) / 2;
+        float textHeight = (mWhiteTextPaint.descent() + mWhiteTextPaint.ascent()) / 2;
         int yPosition = (int) (getHeight() / 2 - textHeight / 2);
 
         // draw the text using white ink
-        canvas.drawText(text, xPosition, yPosition, pWhiteTxtM);
+        canvas.drawText(text, xPosition, yPosition, mWhiteTextPaint);
 
         // setting the clipping region to the complementary part of the bar
-        canvas.clipRect(mWhiteRect, Region.Op.XOR);
+        canvas.clipRect(mBorderRect, Region.Op.XOR);
         // draw the same text again using black ink
-        canvas.drawText(text, xPosition, yPosition, pBlackTxtM);
+        canvas.drawText(text, xPosition, yPosition, mBlackTextPaint);
 
         canvas.restore();
     }
