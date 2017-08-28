@@ -34,6 +34,7 @@ public class CustomViewActivity extends AppCompatActivity {
 
         List<Fragment> pageTitles = new ArrayList<>();
         pageTitles.add(TallyCounterFragment.newInstance(getString(R.string.fragment_title_tally_counter)));
+        pageTitles.add(TextProgressBarFragment.newInstance(getString(R.string.fragment_title_text_progress_bar)));
         pageTitles.add(CustomViewFragment.newInstance(getString(R.string.fragment_title_custom_view)));
         mCustomViewsPager
                 .setAdapter(new CustomViewsPagerAdapter(getSupportFragmentManager(), pageTitles));
