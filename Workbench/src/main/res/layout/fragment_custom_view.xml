@@ -7,8 +7,8 @@
     android:showDividers="middle">
 
     <me.zhang.workbench.view.CustomView
-        android:layout_width="200px"
-        android:layout_height="200px"
+        android:layout_width="480px"
+        android:layout_height="480px"
         android:background="@color/colorPrimary" />
 
     <View
