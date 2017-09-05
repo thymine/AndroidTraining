@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <me.zhang.workbench.view.StateBorderImageView
+    <me.zhang.workbench.view.AnimatedStateBorderImageView
         android:id="@+id/head_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -13,6 +13,7 @@
         android:contentDescription="@null"
         android:padding="@dimen/activity_vertical_padding"
         android:src="@drawable/droid_96px"
+        app:border_anim_duration="@android:integer/config_mediumAnimTime"
         app:border_color_default="@color/green"
         app:border_color_pressed="@color/red"
         app:border_inner_radius="16dp"
