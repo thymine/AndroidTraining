@@ -5,10 +5,11 @@
     <declare-styleable name="CircleView">
         <attr name="circle_color" format="color" />
     </declare-styleable>
-    <declare-styleable name="StateBorderImageView">
+    <declare-styleable name="AnimatedStateBorderImageView">
         <attr name="border_color_default" format="color" />
         <attr name="border_color_pressed" format="color" />
         <attr name="border_width" format="dimension" />
         <attr name="border_inner_radius" format="dimension" />
+        <attr name="border_anim_duration" format="integer" />
     </declare-styleable>
 </resources>
