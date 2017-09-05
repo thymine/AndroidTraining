@@ -1,5 +1,6 @@
 package me.zhang.workbench.view;
 
+import android.content.res.ColorStateList;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
@@ -16,9 +17,10 @@ import android.support.annotation.Nullable;
 /**
  * Created by Zhang on 9/5/2017 7:21 PM.
  */
-public class BorderDrawable extends Drawable {
+public class StateBorderDrawable extends Drawable {
 
     private Paint mPaint;
+    private ColorStateList mColorStateList;
     private int mColor;
     private int mBorderWidth;
     private int mBorderRadius;
@@ -26,7 +28,7 @@ public class BorderDrawable extends Drawable {
     private RectF mRectF;
     private Path mPath;
 
-    public BorderDrawable(int color, int borderWidth, int borderRadius) {
+    public StateBorderDrawable(ColorStateList colorStateList, int borderWidth, int borderRadius) {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
 
@@ -35,9 +37,26 @@ public class BorderDrawable extends Drawable {
 
         mRectF = new RectF();
 
-        mColor = color;
+        mColorStateList = colorStateList;
+        mColor = mColorStateList.getDefaultColor();
         mBorderWidth = borderWidth;
         mBorderRadius = borderRadius;
+    }
+
+    @Override
+    public boolean isStateful() {
+        return true;
+    }
+
+    @Override
+    protected boolean onStateChange(int[] state) {
+        int color = mColorStateList.getColorForState(state, mColor);
+        if (mColor != color) {
+            mColor = color;
+            invalidateSelf();
+            return true;
+        }
+        return false;
     }
 
     @Override
