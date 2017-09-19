@@ -11,27 +11,26 @@ import java.util.List;
  */
 public class BindOkStatus implements BindStatus {
 
-    private IBookManager manager;
+    private IBookManager mBookManager;
 
     public BindOkStatus(IBookManager manager) {
-        this.manager = manager;
+        this.mBookManager = manager;
     }
 
     @Override
     public void performAddBook(Context context) {
         Book book = new Book("Book " + System.currentTimeMillis(), System.currentTimeMillis());
         try {
-            manager.addBook(book);
+            mBookManager.addBook(book);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        Toast.makeText(context, "Book added", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void performGetBookList(Context context) {
         try {
-            List<Book> bookList = manager.getBookList();
+            List<Book> bookList = mBookManager.getBookList();
             if (bookList != null) {
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bookList.size(); i++) {
