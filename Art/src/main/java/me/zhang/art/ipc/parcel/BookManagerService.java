@@ -12,8 +12,11 @@ import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -22,24 +25,25 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class BookManagerService extends Service {
 
     private static final String TAG = BookManagerService.class.getSimpleName();
-    public static final int ONE_MINUTE = 1000; // 1s
+    public static final int ONE_SECOND = 1000; // 1s
 
-    private AtomicBoolean isServiceDestroyed = new AtomicBoolean(false);
-    private List<Book> bookList = new LinkedList<>();
-    private RemoteCallbackList<IOnNewBookArrivedListener> callbackList = new RemoteCallbackList<>();
+    private AtomicBoolean mIsServiceDestroyed = new AtomicBoolean(false);
+    private List<Book> mBookList = new LinkedList<>();
+    private RemoteCallbackList<IOnNewBookArrivedListener> mCallbackList =
+            new RemoteCallbackList<>();
 
     private final IBookManager.Stub mBinder = new IBookManager.Stub() {
         @Override
         public List<Book> getBookList() throws RemoteException {
-            return bookList;
+            return mBookList;
         }
 
         @Override
         public void addBook(Book book) throws RemoteException {
             // 方法运行于Binder线程池中，不需要额外的异步处理
-            SystemClock.sleep(5000);
+            SystemClock.sleep(ONE_SECOND);
             if (book != null) {
-                bookList.add(book);
+                mBookList.add(book);
                 Log.i(TAG, "addBook: book added");
             }
         }
@@ -51,13 +55,13 @@ public class BookManagerService extends Service {
 
         @Override
         public void registerListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            callbackList.register(listener);
+            mCallbackList.register(listener);
             int count;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                count = callbackList.getRegisteredCallbackCount();
+                count = mCallbackList.getRegisteredCallbackCount();
             } else {
-                count = callbackList.beginBroadcast();
-                callbackList.finishBroadcast();
+                count = mCallbackList.beginBroadcast();
+                mCallbackList.finishBroadcast();
             }
             Log.i(TAG, "registerListener: listener added, count: " + count);
         }
@@ -65,28 +69,27 @@ public class BookManagerService extends Service {
         @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
         @Override
         public void unregisterListener(IOnNewBookArrivedListener listener) throws RemoteException {
-            callbackList.unregister(listener);
+            mCallbackList.unregister(listener);
             int count;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                count = callbackList.getRegisteredCallbackCount();
+                count = mCallbackList.getRegisteredCallbackCount();
             } else {
-                count = callbackList.beginBroadcast();
-                callbackList.finishBroadcast();
+                count = mCallbackList.beginBroadcast();
+                mCallbackList.finishBroadcast();
             }
             Log.i(TAG, "unregisterListener: listener removed, count: " + count);
         }
 
         @Override
-        public boolean onTransact(int code, Parcel data, Parcel reply, int flags) throws RemoteException {
-            String packageName;
+        public boolean onTransact(int code, Parcel data, Parcel reply, int flags)
+                throws RemoteException {
             String[] packages = getPackageManager().getPackagesForUid(getCallingUid());
             if (packages != null && packages.length > 0) {
-                packageName = packages[0];
-                if (!packageName.startsWith("me.zhang.art")) {
+                String packageName = packages[0];
+                if (!packageName.startsWith("me.zhang")) {
                     return false;
                 }
             }
-
             return super.onTransact(code, data, reply, flags);
         }
     };
@@ -106,13 +109,16 @@ public class BookManagerService extends Service {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!isServiceDestroyed.get()) {
+                while (!mIsServiceDestroyed.get()) {
                     try {
-                        Thread.sleep(10 * ONE_MINUTE);
+                        Thread.sleep(10 * ONE_SECOND);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    Book newBook = new Book(System.currentTimeMillis(), "Book→" + System.currentTimeMillis());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS",
+                            Locale.getDefault());
+                    Book newBook = new Book(System.currentTimeMillis(),
+                            "Book → " + sdf.format(new Date(System.currentTimeMillis())));
                     try {
                         onNewBookArrived(newBook);
                     } catch (RemoteException e) {
@@ -124,18 +130,18 @@ public class BookManagerService extends Service {
     }
 
     private void onNewBookArrived(Book newBook) throws RemoteException {
-        bookList.add(newBook);
+        mBookList.add(newBook);
 
         Log.i(TAG, "onNewBookArrived: notify listeners");
-        final int n = callbackList.beginBroadcast();
+        final int n = mCallbackList.beginBroadcast();
         for (int i = 0; i < n; i++) {
-            callbackList.getBroadcastItem(i).onNewBookArrived(newBook);
+            mCallbackList.getBroadcastItem(i).onNewBookArrived(newBook);
         }
-        callbackList.finishBroadcast();
+        mCallbackList.finishBroadcast();
     }
 
     @Override
     public void onDestroy() {
-        isServiceDestroyed.set(true);
+        mIsServiceDestroyed.set(true);
     }
 }

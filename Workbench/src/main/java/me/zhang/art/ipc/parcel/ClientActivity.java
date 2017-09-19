@@ -109,7 +109,7 @@ public class ClientActivity extends AppCompatActivity {
             switch (msg.what) {
                 case MSG_NEW_BOOK_ARRIVED:
                     Book book = (Book) msg.obj;
-                    Toast.makeText(ClientActivity.this, book.bookName, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ClientActivity.this, book.bookName, Toast.LENGTH_LONG).show();
                     break;
             }
             return false;
