@@ -29,15 +29,15 @@ public class ClientActivity extends AppCompatActivity {
     private static final String TAG = ClientActivity.class.getSimpleName();
     private static final int MSG_NEW_BOOK_ARRIVED = 0x00000001;
 
-    private IBookManager manager;
-    private BindStatus bindStatus;
+    private IBookManager mBookManager;
+    private BindStatus mBindStatus;
 
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        bindStatus = new BindBeforeStatus(); // before bind
+        mBindStatus = new BindBeforeStatus(); // before bind
 
         LinearLayout container = new LinearLayout(this);
         container.setOrientation(VERTICAL);
@@ -48,7 +48,7 @@ public class ClientActivity extends AppCompatActivity {
         addBookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bindStatus.performAddBook(getApplicationContext());
+                mBindStatus.performAddBook(getApplicationContext());
             }
         });
 
@@ -58,7 +58,7 @@ public class ClientActivity extends AppCompatActivity {
         getBookListButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bindStatus.performGetBookList(getApplicationContext());
+                mBindStatus.performGetBookList(getApplicationContext());
             }
         });
 
@@ -73,9 +73,9 @@ public class ClientActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         // register remote callback
-        if (manager != null && manager.asBinder().isBinderAlive()) {
+        if (mBookManager != null && mBookManager.asBinder().isBinderAlive()) {
             try {
-                manager.registerListener(onNewBookArrivedListener);
+                mBookManager.registerListener(mOnNewBookArrivedListener);
                 Log.i(TAG, "onResume: register listener");
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -87,9 +87,9 @@ public class ClientActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         // unregister remote callback
-        if (manager != null && manager.asBinder().isBinderAlive()) {
+        if (mBookManager != null && mBookManager.asBinder().isBinderAlive()) {
             try {
-                manager.unregisterListener(onNewBookArrivedListener);
+                mBookManager.unregisterListener(mOnNewBookArrivedListener);
                 Log.i(TAG, "onPause: unregister listener");
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -99,11 +99,11 @@ public class ClientActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        unbindService(connection);
+        unbindService(mConnection);
         super.onDestroy();
     }
 
-    private Handler handler = new Handler(new Handler.Callback() {
+    private Handler mHandler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
             switch (msg.what) {
@@ -116,32 +116,32 @@ public class ClientActivity extends AppCompatActivity {
         }
     });
 
-    private IBinder.DeathRecipient deathRecipient = new IBinder.DeathRecipient() {
+    private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient() {
         @Override
         public void binderDied() {
             Log.i(TAG, "binderDied: currentThread### " + Thread.currentThread().getName());
 
-            if (manager == null) return;
-            manager.asBinder().unlinkToDeath(deathRecipient, 0);
-            manager = null;
+            if (mBookManager == null) return;
+            mBookManager.asBinder().unlinkToDeath(mDeathRecipient, 0);
+            mBookManager = null;
             // 1. 重新绑定远程服务
             bind();
         }
     };
 
-    private ServiceConnection connection = new ServiceConnection() {
+    private ServiceConnection mConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             Log.i(TAG, "onServiceConnected: currentThread### " + Thread.currentThread().getName());
 
-            manager = IBookManager.Stub.asInterface(service);
-            bindStatus = new BindOkStatus(manager); // switch to bind ok status
+            mBookManager = IBookManager.Stub.asInterface(service);
+            mBindStatus = new BindOkStatus(mBookManager); // switch to bind ok status
 
             try {
-                service.linkToDeath(deathRecipient, 0); // 为binder设置“死亡代理”
+                service.linkToDeath(mDeathRecipient, 0); // 为binder设置“死亡代理”
 
-                Toast.makeText(ClientActivity.this, manager.sayHello(), Toast.LENGTH_SHORT).show();
-                manager.registerListener(onNewBookArrivedListener);
+                Toast.makeText(ClientActivity.this, mBookManager.sayHello(), Toast.LENGTH_SHORT).show();
+                mBookManager.registerListener(mOnNewBookArrivedListener);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
@@ -150,23 +150,25 @@ public class ClientActivity extends AppCompatActivity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             Log.i(TAG, "onServiceDisconnected: currentThread### " + Thread.currentThread().getName());
-            manager = null;
+            mBookManager = null;
 
             // 2. 重新绑定远程服务
 //            bind();
         }
     };
 
-    private IOnNewBookArrivedListener onNewBookArrivedListener = new IOnNewBookArrivedListener.Stub() {
+    private IOnNewBookArrivedListener mOnNewBookArrivedListener = new IOnNewBookArrivedListener.Stub() {
         @Override
         public void onNewBookArrived(Book newBook) throws RemoteException {
             // 该方法运行于客户端的Binder线程池中，不能直接和UI交互
-            handler.obtainMessage(MSG_NEW_BOOK_ARRIVED, newBook).sendToTarget();
+            mHandler.obtainMessage(MSG_NEW_BOOK_ARRIVED, newBook).sendToTarget();
         }
     };
 
     private void bind() {
-        bindService(new Intent("me.zhang.art.ipc.parcel.RemoteService"), connection, BIND_AUTO_CREATE);
+        Intent serviceIntent = new Intent("me.zhang.art.ipc.parcel.RemoteService");
+        serviceIntent.setPackage("me.zhang.art");
+        bindService(serviceIntent, mConnection, BIND_AUTO_CREATE);
     }
 
 }
