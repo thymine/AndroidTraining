@@ -1,1 +1,1 @@
-include ':Lab', ':ScreenOff', ':FloatingMenu', ':Workbench', ':ApiDemos', ':Test', ':Art', ':GradleForAndroid', ':JavaLib', ':AndroidLib', ':icndb'
+include ':Lab', ':ScreenOff', ':FloatingMenu', ':Workbench', ':ApiDemos', ':Test', ':Art', ':GradleForAndroid', ':JavaLib', ':AndroidLib', ':icndb', ':scavenger-api', ':scavenger-annotations', ':scavenger-compiler', ':scavenger-sample'

@@ -100,9 +100,8 @@ android {
 android.applicationVariants.all { variant ->
     // Do something
     println("applicationVariants $variant.name")
-    variant.outputs.each { output ->
-        def file = output.outputFile
-        output.outputFile = new File(file.parent, file.name.replace(".apk", "-${variant.versionName}.apk"))
+    variant.outputs.all {
+        outputFileName = "${variant.name}-${variant.versionName}.apk"
     }
 }
 
