@@ -22,9 +22,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.DocumentsContract.Document;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +37,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -137,8 +140,8 @@ public class DocumentsSample extends Activity {
                 Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("*/*");
-                intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[] {
-                        "text/plain", "application/msword" });
+                intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{
+                        "text/plain", "application/msword"});
                 if (multiple.isChecked()) {
                     intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 }
@@ -236,6 +239,7 @@ public class DocumentsSample extends Activity {
         setContentView(scroll);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         final ContentResolver cr = getContentResolver();
@@ -290,8 +294,8 @@ public class DocumentsSample extends Activity {
                     DocumentsContract.getTreeDocumentId(uri));
             Uri child = DocumentsContract.buildChildDocumentsUriUsingTree(uri,
                     DocumentsContract.getTreeDocumentId(uri));
-            Cursor c = cr.query(child, new String[] {
-                    Document.COLUMN_DISPLAY_NAME, Document.COLUMN_MIME_TYPE }, null, null, null);
+            Cursor c = cr.query(child, new String[]{
+                    Document.COLUMN_DISPLAY_NAME, Document.COLUMN_MIME_TYPE}, null, null, null);
             try {
                 while (c.moveToNext()) {
                     log("found child=" + c.getString(0) + ", mime=" + c.getString(1));
@@ -301,9 +305,24 @@ public class DocumentsSample extends Activity {
             }
 
             // Create some documents
-            Uri pic = DocumentsContract.createDocument(cr, doc, "image/png", "pic.png");
-            Uri dir = DocumentsContract.createDocument(cr, doc, Document.MIME_TYPE_DIR, "my dir");
-            Uri dirPic = DocumentsContract.createDocument(cr, dir, "image/png", "pic2.png");
+            Uri pic = null;
+            try {
+                pic = DocumentsContract.createDocument(cr, doc, "image/png", "pic.png");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Uri dir = null;
+            try {
+                dir = DocumentsContract.createDocument(cr, doc, Document.MIME_TYPE_DIR, "my dir");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Uri dirPic = null;
+            try {
+                dirPic = DocumentsContract.createDocument(cr, dir, "image/png", "pic2.png");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
 
             log("created " + pic);
             log("created " + dir);
@@ -322,13 +341,22 @@ public class DocumentsSample extends Activity {
             }
 
             // And delete the first pic
-            if (DocumentsContract.deleteDocument(cr, pic)) {
-                log("deleted untouched pic");
-            } else {
-                log("FAILED TO DELETE PIC");
+            try {
+                if (DocumentsContract.deleteDocument(cr, pic)) {
+                    log("deleted untouched pic");
+                } else {
+                    log("FAILED TO DELETE PIC");
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
         } else if (requestCode == CODE_RENAME) {
-            final Uri newUri = DocumentsContract.renameDocument(cr, uri, "MEOW.TEST");
+            Uri newUri = null;
+            try {
+                newUri = DocumentsContract.renameDocument(cr, uri, "MEOW.TEST");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             log("rename result=" + newUri);
 
             InputStream is = null;
@@ -366,6 +394,7 @@ public class DocumentsSample extends Activity {
         return bytes.toByteArray();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static void closeQuietly(AutoCloseable closeable) {
         if (closeable != null) {
             try {
