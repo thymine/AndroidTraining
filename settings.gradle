@@ -1,1 +1,17 @@
-include ':Lab', ':ScreenOff', ':FloatingMenu', ':Workbench', ':ApiDemos', ':Test', ':Art', ':GradleForAndroid', ':JavaLib', ':AndroidLib', ':icndb', ':scavenger-api', ':scavenger-annotations', ':scavenger-compiler', ':scavenger-sample'
+include ':Workbench'
+include ':JavaLib'
+include ':AndroidLib'
+include ':icndb'
+
+include ':scavenger-api'
+include ':scavenger-annotations'
+include ':scavenger-compiler'
+include ':scavenger-sample'
+
+//include ':Lab'
+//include ':ScreenOff'
+//include ':FloatingMenu'
+//include ':ApiDemos'
+//include ':Test'
+//include ':Art'
+//include ':GradleForAndroid'
