@@ -3,11 +3,6 @@ include ':JavaLib'
 include ':AndroidLib'
 include ':icndb'
 
-include ':scavenger-api'
-include ':scavenger-annotations'
-include ':scavenger-compiler'
-include ':scavenger-sample'
-
 //include ':Lab'
 //include ':ScreenOff'
 //include ':FloatingMenu'
