@@ -10,7 +10,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,7 +25,6 @@ public class VolleyTestActivity extends AppCompatActivity {
     TextView mResponseText;
 
     private static final String URL = "https://www.baidu.com/";
-    private RequestQueue mRequestQueue;
     private Request<String> mStringRequest;
 
     @Override
@@ -34,8 +32,6 @@ public class VolleyTestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volley_test);
         ButterKnife.bind(this);
-
-        mRequestQueue = Volley.newRequestQueue(this);
     }
 
     @OnClick(R.id.button_request)
@@ -59,13 +55,14 @@ public class VolleyTestActivity extends AppCompatActivity {
                 });
         mStringRequest.setTag(this);
 
-        mRequestQueue.add(mStringRequest);
+        RequestManager.INSTANCE.addToRequestQueue(mStringRequest);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mRequestQueue.cancelAll(this);
-        mRequestQueue.stop();
+        RequestQueue singletonQueue = RequestManager.INSTANCE.getRequestQueue();
+        singletonQueue.cancelAll(this);
+        singletonQueue.stop();
     }
 }
