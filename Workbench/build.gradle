@@ -80,6 +80,8 @@ dependencies {
 
     compile astuetzDependencies.PagerSlidingTabStrip
 
+    compile gmsDependencies.volley
+
     testCompile junitDependencies.junit
     androidTestCompile(('com.android.support.test.espresso:espresso-core:2.2.2')) {
         exclude group: 'com.android.support', module: 'support-annotations'

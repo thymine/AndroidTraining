@@ -81,6 +81,7 @@ import me.zhang.workbench.view.ScrollViewActivity;
 import me.zhang.workbench.view.SmoothScrollActivity;
 import me.zhang.workbench.view.ViewScrollActivity;
 import me.zhang.workbench.view.VisibilityActivity;
+import me.zhang.workbench.volley.VolleyTestActivity;
 import me.zhang.workbench.webview.WebViewActivity;
 import me.zhang.workbench.window.ShowDialog;
 import me.zhang.workbench.window.UseWindow;
@@ -172,6 +173,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Simple Service", SaveMyLocationActivity.class);
         addMenuItem("List Video", VideoActivity.class);
         addMenuItem("EventBus", BusActivity.class);
+        addMenuItem("Volley Test", VolleyTestActivity.class);
     }
 
 }
