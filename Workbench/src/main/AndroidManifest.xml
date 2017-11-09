@@ -204,7 +204,8 @@
             android:name=".service.SaveMyLocationActivity"
             android:exported="false" />
         <activity android:name=".listvideo.VideoActivity" />
-        <activity android:name=".event.BusActivity"></activity>
+        <activity android:name=".event.BusActivity" />
+        <activity android:name=".volley.VolleyTestActivity" />
     </application>
 
 </manifest>

@@ -173,4 +173,6 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="fragment_title_custom_view">Custom View</string>
     <string name="fragment_title_custom_drawable">Custom Drawable</string>
     <string name="fragment_title_extends_system_widget">Extends System Widget</string>
+    <string name="request">Request</string>
+    <string name="response_error">That didn\'t work!</string>
 </resources>

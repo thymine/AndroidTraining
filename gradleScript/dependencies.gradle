@@ -30,6 +30,8 @@ ext {
             playServicesAnalytics  : 'com.google.android.gms:play-services-analytics:' + googlePlayServicesVersion,
             playServicesAppindexing: 'com.google.android.gms:play-services-appindexing:' + googlePlayServicesVersion,
             gson                   : 'com.google.code.gson:gson:2.7',
+            // https://github.com/google/volley
+            volley                 : 'com.android.volley:volley:1.0.0',
     ]
 
     // Jake Wharton
