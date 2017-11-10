@@ -7,30 +7,30 @@
     tools:context="me.zhang.workbench.volley.VolleyTestActivity">
 
     <Button
-        android:id="@+id/button_request"
+        android:id="@+id/button_request_raw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/request"
+        android:text="@string/request_raw"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button_request_json"
+        app:layout_constraintEnd_toStartOf="@id/button_request_parsed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <Button
-        android:id="@+id/button_request_json"
+        android:id="@+id/button_request_parsed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/request_json"
+        android:text="@string/request_parsed"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/button_request"
+        app:layout_constraintStart_toEndOf="@id/button_request_raw"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 

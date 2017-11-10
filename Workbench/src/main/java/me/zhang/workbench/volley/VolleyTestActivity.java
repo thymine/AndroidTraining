@@ -9,10 +9,9 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
-import org.json.JSONObject;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,20 +20,19 @@ import me.zhang.workbench.R;
 
 public class VolleyTestActivity extends AppCompatActivity {
 
-    @BindView(R.id.button_request)
-    Button mRequestButton;
+    @BindView(R.id.button_request_raw)
+    Button mRequestRawButton;
 
-    @BindView(R.id.button_request_json)
-    Button mRequestJsonButton;
+    @BindView(R.id.button_request_parsed)
+    Button mRequestParsedButton;
 
     @BindView(R.id.text_response)
     TextView mResponseText;
 
-    private static final String URL = "https://www.baidu.com/";
-    private static final String URL_JSON =
+    private static final String URL =
             "https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=7&video=1";
-    private Request<String> mStringRequest;
-    private Request<JSONObject> mJSONObjectRequest;
+    private Request<String> mRawRequest;
+    private Request<BingoResult> mParsedRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +41,13 @@ public class VolleyTestActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.button_request)
-    public void doRequest() {
-        if (mStringRequest != null) {
-            mStringRequest.cancel();
+    @OnClick(R.id.button_request_raw)
+    public void requestRaw() {
+        if (mRawRequest != null) {
+            mRawRequest.cancel();
         }
 
-        mStringRequest = new StringRequest(Request.Method.GET, URL,
+        mRawRequest = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -62,22 +60,28 @@ public class VolleyTestActivity extends AppCompatActivity {
                         mResponseText.setText(R.string.response_error);
                     }
                 });
-        mStringRequest.setTag(this);
+        mRawRequest.setTag(this);
 
-        RequestManager.INSTANCE.addToRequestQueue(mStringRequest);
+        RequestManager.INSTANCE.addToRequestQueue(mRawRequest);
     }
 
-    @OnClick(R.id.button_request_json)
-    public void doRequestJson() {
-        if (mJSONObjectRequest != null) {
-            mJSONObjectRequest.cancel();
+    @OnClick(R.id.button_request_parsed)
+    public void requestParsed() {
+        if (mParsedRequest != null) {
+            mParsedRequest.cancel();
         }
 
-        mJSONObjectRequest = new JsonObjectRequest(Request.Method.GET, URL_JSON, null,
-                new Response.Listener<JSONObject>() {
+        mParsedRequest = new GsonRequest<>(URL, BingoResult.class, null,
+                new Response.Listener<BingoResult>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        mResponseText.setText(response.toString());
+                    public void onResponse(BingoResult response) {
+                        List<Image> images = response.images;
+                        StringBuilder builder = new StringBuilder();
+                        for (Image image : images) {
+                            builder.append(image.copyright);
+                            builder.append("\n\n");
+                        }
+                        mResponseText.setText(builder.toString());
                     }
                 },
                 new Response.ErrorListener() {
@@ -87,9 +91,9 @@ public class VolleyTestActivity extends AppCompatActivity {
                     }
                 }
         );
-        mJSONObjectRequest.setTag(this);
+        mParsedRequest.setTag(this);
 
-        RequestManager.INSTANCE.addToRequestQueue(mJSONObjectRequest);
+        RequestManager.INSTANCE.addToRequestQueue(mParsedRequest);
     }
 
     @Override
@@ -97,6 +101,5 @@ public class VolleyTestActivity extends AppCompatActivity {
         super.onDestroy();
         RequestQueue singletonQueue = RequestManager.INSTANCE.getRequestQueue();
         singletonQueue.cancelAll(this);
-        singletonQueue.stop();
     }
 }
