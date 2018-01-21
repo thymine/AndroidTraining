@@ -38,4 +38,8 @@ dependencies {
 
     compile jakeWhartonDependencies.butterknife
     annotationProcessor jakeWhartonDependencies.butterknifeCompiler
+
+    /* https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation */
+    api 'com.jakewharton.fliptables:fliptables:1.0.2' // this lib would be accessed from Workbench
+    // implementation 'com.jakewharton.fliptables:fliptables:1.0.2' // this lib won't be accessed from Workbench
 }
