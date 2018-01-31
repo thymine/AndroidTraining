@@ -2,7 +2,6 @@ package me.zhang.workbench.adapter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -25,7 +24,6 @@ public class RecyclerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recycler);
         ButterKnife.bind(this);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mRecyclerView.addItemDecoration(new SpacesItemDecoration((int) UiUtils.convertDpToPixel(2, this)));
         List<String> imageList = new ArrayList<>();
         imageList.addAll(Arrays.asList(Images.imageUrls));
