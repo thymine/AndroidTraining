@@ -1,9 +1,6 @@
 package me.zhang.workbench.view
 
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
+import android.graphics.*
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +16,7 @@ import me.zhang.workbench.view.CustomViewActivity.FRAGMENT_TITLE
 class CustomViewFragment : Fragment() {
 
     private var mCustomImage: ImageView? = null
+    private var mScaleBitmapImage: ImageView? = null
 
     companion object {
         fun newInstance(title: String): CustomViewFragment {
@@ -39,6 +37,9 @@ class CustomViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mCustomImage = view!!.findViewById(R.id.custom_image)
         mCustomImage!!.setImageBitmap(getDrawnBitmap())
+
+        mScaleBitmapImage = view.findViewById(R.id.scale_bitmap)
+        mScaleBitmapImage?.setImageBitmap(getScaleBitmap())
     }
 
     private fun getDrawnBitmap(): Bitmap {
@@ -64,6 +65,22 @@ class CustomViewFragment : Fragment() {
         canvas.drawRect(cx - offset, cy - offset, cx + offset, cy + offset, paint)
 
         return bitmap
+    }
+
+    private fun getScaleBitmap(): Bitmap {
+        val bitmapBuffer = Bitmap.createBitmap(800, 500, Bitmap.Config.ARGB_4444)
+        val canvas = Canvas(bitmapBuffer)
+
+        val bitmap = BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher)
+        canvas.drawBitmap(bitmap, 0f, 0f, null)
+
+        /* 从bitmap中抠出一块大小为src的区域，绘制到dst区域 */
+        val width = bitmap.width
+        val height = bitmap.height
+        val src = Rect(width / 2, height / 2, width, height)
+        val dst = Rect(width, 0, width * 4, height * 3)
+        canvas.drawBitmap(bitmap, src, dst, null)
+        return bitmapBuffer
     }
 
 }
