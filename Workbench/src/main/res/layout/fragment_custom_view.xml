@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@drawable/divider"
-    android:orientation="vertical"
-    android:showDividers="middle">
+    android:layout_height="match_parent">
 
-    <me.zhang.workbench.view.CustomView
-        android:layout_width="480px"
-        android:layout_height="480px"
-        android:background="@color/colorPrimary" />
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:visibility="gone" />
-
-    <me.zhang.workbench.view.CustomView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary" />
-
-    <me.zhang.workbench.view.CustomView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary" />
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider"
+        android:orientation="vertical"
+        android:showDividers="middle">
 
-</LinearLayout>
+        <me.zhang.workbench.view.CustomView
+            android:layout_width="480px"
+            android:layout_height="480px"
+            android:background="@color/colorPrimary"
+            tools:ignore="PxUsage" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:visibility="gone" />
+
+        <me.zhang.workbench.view.CustomView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary" />
+
+        <me.zhang.workbench.view.CustomView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary" />
+
+        <ImageView
+            android:id="@+id/custom_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription" />
+
+    </LinearLayout>
+
+</ScrollView>
