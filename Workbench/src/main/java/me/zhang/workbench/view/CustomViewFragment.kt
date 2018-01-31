@@ -47,21 +47,21 @@ class CustomViewFragment : Fragment() {
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_4444)
         val canvas = Canvas(bitmap)
 
-        val radius = 24
-        val cx = width / 2
-        val cy = height / 2
+        val radius = 24f
+        val cx = width / 2f
+        val cy = height / 2f
 
         /* draw circle */
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
         paint.color = Color.GREEN
         paint.style = Paint.Style.FILL
-        canvas.drawCircle(cx.toFloat(), cy.toFloat(), radius.toFloat(), paint)
+        canvas.drawCircle(cx, cy, radius, paint)
 
         /* draw rectangle */
         paint.color = Color.BLUE
         paint.style = Paint.Style.STROKE
-        val offset = 60
-        canvas.drawRect((cx - offset).toFloat(), (cy - offset).toFloat(), (cx + offset).toFloat(), (cy + offset).toFloat(), paint)
+        val offset = 60f
+        canvas.drawRect(cx - offset, cy - offset, cx + offset, cy + offset, paint)
 
         return bitmap
     }
