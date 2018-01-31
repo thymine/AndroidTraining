@@ -11,6 +11,12 @@
         android:orientation="vertical"
         android:showDividers="middle">
 
+        <ImageView
+            android:id="@+id/scale_bitmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription" />
+
         <me.zhang.workbench.view.CustomView
             android:layout_width="480px"
             android:layout_height="480px"
