@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import me.zhang.workbench.R
+import me.zhang.workbench.utils.UiUtils
 import me.zhang.workbench.view.CustomViewActivity.FRAGMENT_TITLE
 
 /**
@@ -15,6 +16,7 @@ import me.zhang.workbench.view.CustomViewActivity.FRAGMENT_TITLE
  */
 class CustomViewFragment : Fragment() {
 
+    private var mPointsLinesImage: ImageView? = null
     private var mCustomImage: ImageView? = null
     private var mScaleBitmapImage: ImageView? = null
 
@@ -40,6 +42,9 @@ class CustomViewFragment : Fragment() {
 
         mScaleBitmapImage = view.findViewById(R.id.scale_bitmap)
         mScaleBitmapImage?.setImageBitmap(getScaleBitmap())
+
+        mPointsLinesImage = view.findViewById(R.id.points_lines_image)
+        mPointsLinesImage?.setImageBitmap(getPointsLinesBitmap())
     }
 
     private fun getDrawnBitmap(): Bitmap {
@@ -80,6 +85,38 @@ class CustomViewFragment : Fragment() {
         val src = Rect(width / 2, height / 2, width, height)
         val dst = Rect(width, 0, width * 4, height * 3)
         canvas.drawBitmap(bitmap, src, dst, null)
+        return bitmapBuffer
+    }
+
+    private fun getPointsLinesBitmap(): Bitmap {
+        val bitmapBuffer = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_4444)
+
+        val canvas = Canvas(bitmapBuffer)
+
+        //region Draw dots
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        paint.color = Color.YELLOW
+        paint.style = Paint.Style.FILL
+        paint.strokeWidth = UiUtils.convertDpToPixel(6f, context)
+
+        canvas.drawPoint(20f, 30f, paint)
+
+        paint.color = Color.GREEN
+        paint.strokeWidth = UiUtils.convertDpToPixel(20f, context)
+
+        val pts = floatArrayOf(140f, 50f, 260f, 130f, 380f, 160f)
+        canvas.drawPoints(pts, paint)
+        //endregion
+
+        //region Draw lines
+        paint.strokeWidth = UiUtils.convertDpToPixel(3f, context)
+        paint.color = Color.RED
+        canvas.drawLine(400f, 200f, 700f, 300f, paint)
+
+        val lpts = floatArrayOf(300f, 200f, 350f, 250f, 600f, 100f, 700f, 460f)
+        canvas.drawLines(lpts, paint)
+        //endregion
+
         return bitmapBuffer
     }
 
