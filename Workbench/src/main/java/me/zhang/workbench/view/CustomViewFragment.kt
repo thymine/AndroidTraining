@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import me.zhang.workbench.R
 import me.zhang.workbench.utils.UiUtils
+import me.zhang.workbench.utils.toPixel
 import me.zhang.workbench.view.CustomViewActivity.FRAGMENT_TITLE
 
 /**
@@ -147,7 +148,7 @@ class CustomViewFragment : Fragment() {
 
         paint.color = Color.RED
         paint.style = Paint.Style.STROKE
-        paint.strokeWidth = UiUtils.convertDpToPixel(3f, context)
+        paint.strokeWidth = 3.toPixel(context)
         canvas.drawArc(rectF, 135f, 30f, false, paint)
         //endregion
 
