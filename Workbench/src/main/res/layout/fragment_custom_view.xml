@@ -12,13 +12,19 @@
         android:showDividers="middle">
 
         <ImageView
-            android:id="@+id/points_lines_image"
+            android:id="@+id/custom_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/scale_bitmap"
+            android:id="@+id/graphics_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/bitmap_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:ignore="ContentDescription" />
@@ -44,12 +50,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary" />
-
-        <ImageView
-            android:id="@+id/custom_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="ContentDescription" />
 
     </LinearLayout>
 

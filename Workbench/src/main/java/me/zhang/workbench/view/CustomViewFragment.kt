@@ -16,9 +16,9 @@ import me.zhang.workbench.view.CustomViewActivity.FRAGMENT_TITLE
  */
 class CustomViewFragment : Fragment() {
 
-    private var mPointsLinesImage: ImageView? = null
+    private var mGraphicsImage: ImageView? = null
     private var mCustomImage: ImageView? = null
-    private var mScaleBitmapImage: ImageView? = null
+    private var mBitmapImage: ImageView? = null
 
     companion object {
         fun newInstance(title: String): CustomViewFragment {
@@ -40,11 +40,11 @@ class CustomViewFragment : Fragment() {
         mCustomImage = view!!.findViewById(R.id.custom_image)
         mCustomImage!!.setImageBitmap(getDrawnBitmap())
 
-        mScaleBitmapImage = view.findViewById(R.id.scale_bitmap)
-        mScaleBitmapImage?.setImageBitmap(getScaleBitmap())
+        mBitmapImage = view.findViewById(R.id.bitmap_image)
+        mBitmapImage?.setImageBitmap(getScaleBitmap())
 
-        mPointsLinesImage = view.findViewById(R.id.points_lines_image)
-        mPointsLinesImage?.setImageBitmap(getPointsLinesBitmap())
+        mGraphicsImage = view.findViewById(R.id.graphics_image)
+        mGraphicsImage?.setImageBitmap(getGraphicsBitmap())
     }
 
     private fun getDrawnBitmap(): Bitmap {
@@ -88,7 +88,7 @@ class CustomViewFragment : Fragment() {
         return bitmapBuffer
     }
 
-    private fun getPointsLinesBitmap(): Bitmap {
+    private fun getGraphicsBitmap(): Bitmap {
         val bitmapBuffer = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_4444)
 
         val canvas = Canvas(bitmapBuffer)
@@ -115,6 +115,20 @@ class CustomViewFragment : Fragment() {
 
         val lpts = floatArrayOf(300f, 200f, 350f, 250f, 600f, 100f, 700f, 460f)
         canvas.drawLines(lpts, paint)
+        //endregion
+
+        //region Draw rectangle
+        paint.color = Color.YELLOW
+        val rect = Rect(100, 300, 400, 500)
+        canvas.drawRect(rect, paint)
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = UiUtils.convertDpToPixel(1f, context)
+        paint.color = Color.CYAN
+        rect.set(150, 350, 350, 450)
+        val rectF = RectF(rect)
+        val rX = UiUtils.convertDpToPixel(6f, context)
+        val rY = UiUtils.convertDpToPixel(6f, context)
+        canvas.drawRoundRect(rectF, rX, rY, paint)
         //endregion
 
         return bitmapBuffer
