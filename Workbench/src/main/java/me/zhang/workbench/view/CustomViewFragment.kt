@@ -93,8 +93,9 @@ class CustomViewFragment : Fragment() {
 
         val canvas = Canvas(bitmapBuffer)
 
-        //region Draw dots
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        //region Draw dots
         paint.color = Color.YELLOW
         paint.style = Paint.Style.FILL
         paint.strokeWidth = UiUtils.convertDpToPixel(6f, context)
@@ -117,7 +118,7 @@ class CustomViewFragment : Fragment() {
         canvas.drawLines(lpts, paint)
         //endregion
 
-        //region Draw rectangle
+        //region Draw rectangles
         paint.color = Color.YELLOW
         val rect = Rect(100, 300, 400, 500)
         canvas.drawRect(rect, paint)
@@ -129,6 +130,25 @@ class CustomViewFragment : Fragment() {
         val rX = UiUtils.convertDpToPixel(6f, context)
         val rY = UiUtils.convertDpToPixel(6f, context)
         canvas.drawRoundRect(rectF, rX, rY, paint)
+        //endregion
+
+        //region Draw circles
+        paint.color = Color.BLUE
+        paint.style = Paint.Style.FILL
+        canvas.drawCircle(250f, 400f, 30f, paint)
+
+        paint.color = Color.BLACK
+        paint.style = Paint.Style.STROKE
+        canvas.drawOval(rectF, paint)
+
+        paint.color = Color.LTGRAY
+        paint.style = Paint.Style.FILL
+        canvas.drawArc(rectF, -15f, -30f, true, paint)
+
+        paint.color = Color.RED
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = UiUtils.convertDpToPixel(3f, context)
+        canvas.drawArc(rectF, 135f, 30f, false, paint)
         //endregion
 
         return bitmapBuffer
