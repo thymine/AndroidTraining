@@ -206,6 +206,7 @@
         <activity android:name=".listvideo.VideoActivity" />
         <activity android:name=".event.BusActivity" />
         <activity android:name=".volley.VolleyTestActivity" />
+        <activity android:name=".stateList.StateListActivity" />
     </application>
 
 </manifest>
