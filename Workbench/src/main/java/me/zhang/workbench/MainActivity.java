@@ -67,6 +67,7 @@ import me.zhang.workbench.retrofit.TestActivity;
 import me.zhang.workbench.rx.RxActivity;
 import me.zhang.workbench.service.SaveMyLocationActivity;
 import me.zhang.workbench.state.RestoreActivityState;
+import me.zhang.workbench.stateList.StateListActivity;
 import me.zhang.workbench.style.PreviewActivity;
 import me.zhang.workbench.thread.LoggerActivity;
 import me.zhang.workbench.thread.ThreadActivity;
@@ -174,6 +175,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("List Video", VideoActivity.class);
         addMenuItem("EventBus", BusActivity.class);
         addMenuItem("Volley Test", VolleyTestActivity.class);
+        addMenuItem("State List Drawable", StateListActivity.class);
     }
 
 }
