@@ -12,6 +12,12 @@
         android:showDividers="middle">
 
         <ImageView
+            android:id="@+id/auth_code_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
             android:id="@+id/text_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

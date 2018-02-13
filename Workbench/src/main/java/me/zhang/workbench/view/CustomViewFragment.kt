@@ -1,6 +1,7 @@
 package me.zhang.workbench.view
 
 import android.graphics.*
+import android.graphics.Color.*
 import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -22,6 +23,7 @@ class CustomViewFragment : Fragment() {
     private var mCustomImage: ImageView? = null
     private var mGraphicsImage: ImageView? = null
     private var mBitmapImage: ImageView? = null
+    private var mAuthCodeImage: ImageView? = null
 
     companion object {
         fun newInstance(title: String): CustomViewFragment {
@@ -51,6 +53,9 @@ class CustomViewFragment : Fragment() {
 
         mTextImage = view.findViewById(R.id.text_image)
         mTextImage?.setImageBitmap(getTextBitmap())
+
+        mAuthCodeImage = view.findViewById(R.id.auth_code_image)
+        mAuthCodeImage?.setImageBitmap(getAuthCodeBitmap())
     }
 
     private fun getDrawnBitmap(): Bitmap {
@@ -235,6 +240,65 @@ class CustomViewFragment : Fragment() {
         paint.style = Paint.Style.STROKE
         paint.color = Color.RED
         canvas.drawPath(path, paint)
+
+        return bitmapBuffer
+    }
+
+    private fun getAuthCodeBitmap(): Bitmap {
+        val bitmapBuffer = Bitmap.createBitmap(1600, 800, Bitmap.Config.ARGB_4444)
+        val canvas = Canvas(bitmapBuffer)
+
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = 1.toPixel(context)
+        paint.color = Color.BLACK
+
+        val l = 100F
+        val t = 100F
+        val r = 800F
+        val b = 300F
+        val rf = RectF(l, t, r, b)
+
+        /* 1. Draw rectangle */
+        canvas.drawRect(rf, paint)
+
+        /* 2. Draw auth code */
+        val sb = StringBuilder()
+        for (i in 1..6) {
+            sb.append((Math.random() * 10).toInt())
+        }
+        // e.g. 102400
+
+        paint.style = Paint.Style.FILL_AND_STROKE
+        paint.color = Color.RED
+        paint.textSize = 32.toPixel(context)
+        val text = sb.toString()
+        val textWidth = paint.measureText(text)
+        val x = (r + l) / 2 - textWidth / 2
+        val y = (b + t) / 2 - (paint.descent() + paint.ascent()) / 2
+        canvas.drawText(text, x, y, paint) // draw text on center of rectangle
+
+        /* 3. Draw random lines */
+        val colors = listOf(BLACK,
+                DKGRAY,
+                GRAY,
+                LTGRAY,
+                WHITE,
+                RED,
+                GREEN,
+                BLUE,
+                YELLOW,
+                CYAN,
+                MAGENTA)
+
+        for (i in 1..50) {
+            val randStartX = (l + Math.random() * (r - l)).toFloat()
+            val randStartY = (t + Math.random() * (b - l)).toFloat()
+            val randStopX = (l + Math.random() * (r - l)).toFloat()
+            val randStopY = (t + Math.random() * (b - l)).toFloat()
+            paint.color = colors[(Math.random() * colors.size).toInt()]
+            canvas.drawLine(randStartX, randStartY, randStopX, randStopY, paint)
+        }
 
         return bitmapBuffer
     }
