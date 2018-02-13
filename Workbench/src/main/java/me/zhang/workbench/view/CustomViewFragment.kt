@@ -18,8 +18,9 @@ import me.zhang.workbench.view.CustomViewActivity.FRAGMENT_TITLE
  */
 class CustomViewFragment : Fragment() {
 
-    private var mGraphicsImage: ImageView? = null
+    private var mTextImage: ImageView? = null
     private var mCustomImage: ImageView? = null
+    private var mGraphicsImage: ImageView? = null
     private var mBitmapImage: ImageView? = null
 
     companion object {
@@ -47,6 +48,9 @@ class CustomViewFragment : Fragment() {
 
         mGraphicsImage = view.findViewById(R.id.graphics_image)
         mGraphicsImage?.setImageBitmap(getGraphicsBitmap())
+
+        mTextImage = view.findViewById(R.id.text_image)
+        mTextImage?.setImageBitmap(getTextBitmap())
     }
 
     private fun getDrawnBitmap(): Bitmap {
@@ -202,6 +206,35 @@ class CustomViewFragment : Fragment() {
         paint.color = Color.BLACK
         canvas.drawPath(path, paint)
         //endregion
+
+        return bitmapBuffer
+    }
+
+    private fun getTextBitmap(): Bitmap {
+        val bitmapBuffer = Bitmap.createBitmap(1600, 800, Bitmap.Config.ARGB_4444)
+
+        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        paint.textSize = 18.toPixel(context)
+        paint.color = Color.BLACK
+
+        val canvas = Canvas(bitmapBuffer)
+
+        val text = "Android Lab"
+
+        canvas.drawText(text, 100F, 100F, paint)
+
+        canvas.drawText(text, 0, 7, 100F, 200F, paint)
+
+        canvas.drawText(text.toCharArray(), 8, 3, 100F, 300F, paint)
+
+        val path = Path()
+        path.moveTo(100F, 600F)
+        path.cubicTo(250F, 500F, 400F, 700F, 550F, 600F)
+        canvas.drawTextOnPath(text, path, 50F, 20F, paint)
+        paint.strokeWidth = 1.toPixel(context)
+        paint.style = Paint.Style.STROKE
+        paint.color = Color.RED
+        canvas.drawPath(path, paint)
 
         return bitmapBuffer
     }
