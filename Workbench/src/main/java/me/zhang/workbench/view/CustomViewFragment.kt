@@ -1,6 +1,7 @@
 package me.zhang.workbench.view
 
 import android.graphics.*
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -49,26 +50,26 @@ class CustomViewFragment : Fragment() {
     }
 
     private fun getDrawnBitmap(): Bitmap {
-        val width = 480
-        val height = 480
+        val width = 1480
+        val height = 880
         val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_4444)
         val canvas = Canvas(bitmap)
 
-        val radius = 24f
-        val cx = width / 2f
-        val cy = height / 2f
+        val rPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        rPaint.style = Paint.Style.FILL
+        rPaint.color = Color.BLACK
 
-        /* draw circle */
-        val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        paint.color = Color.GREEN
-        paint.style = Paint.Style.FILL
-        canvas.drawCircle(cx, cy, radius, paint)
+        val rectF = RectF(100F, 100F, 300F, 300F)
+        val rPath = Path()
+        rPath.addRect(rectF, Path.Direction.CCW)
 
-        /* draw rectangle */
-        paint.color = Color.BLUE
-        paint.style = Paint.Style.STROKE
-        val offset = 60f
-        canvas.drawRect(cx - offset, cy - offset, cx + offset, cy + offset, paint)
+        val cPath = Path()
+        cPath.addCircle(300F, 300F, 100F, Path.Direction.CCW)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            rPath.op(cPath, Path.Op.XOR)
+        }
+        canvas.drawPath(rPath, rPaint)
 
         return bitmap
     }
@@ -90,7 +91,7 @@ class CustomViewFragment : Fragment() {
     }
 
     private fun getGraphicsBitmap(): Bitmap {
-        val bitmapBuffer = Bitmap.createBitmap(800, 600, Bitmap.Config.ARGB_4444)
+        val bitmapBuffer = Bitmap.createBitmap(1600, 600, Bitmap.Config.ARGB_4444)
 
         val canvas = Canvas(bitmapBuffer)
 
@@ -150,6 +151,56 @@ class CustomViewFragment : Fragment() {
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 3.toPixel(context)
         canvas.drawArc(rectF, 135f, 30f, false, paint)
+        //endregion
+
+        //region Draw paths
+        val path = Path()
+        paint.strokeWidth = 1.toPixel(context)
+        paint.color = Color.GREEN
+
+        path.moveTo(800f, 100f)
+        path.rLineTo(200f, 0f)
+        path.rLineTo(-100f, Math.sqrt(Math.pow(200.0, 2.0) - Math.pow(100.0, 2.0)).toFloat())
+        path.lineTo(800f, 100f)
+        path.close()
+
+        canvas.drawPath(path, paint)
+
+        paint.color = Color.RED
+//        path.rewind()
+        path.reset()
+        rectF.set(800F, 320F, 1000F, 500F)
+        path.addRect(rectF, Path.Direction.CCW)
+        canvas.drawPath(path, paint)
+        //endregion
+
+        //region Draw bezier curves
+        paint.color = Color.BLUE
+        path.reset()
+        path.moveTo(1000f, 120f)
+        path.quadTo(1300f, 240f, 1100f, 380f)
+        canvas.drawPath(path, paint)
+
+        paint.strokeWidth = 4.toPixel(context)
+        paint.color = Color.GREEN
+        canvas.drawPoints(floatArrayOf(1000f, 120f, 1300f, 240f, 1100f, 380f), paint)
+
+        path.reset()
+        path.moveTo(1100f, 380f)
+        path.rQuadTo(600f, 200f, 100f, 600f)
+        paint.strokeWidth = 1.toPixel(context)
+        paint.color = Color.RED
+        canvas.drawPath(path, paint)
+
+        path.reset()
+        path.moveTo(1100f, 400f)
+        val rf = RectF(1100f, 400f, 1300f, 500f)
+        path.arcTo(rf, 0f, -90f, false)
+        paint.color = Color.GREEN
+        canvas.drawRect(rf, paint)
+        canvas.drawOval(rf, paint)
+        paint.color = Color.BLACK
+        canvas.drawPath(path, paint)
         //endregion
 
         return bitmapBuffer
