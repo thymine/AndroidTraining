@@ -37,4 +37,6 @@
     <dimen name="list_item_icon_margin_bottom">6dp</dimen>
     <dimen name="bg_button_corner_radius">12dp</dimen>
 
+    <dimen name="grid_item_spacing">2dp</dimen>
+
 </resources>

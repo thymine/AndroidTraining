@@ -136,7 +136,7 @@
         <activity android:name=".design.animation.TargetActivity" />
         <activity
             android:name=".design.transition.GridActivity"
-            android:theme="@style/AppTheme.Grid.Light" />
+            android:theme="@style/AppThemeNoActionBar.Grid.Light" />
         <activity android:name=".design.transition.DetailActivity" />
         <activity android:name=".design.transition.DummyActivity" />
         <activity android:name=".design.interpolator.InterpolatorActivity" />

@@ -176,4 +176,6 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="request_raw">Request Raw</string>
     <string name="request_parsed">Request Parsed</string>
     <string name="response_error">That didn\'t work!</string>
+    <string name="transition_name_hero">tn_hero</string>
+    <string name="key_clicked_color">key_clicked_color</string>
 </resources>
