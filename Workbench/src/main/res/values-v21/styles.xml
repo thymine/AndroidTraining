@@ -10,17 +10,21 @@
 
     </style>
 
-    <style name="AppTheme.Base.Details">
-        <item name="android:windowEnterTransition">@transition/slide_right</item>
-        <item name="android:windowTransitionBackgroundFadeDuration">400</item>
-        <!--<item name="android:windowSharedElementEnterTransition">@transition/hero</item>-->
-        <item name="android:statusBarColor">@color/indigo_100</item>
+    <style name="AppThemeNoActionBar.Grid">
         <item name="android:windowExitTransition">@transition/grid_exit</item>
         <item name="android:windowReenterTransition">@transition/slide_top</item>
+
+        <item name="android:windowSharedElementsUseOverlay">false</item>
     </style>
 
-    <style name="AppTheme.Grid">
-        <item name="android:statusBarColor">@color/indigo_500</item>
+    <style name="AppThemeNoActionBar.Details">
+        <item name="android:windowExitTransition">@transition/default_window_fade</item>
+        <item name="android:windowEnterTransition">@transition/slide_bottom</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/hero</item>
+
+        <!-- When disabled, the shared elements will be drawn as part of the called Activity's view hierarchy,
+        making it impossible for the shared elements to accidentally overlap on top of the system UI bars. -->
+        <item name="android:windowSharedElementsUseOverlay">false</item>
     </style>
 
 </resources>

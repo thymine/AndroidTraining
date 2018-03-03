@@ -1,18 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="RtlCompat, HardcodedText">
 
-    <TextView
-        android:onClick="exit"
+    <View
+        android:id="@+id/v_clicked_color"
         android:layout_width="match_parent"
         android:layout_height="240dp"
-        android:background="#ffb74d"
-        android:gravity="center"
-        android:text="B"
-        android:textAppearance="@android:style/TextAppearance.Material.Display4"
-        android:textColor="#afff"
-        android:transitionName="hero" />
+        android:transitionName="@string/transition_name_hero"
+        tools:targetApi="lollipop" />
 
     <View
         android:layout_width="match_parent"
