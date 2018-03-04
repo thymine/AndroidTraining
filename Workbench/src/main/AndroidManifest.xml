@@ -207,6 +207,7 @@
         <activity android:name=".event.BusActivity" />
         <activity android:name=".volley.VolleyTestActivity" />
         <activity android:name=".stateList.StateListActivity" />
+        <activity android:name=".ui.WidgetActivity" />
     </application>
 
 </manifest>
