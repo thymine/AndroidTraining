@@ -1,10 +1,12 @@
 package me.zhang.workbench.design.transition;
 
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -15,7 +17,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.zhang.workbench.R;
 
-import static android.app.ActivityOptions.makeSceneTransitionAnimation;
 import static android.graphics.Color.BLUE;
 import static android.graphics.Color.CYAN;
 import static android.graphics.Color.DKGRAY;
@@ -78,7 +79,23 @@ public class GridActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(GridActivity.this, DetailActivity.class);
                         intent.putExtra(getString(R.string.key_clicked_color), colorList.get(getAdapterPosition()));
-                        startActivity(intent, makeSceneTransitionAnimation(GridActivity.this, v, getString(R.string.transition_name_hero)).toBundle());
+
+                        View decorView = getWindow().getDecorView();
+                        View statusBackground = decorView.findViewById(android.R.id.statusBarBackground);
+                        View navBackground = decorView.findViewById(android.R.id.navigationBarBackground);
+
+                        Pair statusPair = Pair.create(statusBackground, statusBackground.getTransitionName());
+
+                        final ActivityOptions options;
+                        Pair photoPair = Pair.create(v, getString(R.string.transition_name_hero));
+                        if (navBackground == null) {
+                            options = ActivityOptions.makeSceneTransitionAnimation(GridActivity.this, photoPair, statusPair);
+                        } else {
+                            Pair navPair = Pair.create(navBackground, navBackground.getTransitionName());
+                            options = ActivityOptions.makeSceneTransitionAnimation(GridActivity.this, photoPair, statusPair, navPair);
+                        }
+
+                        startActivity(intent, options.toBundle());
                     }
                 });
             }
