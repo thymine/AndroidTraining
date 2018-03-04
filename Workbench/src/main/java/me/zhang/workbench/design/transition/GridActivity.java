@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +29,7 @@ import static android.graphics.Color.YELLOW;
 public class GridActivity extends AppCompatActivity {
 
     private final int[] colors = {DKGRAY, GRAY, LTGRAY, RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA};
-    private final List<Integer> colorList = new ArrayList<>();
+    private final ArrayList<Integer> colorList = new ArrayList<>();
 
     {
         for (int i = 0; i < 30; i++) {
@@ -78,7 +77,8 @@ public class GridActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(GridActivity.this, DetailActivity.class);
-                        intent.putExtra(getString(R.string.key_clicked_color), colorList.get(getAdapterPosition()));
+                        intent.putIntegerArrayListExtra(getString(R.string.key_color_list), colorList);
+                        intent.putExtra(getString(R.string.key_clicked_index), getAdapterPosition());
 
                         View decorView = getWindow().getDecorView();
                         View statusBackground = decorView.findViewById(android.R.id.statusBarBackground);
@@ -87,7 +87,7 @@ public class GridActivity extends AppCompatActivity {
                         Pair statusPair = Pair.create(statusBackground, statusBackground.getTransitionName());
 
                         final ActivityOptions options;
-                        Pair photoPair = Pair.create(v, getString(R.string.transition_name_hero));
+                        Pair photoPair = Pair.create(v, getString(R.string.transition_name_hero, getAdapterPosition()));
                         if (navBackground == null) {
                             options = ActivityOptions.makeSceneTransitionAnimation(GridActivity.this, photoPair, statusPair);
                         } else {
