@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
-    <targets>
-        <target android:targetId="@id/v_clicked_color" />
-    </targets>
-    <changeBounds>
-        <arcMotion android:maximumAngle="50" />
-    </changeBounds>
-    <changeTransform />
-    <changeClipBounds />
-    <changeImageTransform />
+    <transitionSet>
+        <targets>
+            <target android:targetId="@id/v_color" />
+        </targets>
+        <changeBounds>
+            <arcMotion android:maximumAngle="50" />
+        </changeBounds>
+        <changeTransform />
+        <changeClipBounds />
+        <changeImageTransform />
+    </transitionSet>
     <recolor>
         <targets>
             <target android:targetId="@android:id/statusBarBackground" />
