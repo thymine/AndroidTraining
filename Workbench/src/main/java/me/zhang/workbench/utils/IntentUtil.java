@@ -11,7 +11,10 @@ import java.util.List;
 /**
  * Created by Zhang on 9/19/2017 8:50 PM.
  */
-public class IntentUtils {
+public class IntentUtil {
+
+    public static final String SELECTED_ITEM_POSITION = "selected";
+    public static final int REQUEST_CODE = 0x01;
 
     /***
      * Android L (lollipop, API 21) introduced a new problem when trying to invoke implicit intent,
