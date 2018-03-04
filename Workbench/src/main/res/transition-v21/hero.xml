@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+    <targets>
+        <target android:targetId="@id/v_clicked_color" />
+    </targets>
     <changeBounds>
         <arcMotion android:maximumAngle="50" />
     </changeBounds>
@@ -8,8 +11,7 @@
     <changeImageTransform />
     <recolor>
         <targets>
-            <target android:excludeId="@android:id/statusBarBackground" />
-            <target android:excludeId="@android:id/navigationBarBackground" />
+            <target android:targetId="@android:id/statusBarBackground" />
         </targets>
     </recolor>
 </transitionSet>
