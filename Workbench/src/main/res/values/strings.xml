@@ -179,4 +179,15 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="transition_name_hero">tn_hero_%d</string>
     <string name="key_color_list">key_color_list</string>
     <string name="key_clicked_index">key_clicked_index</string>
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 </resources>
