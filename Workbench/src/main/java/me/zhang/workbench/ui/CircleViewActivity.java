@@ -11,19 +11,10 @@ import me.zhang.workbench.R;
  */
 public class CircleViewActivity extends AppCompatActivity {
 
-    private CircleMovingView circleMovingView;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_circle_view);
-        circleMovingView = findViewById(R.id.circleMovingView);
-        circleMovingView.start();
     }
 
-    @Override
-    protected void onDestroy() {
-        circleMovingView.stop();
-        super.onDestroy();
-    }
 }
