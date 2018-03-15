@@ -13,4 +13,10 @@
         android:padding="12dp"
         app:circle_color="@android:color/holo_red_dark" />
 
+    <me.zhang.workbench.ui.CircleMovingView
+        android:id="@+id/circleMovingView"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:background="@color/dark" />
+
 </LinearLayout>
