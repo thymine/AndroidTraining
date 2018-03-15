@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <me.zhang.workbench.view.CircleView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:background="@android:color/holo_blue_dark"
-        android:padding="12dp"
-        app:circle_color="@android:color/holo_red_dark" />
-
-    <me.zhang.workbench.ui.CircleMovingView
-        android:id="@+id/circleMovingView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:background="@color/dark" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <me.zhang.workbench.view.CircleView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:layout_margin="24dp"
+            android:background="@android:color/holo_green_light"
+            android:padding="12dp"
+            app:circle_color="@android:color/holo_green_dark" />
+
+        <me.zhang.workbench.ui.CircleMovingView
+            android:id="@+id/circleMovingView"
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:background="@color/dark" />
+
+        <me.zhang.workbench.ui.CoordinateView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+</ScrollView>

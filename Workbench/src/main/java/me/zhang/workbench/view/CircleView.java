@@ -23,16 +23,15 @@ public class CircleView extends View {
 
     public static final int DEFAULT_DIMEN = 256;
 
-    private int mColor = RED;
     private Paint mPaint = new Paint(ANTI_ALIAS_FLAG);
 
     public CircleView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CircleView);
-        mColor = a.getColor(R.styleable.CircleView_circle_color, RED);
+        final int circleColor = a.getColor(R.styleable.CircleView_circle_color, RED);
         a.recycle();
 
-        mPaint.setColor(mColor);
+        mPaint.setColor(circleColor);
     }
 
     @Override

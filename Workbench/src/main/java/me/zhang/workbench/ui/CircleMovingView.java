@@ -17,6 +17,8 @@ public class CircleMovingView extends View {
 
     private static final int WHAT_START = 100;
     private static final int STEP = 10; // px
+
+    private boolean isAnimating = false;
     private boolean lToR = true;
     private boolean tToB = true;
     private Paint paint;
@@ -48,6 +50,17 @@ public class CircleMovingView extends View {
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
         paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.FILL);
+
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isAnimating) {
+                    stop();
+                } else {
+                    start();
+                }
+            }
+        });
     }
 
     @Override
@@ -75,12 +88,26 @@ public class CircleMovingView extends View {
         canvas.drawCircle(centerX, centerY, radius, paint);
     }
 
-    public void start() {
+    private void start() {
         handler.sendEmptyMessage(WHAT_START);
+        isAnimating = true;
     }
 
-    public void stop() {
+    private void stop() {
         handler.removeMessages(WHAT_START);
+        isAnimating = false;
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        start();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        stop();
     }
 
 }
