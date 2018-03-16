@@ -81,8 +81,8 @@ public class CoordinateView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        // 高度设置为宽度的3倍
-        heightMeasureSpec = MeasureSpec.makeMeasureSpec(widthSize * 3, widthMode);
+        // 高度设置为宽度的2倍
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(widthSize * 2, widthMode);
 
         setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec),
                 getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec));
