@@ -38,5 +38,6 @@
     <dimen name="bg_button_corner_radius">12dp</dimen>
 
     <dimen name="grid_item_spacing">2dp</dimen>
+    <dimen name="height_unit">256dp</dimen>
 
 </resources>

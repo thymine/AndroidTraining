@@ -82,7 +82,7 @@
         <activity
             android:name=".layout.CustomLayoutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.CircleViewActivity" />
+        <activity android:name=".ui.DrawingActivity" />
         <activity android:name=".remoteViews.NotificationActivity" />
         <activity android:name=".remoteViews.ResultActivity" />
         <activity android:name=".handler.HandlerActivity" />

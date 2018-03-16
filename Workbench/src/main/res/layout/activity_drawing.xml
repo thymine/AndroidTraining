@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/divider_drawing"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <me.zhang.workbench.ui.ClipView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green" />
+
+        <me.zhang.workbench.ui.CoordinateView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray" />
+
+        <me.zhang.workbench.ui.CircleMovingView
+            android:id="@+id/circleMovingView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_unit"
+            android:background="@color/dark" />
+
+        <me.zhang.workbench.view.CircleView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_unit"
+            android:background="@android:color/holo_green_light"
+            android:padding="12dp"
+            app:circle_color="@android:color/holo_green_dark" />
+
+    </LinearLayout>
+
+</ScrollView>

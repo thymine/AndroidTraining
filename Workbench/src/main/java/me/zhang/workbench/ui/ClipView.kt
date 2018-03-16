@@ -75,11 +75,6 @@ class ClipView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View
         canvas.restore()
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-        start()
-    }
-
     private fun start() {
         timer = Timer()
         timer!!.schedule(object : TimerTask() {
@@ -88,11 +83,6 @@ class ClipView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View
             }
         }, 0, 100)
         isAnimating = true
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
-        stop()
     }
 
     private fun stop() {
