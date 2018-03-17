@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.PopupWindow
 import kotlinx.android.synthetic.main.activity_widget.*
 import me.zhang.workbench.R
-import me.zhang.workbench.utils.toPixel
+import me.zhang.workbench.utils.dp
 
 class WidgetActivity : Activity(), AdapterView.OnItemSelectedListener {
 
@@ -66,7 +66,7 @@ class WidgetActivity : Activity(), AdapterView.OnItemSelectedListener {
         val contentView = View(this)
         contentView.setBackgroundColor(Color.BLUE)
 
-        val popupWindow = PopupWindow(contentView, 128.toPixel(this).toInt(), 64.toPixel(this).toInt(), true)
+        val popupWindow = PopupWindow(contentView, 128.dp(this).toInt(), 64.dp(this).toInt(), true)
         popupWindow.setBackgroundDrawable(ColorDrawable())
 
         return popupWindow
