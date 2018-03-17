@@ -71,7 +71,7 @@ public class DetailActivity extends AppCompatActivity {
                 }
             }
         });
-        colorsViewPager.setPageMargin((int) UiUtilsKt.toPixel(4, this));
+        colorsViewPager.setPageMargin((int) UiUtilsKt.dp(4, this));
         colorsViewPager.setAdapter(new ColorsPagerAdapter(
                 getSupportFragmentManager(),
                 getIntent().getIntegerArrayListExtra(getString(R.string.key_color_list)),

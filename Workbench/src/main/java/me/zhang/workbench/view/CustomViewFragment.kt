@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import me.zhang.workbench.R
 import me.zhang.workbench.utils.UiUtils
-import me.zhang.workbench.utils.toPixel
+import me.zhang.workbench.utils.dp
 import me.zhang.workbench.view.CustomViewActivity.FRAGMENT_TITLE
 
 /**
@@ -158,13 +158,13 @@ class CustomViewFragment : Fragment() {
 
         paint.color = Color.RED
         paint.style = Paint.Style.STROKE
-        paint.strokeWidth = 3.toPixel(context)
+        paint.strokeWidth = 3.dp(context)
         canvas.drawArc(rectF, 135f, 30f, false, paint)
         //endregion
 
         //region Draw paths
         val path = Path()
-        paint.strokeWidth = 1.toPixel(context)
+        paint.strokeWidth = 1.dp(context)
         paint.color = Color.GREEN
 
         path.moveTo(800f, 100f)
@@ -190,14 +190,14 @@ class CustomViewFragment : Fragment() {
         path.quadTo(1300f, 240f, 1100f, 380f)
         canvas.drawPath(path, paint)
 
-        paint.strokeWidth = 4.toPixel(context)
+        paint.strokeWidth = 4.dp(context)
         paint.color = Color.GREEN
         canvas.drawPoints(floatArrayOf(1000f, 120f, 1300f, 240f, 1100f, 380f), paint)
 
         path.reset()
         path.moveTo(1100f, 380f)
         path.rQuadTo(600f, 200f, 100f, 600f)
-        paint.strokeWidth = 1.toPixel(context)
+        paint.strokeWidth = 1.dp(context)
         paint.color = Color.RED
         canvas.drawPath(path, paint)
 
@@ -219,7 +219,7 @@ class CustomViewFragment : Fragment() {
         val bitmapBuffer = Bitmap.createBitmap(1600, 800, Bitmap.Config.ARGB_4444)
 
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        paint.textSize = 18.toPixel(context)
+        paint.textSize = 18.dp(context)
         paint.color = Color.BLACK
 
         val canvas = Canvas(bitmapBuffer)
@@ -236,7 +236,7 @@ class CustomViewFragment : Fragment() {
         path.moveTo(100F, 600F)
         path.cubicTo(250F, 500F, 400F, 700F, 550F, 600F)
         canvas.drawTextOnPath(text, path, 50F, 20F, paint)
-        paint.strokeWidth = 1.toPixel(context)
+        paint.strokeWidth = 1.dp(context)
         paint.style = Paint.Style.STROKE
         paint.color = Color.RED
         canvas.drawPath(path, paint)
@@ -250,7 +250,7 @@ class CustomViewFragment : Fragment() {
 
         val paint = Paint(Paint.ANTI_ALIAS_FLAG)
         paint.style = Paint.Style.STROKE
-        paint.strokeWidth = 1.toPixel(context)
+        paint.strokeWidth = 1.dp(context)
         paint.color = Color.BLACK
 
         val l = 100F
@@ -271,7 +271,7 @@ class CustomViewFragment : Fragment() {
 
         paint.style = Paint.Style.FILL_AND_STROKE
         paint.color = Color.RED
-        paint.textSize = 32.toPixel(context)
+        paint.textSize = 32.dp(context)
         val text = sb.toString()
         val textWidth = paint.measureText(text)
         val x = (r + l) / 2 - textWidth / 2

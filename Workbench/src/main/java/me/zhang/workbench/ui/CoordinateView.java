@@ -63,7 +63,7 @@ public class CoordinateView extends View {
         dotPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         dotPaint.setColor(Color.YELLOW);
         dotPaint.setStyle(Paint.Style.FILL);
-        dotPaint.setStrokeWidth(UiUtilsKt.toPixel(3, context));
+        dotPaint.setStrokeWidth(UiUtilsKt.dp(3, context));
 
         setOnClickListener(new OnClickListener() {
             @Override
