@@ -208,7 +208,9 @@
         <activity android:name=".volley.VolleyTestActivity" />
         <activity android:name=".stateList.StateListActivity" />
         <activity android:name=".ui.WidgetActivity" />
-        <activity android:name=".ui.LineDrawingActivity" />
+        <activity
+            android:name=".ui.LineDrawingActivity"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>
