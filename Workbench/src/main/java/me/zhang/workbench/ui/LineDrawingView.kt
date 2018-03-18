@@ -32,6 +32,8 @@ class LineDrawingView : View {
         paint.style = Paint.Style.STROKE
         paint.color = Color.RED
         paint.strokeWidth = 5.dp()
+
+        setBackgroundColor(Color.GRAY)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
