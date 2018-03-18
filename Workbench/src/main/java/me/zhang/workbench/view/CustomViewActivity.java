@@ -33,6 +33,7 @@ public class CustomViewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         List<Fragment> pageTitles = new ArrayList<>();
+        pageTitles.add(LinedEditTextFragment.Companion.newInstance(getString(R.string.fragment_title_lined_edit_text)));
         pageTitles.add(TallyCounterFragment.newInstance(getString(R.string.fragment_title_tally_counter)));
         pageTitles.add(TextProgressBarFragment.newInstance(getString(R.string.fragment_title_text_progress_bar)));
         pageTitles.add(CustomViewFragment.Companion.newInstance(getString(R.string.fragment_title_custom_view)));
