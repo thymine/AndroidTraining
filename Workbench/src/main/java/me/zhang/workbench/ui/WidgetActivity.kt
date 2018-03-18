@@ -66,7 +66,7 @@ class WidgetActivity : Activity(), AdapterView.OnItemSelectedListener {
         val contentView = View(this)
         contentView.setBackgroundColor(Color.BLUE)
 
-        val popupWindow = PopupWindow(contentView, 128.dp(this).toInt(), 64.dp(this).toInt(), true)
+        val popupWindow = PopupWindow(contentView, 128.dp().toInt(), 64.dp().toInt(), true)
         popupWindow.setBackgroundDrawable(ColorDrawable())
 
         return popupWindow
