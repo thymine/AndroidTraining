@@ -63,7 +63,9 @@ class LineDrawingView1 : View {
                 path.moveTo(x, y)
             }
             MotionEvent.ACTION_MOVE -> {
-                path.quadTo(preX, preY, x, y)
+                val controlX = (preX + x) / 2
+                val controlY = (preY + y) / 2
+                path.quadTo(controlX, controlY, x, y)
                 invalidate()
 
                 preX = x
