@@ -1,14 +1,14 @@
 package me.zhang.workbench.utils
 
-import android.content.Context
+import me.zhang.workbench.App
 
 /**
  * Created by zhangxiangdong on 2018/2/5.
  */
-fun Float.dp(context: Context): Float {
-    return UiUtils.convertDpToPixel(this, context)
+fun Float.dp(): Float {
+    return UiUtils.convertDpToPixel(this, App.getContext())
 }
 
-fun Int.dp(context: Context): Float {
-    return UiUtils.convertDpToPixel(toFloat(), context)
+fun Int.dp(): Float {
+    return UiUtils.convertDpToPixel(toFloat(), App.getContext())
 }

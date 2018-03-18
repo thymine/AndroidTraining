@@ -58,11 +58,11 @@ class WatchView : View {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         watchFacePaint.color = Color.GRAY
         watchFacePaint.style = Paint.Style.STROKE
-        watchFacePaint.strokeWidth = 3.dp(context)
+        watchFacePaint.strokeWidth = 3.dp()
 
         handPaint.color = Color.RED
         handPaint.style = Paint.Style.STROKE
-        handPaint.strokeWidth = 3.dp(context)
+        handPaint.strokeWidth = 3.dp()
         handPaint.strokeCap = Paint.Cap.ROUND
 
         /* 获取当前系统时间 */

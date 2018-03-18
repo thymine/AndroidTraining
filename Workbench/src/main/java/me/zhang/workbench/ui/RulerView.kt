@@ -26,7 +26,7 @@ class RulerView : View {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         paint.color = Color.YELLOW
         paint.style = Paint.Style.STROKE
-        paint.strokeWidth = 1.dp(context)
+        paint.strokeWidth = 1.dp()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -47,7 +47,7 @@ class RulerView : View {
         val rulerBottom = rulerTop + rulerHeight
 
         rulerRectF.set(rulerLeft, rulerTop, rulerRight, rulerBottom)
-        canvas.drawRoundRect(rulerRectF, 6.dp(context), 6.dp(context), paint)
+        canvas.drawRoundRect(rulerRectF, 6.dp(), 6.dp(), paint)
 
         canvas.save()
         // 总刻度的长度（px）
@@ -75,7 +75,7 @@ class RulerView : View {
                     if (i == 0) {
                         text = "$index cm" // 第一个刻度带有cm提示
                     }
-                    paint.textSize = 14.dp(context)
+                    paint.textSize = 14.dp()
                     // 在刻度正上方绘制文本
                     canvas.drawText(text, -offset / 2, -longLength - offset, paint)
                 }
