@@ -75,6 +75,7 @@ import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
 import me.zhang.workbench.ui.DrawingActivity;
+import me.zhang.workbench.ui.LineDrawingActivity;
 import me.zhang.workbench.ui.WidgetActivity;
 import me.zhang.workbench.view.CustomViewActivity;
 import me.zhang.workbench.view.CustomViewGroupActivity;
@@ -178,6 +179,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Volley Test", VolleyTestActivity.class);
         addMenuItem("State List Drawable", StateListActivity.class);
         addMenuItem("Widget", WidgetActivity.class);
+        addMenuItem("Line Drawing", LineDrawingActivity.class);
     }
 
 }
