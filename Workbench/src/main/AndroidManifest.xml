@@ -211,6 +211,9 @@
         <activity
             android:name=".ui.LineDrawingActivity"
             android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".ui.paint.PaintActivity"
+            android:theme="@style/AppThemeNoActionBar" />
     </application>
 
 </manifest>
