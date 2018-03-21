@@ -77,6 +77,7 @@ import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
 import me.zhang.workbench.ui.DrawingActivity;
 import me.zhang.workbench.ui.LineDrawingActivity;
 import me.zhang.workbench.ui.WidgetActivity;
+import me.zhang.workbench.ui.paint.PaintActivity;
 import me.zhang.workbench.view.CustomViewActivity;
 import me.zhang.workbench.view.CustomViewGroupActivity;
 import me.zhang.workbench.view.GetViewDimensActivity;
@@ -180,6 +181,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("State List Drawable", StateListActivity.class);
         addMenuItem("Widget", WidgetActivity.class);
         addMenuItem("Line Drawing", LineDrawingActivity.class);
+        addMenuItem("Android Paint", PaintActivity.class);
     }
 
 }
