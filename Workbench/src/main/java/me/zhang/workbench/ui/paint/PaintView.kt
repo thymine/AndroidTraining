@@ -2,12 +2,9 @@ package me.zhang.workbench.ui.paint
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
+import android.graphics.*
 import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Bitmap.createBitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -56,6 +53,15 @@ class PaintView : View {
     override fun onTouchEvent(event: MotionEvent): Boolean {
         return bitmapCanvas?.let { shapePainter.onTouchEvent(event, bitmapCanvas!!, paint) }
                 ?: false
+    }
+
+    fun changePaintColor(selectedColor: Int) {
+        paint.color = selectedColor
+    }
+
+    fun clearCanvas() {
+        bitmapCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+        invalidate()
     }
 
 }

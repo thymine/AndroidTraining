@@ -36,13 +36,13 @@ class CustomViewFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_custom_view, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_custom_view, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mCustomImage = view!!.findViewById(R.id.custom_image)
+        mCustomImage = view.findViewById(R.id.custom_image)
         mCustomImage!!.setImageBitmap(getDrawnBitmap())
 
         mBitmapImage = view.findViewById(R.id.bitmap_image)

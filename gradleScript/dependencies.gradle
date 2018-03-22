@@ -74,4 +74,16 @@ ext {
             // https://github.com/astuetz/PagerSlidingTabStrip
             PagerSlidingTabStrip: 'com.astuetz:pagerslidingtabstrip:1.0.1',
     ]
+
+    // QuadFlask
+    colorpicker = [
+            // https://github.com/QuadFlask/colorpicker
+            colorpicker: 'com.github.QuadFlask:colorpicker:0.0.13'
+    ]
+
+    // android
+    core_ktx = [
+            // https://github.com/android/android-ktx
+            core_ktx: 'androidx.core:core-ktx:0.2'
+    ]
 }

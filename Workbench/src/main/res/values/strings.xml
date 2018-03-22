@@ -185,6 +185,7 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     <string name="tool_oval">Oval</string>
     <string name="tool_text">Text</string>
     <string name="tool_color">Color</string>
+    <string name="tool_clear">Clear</string>
 
     <string-array name="planets_array">
         <item>Mercury</item>
