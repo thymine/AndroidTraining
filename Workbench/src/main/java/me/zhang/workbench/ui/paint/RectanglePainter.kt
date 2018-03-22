@@ -54,6 +54,7 @@ open class RectanglePainter(paintView: PaintView) : ShapePainter(paintView) {
             }
             MotionEvent.ACTION_UP -> {
                 drawShape(bitmapCanvas, rectF, getPaint())
+                rectF.setEmpty()
                 invalidate()
             }
         }

@@ -20,6 +20,8 @@ class PaintView : View {
     private var bitmapBuffer: Bitmap? = null
     private var bitmapCanvas: Canvas? = null
 
+    private var shouldClearCanvas: Boolean? = null
+
     fun useThisPainter(painter: ShapePainter) {
         shapePainter = painter
     }
@@ -44,9 +46,20 @@ class PaintView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+
         if (bitmapBuffer != null) {
             shapePainter.onDraw(canvas, bitmapBuffer!!)
         }
+
+        // 根据shouldClearCanvas字段判断是否应该清空画布内容
+        shouldClearCanvas?.let {
+            if (it) {
+                bitmapBuffer?.eraseColor(Color.TRANSPARENT)
+                canvas.drawBitmap(bitmapBuffer, 0f, 0f, null)
+                shouldClearCanvas = false
+            }
+        }
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -61,6 +74,7 @@ class PaintView : View {
 
     fun clearCanvas() {
         bitmapCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+        shouldClearCanvas = true
         invalidate()
     }
 
