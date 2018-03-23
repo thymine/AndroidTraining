@@ -73,7 +73,7 @@ class PaintView : View {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        return bitmapCanvas?.let { shapePainter.onTouchEvent(event, bitmapCanvas!!, paint) }
+        return bitmapCanvas?.let { shapePainter.onTouchEvent(event, bitmapCanvas!!) }
                 ?: false
     }
 
