@@ -12,7 +12,7 @@ abstract class ShapePainter(private val paintView: PaintView) {
 
     abstract fun onDraw(canvas: Canvas, bitmapBuffer: Bitmap)
 
-    abstract fun onTouchEvent(event: MotionEvent, bitmapCanvas: Canvas, paint: Paint): Boolean
+    abstract fun onTouchEvent(event: MotionEvent, bitmapCanvas: Canvas): Boolean
 
     internal fun invalidate() {
         paintView.invalidate()

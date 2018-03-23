@@ -8,11 +8,11 @@ import android.view.MotionEvent
 /**
  * Created by zhangxiangdong on 2018/3/22.
  */
-class LinePainter(paintView: PaintView) : ShapePainter(paintView) {
+abstract class BaseShapePainter(paintView: PaintView) : ShapePainter(paintView) {
 
     private val path = Path()
-    private var preX = 0f
-    private var preY = 0f
+    private var startX = 0f
+    private var startY = 0f
 
     override fun onDraw(canvas: Canvas, bitmapBuffer: Bitmap) {
         canvas.drawPath(path, getPaint())
@@ -24,22 +24,33 @@ class LinePainter(paintView: PaintView) : ShapePainter(paintView) {
         val y = event.y
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                path.reset()
-                preX = x
-                preY = y
-                path.moveTo(x, y)
+                startX = x
+                startY = y
             }
             MotionEvent.ACTION_MOVE -> {
-                val controlX = (preX + x) / 2
-                val controlY = (preY + y) / 2
-                path.quadTo(controlX, controlY, x, y)
+                path.reset()
+                val left: Float
+                val top: Float
+                val right: Float
+                val bottom: Float
+                if (startX < x) {
+                    left = startX
+                    right = x
+                } else {
+                    left = x
+                    right = startX
+                }
+                if (startY < y) {
+                    top = startY
+                    bottom = y
+                } else {
+                    top = y
+                    bottom = startY
+                }
+                addShape(path, left, top, right, bottom)
                 invalidate()
-
-                preX = x
-                preY = y
             }
             MotionEvent.ACTION_UP -> {
-                // 将手指移动的路径绘制到bitmapBuffer上
                 bitmapCanvas.drawPath(path, getPaint())
                 path.reset()
                 invalidate()
@@ -47,5 +58,7 @@ class LinePainter(paintView: PaintView) : ShapePainter(paintView) {
         }
         return true
     }
+
+    abstract fun addShape(path: Path, left: Float, top: Float, right: Float, bottom: Float)
 
 }
