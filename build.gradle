@@ -33,10 +33,10 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdkVersion = 26
+    compileSdkVersion = 27
     buildToolsVersion = "26.0.2"
     minSdkVersion = 14
-    targetSdkVersion = 26
+    targetSdkVersion = 27
 }
 
 // Load dependencies
