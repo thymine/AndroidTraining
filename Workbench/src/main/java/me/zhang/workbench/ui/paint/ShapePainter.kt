@@ -1,6 +1,5 @@
 package me.zhang.workbench.ui.paint
 
-import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.view.MotionEvent
@@ -8,18 +7,20 @@ import android.view.MotionEvent
 /**
  * Created by zhangxiangdong on 2018/3/22.
  */
-abstract class ShapePainter(private val paintView: PaintView) {
-
-    abstract fun onDraw(canvas: Canvas, bitmapBuffer: Bitmap)
+abstract class ShapePainter(private val paintPresenter: PaintContract.PaintPresenter) {
 
     abstract fun onTouchEvent(event: MotionEvent, bitmapCanvas: Canvas): Boolean
 
     internal fun invalidate() {
-        paintView.invalidate()
+        paintPresenter.redraw()
     }
 
     internal fun getPaint(): Paint {
-        return paintView.paint
+        return paintPresenter.getPaint()
+    }
+
+    internal fun getPaintPresenter(): PaintContract.PaintPresenter {
+        return paintPresenter
     }
 
 }

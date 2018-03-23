@@ -4,36 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/colorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_button"
-        android:button="@null"
-        android:text="@string/tool_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/clearButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_button"
-        android:button="@null"
-        android:text="@string/tool_clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/colorButton" />
-
-    <Button
-        android:id="@+id/captureButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_button"
-        android:button="@null"
-        android:text="@string/tool_capture"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/clearButton" />
-
     <me.zhang.workbench.ui.paint.PaintView
         android:id="@+id/paintView"
         android:layout_width="0dp"
@@ -43,6 +13,43 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/colorButton"
+        style="@style/ButtonStyleClassic"
+        android:text="@string/tool_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/clearButton"
+        style="@style/ButtonStyleClassic"
+        android:text="@string/tool_clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/colorButton" />
+
+    <TextView
+        android:id="@+id/captureButton"
+        style="@style/ButtonStyleClassic"
+        android:text="@string/tool_capture"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/clearButton" />
+
+    <TextView
+        android:id="@+id/undoButton"
+        style="@style/ButtonStyleClassic"
+        android:enabled="false"
+        android:text="@string/tool_undo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/redoButton"
+        style="@style/ButtonStyleClassic"
+        android:enabled="false"
+        android:text="@string/tool_redo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/undoButton" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"

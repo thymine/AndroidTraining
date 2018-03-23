@@ -12,24 +12,44 @@ import android.view.MotionEvent
 import android.view.View
 import me.zhang.workbench.utils.dp
 import java.io.FileOutputStream
+import java.util.*
 
 /**
  * Created by zhangxiangdong on 2018/3/20.
  */
-class PaintView : View {
+class PaintView : View, PaintContract.PaintPresenter {
 
     companion object {
-        const val LOG_TAG = "PaintView"
+        const val LOG_TAG = "PaintUi"
     }
 
     private var shapePainter: ShapePainter = LinePainter(this)
-    internal val paint = Paint()
+    private val paint = Paint()
     private var bitmapBuffer: Bitmap? = null
     private var bitmapCanvas: Canvas? = null
-
     private var shouldClearCanvas: Boolean? = null
+    private var paintUi: PaintContract.PaintUi? = null
+    private val drawingPaths = Stack<Path>()
+    private val cachedPaths = Stack<Path>()
+    private var visualTempPath: Path? = null
 
-    fun useThisPainter(painter: ShapePainter) {
+    override fun setVisualTempPath(tempPath: Path) {
+        visualTempPath = tempPath
+    }
+
+    override fun redraw() {
+        invalidate()
+    }
+
+    override fun getPaint(): Paint {
+        return paint
+    }
+
+    override fun attachPaintUi(paintUi: PaintContract.PaintUi) {
+        this.paintUi = paintUi
+    }
+
+    override fun changePainter(painter: ShapePainter) {
         shapePainter = painter
     }
 
@@ -56,8 +76,19 @@ class PaintView : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        if (bitmapBuffer != null) {
-            shapePainter.onDraw(canvas, bitmapBuffer!!)
+        bitmapCanvas?.let {
+            // 先清空原绘制内容
+            bitmapCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+            for (path in drawingPaths) { // todo 需要性能优化
+                // 绘制所有的待绘制的路径
+                it.drawPath(path, paint)
+            }
+        }
+        // 将内容绘制到视图上
+        canvas.drawBitmap(bitmapBuffer, 0f, 0f, null)
+        // 绘制绘图过程的临时路径，比如，绘制一个长方形，显示拖拽过程中的图像
+        visualTempPath?.let {
+            canvas.drawPath(it, paint)
         }
 
         // 根据shouldClearCanvas字段判断是否应该清空画布内容
@@ -77,14 +108,17 @@ class PaintView : View {
                 ?: false
     }
 
-    fun changePaintColor(selectedColor: Int) {
+    override fun changePaintColor(selectedColor: Int) {
         paint.color = selectedColor
     }
 
-    fun clearCanvas() {
+    override fun clearCanvas() {
+        drawingPaths.clear()
+        cachedPaths.clear()
+        updateUndoRedoButtonStatus()
         bitmapCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
         shouldClearCanvas = true
-        invalidate()
+        redraw()
     }
 
     /**
@@ -92,7 +126,7 @@ class PaintView : View {
      *
      * @return 保存的文件绝对路径
      */
-    fun captureCanvas(): String? {
+    override fun captureCanvas(): String? {
         val fileName = "paint_${System.currentTimeMillis()}"
         val filePath = "${Environment.getExternalStorageDirectory().absolutePath}/$fileName.jpg"
         Log.i(LOG_TAG, filePath)
@@ -115,5 +149,45 @@ class PaintView : View {
         }
         return null
     }
+
+    override fun undoPainting() {
+        if (noDrawingPaths()) {
+            throw IllegalStateException("No undo path anymore!")
+        }
+        cachedPaths.push(drawingPaths.pop())
+        redraw()
+        updateUndoRedoButtonStatus()
+    }
+
+    private fun noDrawingPaths() = drawingPaths.size == 0
+
+    override fun addDrawingPath(path: Path) {
+        drawingPaths.push(path)
+        updateUndoRedoButtonStatus()
+    }
+
+    override fun redoPainting() {
+        if (noCachedPaths()) {
+            throw IllegalStateException("No redo path anymore!")
+        }
+        drawingPaths.push(cachedPaths.pop())
+        redraw()
+        updateUndoRedoButtonStatus()
+    }
+
+    private fun updateUndoRedoButtonStatus() {
+        if (paintUi == null) {
+            throwPaintUiNotAttached()
+        } else {
+            paintUi!!.onUndoButtonEnabled(!noDrawingPaths())
+            paintUi!!.onRedoButtonEnabled(!noCachedPaths())
+        }
+    }
+
+    private fun throwPaintUiNotAttached() {
+        throw IllegalStateException("PaintUi not attached yet!")
+    }
+
+    private fun noCachedPaths() = cachedPaths.size == 0
 
 }

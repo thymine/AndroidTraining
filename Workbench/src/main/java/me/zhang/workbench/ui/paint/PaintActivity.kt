@@ -17,10 +17,10 @@ import me.zhang.workbench.R
 /**
  * Created by zhangxiangdong on 2018/3/20.
  */
-class PaintActivity : AppCompatActivity() {
+class PaintActivity : AppCompatActivity(), PaintContract.PaintUi {
 
     companion object {
-        const val WRITE_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 100
+        const val REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE = 100
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,16 +29,17 @@ class PaintActivity : AppCompatActivity() {
         radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.lineButton -> {
-                    paintView.useThisPainter(LinePainter(paintView))
+                    paintView.changePainter(LinePainter(paintView))
                 }
                 R.id.rectangleButton -> {
-                    paintView.useThisPainter(RectanglePainter(paintView))
+                    paintView.changePainter(RectanglePainter(paintView))
                 }
                 R.id.ovalButton -> {
-                    paintView.useThisPainter(OvalPainter(paintView))
+                    paintView.changePainter(OvalPainter(paintView))
                 }
             }
         }
+
         colorButton.setOnClickListener { _ ->
             ColorPickerDialogBuilder
                     .with(this)
@@ -51,7 +52,7 @@ class PaintActivity : AppCompatActivity() {
                                 Toast.LENGTH_SHORT).show()
                     }
                     .setPositiveButton("Ok") { _, selectedColor, _ ->
-                        changePaintColor(selectedColor)
+                        doChangePaintColor(selectedColor)
                     }
                     .setNegativeButton("Cancel") { dialog, _ ->
                         dialog.dismiss()
@@ -60,25 +61,29 @@ class PaintActivity : AppCompatActivity() {
                     .show()
         }
         clearButton.setOnClickListener { _ ->
-            clearCanvas()
+            doClear()
         }
         captureButton.setOnClickListener { _ ->
             // 检查读写权限
             if (isStoragePermissionGranted()) {
-                captureCanvas()
+                doCapture()
             } else {
                 // 请求读写权限
                 requestWriteExternalStoragePermission()
             }
         }
+
+        undoButton.setOnClickListener { _ ->
+            doUndo()
+        }
+        redoButton.setOnClickListener { _ ->
+            doRedo()
+        }
+
+        paintView.attachPaintUi(this)
     }
 
-    private fun requestWriteExternalStoragePermission() {
-        ActivityCompat.requestPermissions(this, arrayOf(WRITE_EXTERNAL_STORAGE),
-                WRITE_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE)
-    }
-
-    private fun captureCanvas() {
+    private fun doCapture() {
         var captureFilePath = paintView.captureCanvas()
         if (TextUtils.isEmpty(captureFilePath)) {
             captureFilePath = "Capture failed, see logs"
@@ -86,12 +91,34 @@ class PaintActivity : AppCompatActivity() {
         Toast.makeText(this, captureFilePath, Toast.LENGTH_SHORT).show()
     }
 
-    private fun clearCanvas() {
+    private fun doClear() {
         paintView.clearCanvas()
     }
 
-    private fun changePaintColor(selectedColor: Int) {
-        paintView.changePaintColor(selectedColor)
+    private fun doChangePaintColor(newColor: Int) {
+        paintView.changePaintColor(newColor)
+    }
+
+    private fun doUndo() {
+        paintView.undoPainting()
+    }
+
+    override fun onUndoButtonEnabled(enabled: Boolean) {
+        undoButton.isEnabled = enabled
+    }
+
+    private fun doRedo() {
+        paintView.redoPainting()
+    }
+
+    override fun onRedoButtonEnabled(enabled: Boolean) {
+        redoButton.isEnabled = enabled
+    }
+
+    //region PERMISSION
+    private fun requestWriteExternalStoragePermission() {
+        ActivityCompat.requestPermissions(this, arrayOf(WRITE_EXTERNAL_STORAGE),
+                REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE)
     }
 
     private fun isStoragePermissionGranted(): Boolean {
@@ -105,10 +132,11 @@ class PaintActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>,
                                             grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == WRITE_EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE
+        if (requestCode == REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION_CODE
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            captureCanvas()
+            doCapture()
         }
     }
+    //endregion
 
 }
