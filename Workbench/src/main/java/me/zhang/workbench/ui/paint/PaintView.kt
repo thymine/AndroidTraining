@@ -5,15 +5,22 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Bitmap.createBitmap
+import android.os.Environment
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import me.zhang.workbench.utils.dp
+import java.io.FileOutputStream
 
 /**
  * Created by zhangxiangdong on 2018/3/20.
  */
 class PaintView : View {
+
+    companion object {
+        const val LOG_TAG = "PaintView"
+    }
 
     private var shapePainter: ShapePainter = LinePainter(this)
     internal val paint = Paint()
@@ -34,6 +41,8 @@ class PaintView : View {
         paint.strokeCap = Paint.Cap.ROUND
         paint.strokeWidth = 3.dp()
         paint.color = Color.RED
+
+        setBackgroundColor(Color.BLACK)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -76,6 +85,35 @@ class PaintView : View {
         bitmapCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
         shouldClearCanvas = true
         invalidate()
+    }
+
+    /**
+     * 保存绘制内容到磁盘
+     *
+     * @return 保存的文件绝对路径
+     */
+    fun captureCanvas(): String? {
+        val fileName = "paint_${System.currentTimeMillis()}"
+        val filePath = "${Environment.getExternalStorageDirectory().absolutePath}/$fileName.jpg"
+        Log.i(LOG_TAG, filePath)
+        var out: FileOutputStream? = null
+        try {
+            out = FileOutputStream(filePath)
+            bitmapBuffer?.compress(Bitmap.CompressFormat.JPEG, 50, out)
+            out.flush()
+            return filePath
+        } catch (e: Exception) {
+            e.printStackTrace()
+        } finally {
+            out?.let {
+                try {
+                    it.close()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+        return null
     }
 
 }
