@@ -18,7 +18,7 @@ abstract class BaseShapePainter(paintView: PaintView) : ShapePainter(paintView) 
         val y = event.y
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                getPaintPresenter().setVisualTempPath(path)
+                getPaintPresenter().setVisualTempShape(newShape(path))
                 startX = x
                 startY = y
             }
@@ -46,7 +46,7 @@ abstract class BaseShapePainter(paintView: PaintView) : ShapePainter(paintView) 
                 invalidate()
             }
             MotionEvent.ACTION_UP -> {
-                getPaintPresenter().addDrawingPath(Path(path))
+                getPaintPresenter().addDrawingShape(newShape(Path(path)))
                 path.reset()
                 invalidate()
             }

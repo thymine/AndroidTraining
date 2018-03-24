@@ -1,7 +1,6 @@
 package me.zhang.workbench.ui.paint
 
 import android.graphics.Paint
-import android.graphics.Path
 
 /**
  * Created by zhangxiangdong on 2018/3/23.
@@ -33,9 +32,9 @@ interface PaintContract {
         /**
          * 设置用来显示临时的绘制过程的路径对象
          */
-        fun setVisualTempPath(tempPath: Path)
+        fun setVisualTempShape(tempShape: Shape)
 
-        fun addDrawingPath(path: Path)
+        fun addDrawingShape(shape: Shape)
 
         fun redoPainting()
 

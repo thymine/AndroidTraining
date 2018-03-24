@@ -2,6 +2,7 @@ package me.zhang.workbench.ui.paint
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Path
 import android.view.MotionEvent
 
 /**
@@ -22,5 +23,7 @@ abstract class ShapePainter(private val paintPresenter: PaintContract.PaintPrese
     internal fun getPaintPresenter(): PaintContract.PaintPresenter {
         return paintPresenter
     }
+
+    fun newShape(path: Path) = Shape(path, getPaint().color)
 
 }
