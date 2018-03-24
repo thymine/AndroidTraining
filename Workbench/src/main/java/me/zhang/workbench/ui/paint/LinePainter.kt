@@ -19,7 +19,7 @@ class LinePainter(paintPresenter: PaintContract.PaintPresenter) : ShapePainter(p
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 path.reset()
-                getPaintPresenter().setVisualTempPath(path)
+                getPaintPresenter().setVisualTempShape(newShape(path))
                 preX = x
                 preY = y
                 path.moveTo(x, y)
@@ -34,7 +34,7 @@ class LinePainter(paintPresenter: PaintContract.PaintPresenter) : ShapePainter(p
                 preY = y
             }
             MotionEvent.ACTION_UP -> {
-                getPaintPresenter().addDrawingPath(Path(path))
+                getPaintPresenter().addDrawingShape(newShape(Path(path)))
                 path.reset()
                 invalidate()
             }

@@ -29,12 +29,12 @@ class PaintView : View, PaintContract.PaintPresenter {
     private var bitmapCanvas: Canvas? = null
     private var shouldClearCanvas: Boolean? = null
     private var paintUi: PaintContract.PaintUi? = null
-    private val drawingPaths = Stack<Path>()
-    private val cachedPaths = Stack<Path>()
-    private var visualTempPath: Path? = null
+    private val drawingShapes = Stack<Shape>()
+    private val cachedShapes = Stack<Shape>()
+    private var visualTempShape: Shape? = null
 
-    override fun setVisualTempPath(tempPath: Path) {
-        visualTempPath = tempPath
+    override fun setVisualTempShape(tempShape: Shape) {
+        visualTempShape = tempShape
     }
 
     override fun redraw() {
@@ -79,17 +79,15 @@ class PaintView : View, PaintContract.PaintPresenter {
         bitmapCanvas?.let {
             // 先清空原绘制内容
             bitmapCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
-            for (path in drawingPaths) { // todo 需要性能优化
+            for (shape in drawingShapes) { // todo 需要性能优化
                 // 绘制所有的待绘制的路径
-                it.drawPath(path, paint)
+                shape.draw(it, paint)
             }
         }
         // 将内容绘制到视图上
         canvas.drawBitmap(bitmapBuffer, 0f, 0f, null)
         // 绘制绘图过程的临时路径，比如，绘制一个长方形，显示拖拽过程中的图像
-        visualTempPath?.let {
-            canvas.drawPath(it, paint)
-        }
+        visualTempShape?.draw(canvas, paint)
 
         // 根据shouldClearCanvas字段判断是否应该清空画布内容
         shouldClearCanvas?.let {
@@ -113,8 +111,8 @@ class PaintView : View, PaintContract.PaintPresenter {
     }
 
     override fun clearCanvas() {
-        drawingPaths.clear()
-        cachedPaths.clear()
+        drawingShapes.clear()
+        cachedShapes.clear()
         updateUndoRedoButtonStatus()
         bitmapCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
         shouldClearCanvas = true
@@ -154,15 +152,15 @@ class PaintView : View, PaintContract.PaintPresenter {
         if (noDrawingPaths()) {
             throw IllegalStateException("No undo path anymore!")
         }
-        cachedPaths.push(drawingPaths.pop())
+        cachedShapes.push(drawingShapes.pop())
         redraw()
         updateUndoRedoButtonStatus()
     }
 
-    private fun noDrawingPaths() = drawingPaths.size == 0
+    private fun noDrawingPaths() = drawingShapes.size == 0
 
-    override fun addDrawingPath(path: Path) {
-        drawingPaths.push(path)
+    override fun addDrawingShape(shape: Shape) {
+        drawingShapes.push(shape)
         updateUndoRedoButtonStatus()
     }
 
@@ -170,7 +168,7 @@ class PaintView : View, PaintContract.PaintPresenter {
         if (noCachedPaths()) {
             throw IllegalStateException("No redo path anymore!")
         }
-        drawingPaths.push(cachedPaths.pop())
+        drawingShapes.push(cachedShapes.pop())
         redraw()
         updateUndoRedoButtonStatus()
     }
@@ -188,6 +186,6 @@ class PaintView : View, PaintContract.PaintPresenter {
         throw IllegalStateException("PaintUi not attached yet!")
     }
 
-    private fun noCachedPaths() = cachedPaths.size == 0
+    private fun noCachedPaths() = cachedShapes.size == 0
 
 }
