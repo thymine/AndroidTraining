@@ -149,24 +149,27 @@ class PaintView : View, PaintContract.PaintPresenter {
     }
 
     override fun undoPainting() {
-        if (noDrawingPaths()) {
-            throw IllegalStateException("No undo path anymore!")
+        if (noDrawingShapes()) {
+            throw IllegalStateException("No undo shape anymore!")
         }
         cachedShapes.push(drawingShapes.pop())
         redraw()
         updateUndoRedoButtonStatus()
     }
 
-    private fun noDrawingPaths() = drawingShapes.size == 0
+    private fun noDrawingShapes() = drawingShapes.size == 0
 
     override fun addDrawingShape(shape: Shape) {
+        // 每次绘制新的路径前先清空已经暂存的绘制历史，使回退逻辑更合理
+        if (!noCachedShapes()) clearCachedShapes()
+
         drawingShapes.push(shape)
         updateUndoRedoButtonStatus()
     }
 
     override fun redoPainting() {
-        if (noCachedPaths()) {
-            throw IllegalStateException("No redo path anymore!")
+        if (noCachedShapes()) {
+            throw IllegalStateException("No redo shape anymore!")
         }
         drawingShapes.push(cachedShapes.pop())
         redraw()
@@ -177,8 +180,8 @@ class PaintView : View, PaintContract.PaintPresenter {
         if (paintUi == null) {
             throwPaintUiNotAttached()
         } else {
-            paintUi!!.onUndoButtonEnabled(!noDrawingPaths())
-            paintUi!!.onRedoButtonEnabled(!noCachedPaths())
+            paintUi!!.onUndoButtonEnabled(!noDrawingShapes())
+            paintUi!!.onRedoButtonEnabled(!noCachedShapes())
         }
     }
 
@@ -186,6 +189,10 @@ class PaintView : View, PaintContract.PaintPresenter {
         throw IllegalStateException("PaintUi not attached yet!")
     }
 
-    private fun noCachedPaths() = cachedShapes.size == 0
+    private fun noCachedShapes() = cachedShapes.size == 0
+
+    private fun clearCachedShapes() {
+        cachedShapes.clear()
+    }
 
 }
