@@ -29,14 +29,14 @@ android.libraryVariants.all { variant ->
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile supportDependencies.appCompatV7
-    testCompile 'junit:junit:4.12'
+    implementation supportDependencies.appCompatV7
+    testImplementation 'junit:junit:4.12'
 
-    compile jakeWhartonDependencies.butterknife
+    implementation jakeWhartonDependencies.butterknife
     annotationProcessor jakeWhartonDependencies.butterknifeCompiler
 
     /* https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation */
