@@ -26,12 +26,20 @@ ext {
 
     // Google
     googlePlayServicesVersion = '9.0.2'
-    gmsDependencies = [
-            playServicesAnalytics  : 'com.google.android.gms:play-services-analytics:' + googlePlayServicesVersion,
-            playServicesAppindexing: 'com.google.android.gms:play-services-appindexing:' + googlePlayServicesVersion,
-            gson                   : 'com.google.code.gson:gson:2.7',
+    googleExoPlayerVersion = '2.7.2'
+    googleDependencies = [
+            playServicesAnalytics    : 'com.google.android.gms:play-services-analytics:' + googlePlayServicesVersion,
+            playServicesAppindexing  : 'com.google.android.gms:play-services-appindexing:' + googlePlayServicesVersion,
+            gson                     : 'com.google.code.gson:gson:2.7',
             // https://github.com/google/volley
-            volley                 : 'com.android.volley:volley:1.0.0',
+            volley                   : 'com.android.volley:volley:1.0.0',
+            // https://github.com/google/ExoPlayer
+            exoplayer                : 'com.google.android.exoplayer:exoplayer:' + googleExoPlayerVersion,
+            exoplayer_core           : 'com.google.android.exoplayer:exoplayer-core:' + googleExoPlayerVersion,
+            exoplayer_dash           : 'com.google.android.exoplayer:exoplayer-dash:' + googleExoPlayerVersion,
+            exoplayer_hls            : 'com.google.android.exoplayer:exoplayer-hls:' + googleExoPlayerVersion,
+            exoplayer_smoothstreaming: 'com.google.android.exoplayer:exoplayer-smoothstreaming:' + googleExoPlayerVersion,
+            exoplayer_ui             : 'com.google.android.exoplayer:exoplayer-ui:' + googleExoPlayerVersion,
     ]
 
     // Jake Wharton

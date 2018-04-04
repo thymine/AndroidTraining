@@ -35,7 +35,7 @@ dependencies {
     implementation supportDependencies.appCompatV7
     testImplementation junitDependencies.junit
 
-    implementation gmsDependencies.gson
+    implementation googleDependencies.gson
     implementation squareDependencies.retrofit
     implementation squareDependencies.converterGson
 }
