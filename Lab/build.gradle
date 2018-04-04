@@ -46,7 +46,7 @@ dependencies {
     compile supportDependencies.cardViewV7
     compile supportDependencies.recyclerViewV7
     compile supportDependencies.design
-    compile gmsDependencies.playServicesAppindexing
+    compile googleDependencies.playServicesAppindexing
 
     compile squareDependencies.picasso
 

@@ -82,7 +82,9 @@ dependencies {
 
     implementation astuetzDependencies.PagerSlidingTabStrip
 
-    implementation gmsDependencies.volley
+    implementation googleDependencies.volley
+
+    implementation googleDependencies.exoplayer
 
     testImplementation junitDependencies.junit
     androidTestImplementation(('com.android.support.test.espresso:espresso-core:2.2.2')) {
