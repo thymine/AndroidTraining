@@ -69,6 +69,7 @@ import me.zhang.workbench.service.SaveMyLocationActivity;
 import me.zhang.workbench.state.RestoreActivityState;
 import me.zhang.workbench.stateList.StateListActivity;
 import me.zhang.workbench.style.PreviewActivity;
+import me.zhang.workbench.text.DrawTextActivity;
 import me.zhang.workbench.thread.LoggerActivity;
 import me.zhang.workbench.thread.ThreadActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
@@ -182,6 +183,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Widget", WidgetActivity.class);
         addMenuItem("Line Drawing", LineDrawingActivity.class);
         addMenuItem("Android Paint", PaintActivity.class);
+        addMenuItem("Text Drawing", DrawTextActivity.class);
     }
 
 }

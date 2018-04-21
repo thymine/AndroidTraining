@@ -201,4 +201,11 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+
+    <string name="string_multiline">
+        SEOUL, South Korea — North Korea’s leader, Kim Jong-un, announced early Saturday that his country no longer needed to test nuclear weapons or long-range missiles and would close a nuclear test site.
+
+“The nuclear test site has done its job,” Mr. Kim said in a statement carried by North Korea’s state media.
+    </string>
+
 </resources>

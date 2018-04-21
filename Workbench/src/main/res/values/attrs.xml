@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <item name="match_parent" type="dimen">-1</item>
     <item name="wrap_content" type="dimen">-2</item>
+
     <declare-styleable name="CircleView">
         <attr name="circle_color" format="color" />
     </declare-styleable>
+
     <declare-styleable name="AnimatedStateBorderImageView">
         <attr name="border_color_default" format="color" />
         <attr name="border_color_pressed" format="color" />
@@ -12,4 +15,12 @@
         <attr name="border_inner_radius" format="dimension" />
         <attr name="border_anim_duration" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="TextView">
+        <attr name="text" format="string" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="strokeWidth" format="dimension" />
+    </declare-styleable>
+
 </resources>
