@@ -1,6 +1,6 @@
 ext {
     // Support Libraries dependencies
-    supportLibVersion = '27.1.0'
+    supportLibVersion = '27.1.1'
     supportDependencies = [
             supportV4         : 'com.android.support:support-v4:' + supportLibVersion,
             recyclerViewV7    : "com.android.support:recyclerview-v7:${supportLibVersion}",
@@ -11,7 +11,7 @@ ext {
             supportAnnotations: "com.android.support:support-annotations:${supportLibVersion}",
             design            : "com.android.support:design:${supportLibVersion}",
             multidex          : 'com.android.support:multidex:1.0.1',
-            constraint        : 'com.android.support.constraint:constraint-layout:1.0.2',
+            constraint        : 'com.android.support.constraint:constraint-layout:1.1.0',
     ]
 
     // Unit test
