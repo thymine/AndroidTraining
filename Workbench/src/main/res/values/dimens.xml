@@ -13,6 +13,8 @@
     <!-- Text Size -->
     <dimen name="text_border_width">3dp</dimen>
     <dimen name="large_text_size">28sp</dimen>
+    <dimen name="medium_text_size">20sp</dimen>
+    <dimen name="small_text_size">12sp</dimen>
     <dimen name="car_text_size">28sp</dimen>
     <dimen name="dog_text_size">22sp</dimen>
     <dimen name="mouse_text_size">24sp</dimen>
