@@ -11,6 +11,10 @@ import me.zhang.workbench.R
  */
 class CirclePhotoView : View {
 
+    companion object {
+        const val FACTOR_SCALE = 2
+    }
+
     private val catBitmapMatrix = Matrix()
     private val circleMaskPaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val catBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.cat)
@@ -20,7 +24,7 @@ class CirclePhotoView : View {
     private val dstIn = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
 
     init {
-        val w = Math.min(catBitmap.width, catBitmap.height) / 2
+        val w = Math.min(catBitmap.width, catBitmap.height) / FACTOR_SCALE
         circleMaskBitmap = Bitmap.createBitmap(w, w, Bitmap.Config.ARGB_8888)
         circleMaskCanvas = Canvas(circleMaskBitmap)
 
@@ -48,7 +52,7 @@ class CirclePhotoView : View {
         val layer = canvas.saveLayer(circleMaskLeft, 0f, circleMaskLeft + circleMaskWidth, circleMaskLeft + circleMaskWidth, null, Canvas.ALL_SAVE_FLAG)
 
         catBitmapMatrix.setTranslate(0f, 0f)
-        catBitmapMatrix.postScale(0.5f, 0.5f)
+        catBitmapMatrix.postScale(1f / FACTOR_SCALE, 1f / FACTOR_SCALE)
         canvas.drawBitmap(catBitmap, catBitmapMatrix, null)
         circleMaskPaint.xfermode = dstIn
         canvas.drawBitmap(circleMaskBitmap, circleMaskLeft, 0f, circleMaskPaint)
