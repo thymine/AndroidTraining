@@ -217,6 +217,7 @@
             android:name=".ui.paint.PaintActivity"
             android:theme="@style/AppThemeNoActionBar" />
         <activity android:name=".text.DrawTextActivity" />
+        <activity android:name=".ui.ScratchTicketActivity" />
     </application>
 
 </manifest>
