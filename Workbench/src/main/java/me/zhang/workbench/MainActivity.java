@@ -77,6 +77,7 @@ import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
 import me.zhang.workbench.ui.DrawingActivity;
 import me.zhang.workbench.ui.LineDrawingActivity;
+import me.zhang.workbench.ui.ScratchTicketActivity;
 import me.zhang.workbench.ui.WidgetActivity;
 import me.zhang.workbench.ui.paint.PaintActivity;
 import me.zhang.workbench.view.CustomViewActivity;
@@ -184,6 +185,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Line Drawing", LineDrawingActivity.class);
         addMenuItem("Android Paint", PaintActivity.class);
         addMenuItem("Text Drawing", DrawTextActivity.class);
+        addMenuItem("Scratch Ticket", ScratchTicketActivity.class);
     }
 
 }
