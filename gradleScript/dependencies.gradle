@@ -8,6 +8,7 @@ ext {
             gridLayoutV7      : "com.android.support:gridlayout-v7:${supportLibVersion}",
             appCompatV7       : "com.android.support:appcompat-v7:${supportLibVersion}",
             paletteV7         : "com.android.support:palette-v7:${supportLibVersion}",
+            preferenceV7      : "com.android.support:preference-v7:${supportLibVersion}",
             supportAnnotations: "com.android.support:support-annotations:${supportLibVersion}",
             design            : "com.android.support:design:${supportLibVersion}",
             multidex          : 'com.android.support:multidex:1.0.1',
