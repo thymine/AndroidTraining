@@ -1,0 +1,60 @@
+{
+  "activities": [
+    {
+      "icon": "@sample/activity_icons[ic_biking.png]",
+      "description": "Biking",
+      "location": "Pleasant Hill, CA",
+      "distance": "48 miles",
+      "date": "Yesterday"
+    },
+    {
+      "icon": "@sample/activity_icons[ic_walking.png]",
+      "description": "Walking",
+      "location": "San Francisco, CA",
+      "distance": "5.5 miles",
+      "date": "Wednesday"
+    },
+    {
+      "icon": "@sample/activity_icons[ic_running.png]",
+      "description": "Running",
+      "location": "Mount Diablo, CA",
+      "distance": "7 miles",
+      "date": "Tuesday"
+    },
+    {
+      "icon": "@sample/activity_icons[ic_swimming.png]",
+      "description": "Swimming",
+      "location": "Pleasant Hill, CA",
+      "distance": "6 miles",
+      "date": "Yesterday"
+    },
+    {
+      "icon": "@sample/activity_icons[ic_biking.png]",
+      "description": "Biking",
+      "location": "Pleasant Hill, CA",
+      "distance": "40 miles",
+      "date": "Yesterday"
+    },
+    {
+      "icon": "@sample/activity_icons[ic_walking.png]",
+      "description": "Walking",
+      "location": "San Francisco, CA",
+      "distance": "6.5 miles",
+      "date": "Wednesday"
+    },
+    {
+      "icon": "@sample/activity_icons[ic_running.png]",
+      "description": "Running",
+      "location": "Mount Diablo, CA",
+      "distance": "5 miles",
+      "date": "Tuesday"
+    },
+    {
+      "icon": "@sample/activity_icons[ic_swimming.png]",
+      "description": "Swimming",
+      "location": "Pleasant Hill, CA",
+      "distance": "6.5 miles",
+      "date": "Yesterday"
+    }
+  ]
+}
