@@ -218,6 +218,7 @@
             android:theme="@style/AppThemeNoActionBar" />
         <activity android:name=".text.DrawTextActivity" />
         <activity android:name=".ui.ScratchTicketActivity" />
+        <activity android:name=".intent.PickFileActivity" />
     </application>
 
 </manifest>
