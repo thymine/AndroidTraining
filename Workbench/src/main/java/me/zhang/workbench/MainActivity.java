@@ -47,6 +47,7 @@ import me.zhang.workbench.graphics.OpenGLES20Activity;
 import me.zhang.workbench.handler.HandlerActivity;
 import me.zhang.workbench.hello.HelloWorldActivity;
 import me.zhang.workbench.intent.IntentActivity;
+import me.zhang.workbench.intent.PickFileActivity;
 import me.zhang.workbench.keyboard.HideKeyboardActivity;
 import me.zhang.workbench.launchMode.AlphaActivity;
 import me.zhang.workbench.layout.ConstraintActivity;
@@ -186,6 +187,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Android Paint", PaintActivity.class);
         addMenuItem("Text Drawing", DrawTextActivity.class);
         addMenuItem("Scratch Ticket", ScratchTicketActivity.class);
+        addMenuItem("Pick Media File", PickFileActivity.class);
     }
 
 }
