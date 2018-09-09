@@ -1,12 +1,1 @@
-include ':Workbench'
-include ':JavaLib'
-include ':AndroidLib'
-include ':icndb'
-
-//include ':Lab'
-//include ':ScreenOff'
-//include ':FloatingMenu'
-//include ':ApiDemos'
-//include ':Test'
-//include ':Art'
-//include ':GradleForAndroid'
+include ':app'

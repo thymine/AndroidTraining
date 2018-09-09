@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <integer name="animation_clock_angle">360</integer>
-
-    <integer name="animation_period">6000</integer>
-    <integer name="animation_minute_period">1000</integer>
-    <integer name="animation_hour_period">12000</integer>
-</resources>
