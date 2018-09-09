@@ -1,0 +1,212 @@
+<resources>
+    <string name="app_name">Android Lab</string>
+    <string name="hello_world">你好, world!</string>
+
+    <string name="pick_image">Pick An Image</string>
+    <string name="take_photo">Take A Photo</string>
+
+    <string name="text_alert">Alert</string>
+    <string name="text_perform">Perform</string>
+    <string name="btn_showpop">Show Pop</string>
+    <string name="btn_hidepop">Hide Pop</string>
+    <string name="btn_submit">Submit</string>
+    <string name="hint_gender">Gender</string>
+    <string name="hint_age">Age</string>
+    <string name="hint_name">Name</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_remove">Remove %d</string>
+
+    <string name="large_text">
+        What is reputation? How do I earn (and lose) it?
+
+Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.
+
+The primary way to gain reputation is by posting good questions and useful answers. Votes on these posts cause you to gain (or sometimes lose) reputation. Please note that votes for posts marked “community wiki” do not generate any reputation.
+
+You can earn a maximum of 200 reputation per day from any combination of the activities below. Bounty awards, accepted answers, and association bonuses are not subject to the daily reputation limit.
+
+You gain reputation when:
+
+question is voted up: +5
+answer is voted up: +10
+answer is marked “accepted”: +15 (+2 to acceptor)
+suggested edit is accepted: +2 (up to +1000 total per user)
+bounty awarded to your answer: + full bounty amount
+one of your answers is awarded a bounty automatically: + half of the bounty amount (see more details about how bounties work)
+site association bonus: +100 on each site (awarded a maximum of one time per site)
+If you are an experienced Stack Exchange network user with 200 or more reputation on at least one site, you will receive a starting +100 reputation bonus to get you past basic new user restrictions. This will happen automatically on all current Stack Exchange sites where you have an account, and on any other Stack Exchange sites at the time you log in.
+
+You lose reputation when:
+
+your question is voted down: −2
+your answer is voted down: −2
+you vote down an answer: −1
+you place a bounty on a question: − full bounty amount
+one of your posts receives 6 spam or offensive flags: −100
+All users start with one reputation point, and reputation can never drop below 1. Accepting your own answer does not increase your reputation. Deleted posts do not affect reputation, for voters, authors or anyone else involved, in most cases. If a user reverses a vote, the corresponding reputation loss or gain will be reversed as well. Vote reversal as a result of voting fraud will also return lost or gained reputation.
+
+At the high end of this reputation spectrum there is little difference between users with high reputation and ♦ moderators. That is intentional. We don’t run this site. The community does.
+    </string>
+    <string name="normal_text">
+        What is reputation? How do I earn (and lose) it?
+
+Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.
+    </string>
+    <string name="bottom_sheet_peek">Bottom Sheet Peek</string>
+    <string name="bottom_sheet_content">Bottom Sheet Content</string>
+    <string name="car">Car</string>
+    <string name="dog">Dog</string>
+    <string name="rat">Mouse</string>
+    <string name="duck">Duck</string>
+    <string name="custom_floating_action_button">Custom Floating Action Button</string>
+    <string name="cupcake_ipsum">Cupcake ipsum dolor sit amet. Cheesecake sugar plum bear claw. Bonbon sesame snaps icing jelly pudding. Bonbon halvah gingerbread bonbon candy. Gummi bears cookie brownie chupa chups jujubes icing cake. Donut powder oat cake marshmallow dessert gummies. Cupcake macaroon gingerbread soufflé tootsie roll gummi bears. Sweet jujubes liquorice chocolate cake. Dessert pudding ice cream muffin candy canes. Donut carrot cake marzipan pastry topping powder. Cake topping jelly dessert gingerbread chocolate cake dessert ice cream jelly beans. Muffin toffee bonbon gingerbread halvah. Cheesecake icing danish pie candy chupa chups icing.\n\nCandy liquorice macaroon. Caramels sugar plum dragée macaroon gummies liquorice. Cake gummi bears cookie brownie tiramisu jelly beans pie apple pie. Sesame snaps pastry pudding apple pie gummi bears fruitcake macaroon jelly-o jelly-o. Gummies oat cake brownie pudding wafer chocolate cake lollipop chocolate cake. Chocolate lemon drops cake cake dessert jujubes halvah. Cake muffin pie gummies gummi bears dragée sesame snaps. Jelly-o jelly jelly. Croissant biscuit tootsie roll sweet roll sweet roll ice cream marzipan. Candy biscuit cheesecake lollipop jelly pie dragée powder cotton candy. Gummi bears cake pastry biscuit dessert fruitcake powder sweet lollipop. Apple pie cotton candy pie. Powder toffee candy cookie fruitcake gingerbread marzipan caramels tiramisu. Fruitcake marshmallow caramels biscuit.\n\nBear claw cake brownie bonbon oat cake sweet roll soufflé. Apple pie liquorice tootsie roll lemon drops candy jujubes croissant liquorice. Icing sugar plum pudding lemon drops donut macaroon wafer. Cupcake apple pie chocolate. Cupcake jelly beans chupa chups pie wafer. Tart dessert sugar plum candy canes sesame snaps sweet roll. Oat cake chupa chups macaroon powder powder chocolate bar. Jelly topping carrot cake liquorice jelly-o. Lemon drops candy chupa chups donut sweet roll. Gummi bears marzipan cupcake tootsie roll toffee. Candy gingerbread jujubes halvah tart cheesecake. Tiramisu cake jujubes chocolate bar jelly lemon drops lollipop.\n\nBiscuit jelly-o tart croissant sesame snaps sweet sugar plum cake lemon drops. Topping carrot cake sesame snaps donut. Sweet roll chocolate cake chocolate toffee toffee gummies. Danish powder carrot cake. Pudding liquorice toffee lollipop wafer jelly beans wafer. Lollipop gummies biscuit pastry marshmallow tiramisu cake candy canes. Jujubes jujubes brownie. Chupa chups halvah tiramisu fruitcake tiramisu donut oat cake gingerbread dessert. Croissant wafer oat cake chocolate. Tart candy pudding cotton candy gingerbread sweet. Liquorice icing croissant biscuit tiramisu sugar plum. Tootsie roll chocolate pie jujubes croissant danish danish icing. Ice cream lollipop chocolate. Cake macaroon sugar plum sweet.\n\nDonut bonbon lollipop danish brownie danish carrot cake. Tootsie roll tiramisu marshmallow candy canes gingerbread topping muffin sesame snaps. Sweet jujubes cupcake gummies. Carrot cake pastry candy canes icing jelly toffee. Carrot cake sugar plum caramels carrot cake. Sesame snaps marshmallow brownie macaroon sweet roll. Cake gummi bears tart chocolate bar tart powder cake toffee sweet. Fruitcake jelly-o jujubes chupa chups sweet roll sweet roll bear claw macaroon. Sweet roll gummies jelly beans powder powder brownie macaroon. Lollipop tart croissant sugar plum sesame snaps sweet cheesecake icing sweet. Jujubes gummi bears oat cake pastry muffin fruitcake. Fruitcake gingerbread chocolate cake. Pie tart cookie donut marzipan cookie. Pudding chupa chups brownie oat cake jelly sweet.</string>
+    <string name="appbar_fling_behavior">me.zhang.workbench.design.behavior.FlingBehavior</string>
+
+    <string name="display4">Display 4</string>
+    <string name="display3">Display 3</string>
+    <string name="display2">Display 2</string>
+    <string name="display1">Display 1</string>
+
+    <string name="headline">Headline</string>
+    <string name="title">Title</string>
+    <string name="subhead">Subhead</string>
+    <string name="body2">Body 2</string>
+    <string name="body1">Body 1</string>
+
+    <string name="caption">Caption</string>
+    <string name="button">Button</string>
+    <string name="moon">Moon</string>
+    <string name="hi_there">Hi, there!</string>
+    <string name="from_xml">From xml</string>
+    <string name="from_code">From code</string>
+    <string name="from_prop">From prop</string>
+
+    <string-array name="interpolators">
+        <item>FastOutLinearInInterpolator</item>
+        <item>FastOutSlowInInterpolator</item>
+        <item>LinearOutSlowInInterpolator</item>
+        <item>----------</item>
+        <item>AccelerateDecelerateInterpolator</item>
+        <item>AccelerateInterpolator</item>
+        <item>AnticipateInterpolator</item>
+        <item>AnticipateOvershootInterpolator</item>
+        <item>BounceInterpolator</item>
+        <item>DecelerateInterpolator</item>
+        <item>LinearInterpolator</item>
+        <item>OvershootInterpolator</item>
+    </string-array>
+
+    <string-array name="durations">
+        <item>100ms</item>
+        <item>300ms</item>
+        <item>900ms</item>
+        <item>1500ms</item>
+        <item>3000ms</item>
+    </string-array>
+
+    <string name="transition_avatar">avatar</string>
+    <string name="label_preview">Preview</string>
+    <string name="invoke0">Invoke0</string>
+    <string name="invoke1">Invoke1</string>
+
+    <string name="heap_size">Heap Size: %dMb</string>
+    <string name="large_heap_size">Large Heap Size: %dMb</string>
+    <string name="new_activity">Start new activity</string>
+    <string name="wrapper">Wrapper</string>
+    <string name="original_image">Original Image</string>
+    <string name="scaled_images">Scaled Images</string>
+    <string name="floating">Floating</string>
+    <string name="create_window_button">Create Window Button</string>
+    <string name="change_orientation">To Landscape</string>
+    <string name="hint">Portrait</string>
+    <string name="px">px: %fpx</string>
+    <string name="dp">dp: %fpx</string>
+    <string name="ipx">ipx: %dpx</string>
+    <string name="idp">idp: %dpx</string>
+    <string name="sp">sp: %dpx</string>
+    <string name="has_id">Has Id</string>
+    <string name="no_id">No Id</string>
+    <string name="show_activity_dialog">Show Activity Dialog</string>
+    <string name="show_application_dialog">Show Application Dialog</string>
+    <string name="search_title">Filter</string>
+    <string name="search_hint">Filter entries…</string>
+    <string name="no_results">No Results</string>
+    <string name="next_activity">Next Activity</string>
+    <string name="alpha">Alpha</string>
+    <string name="beta">Beta</string>
+    <string name="create_new_document">Create New Document</string>
+    <string name="open_anonymous_activity">Open Anonymous Activity</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="thread_local">Thread Local</string>
+    <string name="asynctask">AsyncTask</string>
+    <string name="execute_serial">Execute Serial</string>
+    <string name="execute_parallel">Execute Parallel</string>
+    <string name="start_intent_service">Start Intent Service</string>
+    <string name="intent_service">IntentService</string>
+    <string name="set_timer">Set Timer</string>
+    <string name="show_alarms">Show Alarms</string>
+    <!-- https://developer.android.com/guide/components/intents-common.html -->
+    <string name="intents_common_url">https://goo.gl/G6jR9b</string>
+    <string name="click">Click</string>
+    <string name="reset">Reset</string>
+    <string name="Add">add_title</string>
+    <string name="second">Second</string>
+    <string name="first">First</string>
+    <string name="birthday_image">Birthday Image</string>
+    <string name="happy_birthday_zhang">Happy Birthday Zhang!</string>
+    <string name="from_li">From, Li</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="log">Log</string>
+    <string name="preference_file_key">me.zhang.workbench.PREFERENCE_FILE_KEY</string>
+    <string name="count_msgs">Count Msgs</string>
+
+    <string-array name="array_name">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
+
+    <string name="fragment_title_lined_edit_text">Lined EditText</string>
+    <string name="fragment_title_tally_counter">Tally Counter</string>
+    <string name="fragment_title_text_progress_bar">Text Progress Bar</string>
+    <string name="fragment_title_custom_view">Custom View</string>
+    <string name="fragment_title_custom_drawable">Custom Drawable</string>
+    <string name="fragment_title_extends_system_widget">Extends System Widget</string>
+    <string name="request_raw">Request Raw</string>
+    <string name="request_parsed">Request Parsed</string>
+    <string name="response_error">That didn\'t work!</string>
+    <string name="transition_name_hero">tn_hero_%d</string>
+    <string name="key_color_list">key_color_list</string>
+    <string name="key_clicked_index">key_clicked_index</string>
+    <string name="tool_line">Line</string>
+    <string name="tool_rectangle">Rectangle</string>
+    <string name="tool_oval">Oval</string>
+    <string name="tool_text">Text</string>
+
+    <string name="tool_color">Color</string>
+    <string name="tool_clear">Clear</string>
+    <string name="tool_capture">Capture</string>
+    <string name="tool_undo">↶</string>
+    <string name="tool_redo">↷</string>
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+
+    <string name="string_multiline">
+        SEOUL, South Korea — North Korea’s leader, Kim Jong-un, announced early Saturday that his country no longer needed to test nuclear weapons or long-range missiles and would close a nuclear test site.
+
+“The nuclear test site has done its job,” Mr. Kim said in a statement carried by North Korea’s state media.
+    </string>
+    <string name="click_me">Click Me</string>
+
+</resources>
