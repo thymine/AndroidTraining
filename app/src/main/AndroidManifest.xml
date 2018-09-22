@@ -80,7 +80,7 @@
         <activity android:name=".view.ScrollViewActivity" />
         <activity
             android:name=".view.CustomViewActivity"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/MyTheme" />
         <activity
             android:name=".layout.CustomLayoutActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

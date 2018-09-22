@@ -92,4 +92,17 @@
         <item name="android:background">@drawable/bg_button</item>
     </style>
 
+    <style name="ViewStyle">
+        <item name="attr2">attr2</item>
+    </style>
+
+    <style name="MyTheme" parent="AppThemeNoActionBar">
+        <item name="attr3">attr3</item>
+        <item name="MyStyle">@style/MyDefaultStyle</item>
+    </style>
+
+    <style name="MyDefaultStyle">
+        <item name="attr4">attr4</item>
+    </style>
+
 </resources>
