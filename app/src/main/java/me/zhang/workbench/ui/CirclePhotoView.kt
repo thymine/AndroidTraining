@@ -17,7 +17,7 @@ class CirclePhotoView : View {
 
     private val catBitmapMatrix = Matrix()
     private val circleMaskPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val catBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.androidpartyx)
+    private val catBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.androidparty)
 
     private val circleMaskBitmap: Bitmap
     private val circleMaskCanvas: Canvas
