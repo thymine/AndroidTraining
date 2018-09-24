@@ -2,35 +2,46 @@ package me.zhang.workbench.ui
 
 import android.content.Context
 import android.graphics.*
-import android.graphics.Canvas.ALL_SAVE_FLAG
+import android.graphics.Matrix.MTRANS_X
+import android.graphics.Matrix.MTRANS_Y
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
-
+import me.zhang.workbench.R
+import me.zhang.workbench.utils.dp
+import java.util.*
 
 /**
  * Created by zhangxiangdong on 2018/3/30 15:51.
  */
 class PorterDuffXferView : View {
 
-    private val dstBitmap = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888)!!
-    private val dstCanvas = Canvas(dstBitmap)
-    private val dstPaint = Paint()
+    private val srcBitmap = BitmapFactory.decodeResource(resources, R.drawable.composite_src)
+    private val dstBitmap = BitmapFactory.decodeResource(resources, R.drawable.composite_dst)
+    private val bitmapPaint = Paint()
+    private val textPaint = Paint()
+    private val modes = ArrayList<PorterDuffXfermode>()
+    private val bitmapMatrix = Matrix()
+    private val values = FloatArray(9)
 
-    private val srcBitmap = dstBitmap.copy(Bitmap.Config.ARGB_8888, true)!!
-    private val srcCanvas = Canvas(srcBitmap)
-    private val srcPaint = Paint()
+    init {
+        PorterDuff.Mode.values().forEach {
+            modes.add(PorterDuffXfermode(it))
+        }
 
-    private val bitmap3 = Bitmap.createBitmap(450, 450, Bitmap.Config.ARGB_8888)!!
-    private val canvas3 = Canvas(bitmap3)
-    private val paint3 = Paint()
+        textPaint.flags = Paint.ANTI_ALIAS_FLAG
+        textPaint.style = Paint.Style.FILL
+        textPaint.color = Color.YELLOW
+        textPaint.textSize = 12.dp()
+    }
 
-    private val xorXfermode = PorterDuffXfermode(PorterDuff.Mode.XOR)
+    companion object {
+        const val LOG_TAG = "PorterDuffXferView"
+    }
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-        setBackgroundColor(Color.parseColor("#FFCCCC"))
-    }
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, widthMeasureSpec)
@@ -39,22 +50,32 @@ class PorterDuffXferView : View {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        dstPaint.color = Color.GRAY
-        dstCanvas.drawCircle(150f, 150f, 150f, dstPaint)
+        var x = 0
+        var y = 0
+        modes.forEach { mode ->
+            bitmapMatrix.setScale(.3f, .3f)
 
-        srcPaint.color = Color.GREEN
-        srcCanvas.drawRect(0f, 0f, 300f, 300f, srcPaint)
+            val drawingBound = srcBitmap.width * .31f
+            if ((x + 1) * drawingBound /* 绘制区域方块右上角 */ >= measuredWidth) {
+                x = 0
+                y++
+            }
+            Log.d(LOG_TAG, "($x, $y)")
+            bitmapMatrix.postTranslate(x++ * drawingBound, y * drawingBound)
 
-        val saveLayerCount = canvas3.saveLayer(0f, 0f, 450f, 450f, null, ALL_SAVE_FLAG)
-        canvas3.drawBitmap(dstBitmap, 0f, 0f, null)
+            canvas.drawBitmap(dstBitmap, bitmapMatrix, bitmapPaint)
+            bitmapPaint.xfermode = mode
+            canvas.drawBitmap(srcBitmap, bitmapMatrix, bitmapPaint)
 
-        paint3.xfermode = xorXfermode
-        canvas3.drawBitmap(srcBitmap, 150f, 150f, paint3)
-
-        paint3.xfermode = null
-        canvas3.restoreToCount(saveLayerCount)
-
-        canvas.drawBitmap(bitmap3, 0f, 0f, null)
+            bitmapMatrix.getValues(values)
+            val margin = 3.dp()
+            canvas.drawText(
+                    PorterDuff.Mode.values()[modes.indexOf(mode)].name,
+                    values[MTRANS_X] + margin,
+                    values[MTRANS_Y] + Math.abs(textPaint.fontMetrics.top) + margin,
+                    textPaint
+            )
+        }
     }
 
 }
