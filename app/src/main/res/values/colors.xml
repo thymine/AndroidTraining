@@ -18,4 +18,6 @@
     <color name="dark">#383838</color>
 
     <color name="label">#4e4dba</color>
+    <color name="blue">#0000ff</color>
+    <color name="yellow">#ffe100</color>
 </resources>

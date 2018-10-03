@@ -209,4 +209,7 @@ Reputation is a rough measurement of how much the community trusts you; it is ea
     </string>
     <string name="click_me">Click Me</string>
 
+    <string name="string_layout_match">match_parent</string>
+    <string name="string_layout_wrap">wrap_content</string>
+
 </resources>

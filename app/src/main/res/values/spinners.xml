@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cornerlayout_config_array">
+        <item>@string/string_layout_match</item>
+        <item>@string/string_layout_wrap</item>
+    </string-array>
+</resources>
