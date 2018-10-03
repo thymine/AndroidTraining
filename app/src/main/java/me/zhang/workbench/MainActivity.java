@@ -75,6 +75,7 @@ import me.zhang.workbench.thread.ThreadActivity;
 import me.zhang.workbench.touchEvent.TouchEventActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictExternalActivity;
 import me.zhang.workbench.touchEvent.conflict.HVConflictInternalActivity;
+import me.zhang.workbench.ui.CornerActivity;
 import me.zhang.workbench.ui.DrawingActivity;
 import me.zhang.workbench.ui.LineDrawingActivity;
 import me.zhang.workbench.ui.ScratchTicketActivity;
@@ -120,6 +121,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("ScrollView Dimens", ScrollViewActivity.class);
         addMenuItem("Custom View", CustomViewActivity.class);
         addMenuItem("Custom Layout", CustomLayoutActivity.class);
+        addMenuItem("Corner Layout", CornerActivity.class);
         addMenuItem("Drawing", DrawingActivity.class);
         addMenuItem("Notification", NotificationActivity.class);
         addMenuItem("Handler", HandlerActivity.class);

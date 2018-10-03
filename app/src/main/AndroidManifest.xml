@@ -218,6 +218,7 @@
         <activity android:name=".text.DrawTextActivity" />
         <activity android:name=".ui.ScratchTicketActivity" />
         <activity android:name=".intent.PickFileActivity" />
+        <activity android:name=".ui.CornerActivity"></activity>
     </application>
 
 </manifest>
