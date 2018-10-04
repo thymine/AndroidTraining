@@ -75,9 +75,20 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun initViews() {
         for (i in 0 until colors.size) {
             val view = View(this)
-            val randWidthDp = (96 + Math.random() * 32).toInt() // [96, 128) dp
-            val randHeightDp = (96 + Math.random() * 32).toInt() // [96, 128) dp
-            view.layoutParams = ViewGroup.LayoutParams(randWidthDp.dp(this).toInt(), randHeightDp.dp(this).toInt())
+            val randWidthDp = (96 + Math.random() * 32).toInt() // [96, 128)
+            val randHeightDp = (96 + Math.random() * 32).toInt() // [96, 128)
+            val margin = (12 + Math.random() * 12).toInt() // [12, 24)
+
+            val lp = ViewGroup.MarginLayoutParams(
+                    randWidthDp.dp(this).toInt(),
+                    randHeightDp.dp(this).toInt()
+            )
+            lp.topMargin = margin.dp(this).toInt()
+            lp.rightMargin = margin.dp(this).toInt()
+            lp.rightMargin = margin.dp(this).toInt()
+            lp.bottomMargin = margin.dp(this).toInt()
+
+            view.layoutParams = lp
             view.setBackgroundColor(ContextCompat.getColor(this, colors[i]))
             views.add(view)
         }
