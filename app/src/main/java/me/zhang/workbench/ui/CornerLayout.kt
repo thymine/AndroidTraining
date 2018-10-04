@@ -7,6 +7,12 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.ViewGroup
+import me.zhang.workbench.R
+import me.zhang.workbench.ui.CornerLayout.PositionalLayoutParams.Companion.LEFT_BOTTOM
+import me.zhang.workbench.ui.CornerLayout.PositionalLayoutParams.Companion.LEFT_TOP
+import me.zhang.workbench.ui.CornerLayout.PositionalLayoutParams.Companion.NONE
+import me.zhang.workbench.ui.CornerLayout.PositionalLayoutParams.Companion.RIGHT_BOTTOM
+import me.zhang.workbench.ui.CornerLayout.PositionalLayoutParams.Companion.RIGHT_TOP
 import me.zhang.workbench.utils.dp
 
 /**
@@ -137,68 +143,88 @@ class CornerLayout : ViewGroup {
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         for (i in 0 until childCount) {
             val child = getChildAt(i)
-            val lp = child.layoutParams as MarginLayoutParams
+            val lp = child.layoutParams as PositionalLayoutParams
             val leftMargin = lp.leftMargin
             val rightMargin = lp.rightMargin
             val topMargin = lp.topMargin
             val bottomMargin = lp.bottomMargin
-            when (i) {
-                0 -> {
-                    // 左上角
-                    child.layout(
-                            paddingLeft + leftMargin,
-                            paddingTop + topMargin,
-                            child.measuredWidth + paddingLeft + leftMargin,
-                            child.measuredHeight + paddingTop + topMargin
-                    )
-                }
-                1 -> {
-                    // 右上角
-                    child.layout(
-                            measuredWidth - child.measuredWidth - paddingRight - rightMargin,
-                            paddingTop + topMargin,
-                            measuredWidth - paddingRight - rightMargin,
-                            child.measuredHeight + paddingTop + topMargin
-                    )
-                }
-                2 -> {
-                    // 左下角
-                    child.layout(
-                            paddingLeft + leftMargin,
-                            measuredHeight - child.measuredHeight - paddingBottom - bottomMargin,
-                            child.measuredWidth + paddingLeft + leftMargin,
-                            measuredHeight - paddingBottom - bottomMargin
-                    )
-                }
-                3 -> {
-                    // 右下角
-                    child.layout(
-                            measuredWidth - child.measuredWidth - paddingRight - rightMargin,
-                            measuredHeight - child.measuredHeight - paddingBottom - bottomMargin,
-                            measuredWidth - paddingLeft - rightMargin,
-                            measuredHeight - paddingBottom - bottomMargin
-                    )
-                }
+            val position = lp.position
+
+            if ((i == 0 && position == NONE) || position == LEFT_TOP) {
+                // 左上角
+                child.layout(
+                        paddingLeft + leftMargin,
+                        paddingTop + topMargin,
+                        child.measuredWidth + paddingLeft + leftMargin,
+                        child.measuredHeight + paddingTop + topMargin
+                )
+            } else if ((i == 1 && position == NONE) || position == RIGHT_TOP) {
+                // 右上角
+                child.layout(
+                        measuredWidth - child.measuredWidth - paddingRight - rightMargin,
+                        paddingTop + topMargin,
+                        measuredWidth - paddingRight - rightMargin,
+                        child.measuredHeight + paddingTop + topMargin
+                )
+            } else if ((i == 2 && position == NONE) || position == LEFT_BOTTOM) {
+                // 左下角
+                child.layout(
+                        paddingLeft + leftMargin,
+                        measuredHeight - child.measuredHeight - paddingBottom - bottomMargin,
+                        child.measuredWidth + paddingLeft + leftMargin,
+                        measuredHeight - paddingBottom - bottomMargin
+                )
+            } else if ((i == 3 && position == NONE) || position == RIGHT_BOTTOM) {
+                // 右下角
+                child.layout(
+                        measuredWidth - child.measuredWidth - paddingRight - rightMargin,
+                        measuredHeight - child.measuredHeight - paddingBottom - bottomMargin,
+                        measuredWidth - paddingLeft - rightMargin,
+                        measuredHeight - paddingBottom - bottomMargin
+                )
             }
         }
     }
 
     override fun generateDefaultLayoutParams(): LayoutParams {
-        return ViewGroup.MarginLayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+        return PositionalLayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
     }
 
     override fun generateLayoutParams(attrs: AttributeSet?): LayoutParams {
-        return ViewGroup.MarginLayoutParams(context, attrs)
+        return PositionalLayoutParams(context, attrs)
     }
 
     override fun generateLayoutParams(p: LayoutParams?): LayoutParams {
-        return ViewGroup.MarginLayoutParams(p)
+        return PositionalLayoutParams(p)
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         border.set(0, 0, measuredWidth, measuredHeight)
         canvas?.drawRect(border, borderPaint)
+    }
+
+    class PositionalLayoutParams : ViewGroup.MarginLayoutParams {
+
+        companion object {
+            const val LEFT_TOP = 0
+            const val RIGHT_TOP = 1
+            const val LEFT_BOTTOM = 2
+            const val RIGHT_BOTTOM = 3
+            const val NONE = -1
+        }
+
+        var position: Int? = NONE
+
+        constructor(width: Int, height: Int) : super(width, height)
+        constructor(source: LayoutParams?) : super(source)
+        constructor(c: Context?, attrs: AttributeSet?) : super(c, attrs) {
+            // 获取layout_position属性
+            val ta = c?.obtainStyledAttributes(attrs, R.styleable.CornerLayout_Layout)
+            position = ta?.getInt(R.styleable.CornerLayout_Layout_layout_position, NONE)
+            ta?.recycle()
+        }
+
     }
 
 }

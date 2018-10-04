@@ -32,4 +32,13 @@
 
     <attr name="MyStyle" format="reference" />
 
+    <declare-styleable name="CornerLayout_Layout">
+        <attr name="layout_position" format="enum">
+            <enum name="left_top" value="0" />
+            <enum name="right_top" value="1" />
+            <enum name="left_bottom" value="2" />
+            <enum name="right_bottom" value="3" />
+        </attr>
+    </declare-styleable>
+
 </resources>
