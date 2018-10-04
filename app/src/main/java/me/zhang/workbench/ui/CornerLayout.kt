@@ -49,14 +49,33 @@ class CornerLayout : ViewGroup {
                 var rtw = 0
                 var lbw = 0
                 var rbw = 0
+
+                var lthm = 0
+                var rthm = 0
+                var lbhm = 0
+                var rbhm = 0
                 for (i in 0 until childCount) {
+                    val lp: MarginLayoutParams = getChildAt(i).layoutParams as MarginLayoutParams
                     when (i) {
-                        0 -> ltw = getChildAt(i).measuredWidth
-                        1 -> rtw = getChildAt(i).measuredWidth
-                        2 -> lbw = getChildAt(i).measuredWidth
-                        3 -> rbw = getChildAt(i).measuredWidth
+                        0 -> {
+                            ltw = getChildAt(i).measuredWidth
+                            lthm = lp.leftMargin + lp.rightMargin
+                        }
+                        1 -> {
+                            rtw = getChildAt(i).measuredWidth
+                            rthm = lp.leftMargin + lp.rightMargin
+                        }
+                        2 -> {
+                            lbw = getChildAt(i).measuredWidth
+                            lbhm = lp.leftMargin + lp.rightMargin
+                        }
+                        3 -> {
+                            rbw = getChildAt(i).measuredWidth
+                            rbhm = lp.leftMargin + lp.rightMargin
+                        }
                     }
                     width = Math.max(ltw, lbw) + Math.max(rtw, rbw) + (paddingLeft + paddingRight)
+                    +Math.max(lthm, lbhm) + Math.max(rthm, rbhm)
                 }
             }
             MeasureSpec.UNSPECIFIED -> {
@@ -79,14 +98,33 @@ class CornerLayout : ViewGroup {
                 var rth = 0
                 var lbh = 0
                 var rbh = 0
+
+                var ltvm = 0
+                var rtvm = 0
+                var lbvm = 0
+                var rbvm = 0
                 for (i in 0 until childCount) {
+                    val lp = getChildAt(i).layoutParams as MarginLayoutParams
                     when (i) {
-                        0 -> lth = getChildAt(i).measuredHeight
-                        1 -> rth = getChildAt(i).measuredHeight
-                        2 -> lbh = getChildAt(i).measuredHeight
-                        3 -> rbh = getChildAt(i).measuredHeight
+                        0 -> {
+                            lth = getChildAt(i).measuredHeight
+                            ltvm = lp.leftMargin + lp.rightMargin
+                        }
+                        1 -> {
+                            rth = getChildAt(i).measuredHeight
+                            rtvm = lp.leftMargin + lp.rightMargin
+                        }
+                        2 -> {
+                            lbh = getChildAt(i).measuredHeight
+                            lbvm = lp.leftMargin + lp.rightMargin
+                        }
+                        3 -> {
+                            rbh = getChildAt(i).measuredHeight
+                            rbvm = lp.leftMargin + lp.rightMargin
+                        }
                     }
                     height = Math.max(lth, lbh) + Math.max(rth, rbh) + (paddingTop + paddingBottom)
+                    +Math.max(ltvm, lbvm) + Math.max(rtvm, rbvm)
                 }
             }
             MeasureSpec.UNSPECIFIED -> {
@@ -99,45 +137,62 @@ class CornerLayout : ViewGroup {
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         for (i in 0 until childCount) {
             val child = getChildAt(i)
+            val lp = child.layoutParams as MarginLayoutParams
+            val leftMargin = lp.leftMargin
+            val rightMargin = lp.rightMargin
+            val topMargin = lp.topMargin
+            val bottomMargin = lp.bottomMargin
             when (i) {
                 0 -> {
                     // 左上角
                     child.layout(
-                            paddingLeft,
-                            paddingTop,
-                            child.measuredWidth + paddingLeft,
-                            child.measuredHeight + paddingTop
+                            paddingLeft + leftMargin,
+                            paddingTop + topMargin,
+                            child.measuredWidth + paddingLeft + leftMargin,
+                            child.measuredHeight + paddingTop + topMargin
                     )
                 }
                 1 -> {
                     // 右上角
                     child.layout(
-                            measuredWidth - child.measuredWidth - paddingRight,
-                            paddingTop,
-                            measuredWidth - paddingRight,
-                            child.measuredHeight + paddingTop
+                            measuredWidth - child.measuredWidth - paddingRight - rightMargin,
+                            paddingTop + topMargin,
+                            measuredWidth - paddingRight - rightMargin,
+                            child.measuredHeight + paddingTop + topMargin
                     )
                 }
                 2 -> {
                     // 左下角
                     child.layout(
-                            paddingLeft,
-                            measuredHeight - child.measuredHeight - paddingBottom,
-                            child.measuredWidth + paddingLeft,
-                            measuredHeight - paddingBottom
+                            paddingLeft + leftMargin,
+                            measuredHeight - child.measuredHeight - paddingBottom - bottomMargin,
+                            child.measuredWidth + paddingLeft + leftMargin,
+                            measuredHeight - paddingBottom - bottomMargin
                     )
                 }
                 3 -> {
                     // 右下角
                     child.layout(
-                            measuredWidth - child.measuredWidth - paddingRight,
-                            measuredHeight - child.measuredHeight - paddingBottom,
-                            measuredWidth - paddingLeft,
-                            measuredHeight - paddingBottom
+                            measuredWidth - child.measuredWidth - paddingRight - rightMargin,
+                            measuredHeight - child.measuredHeight - paddingBottom - bottomMargin,
+                            measuredWidth - paddingLeft - rightMargin,
+                            measuredHeight - paddingBottom - bottomMargin
                     )
                 }
             }
         }
+    }
+
+    override fun generateDefaultLayoutParams(): LayoutParams {
+        return ViewGroup.MarginLayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+    }
+
+    override fun generateLayoutParams(attrs: AttributeSet?): LayoutParams {
+        return ViewGroup.MarginLayoutParams(context, attrs)
+    }
+
+    override fun generateLayoutParams(p: LayoutParams?): LayoutParams {
+        return ViewGroup.MarginLayoutParams(p)
     }
 
     override fun onDraw(canvas: Canvas?) {
