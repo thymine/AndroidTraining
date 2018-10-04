@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
+import androidx.view.setPadding
 import kotlinx.android.synthetic.main.activity_corner.*
 import me.zhang.workbench.R
 import me.zhang.workbench.utils.dp
@@ -40,6 +42,8 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     set.constrainWidth(R.id.cornerLayout, ConstraintSet.MATCH_CONSTRAINT)
                     set.constrainHeight(R.id.cornerLayout, ConstraintSet.MATCH_CONSTRAINT)
                     set.applyTo(constraintLayout)
+
+                    seekBar.isEnabled = true
                 }
                 getString(R.string.string_layout_wrap) -> {
                     val set = ConstraintSet()
@@ -51,6 +55,8 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     set.constrainWidth(R.id.cornerLayout, ConstraintSet.WRAP_CONTENT)
                     set.constrainHeight(R.id.cornerLayout, ConstraintSet.WRAP_CONTENT)
                     set.applyTo(constraintLayout)
+
+                    seekBar.isEnabled = false
                 }
             }
         }
@@ -63,6 +69,7 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         initViews()
         initSpinner()
         initNumberPicker()
+        initSeekBar()
     }
 
     private fun initViews() {
@@ -99,6 +106,22 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
             cornerLayout.requestLayout()
         }
+    }
+
+    private fun initSeekBar() {
+        seekBar.max = 64
+        seekBar.progress = 16
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                cornerLayout.setPadding(progress.dp(this@CornerActivity).toInt())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
     }
 
 }
