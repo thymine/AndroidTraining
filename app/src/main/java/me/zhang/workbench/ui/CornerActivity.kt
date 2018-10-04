@@ -5,7 +5,6 @@ import android.support.constraint.ConstraintSet
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
@@ -17,11 +16,17 @@ import me.zhang.workbench.utils.dp
 class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private val views = arrayListOf<View>()
-    private val colors = arrayListOf(
+    private val colors = listOf(
             R.color.red,
             R.color.green,
             R.color.blue,
             R.color.yellow
+    )
+    private val positions = arrayListOf(
+            CornerLayout.PositionalLayoutParams.LEFT_TOP,
+            CornerLayout.PositionalLayoutParams.RIGHT_TOP,
+            CornerLayout.PositionalLayoutParams.LEFT_BOTTOM,
+            CornerLayout.PositionalLayoutParams.RIGHT_BOTTOM
     )
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -73,13 +78,14 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     private fun initViews() {
+        cornerLayout.removeAllViews()
         for (i in 0 until colors.size) {
             val view = View(this)
             val randWidthDp = (96 + Math.random() * 32).toInt() // [96, 128)
             val randHeightDp = (96 + Math.random() * 32).toInt() // [96, 128)
             val margin = (12 + Math.random() * 12).toInt() // [12, 24)
 
-            val lp = ViewGroup.MarginLayoutParams(
+            val lp = CornerLayout.PositionalLayoutParams(
                     randWidthDp.dp(this).toInt(),
                     randHeightDp.dp(this).toInt()
             )
@@ -87,11 +93,14 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             lp.rightMargin = margin.dp(this).toInt()
             lp.rightMargin = margin.dp(this).toInt()
             lp.bottomMargin = margin.dp(this).toInt()
+            val removedIndex = (positions.size * Math.random()).toInt()
+            lp.position = positions.removeAt(removedIndex)
 
             view.layoutParams = lp
             view.setBackgroundColor(ContextCompat.getColor(this, colors[i]))
             views.add(view)
         }
+        views.forEach { cornerLayout.addView(it) }
     }
 
     private fun initSpinner() {

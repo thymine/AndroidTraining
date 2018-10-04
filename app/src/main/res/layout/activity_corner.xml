@@ -22,25 +22,29 @@
             android:layout_width="128dp"
             android:layout_height="96dp"
             android:layout_margin="8dp"
-            android:background="@color/red" />
+            android:background="@color/red"
+            app:layout_position="left_bottom" />
 
         <View
             android:layout_width="96dp"
             android:layout_height="128dp"
             android:layout_margin="12dp"
-            android:background="@color/green" />
+            android:background="@color/green"
+            app:layout_position="left_top" />
 
         <View
             android:layout_width="96dp"
             android:layout_height="128dp"
             android:layout_margin="24dp"
-            android:background="@color/blue" />
+            android:background="@color/blue"
+            app:layout_position="right_bottom" />
 
         <View
             android:layout_width="128dp"
             android:layout_height="96dp"
             android:layout_margin="8dp"
-            android:background="@color/yellow" />
+            android:background="@color/yellow"
+            app:layout_position="right_top" />
 
     </me.zhang.workbench.ui.CornerLayout>
 
