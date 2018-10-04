@@ -47,6 +47,7 @@ public abstract class MenuActivity extends AppCompatActivity
 
     private SortedMap<String, Intent> actions = new TreeMap<>();
     private HistoryAdapter adapter;
+    private RecyclerView historyList;
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,7 +96,7 @@ public abstract class MenuActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_menu);
 
-        RecyclerView historyList = findViewById(R.id.historyList);
+        historyList = findViewById(R.id.historyList);
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
         layoutManager.setFlexDirection(FlexDirection.ROW);
         layoutManager.setJustifyContent(JustifyContent.FLEX_START);
@@ -134,6 +135,7 @@ public abstract class MenuActivity extends AppCompatActivity
         MenuItem searchMenuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) searchMenuItem.getActionView();
         searchView.setOnQueryTextListener(this);
+        searchView.setOnQueryTextFocusChangeListener((v, hasFocus) -> historyList.setVisibility(hasFocus ? View.GONE : View.VISIBLE));
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
