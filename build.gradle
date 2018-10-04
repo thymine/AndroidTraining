@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.50'
+    ext.kotlin_version = '1.2.71'
 
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -12,7 +12,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -34,13 +34,6 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir, 'apks'
-}
-
-ext {
-    compileSdkVersion = 27
-    buildToolsVersion = "27.0.3"
-    minSdkVersion = 14
-    targetSdkVersion = 27
 }
 
 // Load dependencies
