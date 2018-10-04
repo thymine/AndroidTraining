@@ -20,4 +20,5 @@
     <color name="label">#4e4dba</color>
     <color name="blue">#0000ff</color>
     <color name="yellow">#ffe100</color>
+    <color name="gray">#b3b3b3</color>
 </resources>
