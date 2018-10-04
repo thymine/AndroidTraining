@@ -2,14 +2,25 @@ package me.zhang.workbench.ui
 
 import android.os.Bundle
 import android.support.constraint.ConstraintSet
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_corner.*
 import me.zhang.workbench.R
+import me.zhang.workbench.utils.dp
 
 class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+
+    private val views = arrayListOf<View>()
+    private val colors = arrayListOf(
+            R.color.red,
+            R.color.green,
+            R.color.blue,
+            R.color.yellow
+    )
 
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
@@ -49,7 +60,20 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_corner)
 
+        initViews()
         initSpinner()
+        initNumberPicker()
+    }
+
+    private fun initViews() {
+        for (i in 0 until colors.size) {
+            val view = View(this)
+            val randWidthDp = (96 + Math.random() * 32).toInt() // [96, 128) dp
+            val randHeightDp = (96 + Math.random() * 32).toInt() // [96, 128) dp
+            view.layoutParams = ViewGroup.LayoutParams(randWidthDp.dp(this).toInt(), randHeightDp.dp(this).toInt())
+            view.setBackgroundColor(ContextCompat.getColor(this, colors[i]))
+            views.add(view)
+        }
     }
 
     private fun initSpinner() {
@@ -61,6 +85,19 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
+        }
+    }
+
+    private fun initNumberPicker() {
+        numberPicker.minValue = 0
+        numberPicker.maxValue = views.size
+        numberPicker.setOnValueChangedListener { _, _, newVal ->
+            cornerLayout.removeAllViews()
+            val partialViews = views.subList(0, newVal)
+            partialViews.forEach {
+                cornerLayout.addView(it)
+            }
+            cornerLayout.requestLayout()
         }
     }
 
