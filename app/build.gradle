@@ -56,31 +56,10 @@ android {
 }
 
 dependencies {
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation jakeWhartonDependencies.butterknife
-    annotationProcessor jakeWhartonDependencies.butterknifeCompiler
-    implementation jakeWhartonDependencies.rxbinding
-    implementation jakeWhartonDependencies.timber
-
-    implementation squareDependencies.picasso
-    implementation squareDependencies.retrofit
-    implementation squareDependencies.converterGson
-
-    implementation reactiveXDependencies.rxandroid
-    implementation reactiveXDependencies.rxjava
-
-    implementation bumptechDependencies.glide
-
-    implementation astuetzDependencies.PagerSlidingTabStrip
-
-    implementation googleDependencies.volley
-
-    implementation googleDependencies.exoplayer
-
-    implementation googleDependencies.flexbox
-
-    testImplementation junitDependencies.junit
+    testImplementation 'junit:junit:4.12'
     androidTestImplementation(('com.android.support.test.espresso:espresso-core:2.2.2')) {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
@@ -92,6 +71,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
 
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    testImplementation 'org.robolectric:robolectric:3.8'
+    androidTestImplementation 'com.jayway.android.robotium:robotium-solo:5.6.0'
+
     implementation 'com.android.support:preference-v7:28.0.0'
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:support-v13:28.0.0'
@@ -101,13 +84,39 @@ dependencies {
     implementation 'com.android.support:palette-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 
-    implementation 'org.greenrobot:eventbus:3.0.0'
-    testImplementation 'org.robolectric:robolectric:3.8'
-    androidTestImplementation 'com.jayway.android.robotium:robotium-solo:5.6.0'
+    // https://github.com/JakeWharton/butterknife
+    implementation 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    // https://github.com/JakeWharton/RxBinding
+    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    // https://github.com/JakeWharton/timber
+    implementation 'com.jakewharton.timber:timber:4.5.1'
 
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
+
+    // https://github.com/bumptech/glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    // https://github.com/astuetz/PagerSlidingTabStrip
+    implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
+
+    // https://github.com/google/volley
+    implementation 'com.android.volley:volley:1.1.0'
+    // https://github.com/google/ExoPlayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.2'
+    // https://github.com/google/flexbox-layout
+    implementation 'com.google.android:flexbox:1.0.0'
+
+    // https://github.com/QuadFlask/colorpicker
+    implementation 'com.github.QuadFlask:colorpicker:0.0.13'
+
+    // https://github.com/android/android-ktx
+    implementation 'androidx.core:core-ktx:0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation colorpicker.colorpicker
-
-    implementation core_ktx.core_ktx
 }

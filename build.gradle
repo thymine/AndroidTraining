@@ -36,6 +36,4 @@ task clean(type: Delete) {
     delete rootProject.buildDir, 'apks'
 }
 
-// Load dependencies
-apply from: 'gradle/dependencies.gradle'
 apply plugin: 'android-reporting' // > ./gradlew deviceCheck mergeAndroidReports --continue
