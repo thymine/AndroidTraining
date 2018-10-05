@@ -1,9 +1,9 @@
 package me.zhang.workbench.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.SeekBar
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_scroller.*
 import me.zhang.workbench.R
 
