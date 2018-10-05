@@ -3,25 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="me.zhang.workbench">
 
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true" />
-
-    <supports-gl-texture android:name="GL_OES_compressed_ETC1_RGB8_texture" />
-    <supports-gl-texture android:name="GL_OES_compressed_paletted_texture" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="me.zhang.art.BOOK_PROVIDER.WRITE" />
-    <uses-permission android:name="me.zhang.art.BOOK_PROVIDER.READ" />
-    <uses-permission
-        android:name="android.permission.SYSTEM_ALERT_WINDOW"
-        android:protectionLevel="signature|preinstalled|appop|pre23|development" />
-    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
-    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-    <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
         android:name=".App"
@@ -32,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,183 +28,8 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity
-            android:name=".webview.WebViewActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.VisibilityActivity"
-            android:exported="true" />
-        <activity
-            android:name=".animation.CardFlipActivity"
-            android:exported="true" />
-        <activity
-            android:name=".animation.AnimateLayoutChangesActivity"
-            android:exported="true" />
-        <activity
-            android:name=".animation.LogoWhiteAnimActivity"
-            android:exported="true" />
-        <activity android:name=".gestures.GesturesActivity" />
-        <activity android:name=".layout.LayoutActivity" />
-        <activity android:name=".leaks.LeakyActivity" />
-        <activity android:name="me.zhang.art.ipc.parcel.ClientActivity" />
-        <activity android:name="me.zhang.art.ipc.messenger.MessengerClientActivity" />
-        <activity
-            android:name="me.zhang.art.ipc.provider.ProviderExternalUserActivity"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name="me.zhang.art.ipc.socket.TcpClientActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".layout.SimpleLayoutActivity" />
-        <activity android:name=".view.ViewScrollActivity" />
-        <activity android:name=".animation.TranslateActivity" />
-        <activity android:name=".view.SmoothScrollActivity" />
-        <activity android:name=".touchEvent.TouchEventActivity" />
-        <activity android:name=".touchEvent.conflict.HVConflictExternalActivity" />
-        <activity android:name=".touchEvent.conflict.HVConflictInternalActivity" />
-        <activity android:name=".view.GetViewDimensActivity" />
-        <activity android:name=".view.ScrollViewActivity" />
-        <activity
-            android:name=".view.CustomViewActivity"
-            android:theme="@style/MyTheme" />
-        <activity
-            android:name=".layout.CustomLayoutActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ui.DrawingActivity" />
-        <activity android:name=".remoteViews.NotificationActivity" />
-        <activity android:name=".remoteViews.ResultActivity" />
-        <activity android:name=".handler.HandlerActivity" />
-        <activity android:name=".remoteViews.WidgetActivity" />
-        <activity android:name=".design.BottomSheetActivity" />
-        <activity android:name=".drawable.LevelListActivity" />
-        <activity android:name=".drawable.TransitionActivity" />
-        <activity android:name=".retrofit.TestActivity" />
-        <activity android:name=".drawable.ScaleDrawableActivity" />
-        <activity android:name=".drawable.ClipDrawableActivity" />
-        <activity android:name=".drawable.CustomDrawableActivity" />
-        <activity android:name=".rx.RxActivity" />
-
-        <receiver android:name=".remoteViews.MyAppWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/appwidget_provider_info" />
-        </receiver>
-        <receiver android:name=".event.MobileNetworkListener">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-
-        <activity android:name=".layout.ConstraintActivity" />
-        <activity android:name=".animation.AnimationsActivity" />
-        <activity android:name=".adapter.AdapterActivity" />
-        <activity android:name=".design.CustomStyleActivity" />
-        <activity android:name=".design.FabActivity" />
-        <activity android:name=".animation.RecyclerViewAnimationActivity" />
-        <activity android:name=".design.CustomFabActivity" />
-        <activity
-            android:name=".design.SimplePaperTransformations"
-            android:theme="@style/AppThemeOpt" />
-        <activity
-            android:name=".design.DynamicSurfacesActivity"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".animation.LayoutAnimationActivity" />
-        <activity android:name=".design.PaletteActivity" />
-        <activity
-            android:name=".design.font.FontActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".design.image.ImmersiveImagesActivity" />
-        <activity android:name=".design.image.RoundedImagesActivity" />
-        <activity android:name=".design.image.ThreeTwoImageActivity" />
-        <activity android:name=".design.animation.AnimateActivity" />
-        <activity android:name=".design.animation.TargetActivity" />
-        <activity
-            android:name=".design.transition.GridActivity"
-            android:theme="@style/AppThemeNoActionBar.Grid.Light" />
-        <activity android:name=".design.transition.DetailActivity" />
-        <activity android:name=".design.transition.DummyActivity" />
-        <activity android:name=".design.interpolator.InterpolatorActivity" />
-        <activity android:name=".design.coordinate.CoordinateActivity" />
-        <activity android:name=".design.coordinate.MultipleElements" />
-        <activity android:name=".design.coordinate.MultipleChaoticElements" />
-        <activity android:name=".design.coordinate.CurveMotionList" />
-        <activity android:name=".design.coordinate.CurvedMotionDetail" />
-        <activity android:name=".design.coordinate.SizeChange" />
-        <activity android:name=".design.vector.VectorDrawableActivity" />
-        <activity android:name=".animation.PropertyAnimationActivity" />
-        <activity
-            android:name=".style.PreviewActivity"
-            android:theme="@style/AppTheme.Base.Preview" />
-        <activity android:name=".others.InvokeStarDetailActivity" />
-        <activity android:name=".memory.MemoryManagement" />
-        <activity android:name=".lifecycle.LifecycleActivity" />
-        <activity android:name=".binding.DataBindingActivity" />
-        <activity android:name=".animation.WrapperActivity" />
-        <activity android:name=".graphics.BitmapScaling" />
-        <activity android:name=".lifecycle.FragmentLifecycleInsideViewPager" />
-        <activity android:name=".adapter.RecyclerActivity" />
-        <activity android:name=".window.UseWindow" />
-        <activity
-            android:name=".configuration.ChangeOrientation"
-            android:configChanges="orientation|screenSize" />
-        <activity android:name=".resources.TestGetDimens" />
-        <activity android:name=".state.RestoreActivityState" />
-        <activity android:name=".window.ShowDialog" />
-        <activity android:name=".layout.GridLayoutActivity" />
-        <activity android:name=".adapter.viewPagerList.ViewPagerListActivity" />
-        <activity android:name=".graphics.OpenGLES20Activity" />
-        <activity android:name=".hello.HelloWorldActivity" />
-        <activity
-            android:name=".launchMode.AlphaActivity"
-            android:label="@string/alpha"
-            android:launchMode="singleTask"
-            android:taskAffinity=".alpha" />
-        <activity
-            android:name=".launchMode.BetaActivity"
-            android:label="@string/beta"
-            android:launchMode="singleTask"
-            android:taskAffinity=".beta" />
-        <activity android:name=".intent.IntentActivity" />
-        <activity android:name=".thread.ThreadActivity" />
-        <activity android:name=".thread.ThreadLocalActivity" />
-        <activity android:name=".thread.AsyncTaskActivity" />
-        <activity android:name=".thread.IntentServiceActivity" />
-
-        <service android:name=".thread.IntentServiceActivity$LocalIntentServicie" />
-        <service android:name=".service.SaveMyLocationService" />
-        <service android:name=".service.CountMsgsIntentService" />
-
-        <activity android:name=".view.CustomViewGroupActivity" />
-        <activity android:name=".view.TabLayoutActivity" />
-        <activity android:name=".keyboard.HideKeyboardActivity" />
-        <activity
-            android:name=".basic.BasicUiActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".test.WelcomeActivity" />
-        <activity android:name=".test.MyActivity" />
-        <activity android:name=".thread.LoggerActivity" />
-        <activity
-            android:name=".service.SaveMyLocationActivity"
-            android:exported="false" />
-        <activity android:name=".listvideo.VideoActivity" />
-        <activity android:name=".event.BusActivity" />
-        <activity android:name=".volley.VolleyTestActivity" />
-        <activity android:name=".stateList.StateListActivity" />
-        <activity android:name=".ui.WidgetActivity" />
-        <activity
-            android:name=".ui.LineDrawingActivity"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".ui.paint.PaintActivity"
-            android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".text.DrawTextActivity" />
-        <activity android:name=".ui.ScratchTicketActivity" />
-        <activity android:name=".intent.PickFileActivity" />
         <activity android:name=".ui.CornerActivity" />
-        <activity android:name=".ui.ScrollerActivity"></activity>
+        <activity android:name=".ui.ScrollerActivity" />
     </application>
 
 </manifest>

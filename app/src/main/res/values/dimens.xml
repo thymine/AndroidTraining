@@ -1,45 +1,10 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_horizontal_padding">12dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_vertical_padding">12dp</dimen>
-    <dimen name="layout_min_width">240dp</dimen>
-    <dimen name="welcome_image_width">200dp</dimen>
-    <dimen name="welcome_image_height">80dp</dimen>
-    <dimen name="welcome_appbar_height">224dp</dimen>
     <!-- 4 * ?actionBarSize -->
 
     <!-- Text Size -->
-    <dimen name="text_border_width">3dp</dimen>
-    <dimen name="large_text_size">28sp</dimen>
-    <dimen name="medium_text_size">20sp</dimen>
-    <dimen name="small_text_size">12sp</dimen>
-    <dimen name="car_text_size">28sp</dimen>
-    <dimen name="dog_text_size">22sp</dimen>
-    <dimen name="mouse_text_size">24sp</dimen>
-    <dimen name="duck_text_size">32sp</dimen>
-    <dimen name="fab_size_big">64dp</dimen>
-    <dimen name="fab_size_normal">56dp</dimen>
-    <dimen name="default_fab_elevation">6dp</dimen>
-    <dimen name="window_height">480dp</dimen>
-    <dimen name="offset_y">300dp</dimen>
-    <dimen name="button_width">@dimen/match_parent</dimen>
-
-    <dimen name="text_hint">36sp</dimen>
-
-    <dimen name="dp">24.2dp</dimen>
-    <dimen name="px">64.3px</dimen>
-    <dimen name="sp">33sp</dimen>
-    <dimen name="view_horizontal_padding">32dp</dimen>
-    <dimen name="view_vertical_padding">32dp</dimen>
-    <dimen name="list_item_icon_margin_end">6dp</dimen>
-    <dimen name="list_item_icon_margin_start">6dp</dimen>
-    <dimen name="list_item_icon_margin_top">6dp</dimen>
-    <dimen name="list_item_icon_margin_bottom">6dp</dimen>
-    <dimen name="bg_button_corner_radius">12dp</dimen>
-
-    <dimen name="grid_item_spacing">2dp</dimen>
-    <dimen name="height_unit">256dp</dimen>
 
 </resources>
