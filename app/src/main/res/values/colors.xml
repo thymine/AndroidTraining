@@ -3,21 +3,11 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorAccentDark">#d9366e</color>
-
-    <color name="indigo_100">#C5CAE9</color>
-    <color name="indigo_300">#7986CB</color>
-    <color name="indigo_500">#3F51B5</color>
-    <color name="indigo_700">#303F9F</color>
-    <color name="pink_a200">#FF4081</color>
 
     <color name="green">#00ab02</color>
     <color name="red">#bc3338</color>
     <color name="white">#f2f2f2</color>
-    <color name="black">#000000</color>
-    <color name="dark">#383838</color>
 
-    <color name="label">#4e4dba</color>
     <color name="blue">#0000ff</color>
     <color name="yellow">#ffe100</color>
     <color name="gray">#b3b3b3</color>

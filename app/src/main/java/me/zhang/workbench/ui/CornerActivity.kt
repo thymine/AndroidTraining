@@ -12,6 +12,7 @@ import androidx.view.setPadding
 import kotlinx.android.synthetic.main.activity_corner.*
 import me.zhang.workbench.R
 import me.zhang.workbench.utils.dp
+import me.zhang.workbench.ui.view.CornerLayout
 
 class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
