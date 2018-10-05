@@ -1,13 +1,13 @@
 package me.zhang.workbench.ui.base
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import me.zhang.workbench.R
 
-class HistoryAdapter(private val histories: List<String>, private val clickListener: OnHistoryItemClickListener) : RecyclerView.Adapter<HistoryAdapter.VH>() {
+class HistoryAdapter(private val histories: List<String>, private val clickListener: OnHistoryItemClickListener) : androidx.recyclerview.widget.RecyclerView.Adapter<HistoryAdapter.VH>() {
 
     interface OnHistoryItemClickListener {
         fun onClick(history: String)
@@ -29,7 +29,7 @@ class HistoryAdapter(private val histories: List<String>, private val clickListe
         holder.bind(getItem(position))
     }
 
-    class VH(itemView: View, private val clickListener: OnHistoryItemClickListener) : RecyclerView.ViewHolder(itemView) {
+    class VH(itemView: View, private val clickListener: OnHistoryItemClickListener) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
 
         private val historyItem = itemView.findViewById<TextView>(R.id.historyItem)
 

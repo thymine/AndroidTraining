@@ -1,18 +1,18 @@
 package me.zhang.workbench.ui
 
 import android.os.Bundle
-import android.support.constraint.ConstraintSet
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
-import androidx.view.setPadding
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
+import androidx.core.view.setPadding
 import kotlinx.android.synthetic.main.activity_corner.*
 import me.zhang.workbench.R
-import me.zhang.workbench.utils.dp
 import me.zhang.workbench.ui.view.CornerLayout
+import me.zhang.workbench.utils.dp
 
 class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
