@@ -79,6 +79,7 @@ import me.zhang.workbench.ui.CornerActivity;
 import me.zhang.workbench.ui.DrawingActivity;
 import me.zhang.workbench.ui.LineDrawingActivity;
 import me.zhang.workbench.ui.ScratchTicketActivity;
+import me.zhang.workbench.ui.ScrollerActivity;
 import me.zhang.workbench.ui.WidgetActivity;
 import me.zhang.workbench.ui.paint.PaintActivity;
 import me.zhang.workbench.view.CustomViewActivity;
@@ -188,6 +189,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Text Drawing", DrawTextActivity.class);
         addMenuItem("Scratch Ticket", ScratchTicketActivity.class);
         addMenuItem("Pick Media File", PickFileActivity.class);
+        addMenuItem("Scroller", ScrollerActivity.class);
     }
 
 }
