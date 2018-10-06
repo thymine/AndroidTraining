@@ -1,7 +1,7 @@
-package me.zhang.workbench.utils
+package me.zhang.laboratory.utils
 
 import android.content.Context
-import me.zhang.workbench.App
+import me.zhang.laboratory.App
 
 /**
  * Created by zhangxiangdong on 2018/2/5.

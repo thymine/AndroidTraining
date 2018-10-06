@@ -1,4 +1,4 @@
-package me.zhang.workbench.ui.view
+package me.zhang.laboratory.ui.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -7,13 +7,13 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.ViewGroup
-import me.zhang.workbench.R
-import me.zhang.workbench.ui.view.CornerLayout.PositionalLayoutParams.Companion.LEFT_BOTTOM
-import me.zhang.workbench.ui.view.CornerLayout.PositionalLayoutParams.Companion.LEFT_TOP
-import me.zhang.workbench.ui.view.CornerLayout.PositionalLayoutParams.Companion.NONE
-import me.zhang.workbench.ui.view.CornerLayout.PositionalLayoutParams.Companion.RIGHT_BOTTOM
-import me.zhang.workbench.ui.view.CornerLayout.PositionalLayoutParams.Companion.RIGHT_TOP
-import me.zhang.workbench.utils.dp
+import me.zhang.laboratory.R
+import me.zhang.laboratory.ui.view.CornerLayout.PositionalLayoutParams.Companion.LEFT_BOTTOM
+import me.zhang.laboratory.ui.view.CornerLayout.PositionalLayoutParams.Companion.LEFT_TOP
+import me.zhang.laboratory.ui.view.CornerLayout.PositionalLayoutParams.Companion.NONE
+import me.zhang.laboratory.ui.view.CornerLayout.PositionalLayoutParams.Companion.RIGHT_BOTTOM
+import me.zhang.laboratory.ui.view.CornerLayout.PositionalLayoutParams.Companion.RIGHT_TOP
+import me.zhang.laboratory.utils.dp
 
 /**
  *

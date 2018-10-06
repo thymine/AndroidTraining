@@ -1,11 +1,11 @@
-package me.zhang.workbench.ui
+package me.zhang.laboratory.ui
 
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_scroller.*
-import me.zhang.workbench.R
+import me.zhang.laboratory.R
 
 @Suppress("UNUSED_PARAMETER")
 class ScrollerActivity : AppCompatActivity() {

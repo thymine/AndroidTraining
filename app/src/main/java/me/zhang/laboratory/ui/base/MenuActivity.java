@@ -1,4 +1,4 @@
-package me.zhang.workbench.ui.base;
+package me.zhang.laboratory.ui.base;
 
 import android.app.SearchManager;
 import android.app.SearchableInfo;
@@ -38,7 +38,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
-import me.zhang.workbench.R;
+import me.zhang.laboratory.R;
 
 /**
  * Created by Zhang on 5/11/2015 14:20 下午.

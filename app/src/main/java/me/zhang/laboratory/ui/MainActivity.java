@@ -1,6 +1,6 @@
-package me.zhang.workbench.ui;
+package me.zhang.laboratory.ui;
 
-import me.zhang.workbench.ui.base.MenuActivity;
+import me.zhang.laboratory.ui.base.MenuActivity;
 
 public class MainActivity extends MenuActivity {
 

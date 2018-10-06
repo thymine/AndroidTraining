@@ -1,4 +1,4 @@
-package me.zhang.workbench.ui.base
+package me.zhang.laboratory.ui.base
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import me.zhang.workbench.R
+import me.zhang.laboratory.R
 
 class HistoryAdapter(private val histories: List<String>, private val clickListener: OnHistoryItemClickListener) : androidx.recyclerview.widget.RecyclerView.Adapter<HistoryAdapter.VH>() {
 
