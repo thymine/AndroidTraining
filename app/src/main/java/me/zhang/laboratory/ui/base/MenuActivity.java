@@ -176,6 +176,7 @@ public abstract class MenuActivity extends AppCompatActivity
                     Log.d(TAG, "Drop result: " + event.getResult());
 
                     recycleBin.setVisibility(View.GONE);
+                    ((View) event.getLocalState()).setAlpha(1.0f);
                     return true;
                 default:
                     Log.e(TAG, "Unknown action type received by OnDragListener.");
@@ -245,7 +246,8 @@ public abstract class MenuActivity extends AppCompatActivity
                 super.onProvideShadowMetrics(outShadowSize, outShadowTouchPoint);
                 outShadowTouchPoint.set((int) touchX, (int) touchY);
             }
-        }, null, 0);
+        }, v, 0);
+        v.setAlpha(0.1f);
         recycleBin.setVisibility(View.VISIBLE);
     }
 
