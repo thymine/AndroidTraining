@@ -21,15 +21,14 @@
         <ImageView
             android:id="@+id/recycleBin"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
+            android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="Recycle Bin"
             android:padding="@dimen/activity_horizontal_padding"
             android:scaleType="centerInside"
             android:src="@drawable/ic_bin"
-            android:visibility="gone"
             tools:ignore="HardcodedText"
-            tools:visibility="visible" />
+            tools:layout_height="@dimen/dimen_recyle_bin_height" />
 
         <ListView
             android:id="@android:id/list"

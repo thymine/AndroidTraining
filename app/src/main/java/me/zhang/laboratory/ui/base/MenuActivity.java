@@ -1,5 +1,6 @@
 package me.zhang.laboratory.ui.base;
 
+import android.animation.ValueAnimator;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
 import android.content.ClipData;
@@ -15,6 +16,8 @@ import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -175,7 +178,7 @@ public abstract class MenuActivity extends AppCompatActivity
                     ((ImageView) v).clearColorFilter();
                     Log.d(TAG, "Drop result: " + event.getResult());
 
-                    recycleBin.setVisibility(View.GONE);
+                    collapseRecycleBin();
                     ((View) event.getLocalState()).setAlpha(1.0f);
                     return true;
                 default:
@@ -247,8 +250,30 @@ public abstract class MenuActivity extends AppCompatActivity
                 outShadowTouchPoint.set((int) touchX, (int) touchY);
             }
         }, v, 0);
+
+        expandRecycleBin();
         v.setAlpha(0.1f);
-        recycleBin.setVisibility(View.VISIBLE);
+    }
+
+    private void expandRecycleBin() {
+        getValueAnimator().start();
+    }
+
+    private void collapseRecycleBin() {
+        getValueAnimator().reverse();
+    }
+
+    private ValueAnimator getValueAnimator() {
+        ValueAnimator animator = ValueAnimator.ofInt(0, getResources().getDimensionPixelSize(R.dimen.dimen_recyle_bin_height));
+        animator.addUpdateListener(animation -> {
+            int val = (Integer) animation.getAnimatedValue();
+            ViewGroup.LayoutParams layoutParams = recycleBin.getLayoutParams();
+            layoutParams.height = val;
+            recycleBin.setLayoutParams(layoutParams);
+        });
+        animator.setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        return animator;
     }
 
 }
