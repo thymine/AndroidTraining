@@ -47,7 +47,7 @@ class ScrollerActivity : AppCompatActivity() {
         }
     }
 
-    //region Scroll Content
+    //region Scroll
     fun scrollLeft(view: View) {
         targetView?.scrollBy(-scrollRange, 0)
     }
@@ -66,6 +66,24 @@ class ScrollerActivity : AppCompatActivity() {
         val scrollX = targetView?.scrollX ?: 0
         val scrollY = targetView?.scrollY ?: 0
         targetView?.scrollTo(scrollX, scrollY + scrollRange)
+    }
+    //endregion
+
+    //region Smooth Scroll
+    fun smoothScrollUp(v: View) {
+        linearLayout.smoothScrollBy(0, -256)
+    }
+
+    fun smoothScrollDown(v: View) {
+        linearLayout.smoothScrollBy(0, 256)
+    }
+
+    fun smoothScrollLeft(v: View) {
+        linearLayout.smoothScrollBy(-256, 0)
+    }
+
+    fun smoothScrollRight(v: View) {
+        linearLayout.smoothScrollBy(256, 0)
     }
     //endregion
 
