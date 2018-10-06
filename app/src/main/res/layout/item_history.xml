@@ -8,8 +8,10 @@
     android:layout_marginRight="8dp"
     android:layout_marginBottom="8dp"
     android:background="@drawable/border_black"
+    android:fontFamily="casual"
     android:foreground="?selectableItemBackgroundBorderless"
     android:padding="8dp"
     android:textColor="@color/black"
     android:textSize="14sp"
+    tools:ignore="UnusedAttribute"
     tools:text="Corner Layout" />
