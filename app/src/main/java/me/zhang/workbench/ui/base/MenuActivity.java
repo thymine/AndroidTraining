@@ -2,21 +2,24 @@ package me.zhang.workbench.ui.base;
 
 import android.app.SearchManager;
 import android.app.SearchableInfo;
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.SearchView;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
@@ -31,6 +34,10 @@ import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
 import me.zhang.workbench.R;
 
 /**
@@ -49,22 +56,28 @@ public abstract class MenuActivity extends AppCompatActivity
 
     private SortedMap<String, Intent> actions = new TreeMap<>();
     private HistoryAdapter adapter;
+    private ImageView recycleBin;
     private RecyclerView historyList;
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String key = (String) parent.getItemAtPosition(position);
-        onClickItem(key);
+        clickItem(key);
     }
 
-    private void onClickItem(String key) {
-        saveClickedKey(key);
+    private void clickItem(String key) {
+        saveKey(key);
         startActivity(actions.get(key));
     }
 
-    private void saveClickedKey(String key) {
+    private void saveKey(String key) {
         historyKeys.remove(key);
         historyKeys.add(0, key);
+        saveHistoryKeys();
+    }
+
+    private void removeKey(String key) {
+        historyKeys.remove(key);
         saveHistoryKeys();
     }
 
@@ -85,7 +98,6 @@ public abstract class MenuActivity extends AppCompatActivity
             historyKeys.clear();
             historyKeys.addAll(historyList.subList(0, getToIndex(historyList))); // 最多展示10个历史记录
         }
-        notifyHistoriesChanged();
     }
 
     private int getToIndex(@NonNull List<String> sourceList) {
@@ -106,6 +118,9 @@ public abstract class MenuActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_menu);
+
+        recycleBin = findViewById(R.id.recycleBin);
+        setDragListener();
 
         historyList = findViewById(R.id.historyList);
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
@@ -132,10 +147,49 @@ public abstract class MenuActivity extends AppCompatActivity
 
     }
 
+    private void setDragListener() {
+        recycleBin.setOnDragListener((v, event) -> {
+            final int action = event.getAction();
+            switch (action) {
+                case DragEvent
+                        .ACTION_DRAG_STARTED:
+                    return event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN);
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    ((ImageView) v).setColorFilter(Color.RED);
+                    return true;
+                case DragEvent.ACTION_DRAG_LOCATION:
+                    return true;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    ((ImageView) v).clearColorFilter();
+                    return true;
+                case DragEvent.ACTION_DROP:
+                    ClipData.Item item = event.getClipData().getItemAt(0);
+                    CharSequence historyItem = item.getText();
+                    removeKey(historyItem.toString());
+                    notifyHistoriesChanged();
+                    Toast.makeText(this, "History item '" + historyItem + "' removed.", Toast.LENGTH_SHORT).show();
+
+                    ((ImageView) v).clearColorFilter();
+                    return true;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    ((ImageView) v).clearColorFilter();
+                    Log.d(TAG, "Drop result: " + event.getResult());
+
+                    recycleBin.setVisibility(View.GONE);
+                    return true;
+                default:
+                    Log.e(TAG, "Unknown action type received by OnDragListener.");
+                    break;
+            }
+            return false;
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         restoreHistoryKeys();
+        notifyHistoriesChanged();
     }
 
     @Override
@@ -177,6 +231,22 @@ public abstract class MenuActivity extends AppCompatActivity
 
     @Override
     public void onClick(@NotNull String historyKey) {
-        onClickItem(historyKey);
+        clickItem(historyKey);
     }
+
+    @Override
+    public void onLongClick(@NotNull View v, float touchX, float touchY) {
+        CharSequence tag = (CharSequence) v.getTag();
+        ClipData.Item item = new ClipData.Item(tag);
+        ClipData dragData = new ClipData(tag, new String[]{ClipDescription.MIMETYPE_TEXT_PLAIN}, item);
+        v.startDrag(dragData, new View.DragShadowBuilder(v) {
+            @Override
+            public void onProvideShadowMetrics(Point outShadowSize, Point outShadowTouchPoint) {
+                super.onProvideShadowMetrics(outShadowSize, outShadowTouchPoint);
+                outShadowTouchPoint.set((int) touchX, (int) touchY);
+            }
+        }, null, 0);
+        recycleBin.setVisibility(View.VISIBLE);
+    }
+
 }

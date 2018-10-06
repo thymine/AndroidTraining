@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,10 +14,22 @@
             android:id="@+id/historyList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray"
             android:clipToPadding="false"
             android:overScrollMode="never"
             android:padding="@dimen/activity_horizontal_padding" />
+
+        <ImageView
+            android:id="@+id/recycleBin"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="Recycle Bin"
+            android:padding="@dimen/activity_horizontal_padding"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_bin"
+            android:visibility="gone"
+            tools:ignore="HardcodedText"
+            tools:visibility="visible" />
 
         <ListView
             android:id="@android:id/list"
