@@ -1,4 +1,4 @@
-package me.zhang.workbench;
+package me.zhang.laboratory;
 
 import android.app.Application;
 import android.content.Context;

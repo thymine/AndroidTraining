@@ -1,4 +1,4 @@
-package me.zhang.workbench.ui
+package me.zhang.laboratory.ui
 
 import android.os.Bundle
 import android.view.View
@@ -10,9 +10,9 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
 import kotlinx.android.synthetic.main.activity_corner.*
-import me.zhang.workbench.R
-import me.zhang.workbench.ui.view.CornerLayout
-import me.zhang.workbench.utils.dp
+import me.zhang.laboratory.R
+import me.zhang.laboratory.ui.view.CornerLayout
+import me.zhang.laboratory.utils.dp
 
 class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 

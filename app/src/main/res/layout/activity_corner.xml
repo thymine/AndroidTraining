@@ -8,7 +8,7 @@
     android:padding="@dimen/activity_horizontal_padding"
     tools:context=".ui.CornerActivity">
 
-    <me.zhang.workbench.ui.view.CornerLayout
+    <me.zhang.laboratory.ui.view.CornerLayout
         android:id="@+id/cornerLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -46,7 +46,7 @@
             android:background="@color/yellow"
             app:layout_position="right_top" />
 
-    </me.zhang.workbench.ui.view.CornerLayout>
+    </me.zhang.laboratory.ui.view.CornerLayout>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
