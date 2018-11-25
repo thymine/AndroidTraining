@@ -1,22 +1,14 @@
 <resources>
     <string name="app_name">Laboratory</string>
 
-    <string name="normal_text">
-        What is reputation? How do I earn (and lose) it?
-
-Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.
-    </string>
-
+    <string name="string_normal_text">What is reputation? How do I earn (and lose) it? Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.</string>
+    <string name="string_long_text">You won’t get far in exploring the Android Design Support Library without running into CoordinatorLayout — many of the Views in the Design Library require a CoordinatorLayout. But why? CoordinatorLayout itself doesn’t actually do much: use it with standard framework views and it acts just like a regular FrameLayout. So where is the magic coming from? That’s where CoordinatorLayout.Behaviors come in. In this case, you’ll see we’re using the default, no parameter constructor.</string>
     <string name="string_demo_title">CoordinatorLayout</string>
     <string name="string_demo_desc">CoordinatorLayout is a super-powered FrameLayout</string>
-
-    <string name="button">Button</string>
-
-    <string name="search_title">Filter</string>
-    <string name="search_hint">Filter entries…</string>
-    <string name="no_results">No Results</string>
-    <!-- https://developer.android.com/guide/components/intents-common.html -->
-
+    <string name="string_button">Button</string>
+    <string name="string_search_title">Filter</string>
+    <string name="string_search_hint">Filter entries…</string>
+    <string name="string_no_results">No Results</string>
     <string name="string_layout_match">match_parent</string>
     <string name="string_layout_wrap">wrap_content</string>
 

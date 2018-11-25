@@ -29,7 +29,7 @@
             android:layout_margin="32dp"
             android:background="@color/white"
             android:padding="@dimen/activity_horizontal_padding"
-            android:text="@string/normal_text" />
+            android:text="@string/string_normal_text" />
 
     </me.zhang.laboratory.ui.view.ScrollerLayout>
 

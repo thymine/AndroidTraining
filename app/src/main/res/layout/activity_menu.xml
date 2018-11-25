@@ -44,7 +44,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:paddingTop="@dimen/activity_vertical_padding"
-        android:text="@string/no_results"
+        android:text="@string/string_no_results"
         android:visibility="gone" />
 
 </FrameLayout>
