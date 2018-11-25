@@ -29,24 +29,14 @@ class CoordinatorActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_coordinator)
 
-        val demoRecycler = findViewById<RecyclerView>(R.id.demoRecycler)
-
-        class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
-            val titleText: TextView = itemView.findViewById(R.id.titleText)
-            val descText: TextView = itemView.findViewById(R.id.descText)
-        }
-
-        data class Bean(@DrawableRes val profile: Int, val name: String, val desc: String)
-
         val fakeData = arrayListOf<Bean>()
         fakeData.apply {
             for (i in 1..100) {
-                add(Bean(R.mipmap.ic_launcher, getString(R.string.string_demo_title), getString(R.string.string_demo_desc)))
+                add(Bean(R.mipmap.ic_launcher, getString(R.string.string_demo_title) + " -> $i", getString(R.string.string_demo_desc)))
             }
         }
 
-        demoRecycler.addItemDecoration(object : RecyclerView.ItemDecoration() {
+        val itemDecoration = object : RecyclerView.ItemDecoration() {
             val dividerPaint = Paint()
             val verticalOffset = resources.getDimensionPixelSize(R.dimen.dimen_demo_padding)
 
@@ -70,8 +60,9 @@ class CoordinatorActivity : AppCompatActivity() {
                 outRect.top = verticalOffset
                 outRect.bottom = verticalOffset
             }
-        })
-        demoRecycler.adapter = object : RecyclerView.Adapter<VH>() {
+        }
+
+        val adapter = object : RecyclerView.Adapter<VH>() {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
                 return VH(layoutInflater.inflate(R.layout.item_demo, parent, false))
             }
@@ -88,11 +79,27 @@ class CoordinatorActivity : AppCompatActivity() {
             }
 
         }
-    }
 
+        val demoRecycler = findViewById<RecyclerView>(R.id.mainRecycler)
+        demoRecycler.addItemDecoration(itemDecoration)
+        demoRecycler.adapter = adapter
+
+        val cardRecycler = findViewById<RecyclerView>(R.id.cardRecycler)
+        cardRecycler.addItemDecoration(itemDecoration)
+        cardRecycler.adapter = adapter
+    }
 
 }
 
+data class Bean(@DrawableRes val profile: Int, val name: String, val desc: String)
+
+class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
+    val titleText: TextView = itemView.findViewById(R.id.titleText)
+    val descText: TextView = itemView.findViewById(R.id.descText)
+}
+
+@Suppress("unused")
 class FABAwareScrollingViewBehavior : AppBarLayout.ScrollingViewBehavior {
 
     constructor() : super()
@@ -105,7 +112,7 @@ class FABAwareScrollingViewBehavior : AppBarLayout.ScrollingViewBehavior {
     }
 
     override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout, child: View, directTargetChild: View, target: View, axes: Int, type: Int): Boolean {
-        return axes == ViewCompat.SCROLL_AXIS_VERTICAL
+        return (axes == ViewCompat.SCROLL_AXIS_VERTICAL && target.id == R.id.mainRecycler)
                 || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, axes, type)
     }
 
