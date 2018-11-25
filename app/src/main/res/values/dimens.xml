@@ -1,9 +1,11 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_padding">12dp</dimen>
+    <dimen name="dimen_demo_padding">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_vertical_padding">12dp</dimen>
     <dimen name="dimen_recyle_bin_height">64dp</dimen>
+    <dimen name="dimen_fab_margin">24dp</dimen>
     <!-- 4 * ?actionBarSize -->
 
     <!-- Text Size -->
