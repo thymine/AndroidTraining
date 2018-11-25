@@ -25,7 +25,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_behavior="me.zhang.laboratory.ui.FABAwareScrollingViewBehavior"
         tools:listitem="@layout/item_demo" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
