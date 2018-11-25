@@ -7,6 +7,9 @@
 Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about. Basic use of the site, including asking questions, answering, and suggesting edits, does not require any reputation at all. But the more reputation you earn, the more privileges you gain.
     </string>
 
+    <string name="string_demo_title">CoordinatorLayout</string>
+    <string name="string_demo_desc">CoordinatorLayout is a super-powered FrameLayout</string>
+
     <string name="button">Button</string>
 
     <string name="search_title">Filter</string>
