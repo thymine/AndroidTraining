@@ -1,18 +1,24 @@
 package me.zhang.laboratory.ui
 
+import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import me.zhang.laboratory.R
 
 class CoordinatorActivity : AppCompatActivity() {
@@ -81,6 +87,36 @@ class CoordinatorActivity : AppCompatActivity() {
                 holder.descText.text = bean.desc
             }
 
+        }
+    }
+
+
+}
+
+class FABAwareScrollingViewBehavior : AppBarLayout.ScrollingViewBehavior {
+
+    constructor() : super()
+
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+
+    override fun layoutDependsOn(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
+        return dependency is FloatingActionButton
+                || super.layoutDependsOn(parent, child, dependency)
+    }
+
+    override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout, child: View, directTargetChild: View, target: View, axes: Int, type: Int): Boolean {
+        return axes == ViewCompat.SCROLL_AXIS_VERTICAL
+                || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, axes, type)
+    }
+
+    override fun onNestedScroll(coordinatorLayout: CoordinatorLayout, child: View, target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
+        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
+        val dependencies = coordinatorLayout.getDependencies(child)
+        dependencies.forEach {
+            if (it is FloatingActionButton) {
+                if (dyConsumed > 0) it.hide() else if (dyConsumed < 0) it.show()
+                return@forEach
+            }
         }
     }
 
