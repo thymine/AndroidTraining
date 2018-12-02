@@ -9,6 +9,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Corner Layout", CornerActivity.class);
         addMenuItem("Scroller", ScrollerActivity.class);
         addMenuItem("Coordinator", CoordinatorActivity.class);
+        addMenuItem("MultiLauncher", MultiLauncherActivity.class);
     }
 
 }

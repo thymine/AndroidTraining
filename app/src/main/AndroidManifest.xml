@@ -31,6 +31,7 @@
         <activity android:name=".ui.CornerActivity" />
         <activity android:name=".ui.ScrollerActivity" />
         <activity android:name=".ui.CoordinatorActivity" />
+        <activity android:name=".ui.MultiLauncherActivity" />
     </application>
 
 </manifest>
