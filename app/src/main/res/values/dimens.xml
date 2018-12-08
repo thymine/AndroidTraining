@@ -6,6 +6,7 @@
     <dimen name="activity_vertical_padding">12dp</dimen>
     <dimen name="dimen_recyle_bin_height">64dp</dimen>
     <dimen name="dimen_fab_margin">24dp</dimen>
+    <dimen name="dimen_lab_side">164dp</dimen>
     <!-- 4 * ?actionBarSize -->
 
     <!-- Text Size -->
