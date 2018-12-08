@@ -32,6 +32,7 @@
         <activity android:name=".ui.ScrollerActivity" />
         <activity android:name=".ui.CoordinatorActivity" />
         <activity android:name=".ui.MultiLauncherActivity" />
+        <activity android:name=".ui.TouchEventActivity" />
     </application>
 
 </manifest>
