@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<me.zhang.laboratory.ui.MyLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    tools:context="me.zhang.laboratory.ui.TouchEventActivity">
+
+    <me.zhang.laboratory.ui.MyView
+        android:layout_width="@dimen/dimen_lab_side"
+        android:layout_height="@dimen/dimen_lab_side"
+        android:layout_gravity="center"
+        android:background="@color/red" />
+
+</me.zhang.laboratory.ui.MyLayout>
