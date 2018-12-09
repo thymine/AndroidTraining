@@ -1,24 +1,20 @@
 package me.zhang.laboratory.ui
 
-import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Rect
 import android.os.Bundle
-import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.activity_coordinator.*
 import me.zhang.laboratory.R
 
 class CoordinatorActivity : AppCompatActivity() {
@@ -36,30 +32,104 @@ class CoordinatorActivity : AppCompatActivity() {
             }
         }
 
-        val itemDecoration = object : RecyclerView.ItemDecoration() {
-            val dividerPaint = Paint()
-            val verticalOffset = resources.getDimensionPixelSize(R.dimen.dimen_demo_padding)
+        val bsb = BottomSheetBehavior.from<LinearLayout>(findViewById(R.id.bottomSheet))
 
-            init {
-                dividerPaint.color = getColor(R.color.gray)
-                dividerPaint.flags = Paint.ANTI_ALIAS_FLAG
+        class VH(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnTouchListener, View.OnClickListener {
+
+            override fun onClick(v: View?) {
+                Toast.makeText(applicationContext, fakeData[adapterPosition].name, Toast.LENGTH_SHORT).show()
             }
 
-            override fun onDrawOver(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
-                super.onDrawOver(c, parent, state)
-                val childCount = parent.childCount
-                for (i in 0 until childCount) {
-                    val child = parent[i]
-                    c.drawLine(parent.paddingLeft.toFloat(), child.bottom.toFloat() + verticalOffset,
-                            (parent.width - parent.paddingRight).toFloat(), child.bottom.toFloat() + verticalOffset, dividerPaint)
+            init {
+                itemView.setOnTouchListener(this)
+                itemView.setOnClickListener(this)
+            }
+
+            val expandRunnable = ExpandRunnable()
+            val collapsRunnable = HideRunnable()
+
+            val longPressTimeout = ViewConfiguration.getLongPressTimeout().toLong()
+
+            var actionDownTime = 0L
+            var lastMotionY = 0F
+
+            inner class ExpandRunnable : Runnable {
+                override fun run() {
+                    if (bsb.state != BottomSheetBehavior.STATE_EXPANDED) {
+                        bsb.state = BottomSheetBehavior.STATE_EXPANDED
+                        cardTitleText.text = fakeData[adapterPosition].name
+
+                        itemView.parent.requestDisallowInterceptTouchEvent(true)
+                    }
                 }
             }
 
-            override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
-                super.getItemOffsets(outRect, view, parent, state)
-                outRect.top = verticalOffset
-                outRect.bottom = verticalOffset
+            inner class HideRunnable : Runnable {
+                override fun run() {
+                    if (bsb.state != BottomSheetBehavior.STATE_HIDDEN) {
+                        bsb.state = BottomSheetBehavior.STATE_HIDDEN
+                    }
+                }
+
             }
+
+            override fun onTouch(v: View, event: MotionEvent): Boolean {
+                val action = event.action
+                when (action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        actionDownTime = System.currentTimeMillis()
+                        v.postDelayed(expandRunnable, longPressTimeout)
+
+                        lastMotionY = event.rawY
+                    }
+                    MotionEvent.ACTION_MOVE -> {
+                        val interactTime = System.currentTimeMillis() - actionDownTime
+                        if (interactTime < longPressTimeout) {
+                            v.removeCallbacks(expandRunnable)
+                        } else {
+                            if (bsb.state == BottomSheetBehavior.STATE_EXPANDED) {
+                                dispatchMoveEventToBottomSheet(event)
+                            }
+                        }
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        v.parent.requestDisallowInterceptTouchEvent(false)
+
+                        val interactTime = System.currentTimeMillis() - actionDownTime
+                        if (interactTime >= longPressTimeout) {
+                            v.post(collapsRunnable)
+                        } else {
+                            if (interactTime < ViewConfiguration.getTapTimeout()) {
+                                v.performClick()
+                            }
+                            if (interactTime < longPressTimeout) {
+                                v.removeCallbacks(expandRunnable)
+                            }
+                        }
+                    }
+                    MotionEvent.ACTION_CANCEL -> {
+                        v.parent.requestDisallowInterceptTouchEvent(false)
+
+                        val interactTime = System.currentTimeMillis() - actionDownTime
+                        if (interactTime < longPressTimeout) {
+                            v.removeCallbacks(expandRunnable)
+                        }
+                    }
+                }
+                return true
+            }
+
+            private fun dispatchMoveEventToBottomSheet(event: MotionEvent) {
+                val dy = lastMotionY - event.rawY
+                cardRecycler.apply {
+                    post { scrollBy(0, dy.toInt()) }
+                }
+                lastMotionY = event.rawY
+            }
+
+            val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
+            val titleText: TextView = itemView.findViewById(R.id.titleText)
+            val descText: TextView = itemView.findViewById(R.id.descText)
         }
 
         val adapter = object : RecyclerView.Adapter<VH>() {
@@ -81,50 +151,13 @@ class CoordinatorActivity : AppCompatActivity() {
         }
 
         val demoRecycler = findViewById<RecyclerView>(R.id.mainRecycler)
-        demoRecycler.addItemDecoration(itemDecoration)
         demoRecycler.adapter = adapter
 
         val cardRecycler = findViewById<RecyclerView>(R.id.cardRecycler)
-        cardRecycler.addItemDecoration(itemDecoration)
         cardRecycler.adapter = adapter
     }
 
-}
-
-data class Bean(@DrawableRes val profile: Int, val name: String, val desc: String)
-
-class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
-    val titleText: TextView = itemView.findViewById(R.id.titleText)
-    val descText: TextView = itemView.findViewById(R.id.descText)
-}
-
-@Suppress("unused")
-class FABAwareScrollingViewBehavior : AppBarLayout.ScrollingViewBehavior {
-
-    constructor() : super()
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
-
-    override fun layoutDependsOn(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
-        return dependency is FloatingActionButton
-                || super.layoutDependsOn(parent, child, dependency)
-    }
-
-    override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout, child: View, directTargetChild: View, target: View, axes: Int, type: Int): Boolean {
-        return (axes == ViewCompat.SCROLL_AXIS_VERTICAL && target.id == R.id.mainRecycler)
-                || super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, axes, type)
-    }
-
-    override fun onNestedScroll(coordinatorLayout: CoordinatorLayout, child: View, target: View, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int, type: Int) {
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
-        val dependencies = coordinatorLayout.getDependencies(child)
-        dependencies.forEach {
-            if (it is FloatingActionButton) {
-                if (dyConsumed > 0) it.hide() else if (dyConsumed < 0) it.show()
-                return@forEach
-            }
-        }
-    }
+    data class Bean(@DrawableRes val profile: Int, val name: String, val desc: String)
 
 }
+
