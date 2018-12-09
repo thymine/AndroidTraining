@@ -18,7 +18,7 @@
     <LinearLayout
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
-        android:layout_height="512dp"
+        android:layout_height="384dp"
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
@@ -38,14 +38,59 @@
             android:textColor="@color/white"
             tools:text="CoordinatorLayout" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cardRecycler"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
-            android:clipToPadding="false"
-            android:padding="16dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            app:layout_constraintEnd_toEndOf="@+id/leftFab"
+            app:layout_constraintStart_toEndOf="@+id/leftFab">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cardRecycler"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/white"
+                android:clipToPadding="false"
+                android:padding="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/leftFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:backgroundTint="@color/red"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
+                app:layout_constraintEnd_toStartOf="@+id/rightFab"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/rightFab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/leftFab"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/leftFab" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
