@@ -70,7 +70,14 @@ public abstract class MenuActivity extends AppCompatActivity
 
     private void clickItem(String key) {
         saveKey(key);
-        startActivity(actions.get(key));
+        Intent intent = actions.get(key);
+        if (intent != null) {
+            startActivity(intent);
+        } else {
+            removeKey(key);
+            notifyHistoriesChanged();
+            Toast.makeText(this, "Invalid entry.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void saveKey(String key) {
