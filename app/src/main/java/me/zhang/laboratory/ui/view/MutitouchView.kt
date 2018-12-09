@@ -44,7 +44,8 @@ class MutitouchView : View {
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
         val action = event.action
-        when (action.and(MotionEvent.ACTION_MASK)) { // TODO Why?
+        // ANDing it with MotionEvent.ACTION_MASK gives us the action constant
+        when (action.and(MotionEvent.ACTION_MASK)) {
             MotionEvent.ACTION_DOWN -> {
                 val x = event.x
                 val y = event.y
@@ -86,6 +87,7 @@ class MutitouchView : View {
                 // Extract the index of the pointer that left the touch sensor
                 val pointerIndex =
                         action
+                                //  ANDing it with ACTION_POINTER_INDEX_MASK gives us the index of the pointer that went up or down
                                 .and(MotionEvent.ACTION_POINTER_INDEX_MASK)
                                 .shr(MotionEvent.ACTION_POINTER_INDEX_SHIFT)
                 val pointerId = event.getPointerId(pointerIndex)
