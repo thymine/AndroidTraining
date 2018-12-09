@@ -11,6 +11,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Coordinator", CoordinatorActivity.class);
         addMenuItem("Multi Launcher", MultiLauncherActivity.class);
         addMenuItem("Touch Event", TouchEventActivity.class);
+        addMenuItem("Multitouch", MultitouchActivity.class);
     }
 
 }

@@ -33,6 +33,7 @@
         <activity android:name=".ui.CoordinatorActivity" />
         <activity android:name=".ui.MultiLauncherActivity" />
         <activity android:name=".ui.TouchEventActivity" />
+        <activity android:name=".ui.MultitouchActivity" />
     </application>
 
 </manifest>
