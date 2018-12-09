@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:splitMotionEvents="false"
     tools:context="me.zhang.laboratory.ui.CoordinatorActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:padding="16dp"
+        android:splitMotionEvents="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_demo" />
 
@@ -22,6 +24,7 @@
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
+        android:splitMotionEvents="false"
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
         app:layout_behavior="@string/bottom_sheet_behavior"
@@ -41,6 +44,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:splitMotionEvents="false"
             app:layout_constraintEnd_toEndOf="@+id/leftFab"
             app:layout_constraintStart_toEndOf="@+id/leftFab">
 
@@ -51,6 +55,7 @@
                 android:background="@color/white"
                 android:clipToPadding="false"
                 android:padding="16dp"
+                android:splitMotionEvents="false"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
