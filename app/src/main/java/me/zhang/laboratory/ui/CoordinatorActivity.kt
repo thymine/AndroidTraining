@@ -1,5 +1,7 @@
 package me.zhang.laboratory.ui
 
+import android.annotation.SuppressLint
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -36,7 +38,7 @@ class CoordinatorActivity : AppCompatActivity() {
 
         class VH(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnTouchListener, View.OnClickListener {
 
-            override fun onClick(v: View?) {
+            override fun onClick(v: View) {
                 Toast.makeText(applicationContext, fakeData[adapterPosition].name, Toast.LENGTH_SHORT).show()
             }
 
@@ -51,15 +53,20 @@ class CoordinatorActivity : AppCompatActivity() {
             val longPressTimeout = ViewConfiguration.getLongPressTimeout().toLong()
 
             var actionDownTime = 0L
+            var lastMotionX = 0F
             var lastMotionY = 0F
+
+            val viewLocation = IntArray(2)
+            val viewRect = Rect()
 
             inner class ExpandRunnable : Runnable {
                 override fun run() {
                     if (bsb.state != BottomSheetBehavior.STATE_EXPANDED) {
-                        bsb.state = BottomSheetBehavior.STATE_EXPANDED
-                        cardTitleText.text = fakeData[adapterPosition].name
-
                         itemView.parent.requestDisallowInterceptTouchEvent(true)
+                        bsb.state = BottomSheetBehavior.STATE_EXPANDED
+
+                        // TODO Replace To Your Own Logic As Needed.
+                        cardTitleText.text = fakeData[adapterPosition].name
                     }
                 }
             }
@@ -80,6 +87,7 @@ class CoordinatorActivity : AppCompatActivity() {
                         actionDownTime = System.currentTimeMillis()
                         v.postDelayed(expandRunnable, longPressTimeout)
 
+                        lastMotionX = event.rawX
                         lastMotionY = event.rawY
                     }
                     MotionEvent.ACTION_MOVE -> {
@@ -88,7 +96,7 @@ class CoordinatorActivity : AppCompatActivity() {
                             v.removeCallbacks(expandRunnable)
                         } else {
                             if (bsb.state == BottomSheetBehavior.STATE_EXPANDED) {
-                                dispatchMoveEventToBottomSheet(event)
+                                dispatchMoveEventToCard(event)
                             }
                         }
                     }
@@ -119,12 +127,64 @@ class CoordinatorActivity : AppCompatActivity() {
                 return true
             }
 
-            private fun dispatchMoveEventToBottomSheet(event: MotionEvent) {
-                val dy = lastMotionY - event.rawY
-                cardRecycler.apply {
-                    post { scrollBy(0, dy.toInt()) }
+            @SuppressLint("SetTextI18n")
+            private fun dispatchMoveEventToCard(event: MotionEvent) {
+                val rawX = event.rawX
+                val rawY = event.rawY
+
+                val isWithinLeftFab = isWithinView(leftFab, rawX, rawY)
+                if (isWithinLeftFab) {
+                    if (!leftFab.isPressed) {
+                        leftFab.isPressed = true
+
+                        // TODO Callback Here As Needed.
+                        cardTitleText.text = "RED ←"
+                    }
+                } else {
+                    if (leftFab.isPressed) {
+                        leftFab.isPressed = false
+
+                        // TODO Callback Here As Needed.
+                        cardTitleText.text = "RED →"
+                    }
                 }
+
+                val isWithinRightFab = isWithinView(rightFab, rawX, rawY)
+                if (isWithinRightFab) {
+                    if (!rightFab.isPressed) {
+                        rightFab.isPressed = true
+
+                        // TODO Callback Here As Needed.
+                        cardTitleText.text = "BLUE ←"
+                    }
+                } else {
+                    if (rightFab.isPressed) {
+                        rightFab.isPressed = false
+
+                        // TODO Callback Here As Needed.
+                        cardTitleText.text = "BLUE →"
+                    }
+                }
+
+                if (isWithinView(cardRecycler, rawX, rawY)
+                        && (!isWithinLeftFab && !isWithinRightFab)) {
+                    val dx = lastMotionX - rawX
+                    val dy = lastMotionY - rawY
+                    if (Math.abs(dx) < Math.abs(dy)) {
+                        cardRecycler.apply {
+                            post { scrollBy(0, dy.toInt()) } // TODO Scroll Your List As Needed.
+                        }
+                    }
+                }
+
+                lastMotionX = event.rawX
                 lastMotionY = event.rawY
+            }
+
+            private fun isWithinView(targetView: View, rawX: Float, rawY: Float): Boolean {
+                targetView.getLocationOnScreen(viewLocation)
+                targetView.getGlobalVisibleRect(viewRect)
+                return viewRect.contains(rawX.toInt(), rawY.toInt())
             }
 
             val profileImage: ImageView = itemView.findViewById(R.id.profileImage)
