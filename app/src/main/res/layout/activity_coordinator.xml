@@ -6,50 +6,37 @@
     android:layout_height="match_parent"
     tools:context="me.zhang.laboratory.ui.CoordinatorActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:padding="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="me.zhang.laboratory.ui.FABAwareScrollingViewBehavior"
         tools:listitem="@layout/item_demo" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/dimen_fab_margin" />
 
     <LinearLayout
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
-        android:layout_height="386dp"
+        android:layout_height="512dp"
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
-        app:behavior_hideable="false"
-        app:behavior_peekHeight="?android:actionBarSize"
-        app:layout_behavior="@string/bottom_sheet_behavior">
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        tools:behavior_peekHeight="?android:actionBarSize">
 
-        <View
+        <TextView
+            android:id="@+id/cardTitleText"
+            style="@style/TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
-            android:layout_height="?android:actionBarSize"
-            android:background="@color/colorPrimaryDark" />
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:textColor="@color/white"
+            tools:text="CoordinatorLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cardRecycler"
