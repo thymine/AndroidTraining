@@ -93,7 +93,7 @@ class CoordinatorActivity : AppCompatActivity() {
                     MotionEvent.ACTION_MOVE -> {
                         val interactTime = System.currentTimeMillis() - actionDownTime
                         if (interactTime < longPressTimeout) {
-                            v.removeCallbacks(expandRunnable)
+//                            v.removeCallbacks(expandRunnable)
                         } else {
                             if (bsb.state == BottomSheetBehavior.STATE_EXPANDED) {
                                 dispatchMoveEventToCard(event)
