@@ -12,6 +12,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Multi Launcher", MultiLauncherActivity.class);
         addMenuItem("Touch Event", TouchEventActivity.class);
         addMenuItem("Multitouch", MultitouchActivity.class);
+        addMenuItem("Rotary Knob", RotaryKnobActivity.class);
     }
 
 }

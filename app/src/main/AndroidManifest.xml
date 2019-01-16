@@ -34,6 +34,7 @@
         <activity android:name=".ui.MultiLauncherActivity" />
         <activity android:name=".ui.TouchEventActivity" />
         <activity android:name=".ui.MultitouchActivity" />
+        <activity android:name=".ui.RotaryKnobActivity"></activity>
     </application>
 
 </manifest>
