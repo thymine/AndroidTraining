@@ -4,7 +4,7 @@ include ':AndroidLib'
 include ':icndb'
 
 //include ':Lab'
-//include ':ScreenOff'
+include ':ScreenOff'
 //include ':FloatingMenu'
 //include ':ApiDemos'
 //include ':Test'

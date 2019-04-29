@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile supportDependencies.appCompatV7
-    compile supportDependencies.design
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation supportDependencies.appCompatV7
+    implementation supportDependencies.design
 }
