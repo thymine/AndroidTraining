@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".ui.CustomEditTextActivity"></activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +35,7 @@
         <activity android:name=".ui.MultiLauncherActivity" />
         <activity android:name=".ui.TouchEventActivity" />
         <activity android:name=".ui.MultitouchActivity" />
-        <activity android:name=".ui.RotaryKnobActivity"></activity>
+        <activity android:name=".ui.RotaryKnobActivity" />
     </application>
 
 </manifest>

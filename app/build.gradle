@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "me.zhang.workbench"
-        minSdkVersion 14
+        minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -53,13 +53,13 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha5'
 
     // https://github.com/google/flexbox-layout
     implementation 'com.google.android:flexbox:1.1.0'
     // https://github.com/google/gson
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.google.android.material:material:1.1.0-alpha01'
+    implementation 'com.google.android.material:material:1.1.0-alpha06'
 
     // https://github.com/android/android-ktx
     implementation 'androidx.core:core-ktx:1.0.1'

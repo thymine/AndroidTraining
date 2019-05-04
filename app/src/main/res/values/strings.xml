@@ -11,5 +11,6 @@
     <string name="string_no_results">No Results</string>
     <string name="string_layout_match">match_parent</string>
     <string name="string_layout_wrap">wrap_content</string>
+    <string name="last_name">Last name</string>
 
 </resources>
