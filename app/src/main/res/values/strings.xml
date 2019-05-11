@@ -12,5 +12,7 @@
     <string name="string_layout_match">match_parent</string>
     <string name="string_layout_wrap">wrap_content</string>
     <string name="last_name">Last name</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="tab_text">Tab %1$d</string>
 
 </resources>
