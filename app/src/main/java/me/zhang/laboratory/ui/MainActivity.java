@@ -15,6 +15,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Rotary Knob", RotaryKnobActivity.class);
         addMenuItem("Custom EditText", CustomEditTextActivity.class);
         addMenuItem("Tabbed", TabbedActivity.class);
+        addMenuItem("View to File", CaptureViewActivity.class);
     }
 
 }
