@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.CaptureViewActivity"></activity>
+        <activity android:name=".ui.CaptureViewActivity" />
+        <activity android:name=".ui.TelephonyActivity" />
         <activity
             android:name=".ui.TabbedActivity"
             android:label="@string/title_activity_tabbed"
