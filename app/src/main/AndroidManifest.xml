@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".ui.PickFileActivity" />
         <activity android:name=".ui.CaptureViewActivity" />
         <activity android:name=".ui.TelephonyActivity" />
         <activity
