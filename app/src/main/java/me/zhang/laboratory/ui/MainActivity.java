@@ -17,6 +17,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Tabbed", TabbedActivity.class);
         addMenuItem("View to File", CaptureViewActivity.class);
         addMenuItem("Telephony", TelephonyActivity.class);
+        addMenuItem("Pick File", PickFileActivity.class);
     }
 
 }
