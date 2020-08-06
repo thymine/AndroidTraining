@@ -19,6 +19,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Telephony", TelephonyActivity.class);
         addMenuItem("Pick File", PickFileActivity.class);
         addMenuItem("SurfaceView", SurfaceViewTestActivity.class);
+        addMenuItem("RecordProgressBar", RecordProgressBarActivity.class);
     }
 
 }
