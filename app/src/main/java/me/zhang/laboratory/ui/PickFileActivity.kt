@@ -168,7 +168,7 @@ class PickFileActivity : AppCompatActivity() {
 
                 return outFile.absolutePath
             } catch (e: Exception) {
-                Log.e(LOG_TAG, e.message)
+                e.message?.let { Log.e(LOG_TAG, it) }
             } finally {
                 cursor?.close()
             }

@@ -1,6 +1,7 @@
 package me.zhang.laboratory.ui;
 
 import me.zhang.laboratory.ui.base.MenuActivity;
+import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity;
 
 public class MainActivity extends MenuActivity {
 
@@ -20,6 +21,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Pick File", PickFileActivity.class);
         addMenuItem("SurfaceView", SurfaceViewTestActivity.class);
         addMenuItem("RecordProgressBar", RecordProgressBarActivity.class);
+        addMenuItem("Media Collection", QueryMediaCollectionActivity.class);
     }
 
 }
