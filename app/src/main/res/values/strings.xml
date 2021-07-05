@@ -14,5 +14,6 @@
     <string name="last_name">Last name</string>
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="tab_text">Tab %1$d</string>
+    <string name="cd_media_thumbnail">Media Thumbnail</string>
 
 </resources>

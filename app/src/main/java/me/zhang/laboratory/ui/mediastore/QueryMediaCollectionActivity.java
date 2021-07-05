@@ -2,29 +2,38 @@ package me.zhang.laboratory.ui.mediastore;
 
 import android.Manifest;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.*;
 import android.provider.MediaStore;
+import android.util.Size;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import me.zhang.laboratory.R;
+import me.zhang.laboratory.utils.UiUtils;
 import org.jetbrains.annotations.NotNull;
 
-import java.security.Permission;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class QueryMediaCollectionActivity extends AppCompatActivity {
@@ -34,6 +43,7 @@ public class QueryMediaCollectionActivity extends AppCompatActivity {
     // ActivityResultLauncher, as an instance variable.
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
+                //noinspection StatementWithEmptyBody
                 if (isGranted) {
                     // Permission is granted. Continue the action or workflow in your
                     // app.
@@ -56,60 +66,26 @@ public class QueryMediaCollectionActivity extends AppCompatActivity {
 
         mediaCollections = findViewById(R.id.mediaCollections);
 
-        HandlerThread handlerThread = new HandlerThread("Query Media Collection");
+        HandlerThread handlerThread = new HandlerThread("queryMediaCollection");
         handlerThread.start();
 
         handler = new Handler(handlerThread.getLooper(), msg -> {
             if (msg.what == 1) {
                 //noinspection unchecked
-                List<Video> videoList = (List<Video>) msg.obj;
+                ArrayList<Video> videoList = (ArrayList<Video>) msg.obj;
 
-                runOnUiThread(() -> {
-                    DividerItemDecoration decor = new DividerItemDecoration(mediaCollections.getContext(), DividerItemDecoration.VERTICAL);
-                    Drawable drawable = ContextCompat.getDrawable(mediaCollections.getContext(), R.drawable.divider_horizontal);
-                    if (drawable != null) {
-                        decor.setDrawable(drawable);
-                    }
-                    mediaCollections.addItemDecoration(decor);
-                    mediaCollections.setAdapter(new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-                        @NonNull
-                        @NotNull
-                        @Override
-                        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-                            return new RecyclerView.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_media, parent, false)) {
-                                @NonNull
-                                @Override
-                                public String toString() {
-                                    return super.toString();
-                                }
-                            };
-                        }
-
-                        @Override
-                        public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
-                            TextView mediaItem = (TextView) holder.itemView;
-                            Video video = videoList.get(position);
-                            mediaItem.setText(String.format(Locale.getDefault(), "%s\n%d ms\n%d bytes\n%s",
-                                    video.name, video.duration, video.size, String.valueOf(video.uri)));
-                        }
-
-                        @Override
-                        public int getItemCount() {
-                            return videoList.size();
-                        }
-                    });
-                });
+                runOnUiThread(() -> bindUi(videoList));
             }
             return true;
         });
 
-        doQuery();
-
+        //region Permission check
         String readExternalStorage = Manifest.permission.READ_EXTERNAL_STORAGE;
         if (ContextCompat.checkSelfPermission(this, readExternalStorage) == PackageManager.PERMISSION_GRANTED) {
             // You can use the API that requires the permission.
             doQuery();
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            //noinspection StatementWithEmptyBody
             if (shouldShowRequestPermissionRationale(readExternalStorage)) {
                 // In an educational UI, explain to the user why your app requires this
                 // permission for a specific feature to behave as expected. In this UI,
@@ -121,6 +97,64 @@ public class QueryMediaCollectionActivity extends AppCompatActivity {
                 requestPermissionLauncher.launch(readExternalStorage);
             }
         }
+        //endregion
+    }
+
+    @UiThread
+    private void bindUi(@NonNull List<Video> videoList) {
+        DividerItemDecoration decor = new DividerItemDecoration(mediaCollections.getContext(), DividerItemDecoration.VERTICAL);
+        Drawable drawable = ContextCompat.getDrawable(mediaCollections.getContext(), R.drawable.divider_horizontal);
+        if (drawable != null) {
+            decor.setDrawable(drawable);
+        }
+        mediaCollections.addItemDecoration(decor);
+        mediaCollections.setAdapter(new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+            @NonNull
+            @NotNull
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+                return new RecyclerView.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_media, parent, false)) {
+                    @NonNull
+                    @Override
+                    public String toString() {
+                        return super.toString();
+                    }
+                };
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
+                View itemView = holder.itemView;
+                Context context = itemView.getContext();
+
+                TextView mediaItem = itemView.findViewById(R.id.mediaItem);
+                Video video = videoList.get(position);
+
+                ImageView mediaThumbnail = itemView.findViewById(R.id.mediaThumbnail);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    try {
+                        int _48dp = (int) UiUtils.convertDpToPixel(48, context);
+                        Size size = new Size(_48dp, _48dp);
+                        Bitmap bitmap = getContentResolver().loadThumbnail(video.uri, size, new CancellationSignal());
+                        mediaThumbnail.setImageBitmap(bitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Random rnd = new Random();
+                    int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+                    mediaThumbnail.setBackgroundColor(color);
+                }
+                mediaItem.setText(String.format(Locale.getDefault(),
+                        "%s\n%d ms\n%d bytes\n%s",
+                        video.name, video.duration, video.size, video.uri));
+            }
+
+            @Override
+            public int getItemCount() {
+                return videoList.size();
+            }
+        });
     }
 
     private void doQuery() {
@@ -149,7 +183,7 @@ public class QueryMediaCollectionActivity extends AppCompatActivity {
         String selection = MediaStore.Video.Media.DURATION +
                 " >= ?";
         String[] selectionArgs = new String[]{
-                String.valueOf(TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES))
+                String.valueOf(TimeUnit.MILLISECONDS.convert(0, TimeUnit.MINUTES))
         };
         String sortOrder = MediaStore.Video.Media.DISPLAY_NAME + " ASC";
 
