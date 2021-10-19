@@ -48,6 +48,7 @@
         <activity android:name=".ui.MultitouchActivity"/>
         <activity android:name=".ui.RotaryKnobActivity"/>
         <activity android:name=".ui.RecordProgressBarActivity"/>
+        <activity android:name=".ui.AndroidGraphicsCameraActivity" />
     </application>
 
 </manifest>

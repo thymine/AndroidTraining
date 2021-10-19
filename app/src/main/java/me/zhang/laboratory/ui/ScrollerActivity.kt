@@ -18,14 +18,14 @@ class ScrollerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scroller)
 
         targetView = textView // default
-        scrollRange = seekBar.progress
+        scrollRange = ySeekBar.progress
 
         initSeekBar()
         initRadioGroup()
     }
 
     private fun initSeekBar() {
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        ySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 scrollRange = progress
             }

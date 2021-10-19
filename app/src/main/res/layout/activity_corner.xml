@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/ySeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
