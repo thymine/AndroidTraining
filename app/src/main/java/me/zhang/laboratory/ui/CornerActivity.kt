@@ -49,7 +49,7 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     set.constrainHeight(R.id.cornerLayout, ConstraintSet.MATCH_CONSTRAINT)
                     set.applyTo(constraintLayout)
 
-                    seekBar.isEnabled = true
+                    ySeekBar.isEnabled = true
                 }
                 getString(R.string.string_layout_wrap) -> {
                     val set = ConstraintSet()
@@ -62,7 +62,7 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     set.constrainHeight(R.id.cornerLayout, ConstraintSet.WRAP_CONTENT)
                     set.applyTo(constraintLayout)
 
-                    seekBar.isEnabled = false
+                    ySeekBar.isEnabled = false
                 }
             }
         }
@@ -130,9 +130,9 @@ class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     private fun initSeekBar() {
-        seekBar.max = 64
-        seekBar.progress = 16
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        ySeekBar.max = 64
+        ySeekBar.progress = 16
+        ySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 cornerLayout.setPadding(progress.dp(this@CornerActivity).toInt())
             }

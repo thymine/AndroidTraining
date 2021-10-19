@@ -22,6 +22,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("SurfaceView", SurfaceViewTestActivity.class);
         addMenuItem("RecordProgressBar", RecordProgressBarActivity.class);
         addMenuItem("Media Collection", QueryMediaCollectionActivity.class);
+        addMenuItem("android.graphics.Camera", AndroidGraphicsCameraActivity.class);
     }
 
 }
