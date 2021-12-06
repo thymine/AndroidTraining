@@ -7,17 +7,18 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
-    //noinspection GroovyAssignabilityCheck
-    compileSdkVersion 31
-    buildToolsVersion '28.0.3'
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "me.zhang.workbench"
-        minSdkVersion 17
-        targetSdkVersion 31
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "CUSTOM_STRING", "\"${project.hasProperty("customString") ? project.property("customString").toString() : ''}\"")
+        buildConfigField "boolean", "CUSTOM_BOOLEAN", "${project.hasProperty("customBoolean") && project.property("customBoolean").toString()}"
     }
 
     signingConfigs {
@@ -31,11 +32,15 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            resValue "string", "custom_string", "al-release"
         }
         debug {
             signingConfig signingConfigs.debugConfig
+
+            resValue "string", "custom_string", "al-debug"
         }
     }
 
