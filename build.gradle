@@ -42,3 +42,27 @@ task clean(type: Delete) {
 }
 
 apply plugin: 'android-reporting' // > ./gradlew deviceCheck mergeAndroidReports --continue
+
+ext {
+    local = 'Hello from build.gradle(android-lab)'
+}
+
+task printProperties {
+    group = 'A bunch of custom tasks'
+
+    if (project.hasProperty('run')) {
+        printProperties()
+    }
+}
+
+private void printProperties() {
+    println(local)
+
+    println(propertiesFile)
+
+    if (project.hasProperty('cmd')) {
+        println(project.cmd)
+    }
+
+    println(project)
+}
