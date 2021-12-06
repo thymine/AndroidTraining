@@ -13,36 +13,12 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_pick_file.*
+import me.zhang.laboratory.databinding.ActivityPickFileBinding
 import me.zhang.laboratory.utils.FileUtils
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.lang.ref.WeakReference
-
-/*
- *　　　　　　　 ┏┓       ┏┓+ +
- *　　　　　　　┏┛┻━━━━━━━┛┻┓ + +
- *　　　　　　　┃　　　　　　 ┃
- *　　　　　　　┃　　　━　　　┃ ++ + + +
- *　　　　　　 █████━█████  ┃+
- *　　　　　　　┃　　　　　　 ┃ +
- *　　　　　　　┃　　　┻　　　┃
- *　　　　　　　┃　　　　　　 ┃ + +
- *　　　　　　　┗━━┓　　　 ┏━┛
- *               ┃　　  ┃
- *　　　　　　　　　┃　　  ┃ + + + +
- *　　　　　　　　　┃　　　┃　Code is far away from bug with the animal protecting
- *　　　　　　　　　┃　　　┃ + 　　　　         神兽保佑,代码无bug
- *　　　　　　　　　┃　　　┃
- *　　　　　　　　　┃　　　┃　　+
- *　　　　　　　　　┃　 　 ┗━━━┓ + +
- *　　　　　　　　　┃ 　　　　　┣┓
- *　　　　　　　　　┃ 　　　　　┏┛
- *　　　　　　　　　┗┓┓┏━━━┳┓┏┛ + + + +
- *　　　　　　　　　 ┃┫┫　 ┃┫┫
- *　　　　　　　　　 ┗┻┛　 ┗┻┛+ + + +
- */
 
 class PickFileActivity : AppCompatActivity() {
 
@@ -52,20 +28,24 @@ class PickFileActivity : AppCompatActivity() {
         const val RC_PICK_FILE = 100
     }
 
+    private lateinit var binding: ActivityPickFileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(me.zhang.laboratory.R.layout.activity_pick_file)
 
-        btn_pick_file.setOnClickListener { pickFile() }
+        binding = ActivityPickFileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnPickFile.setOnClickListener { pickFile() }
     }
 
     private fun pickFile() {
         val supportedMimeTypes = arrayOf(
-                "application/msword",
-                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                "application/pdf",
-                "image/jpeg",
-                "image/png"
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "application/pdf",
+            "image/jpeg",
+            "image/png"
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -91,7 +71,7 @@ class PickFileActivity : AppCompatActivity() {
             return
         }
 
-        tv_file_uri.text = fileUri.toString()
+        binding.tvFileUri.text = fileUri.toString()
 
         val expectedPath: String? = FileUtils.getRealPath(this, fileUri)
         if (TextUtils.isEmpty(expectedPath)) {
@@ -107,7 +87,7 @@ class PickFileActivity : AppCompatActivity() {
     }
 
     private fun showFilePath(filePath: String?) {
-        tv_file_path.text = if (TextUtils.isEmpty(filePath)) "null" else filePath
+        binding.tvFilePath.text = if (TextUtils.isEmpty(filePath)) "null" else filePath
     }
 
     private fun toast(content: String) {
@@ -115,11 +95,11 @@ class PickFileActivity : AppCompatActivity() {
     }
 
     private fun showLoadingProgress() {
-        pb_loading.visibility = View.VISIBLE
+        binding.pbLoading.visibility = View.VISIBLE
     }
 
     private fun dismissLoadingProgress() {
-        pb_loading.visibility = View.GONE
+        binding.pbLoading.visibility = View.GONE
     }
 
     class WriteFileTask(host: PickFileActivity) : AsyncTask<Uri, Void, String?>() {

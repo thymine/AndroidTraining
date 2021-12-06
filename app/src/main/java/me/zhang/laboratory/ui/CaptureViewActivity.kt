@@ -15,7 +15,7 @@ import androidx.annotation.WorkerThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_capture_view.*
+import me.zhang.laboratory.databinding.ActivityCaptureViewBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.Executors
@@ -28,6 +28,8 @@ class CaptureViewActivity : AppCompatActivity() {
         const val WHAT_BITMAP_TO_FILE_FAILED = 101
         const val MY_PERMISSIONS_REQUEST = 200
     }
+
+    private lateinit var binding: ActivityCaptureViewBinding
 
     private val callback: Handler.Callback = Handler.Callback {
         when (it.what) {
@@ -46,26 +48,36 @@ class CaptureViewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(me.zhang.laboratory.R.layout.activity_capture_view)
+        binding = ActivityCaptureViewBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         rp()
     }
 
     private fun rp() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
+            ) {
             } else {
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        MY_PERMISSIONS_REQUEST)
+                ActivityCompat.requestPermissions(
+                    this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    MY_PERMISSIONS_REQUEST
+                )
             }
         } else {
 
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             MY_PERMISSIONS_REQUEST -> {
                 if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -77,7 +89,7 @@ class CaptureViewActivity : AppCompatActivity() {
     }
 
     fun save(@Suppress("UNUSED_PARAMETER") v: View) {
-        val bmp = getResizedBitmap(loadBitmapFromView(ll_parent), 5f)
+        val bmp = getResizedBitmap(loadBitmapFromView(binding.llParent), 5f)
         Toast.makeText(this, "保存图片中…", Toast.LENGTH_LONG).show()
         Executors.newSingleThreadExecutor().submit {
             try {

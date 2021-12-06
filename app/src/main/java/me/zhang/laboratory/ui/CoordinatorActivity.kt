@@ -16,21 +16,30 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.android.synthetic.main.activity_coordinator.*
 import me.zhang.laboratory.R
+import me.zhang.laboratory.databinding.ActivityCoordinatorBinding
 
 class CoordinatorActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityCoordinatorBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
 
-        setContentView(R.layout.activity_coordinator)
+        binding = ActivityCoordinatorBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val fakeData = arrayListOf<Bean>()
         fakeData.apply {
             for (i in 1..100) {
-                add(Bean(R.mipmap.ic_launcher, getString(R.string.string_demo_title) + " -> $i", getString(R.string.string_demo_desc)))
+                add(
+                    Bean(
+                        R.mipmap.ic_launcher,
+                        getString(R.string.string_demo_title) + " -> $i",
+                        getString(R.string.string_demo_desc)
+                    )
+                )
             }
         }
 
@@ -66,7 +75,7 @@ class CoordinatorActivity : AppCompatActivity() {
                         bsb.state = BottomSheetBehavior.STATE_EXPANDED
 
                         // TODO Replace To Your Own Logic As Needed.
-                        cardTitleText.text = fakeData[adapterPosition].name
+                        binding.cardTitleText.text = fakeData[adapterPosition].name
                     }
                 }
             }
@@ -132,46 +141,47 @@ class CoordinatorActivity : AppCompatActivity() {
                 val rawX = event.rawX
                 val rawY = event.rawY
 
-                val isWithinLeftFab = isWithinView(leftFab, rawX, rawY)
+                val isWithinLeftFab = isWithinView(binding.leftFab, rawX, rawY)
                 if (isWithinLeftFab) {
-                    if (!leftFab.isPressed) {
-                        leftFab.isPressed = true
+                    if (!binding.leftFab.isPressed) {
+                        binding.leftFab.isPressed = true
 
                         // TODO Callback Here As Needed.
-                        cardTitleText.text = "RED ←"
+                        binding.cardTitleText.text = "RED ←"
                     }
                 } else {
-                    if (leftFab.isPressed) {
-                        leftFab.isPressed = false
+                    if (binding.leftFab.isPressed) {
+                        binding.leftFab.isPressed = false
 
                         // TODO Callback Here As Needed.
-                        cardTitleText.text = "RED →"
+                        binding.cardTitleText.text = "RED →"
                     }
                 }
 
-                val isWithinRightFab = isWithinView(rightFab, rawX, rawY)
+                val isWithinRightFab = isWithinView(binding.rightFab, rawX, rawY)
                 if (isWithinRightFab) {
-                    if (!rightFab.isPressed) {
-                        rightFab.isPressed = true
+                    if (!binding.rightFab.isPressed) {
+                        binding.rightFab.isPressed = true
 
                         // TODO Callback Here As Needed.
-                        cardTitleText.text = "BLUE ←"
+                        binding.cardTitleText.text = "BLUE ←"
                     }
                 } else {
-                    if (rightFab.isPressed) {
-                        rightFab.isPressed = false
+                    if (binding.rightFab.isPressed) {
+                        binding.rightFab.isPressed = false
 
                         // TODO Callback Here As Needed.
-                        cardTitleText.text = "BLUE →"
+                        binding.cardTitleText.text = "BLUE →"
                     }
                 }
 
-                if (isWithinView(cardRecycler, rawX, rawY)
-                        && (!isWithinLeftFab && !isWithinRightFab)) {
+                if (isWithinView(binding.cardRecycler, rawX, rawY)
+                    && (!isWithinLeftFab && !isWithinRightFab)
+                ) {
                     val dx = lastMotionX - rawX
                     val dy = lastMotionY - rawY
                     if (Math.abs(dx) < Math.abs(dy)) {
-                        cardRecycler.apply {
+                        binding.cardRecycler.apply {
                             post { scrollBy(0, dy.toInt()) } // TODO Scroll Your List As Needed.
                         }
                     }

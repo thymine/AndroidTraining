@@ -6,7 +6,7 @@ import android.telephony.TelephonyManager
 import android.telephony.TelephonyManager.*
 import android.text.TextUtils
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_telephony.*
+import me.zhang.laboratory.databinding.ActivityTelephonyBinding
 
 
 /**
@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_telephony.*
 class TelephonyActivity : AppCompatActivity() {
 
     private lateinit var manager: TelephonyManager
+    private lateinit var binding: ActivityTelephonyBinding
 
     companion object {
         const val NETWORK_TYPE_GSM = 16
@@ -34,12 +35,12 @@ class TelephonyActivity : AppCompatActivity() {
 
         manager = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
-        btn_refresh.setOnClickListener { refresh() }
+        binding.btnRefresh.setOnClickListener { refresh() }
     }
 
     private fun refresh() {
-        tv_operator_name.text = getNetworkOperatorName(manager.networkOperatorName)
-        tv_network_type.text = getNetworkClass(manager.networkType)
+        binding.tvOperatorName.text = getNetworkOperatorName(manager.networkOperatorName)
+        binding.tvNetworkType.text = getNetworkClass(manager.networkType)
     }
 
     private fun getNetworkOperatorName(networkOperatorName: String): String {
