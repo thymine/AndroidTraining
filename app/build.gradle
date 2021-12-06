@@ -89,3 +89,16 @@ dependencies {
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 
 }
+
+ext {
+    local = 'Hello from build.gradle(:app)'
+}
+
+task printAppProperties {
+    group = 'A bunch of custom tasks'
+
+    println(local)
+
+    println(project.rootProject)
+    println(project)
+}
