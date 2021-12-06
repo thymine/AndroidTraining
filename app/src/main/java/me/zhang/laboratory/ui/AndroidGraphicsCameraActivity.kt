@@ -3,14 +3,19 @@ package me.zhang.laboratory.ui
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_android_graphics_camera.*
-import me.zhang.laboratory.R
+import me.zhang.laboratory.databinding.ActivityAndroidGraphicsCameraBinding
 
 class AndroidGraphicsCameraActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_android_graphics_camera)
+        val binding = ActivityAndroidGraphicsCameraBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val xSeekBar = binding.xSeekBar
+        val zSeekBar = binding.zSeekBar
+        val ySeekBar = binding.ySeekBar
+        val cameraView = binding.cameraView
 
         ySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {

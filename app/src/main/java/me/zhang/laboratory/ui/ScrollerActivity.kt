@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_scroller.*
 import me.zhang.laboratory.R
+import me.zhang.laboratory.databinding.ActivityScrollerBinding
 
 @Suppress("UNUSED_PARAMETER")
 class ScrollerActivity : AppCompatActivity() {
@@ -13,19 +13,22 @@ class ScrollerActivity : AppCompatActivity() {
     private var scrollRange = 0 // should be larger than or equal to 0
     private var targetView: View? = null
 
+    private lateinit var binding: ActivityScrollerBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scroller)
+        binding = ActivityScrollerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        targetView = textView // default
-        scrollRange = ySeekBar.progress
+        targetView = binding.textView // default
+        scrollRange = binding.ySeekBar.progress
 
         initSeekBar()
         initRadioGroup()
     }
 
     private fun initSeekBar() {
-        ySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.ySeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 scrollRange = progress
             }
@@ -39,10 +42,10 @@ class ScrollerActivity : AppCompatActivity() {
     }
 
     private fun initRadioGroup() {
-        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.g -> targetView = linearLayout
-                R.id.v -> targetView = textView
+                R.id.g -> targetView = binding.linearLayout
+                R.id.v -> targetView = binding.textView
             }
         }
     }
@@ -71,19 +74,19 @@ class ScrollerActivity : AppCompatActivity() {
 
     //region Smooth Scroll
     fun smoothScrollUp(v: View) {
-        linearLayout.smoothScrollBy(0, -256)
+        binding.linearLayout.smoothScrollBy(0, -256)
     }
 
     fun smoothScrollDown(v: View) {
-        linearLayout.smoothScrollBy(0, 256)
+        binding.linearLayout.smoothScrollBy(0, 256)
     }
 
     fun smoothScrollLeft(v: View) {
-        linearLayout.smoothScrollBy(-256, 0)
+        binding.linearLayout.smoothScrollBy(-256, 0)
     }
 
     fun smoothScrollRight(v: View) {
-        linearLayout.smoothScrollBy(256, 0)
+        binding.linearLayout.smoothScrollBy(256, 0)
     }
     //endregion
 
