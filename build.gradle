@@ -3,7 +3,7 @@ defaultTasks("clean", "assembleDebug")
 
 ext {
     compileSdkVersion = 31
-    buildToolsVersion = '29.0.2'
+    buildToolsVersion = '30.0.2'
 
     minSdkVersion = 17
     targetSdkVersion = 31

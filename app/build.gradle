@@ -35,6 +35,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             resValue "string", "custom_string", "al-release"
+
+            buildConfigField "String", "API_URL", "\"https://online.zhipin.com/api\""
         }
 
         // Build with ./gradlew app:installDebug -Pminify
@@ -44,6 +46,17 @@ android {
             minifyEnabled minified
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             resValue "string", "custom_string", "al-debug${minified ? '-minified' : ''}"
+
+            buildConfigField "String", "API_URL", "\"https://rd.zhipin.com/api\""
+        }
+
+        staging.initWith(debug)
+        staging {
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-staging"
+            debuggable false
+
+            buildConfigField "String", "API_URL", "\"https://staging.zhipin.com/api\""
         }
     }
 
@@ -103,6 +116,7 @@ dependencies {
     // Testing Fragments in Isolation
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 
+    stagingImplementation 'com.alibaba:fastjson:1.1.73.android'
 }
 
 ext {
