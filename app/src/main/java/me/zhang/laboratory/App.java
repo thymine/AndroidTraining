@@ -3,8 +3,7 @@ package me.zhang.laboratory;
 import android.app.Application;
 import android.content.Context;
 import androidx.appcompat.app.AppCompatDelegate;
-
-import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_AUTO;
+import me.zhang.library.ExampleLibrary;
 
 /**
  * Created by Li on 6/16/2016 9:37 PM.
@@ -14,7 +13,7 @@ public class App extends Application {
     private static App sContext;
 
     static {
-        AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_AUTO);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
     }
 
     @Override
@@ -25,7 +24,12 @@ public class App extends Application {
 
     public static Context getContext() {
         return sContext;
+    }
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        ExampleLibrary.Companion.callLibrary();
     }
 
 }
