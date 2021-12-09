@@ -50,13 +50,49 @@ android {
             buildConfigField "String", "API_URL", "\"https://rd.zhipin.com/api\""
         }
 
-        staging.initWith(debug)
         staging {
+            initWith debug
+
             applicationIdSuffix ".staging"
             versionNameSuffix "-staging"
             debuggable false
 
             buildConfigField "String", "API_URL", "\"https://staging.zhipin.com/api\""
+        }
+    }
+
+    flavorDimensions "color", "price"
+
+    productFlavors {
+        red {
+            applicationIdSuffix ".red"
+            dimension "color"
+        }
+
+        blue {
+            applicationIdSuffix ".blue"
+            dimension "color"
+        }
+
+        free {
+            applicationIdSuffix ".free"
+            dimension "price"
+        }
+
+        paid {
+            applicationIdSuffix ".paid"
+            dimension "price"
+        }
+    }
+
+    // Only blueFree & redPaid needed.
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        // To check for a certain build type, use variant.buildType.name == "<buildType>"
+        if ((names.contains("blue") && names.contains("paid"))
+                || (names.contains("red") && names.contains("free"))) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
         }
     }
 
