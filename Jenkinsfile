@@ -17,10 +17,11 @@ pipeline {
         stage('get_commit_msg') {
             steps {
                 script {
-                    env.GIT_COMMIT_MSG = sh (script: 'git shortlog -sen ${CLASS_FILE_PATH}', returnStdout: true).trim()
+                    env.GIT_COMMIT_MSG = sh (script: 'git log -1 --pretty=%B ${GIT_COMMIT}', returnStdout: true).trim()
                 }
 //                 sh '"git shortlog -sen ${CLASS_FILE_PATH}"'
-                echo "${GIT_COMMIT_MSG}"
+//                 echo "${GIT_COMMIT_MSG}"
+                   echo "${GIT_COMMIT}"
             }
         }
     }
