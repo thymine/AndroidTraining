@@ -22,6 +22,7 @@ pipeline {
 //                 sh '"git shortlog -sen ${CLASS_FILE_PATH}"'
 //                 echo "${GIT_COMMIT_MSG}"
                    echo "${GIT_COMMIT}"
+                   sh 'pwd'
             }
         }
     }
