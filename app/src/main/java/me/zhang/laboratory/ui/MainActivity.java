@@ -7,6 +7,7 @@ public class MainActivity extends MenuActivity {
 
     @Override
     protected void prepareMenu() {
+        addMenuItem("Fold", FoldActivity.class);
         addMenuItem("Corner Layout", CornerActivity.class);
         addMenuItem("Scroller", ScrollerActivity.class);
         addMenuItem("Coordinator", CoordinatorActivity.class);

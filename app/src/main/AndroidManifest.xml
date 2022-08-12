@@ -4,9 +4,7 @@
     package="me.zhang.laboratory">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,26 +16,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
+        <activity
+            android:name=".ui.FoldActivity"
+            android:exported="true" />
         <activity android:name=".ui.mediastore.QueryMediaCollectionActivity" />
-
         <activity
             android:name=".ui.SurfaceViewTestActivity"
             android:theme="@style/AppTheme.NoActionBar.FullScreen" />
-
         <activity android:name=".ui.PickFileActivity" />
-
         <activity android:name=".ui.CaptureViewActivity" />
-
         <activity android:name=".ui.TelephonyActivity" />
-
         <activity
             android:name=".ui.TabbedActivity"
             android:label="@string/title_activity_tabbed"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity android:name=".ui.CustomEditTextActivity" />
-
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
@@ -51,25 +44,15 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-
         <activity android:name=".ui.CornerActivity" />
-
         <activity android:name=".ui.ScrollerActivity" />
-
         <activity android:name=".ui.CoordinatorActivity" />
-
         <activity android:name=".ui.MultiLauncherActivity" />
-
         <activity android:name=".ui.TouchEventActivity" />
-
         <activity android:name=".ui.MultitouchActivity" />
-
         <activity android:name=".ui.RotaryKnobActivity" />
-
         <activity android:name=".ui.RecordProgressBarActivity" />
-
         <activity android:name=".ui.AndroidGraphicsCameraActivity" />
-
     </application>
 
 </manifest>
