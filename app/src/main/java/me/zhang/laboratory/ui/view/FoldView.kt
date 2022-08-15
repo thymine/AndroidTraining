@@ -8,27 +8,28 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import me.zhang.laboratory.R
+import me.zhang.laboratory.utils.dp
 
 class FoldView : View {
 
     companion object {
-        const val TRANS_HEIGHT: Float = 300F
+        val TRANS_HEIGHT: Float = 96.dp()
         const val FOLD_COUNT: Int = 8
     }
 
     private val bitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.img_read)
     private val foldMatrix = android.graphics.Matrix()
     private val src = floatArrayOf(
-        0F, 0F,
-        bitmap.width.toFloat(), 0F,
-        bitmap.width.toFloat(), bitmap.height.toFloat(),
-        0F, bitmap.height.toFloat()
+            0F, 0F,
+            bitmap.width.toFloat(), 0F,
+            bitmap.width.toFloat(), bitmap.height.toFloat(),
+            0F, bitmap.height.toFloat()
     )
     private val dst = floatArrayOf(
-        0F, 0F,
-        bitmap.width.toFloat(), TRANS_HEIGHT,
-        bitmap.width.toFloat(), bitmap.height + TRANS_HEIGHT,
-        0F, bitmap.height.toFloat()
+            0F, 0F,
+            bitmap.width.toFloat(), TRANS_HEIGHT,
+            bitmap.width.toFloat(), bitmap.height + TRANS_HEIGHT,
+            0F, bitmap.height.toFloat()
     )
     private val foldWidth = bitmap.width / FOLD_COUNT
     private val foldRect = Rect(0, 0, foldWidth, bitmap.height)
