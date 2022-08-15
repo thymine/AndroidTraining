@@ -8,13 +8,11 @@ import android.graphics.RectF
 import android.util.AttributeSet
 import android.view.View
 import me.zhang.laboratory.R
-import me.zhang.laboratory.utils.dp
 import kotlin.math.sqrt
 
 class FoldView2 : View {
 
     companion object {
-        val TRANS_HEIGHT: Float = 96.dp()
         const val FOLD_COUNT: Int = 8
         const val FACTOR = 0.8F
     }
