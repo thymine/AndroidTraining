@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.FoldActivity">
 
-    <me.zhang.laboratory.ui.view.FoldView
+    <me.zhang.laboratory.ui.view.FoldView2
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
