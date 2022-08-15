@@ -7,7 +7,6 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "me.zhang.workbench"
@@ -108,10 +107,11 @@ android {
     sourceSets.main {
         jniLibs.srcDir 'src/main/jniLibs'
     }
+
+    namespace 'me.zhang.laboratory'
 }
 
 dependencies {
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
 //    implementation files('libs/leakcanary-deobfuscation-gradle-plugin-1.0.8.jar')
