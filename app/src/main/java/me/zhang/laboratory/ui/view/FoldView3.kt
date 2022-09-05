@@ -13,7 +13,10 @@ class FoldView3 : View {
 
     companion object {
         const val FOLD_COUNT: Int = 8
+        const val TRANSPARENCY = 0.75F
+        const val MIN_FACTOR = 0F
         const val FACTOR = 0.75F
+        const val MAX_FACTOR = 1F
     }
 
     private val foldMatrices = arrayListOf<Matrix>()
@@ -80,7 +83,7 @@ class FoldView3 : View {
             foldMatrices[i].setPolyToPoly(src, 0, dst, 0, src.size.shr(1))
         }
 
-        shadowPaint.color = Color.argb((255 * (1 - factor) * 0.8F).toInt(), 0, 0, 0)
+        shadowPaint.color = Color.argb((255 * (1 - factor) * TRANSPARENCY).toInt(), 0, 0, 0)
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -140,10 +143,10 @@ class FoldView3 : View {
                     val df = dx / bitmap.width
 
                     val nf = factor + df
-                    factor = if (nf < 0) {
-                        0F
-                    } else if (nf > 1F) {
-                        1F
+                    factor = if (nf < MIN_FACTOR) {
+                        MIN_FACTOR
+                    } else if (nf > MAX_FACTOR) {
+                        MAX_FACTOR
                     } else {
                         nf
                     }
