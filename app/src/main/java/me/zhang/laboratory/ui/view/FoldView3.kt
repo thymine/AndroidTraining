@@ -1,8 +1,10 @@
 package me.zhang.laboratory.ui.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import me.zhang.laboratory.R
 import kotlin.math.sqrt
@@ -25,13 +27,15 @@ class FoldView3 : View {
         false
     )
     private val foldWidth = (bitmap.width / FOLD_COUNT).toFloat()
-    var factor: Float = FACTOR
+    private var factor: Float = FACTOR
         set(value) {
             field = value
             setFoldMatrices()
             invalidate()
         }
     private val shadowPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private var lastX: Float = 0f
+    private var shouldSlide: Boolean = false
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -115,6 +119,40 @@ class FoldView3 : View {
 
             canvas.restore()
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        when (event?.action) {
+            MotionEvent.ACTION_DOWN -> {
+                lastX = event.x
+
+                val x = event.x
+                val y = event.y
+
+                shouldSlide =
+                    (x > 0F && x < bitmap.width.toFloat()) && (y > 0F && y < bitmap.height.toFloat())
+            }
+            MotionEvent.ACTION_MOVE -> {
+                if (shouldSlide) {
+                    val x = event.x
+                    val dx = x - lastX
+                    val df = dx / bitmap.width
+
+                    val nf = factor + df
+                    factor = if (nf < 0) {
+                        0F
+                    } else if (nf > 1F) {
+                        1F
+                    } else {
+                        nf
+                    }
+                    lastX = event.x
+                }
+            }
+        }
+
+        return true
     }
 
 }
