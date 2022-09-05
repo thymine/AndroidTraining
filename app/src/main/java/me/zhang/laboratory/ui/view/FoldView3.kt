@@ -11,7 +11,7 @@ class FoldView3 : View {
 
     companion object {
         const val FOLD_COUNT: Int = 8
-        const val FACTOR = 0.8F
+        const val FACTOR = 0.75F
     }
 
     private val foldMatrices = arrayListOf<Matrix>()
@@ -31,6 +31,7 @@ class FoldView3 : View {
             setFoldMatrices()
             invalidate()
         }
+    private val shadowPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -74,6 +75,8 @@ class FoldView3 : View {
 
             foldMatrices[i].setPolyToPoly(src, 0, dst, 0, src.size.shr(1))
         }
+
+        shadowPaint.color = Color.argb((255 * (1 - factor) * 0.8F).toInt(), 0, 0, 0)
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -87,6 +90,28 @@ class FoldView3 : View {
             canvas.clipRect(foldRect)
 
             canvas.drawBitmap(bitmap, 0F, 0F, null)
+
+            if (i % 2 == 0) {
+                shadowPaint.shader = null
+            } else {
+                shadowPaint.shader =
+                    LinearGradient(
+                        foldWidth * i,
+                        0F,
+                        foldWidth * (i + 1),
+                        0F,
+                        Color.BLACK,
+                        Color.TRANSPARENT,
+                        Shader.TileMode.CLAMP
+                    )
+            }
+            canvas.drawRect(
+                foldWidth * i,
+                0F,
+                foldWidth * (i + 1),
+                bitmap.height.toFloat(),
+                shadowPaint
+            )
 
             canvas.restore()
         }
