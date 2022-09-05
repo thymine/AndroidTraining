@@ -37,6 +37,13 @@ class FoldView3 : View {
             invalidate()
         }
     private val shadowPaint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val linearGradient = LinearGradient(
+        0F, 0F,
+        foldWidth, 0F,
+        Color.BLACK,
+        Color.TRANSPARENT,
+        Shader.TileMode.CLAMP
+    )
     private var lastX: Float = 0f
     private var shouldSlide: Boolean = false
 
@@ -98,25 +105,11 @@ class FoldView3 : View {
 
             canvas.drawBitmap(bitmap, 0F, 0F, null)
 
-            if (i % 2 == 0) {
-                shadowPaint.shader = null
-            } else {
-                shadowPaint.shader =
-                    LinearGradient(
-                        foldWidth * i,
-                        0F,
-                        foldWidth * (i + 1),
-                        0F,
-                        Color.BLACK,
-                        Color.TRANSPARENT,
-                        Shader.TileMode.CLAMP
-                    )
-            }
+            canvas.translate(foldWidth * i, 0F)
+            shadowPaint.shader = if (i % 2 == 0) null else linearGradient
             canvas.drawRect(
-                foldWidth * i,
-                0F,
-                foldWidth * (i + 1),
-                bitmap.height.toFloat(),
+                0F, 0F,
+                foldWidth, bitmap.height.toFloat(),
                 shadowPaint
             )
 
