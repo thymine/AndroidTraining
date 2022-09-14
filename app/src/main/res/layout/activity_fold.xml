@@ -4,12 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="64dp"
-    tools:context=".ui.FoldActivity">
+    android:padding="@dimen/padding_32dp"
+    tools:context=".ui.FoldActivity"
+    tools:ignore="HardcodedText">
 
-    <me.zhang.laboratory.ui.view.FoldView3
-        android:id="@+id/fv"
+    <me.zhang.laboratory.ui.view.FoldLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@drawable/divider_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_demo_padding"
+        android:showDividers="middle"
+        app:factor="0.76">
+
+        <TextView
+            style="@style/TextAppearance.MaterialComponents.Headline4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A user interface element that displays text to the user. To provide user-editable text, see EditText."
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一个小按钮" />
+
+    </me.zhang.laboratory.ui.view.FoldLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
