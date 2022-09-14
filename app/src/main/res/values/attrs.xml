@@ -38,4 +38,8 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="FoldLayout">
+        <attr name="factor" format="float" />
+    </declare-styleable>
+
 </resources>
