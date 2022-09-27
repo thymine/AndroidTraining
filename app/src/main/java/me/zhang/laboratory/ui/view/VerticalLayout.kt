@@ -1,10 +1,29 @@
 package me.zhang.laboratory.ui.view
 
 import android.content.Context
+import android.graphics.*
 import android.util.AttributeSet
 import android.view.ViewGroup
 
 class VerticalLayout : ViewGroup {
+
+    private var tempCanvas: Canvas? = null
+    private lateinit var tempBitmap: Bitmap
+    private val paint: Paint = Paint()
+
+    init {
+        paint.colorFilter = ColorMatrixColorFilter(
+            ColorMatrix(
+                floatArrayOf(
+                    0.213F, 0.715F, 0.072F, 0F, 0F,
+                    0.213F, 0.715F, 0.072F, 0F, 0F,
+                    0.213F, 0.715F, 0.072F, 0F, 0F,
+                    0F, 0F, 0F, 1F, 0F
+                )
+            )
+        )
+    }
+
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
@@ -65,4 +84,17 @@ class VerticalLayout : ViewGroup {
             top += child.measuredHeight
         }
     }
+
+    override fun dispatchDraw(canvas: Canvas?) {
+        if (tempCanvas == null) {
+            tempBitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
+            tempCanvas = Canvas(tempBitmap)
+        }
+
+        canvas?.save()
+        super.dispatchDraw(tempCanvas)
+        canvas?.drawBitmap(tempBitmap, 0F, 0F, paint)
+        canvas?.restore()
+    }
+
 }
