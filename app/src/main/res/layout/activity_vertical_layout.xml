@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -8,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/blue"
-        android:padding="16dp">
+        android:padding="16dp"
+        app:enableBlackAndWhite="false">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -26,6 +28,16 @@
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="italic|bold" />
+
+        <me.zhang.laboratory.ui.view.CustomEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:hint="带清除按钮的文本编辑框"
+            android:padding="16dp"
+            app:icon_clear="@mipmap/ic_clear"
+            tools:ignore="HardcodedText,SpeakableTextPresentCheck"
+            tools:text="" />
 
     </me.zhang.laboratory.ui.view.VerticalLayout>
 

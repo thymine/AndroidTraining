@@ -53,6 +53,7 @@
         <activity android:name=".ui.RotaryKnobActivity" />
         <activity android:name=".ui.RecordProgressBarActivity" />
         <activity android:name=".ui.AndroidGraphicsCameraActivity" />
+        <activity android:name=".ui.VerticalLayoutActivity" />
     </application>
 
 </manifest>
