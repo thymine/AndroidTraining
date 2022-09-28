@@ -42,4 +42,12 @@
         <attr name="factor" format="float" />
     </declare-styleable>
 
+    <declare-styleable name="VerticalLayout">
+        <attr name="enableBlackAndWhite" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomEditText">
+        <attr name="icon_clear" format="reference" />
+    </declare-styleable>
+
 </resources>

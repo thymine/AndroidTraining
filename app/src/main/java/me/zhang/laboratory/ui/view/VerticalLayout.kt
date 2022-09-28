@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.ViewGroup
+import me.zhang.laboratory.R
 
 class VerticalLayout : ViewGroup {
 
@@ -11,26 +12,33 @@ class VerticalLayout : ViewGroup {
     private lateinit var tempBitmap: Bitmap
     private val paint: Paint = Paint()
 
-    init {
-        paint.colorFilter = ColorMatrixColorFilter(
-            ColorMatrix(
-                floatArrayOf(
-                    0.213F, 0.715F, 0.072F, 0F, 0F,
-                    0.213F, 0.715F, 0.072F, 0F, 0F,
-                    0.213F, 0.715F, 0.072F, 0F, 0F,
-                    0F, 0F, 0F, 1F, 0F
-                )
-            )
-        )
-    }
-
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
-    )
+    ) {
+        val typeArray = context?.obtainStyledAttributes(attrs, R.styleable.VerticalLayout)
+
+        val enableBlackAndWhite =
+            typeArray?.getBoolean(R.styleable.VerticalLayout_enableBlackAndWhite, false)
+
+        if (enableBlackAndWhite == true) {
+            paint.colorFilter = ColorMatrixColorFilter(
+                ColorMatrix(
+                    floatArrayOf(
+                        0.213F, 0.715F, 0.072F, 0F, 0F,
+                        0.213F, 0.715F, 0.072F, 0F, 0F,
+                        0.213F, 0.715F, 0.072F, 0F, 0F,
+                        0F, 0F, 0F, 1F, 0F
+                    )
+                )
+            )
+        }
+
+        typeArray?.recycle()
+    }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
