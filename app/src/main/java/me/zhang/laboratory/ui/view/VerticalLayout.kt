@@ -11,6 +11,8 @@ class VerticalLayout : ViewGroup {
     private var tempCanvas: Canvas? = null
     private lateinit var tempBitmap: Bitmap
     private val paint: Paint = Paint()
+    private val path = Path()
+    private var rectF: RectF? = null
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -93,16 +95,25 @@ class VerticalLayout : ViewGroup {
         }
     }
 
-    override fun dispatchDraw(canvas: Canvas?) {
+    override fun dispatchDraw(canvas: Canvas) {
         if (tempCanvas == null) {
             tempBitmap = Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_8888)
             tempCanvas = Canvas(tempBitmap)
         }
 
-        canvas?.save()
+        canvas.save()
+
+        if (rectF == null) {
+            rectF = RectF(0F, 0F, measuredWidth * 1F, measuredHeight * 1F)
+            path.addRoundRect(rectF!!, 50F, 50F, Path.Direction.CW)
+        }
+        canvas.clipPath(path)
+        canvas.drawColor(Color.BLUE)
+
         super.dispatchDraw(tempCanvas)
-        canvas?.drawBitmap(tempBitmap, 0F, 0F, paint)
-        canvas?.restore()
+        canvas.drawBitmap(tempBitmap, 0F, 0F, paint)
+
+        canvas.restore()
     }
 
 }

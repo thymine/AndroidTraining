@@ -8,8 +8,6 @@
     <me.zhang.laboratory.ui.view.VerticalLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue"
-        android:padding="16dp"
         app:enableBlackAndWhite="false">
 
         <ImageView
