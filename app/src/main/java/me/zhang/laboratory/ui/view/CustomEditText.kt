@@ -1,13 +1,15 @@
 package me.zhang.laboratory.ui.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.MotionEvent
-import androidx.appcompat.widget.AppCompatEditText
+import android.widget.EditText
 import me.zhang.laboratory.R
 
-class CustomEditText : AppCompatEditText {
+@SuppressLint("AppCompatCustomView")
+class CustomEditText : EditText {
 
     private lateinit var iconClear: Drawable
 
