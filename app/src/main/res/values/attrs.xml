@@ -44,6 +44,7 @@
 
     <declare-styleable name="VerticalLayout">
         <attr name="enableBlackAndWhite" format="boolean" />
+        <attr name="cornerRadius" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="CustomEditText">

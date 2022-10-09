@@ -2,31 +2,36 @@ package me.zhang.laboratory.ui.view
 
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.ViewGroup
 import me.zhang.laboratory.R
+import me.zhang.laboratory.utils.dp
 
 class VerticalLayout : ViewGroup {
 
-    private var tempCanvas: Canvas? = null
     private lateinit var tempBitmap: Bitmap
+    private val cornerRadius: Float
+
+    private var tempCanvas: Canvas? = null
     private val paint: Paint = Paint()
     private val path = Path()
     private var rectF: RectF? = null
+    private var bg: Drawable? = null
 
-    constructor(context: Context?) : this(context, null)
-    constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+    constructor(context: Context) : this(context, null)
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
     ) {
-        val typeArray = context?.obtainStyledAttributes(attrs, R.styleable.VerticalLayout)
+        val typeArray = context.obtainStyledAttributes(attrs, R.styleable.VerticalLayout)
 
         val enableBlackAndWhite =
-            typeArray?.getBoolean(R.styleable.VerticalLayout_enableBlackAndWhite, false)
+            typeArray.getBoolean(R.styleable.VerticalLayout_enableBlackAndWhite, false)
 
-        if (enableBlackAndWhite == true) {
+        if (enableBlackAndWhite) {
             paint.colorFilter = ColorMatrixColorFilter(
                 ColorMatrix(
                     floatArrayOf(
@@ -39,7 +44,10 @@ class VerticalLayout : ViewGroup {
             )
         }
 
-        typeArray?.recycle()
+        cornerRadius =
+            typeArray.getDimension(R.styleable.VerticalLayout_cornerRadius, 6.dp(context))
+
+        typeArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -105,10 +113,15 @@ class VerticalLayout : ViewGroup {
 
         if (rectF == null) {
             rectF = RectF(0F, 0F, measuredWidth * 1F, measuredHeight * 1F)
-            path.addRoundRect(rectF!!, 50F, 50F, Path.Direction.CW)
+            path.addRoundRect(rectF!!, cornerRadius, cornerRadius, Path.Direction.CW)
         }
         canvas.clipPath(path)
-        canvas.drawColor(Color.BLUE)
+
+        if (bg == null) {
+            bg = background
+            background = null
+        }
+        bg?.draw(canvas)
 
         super.dispatchDraw(tempCanvas)
         canvas.drawBitmap(tempBitmap, 0F, 0F, paint)
