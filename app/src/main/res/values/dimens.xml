@@ -13,6 +13,7 @@
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="dimen_button">32dp</dimen>
     <!-- 4 * ?actionBarSize -->
 
     <!-- Text Size -->

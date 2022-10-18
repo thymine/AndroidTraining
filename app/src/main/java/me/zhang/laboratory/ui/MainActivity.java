@@ -25,6 +25,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Media Collection", QueryMediaCollectionActivity.class);
         addMenuItem("android.graphics.Camera", AndroidGraphicsCameraActivity.class);
         addMenuItem("Vertical Layout", VerticalLayoutActivity.class);
+        addMenuItem("Floating Tracker Ball", TrackerBallActivity.class);
     }
 
 }
