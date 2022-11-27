@@ -2,18 +2,18 @@
 defaultTasks("clean", "assembleDebug")
 
 ext {
-    compileSdkVersion = 31
-    buildToolsVersion = '30.0.2'
+    compileSdkVersion = 33
+    buildToolsVersion = '33.0.1'
 
     minSdkVersion = 21
-    targetSdkVersion = 31
+    targetSdkVersion = 33
 
     versionCode = 1
     versionName = '1.0'
 }
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '1.7.20'
 
     repositories {
         mavenLocal()
@@ -25,7 +25,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:7.3.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
