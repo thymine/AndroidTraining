@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<me.zhang.laboratory.ui.MyLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    tools:context="me.zhang.laboratory.ui.TouchEventActivity">
+    android:layout_height="match_parent">
 
-    <me.zhang.laboratory.ui.MyView
-        android:layout_width="@dimen/dimen_lab_side"
-        android:layout_height="@dimen/dimen_lab_side"
+    <me.zhang.laboratory.ui.MyLayout
+        android:layout_width="256dp"
+        android:layout_height="384dp"
         android:layout_gravity="center"
-        android:background="@color/red" />
+        android:background="@color/colorPrimaryDark">
 
-</me.zhang.laboratory.ui.MyLayout>
+        <me.zhang.laboratory.ui.MyView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:background="@color/red" />
+
+    </me.zhang.laboratory.ui.MyLayout>
+
+</FrameLayout>
