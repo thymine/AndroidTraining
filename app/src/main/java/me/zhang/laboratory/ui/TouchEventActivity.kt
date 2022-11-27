@@ -7,11 +7,13 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewConfiguration
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.R
 import me.zhang.laboratory.ui.Const.Companion.ACTION_MAP
 import me.zhang.laboratory.ui.Const.Companion.LOG_TAG
+import kotlin.math.abs
 
 class Const {
     companion object {
@@ -29,7 +31,7 @@ class Const {
 
 class TouchEventActivity : AppCompatActivity() {
 
-    var lastAction: Int = MotionEvent.ACTION_DOWN
+    private var lastAction: Int = MotionEvent.ACTION_DOWN
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,9 @@ class TouchEventActivity : AppCompatActivity() {
 
 class MyLayout : FrameLayout {
 
+    private var lastX: Float = 0f
+    private var lastY: Float = 0f
+
     override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
         Log.d(LOG_TAG, "Layout.dispatchTouchEvent: " + ACTION_MAP[ev.action])
         val handled = super.dispatchTouchEvent(ev)
@@ -72,7 +77,31 @@ class MyLayout : FrameLayout {
         Log.d(LOG_TAG, "Layout.onInterceptTouchEvent: " + ACTION_MAP[ev.action])
         val handled = super.onInterceptTouchEvent(ev)
         Log.d(LOG_TAG, "Layout.onInterceptTouchEvent, $handled")
-        return handled
+
+        when (ev.action) {
+            MotionEvent.ACTION_DOWN -> {
+                lastX = ev.x
+                lastY = ev.y
+            }
+            MotionEvent.ACTION_MOVE -> {
+                val dx = ev.x - lastX
+                val dy = ev.y - lastY
+                if ((abs(dx) >= ViewConfiguration.get(context).scaledTouchSlop)
+                    || (abs(dy) >= ViewConfiguration.get(context).scaledTouchSlop)
+                ) {
+                    val childView = getChildAt(0)
+                    val realLeft = childView.left + childView.translationX
+                    val realRight = realLeft + childView.width
+                    val realTop = childView.top + childView.translationY
+                    val realBottom = realTop + childView.height
+                    if (!(ev.x in realLeft..realRight && ev.y in realTop..realBottom)) {
+                        return true
+                    }
+                }
+            }
+        }
+
+        return false
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -80,16 +109,38 @@ class MyLayout : FrameLayout {
         Log.d(LOG_TAG, "Layout.onTouchEvent: " + ACTION_MAP[event.action])
         val handled = super.onTouchEvent(event)
         Log.d(LOG_TAG, "Layout.onTouchEvent, $handled")
-        return handled
+
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                lastX = event.x
+                lastY = event.y
+            }
+            MotionEvent.ACTION_MOVE -> {
+                val dx = event.x - lastX
+                val dy = event.y - lastY
+
+                translationX += dx
+                translationY += dy
+            }
+        }
+
+        return true
     }
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
 }
 
 class MyView : View {
+
+    private var lastX: Float = 0f
+    private var lastY: Float = 0f
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
         Log.d(LOG_TAG, "View.dispatchTouchEvent: " + ACTION_MAP[event.action])
@@ -103,11 +154,30 @@ class MyView : View {
         Log.d(LOG_TAG, "View.onTouchEvent: " + ACTION_MAP[event.action])
         val handled = super.onTouchEvent(event)
         Log.d(LOG_TAG, "View.onTouchEvent, $handled")
-        return handled
+
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+                lastX = event.x
+                lastY = event.y
+            }
+            MotionEvent.ACTION_MOVE -> {
+                val dx = event.x - lastX
+                val dy = event.y - lastY
+
+                translationX += dx
+                translationY += dy
+            }
+        }
+
+        return true
     }
 
     constructor(context: Context) : this(context, null)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
 
 }
