@@ -17,6 +17,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
+            android:name=".ui.ScrollingConflictsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.FoldActivity"
             android:exported="true" />
         <activity android:name=".ui.mediastore.QueryMediaCollectionActivity" />
