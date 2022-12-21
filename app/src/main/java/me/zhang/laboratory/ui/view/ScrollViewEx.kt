@@ -42,7 +42,8 @@ class ScrollViewEx : ScrollView {
             MotionEvent.ACTION_UP -> intercept = false
         }
 
-        return intercept
+        // return intercept
+        return super.onInterceptTouchEvent(ev)
     }
 
     private fun findScrollableChild(parent: ViewGroup): Scrollable? {
