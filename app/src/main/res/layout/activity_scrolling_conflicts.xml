@@ -20,9 +20,10 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <ScrollView
+    <me.zhang.laboratory.ui.view.ScrollViewEx
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scrollbars="vertical"
         app:layout_constraintBottom_toTopOf="@+id/gl_horizontal"
         app:layout_constraintEnd_toStartOf="@+id/gl_vertical"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,22 +32,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             android:orientation="vertical">
 
-            <TextView
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/blue" />
+
+            <me.zhang.laboratory.ui.view.TextViewEx
                 android:layout_width="match_parent"
                 android:layout_height="96dp"
                 android:background="@color/colorPrimaryDarkEx"
+                android:scrollbars="vertical"
                 android:text="@string/string_long_text"
                 android:textColor="@color/white" />
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="720dp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/red" />
 
         </LinearLayout>
 
-    </ScrollView>
+    </me.zhang.laboratory.ui.view.ScrollViewEx>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
