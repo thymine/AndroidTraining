@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
+import android.view.MotionEvent
 
 
 class TextViewEx : androidx.appcompat.widget.AppCompatTextView, Scrollable {
@@ -20,6 +21,16 @@ class TextViewEx : androidx.appcompat.widget.AppCompatTextView, Scrollable {
 
     override fun getRect(): Rect {
         return Rect(left, top, right, bottom)
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
+        when (event?.action) {
+            MotionEvent.ACTION_MOVE -> {
+                parent.requestDisallowInterceptTouchEvent(true)
+            }
+        }
+
+        return super.dispatchTouchEvent(event)
     }
 
 }
