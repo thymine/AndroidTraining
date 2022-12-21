@@ -26,6 +26,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("android.graphics.Camera", AndroidGraphicsCameraActivity.class);
         addMenuItem("Vertical Layout", VerticalLayoutActivity.class);
         addMenuItem("Floating Tracker Ball", TrackerBallActivity.class);
+        addMenuItem("Scrolling Conflicts", ScrollingConflictsActivity.class);
     }
 
 }
