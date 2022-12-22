@@ -27,6 +27,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Vertical Layout", VerticalLayoutActivity.class);
         addMenuItem("Floating Tracker Ball", TrackerBallActivity.class);
         addMenuItem("Scrolling Conflicts", ScrollingConflictsActivity.class);
+        addMenuItem("Second Finger Tracer", SecondFingerTracerActivity.class);
     }
 
 }
