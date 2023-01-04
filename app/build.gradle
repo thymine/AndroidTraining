@@ -8,7 +8,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
-    ndkVersion "25.1.8937393"
+    ndkVersion rootProject.ext.ndkVersion
 
     defaultConfig {
         applicationId "me.zhang.workbench"
@@ -17,6 +17,7 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         buildConfigField("String", "CUSTOM_STRING", "\"${project.hasProperty("customString") ? project.property("customString").toString() : ''}\"")
         buildConfigField "boolean", "CUSTOM_BOOLEAN", "${project.hasProperty("customBoolean") && project.property("customBoolean").toString()}"
     }
@@ -32,68 +33,19 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.debugConfig
+
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            resValue "string", "custom_string", "al-release"
-
-            buildConfigField "String", "API_URL", "\"https://online.zhipin.com/api\""
         }
 
         // Build with ./gradlew app:installDebug -Pminify
         def minified = project.hasProperty('minify')
         debug {
             signingConfig signingConfigs.debugConfig
+
             minifyEnabled minified
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            resValue "string", "custom_string", "al-debug${minified ? '-minified' : ''}"
-
-            buildConfigField "String", "API_URL", "\"https://rd.zhipin.com/api\""
-        }
-
-        staging {
-            initWith debug
-
-            applicationIdSuffix ".staging"
-            versionNameSuffix "-staging"
-            debuggable false
-
-            buildConfigField "String", "API_URL", "\"https://staging.zhipin.com/api\""
-        }
-    }
-
-    flavorDimensions "color", "price"
-
-    productFlavors {
-        red {
-            applicationIdSuffix ".red"
-            dimension "color"
-        }
-
-        blue {
-            applicationIdSuffix ".blue"
-            dimension "color"
-        }
-
-        free {
-            applicationIdSuffix ".free"
-            dimension "price"
-        }
-
-        paid {
-            applicationIdSuffix ".paid"
-            dimension "price"
-        }
-    }
-
-    // Only blueFree & redPaid needed.
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        // To check for a certain build type, use variant.buildType.name == "<buildType>"
-        if ((names.contains("blue") && names.contains("paid"))
-                || (names.contains("red") && names.contains("free"))) {
-            // Gradle ignores any variants that satisfy the conditions above.
-            setIgnore(true)
         }
     }
 
@@ -118,12 +70,7 @@ android {
 }
 
 dependencies {
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-//    implementation files('libs/leakcanary-deobfuscation-gradle-plugin-1.0.8.jar')
-
-    implementation project(':library')
 
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     testImplementation 'junit:junit:4.13.2'
@@ -160,8 +107,6 @@ dependencies {
     // Testing Fragments in Isolation
     debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
 
-    stagingImplementation 'com.alibaba:fastjson:2.0.7.android'
-
     // https://github.com/google/dagger
     def dagger_version = "2.42"
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -173,17 +118,4 @@ dependencies {
 
     // https://github.com/google/guava
     implementation("com.google.guava:guava:31.1-android")
-}
-
-ext {
-    local = 'Hello from build.gradle(:app)'
-}
-
-task printAppProperties {
-    group = 'A bunch of custom tasks'
-
-    println(local)
-
-    println(project.rootProject)
-    println(project)
 }

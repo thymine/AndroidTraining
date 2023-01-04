@@ -1,9 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-defaultTasks("clean", "assembleDebug")
-
 ext {
     compileSdkVersion = 33
     buildToolsVersion = '33.0.1'
+    ndkVersion = '25.1.8937393'
 
     minSdkVersion = 21
     targetSdkVersion = 33
@@ -46,30 +45,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir, 'apks'
-}
-
-apply plugin: 'android-reporting' // > ./gradlew deviceCheck mergeAndroidReports --continue
-
-ext {
-    local = 'Hello from build.gradle(android-lab)'
-}
-
-task printProperties {
-    group = 'A bunch of custom tasks'
-
-    if (project.hasProperty('run')) {
-        printProperties()
-    }
-}
-
-private void printProperties() {
-    println(local)
-
-    println(propertiesFile)
-
-    if (project.hasProperty('cmd')) {
-        println(project.cmd)
-    }
-
-    println(project)
 }
