@@ -12,7 +12,7 @@ import me.zhang.laboratory.databinding.ActivityTelephonyBinding
 /**
  * Created by zhangxiangdong on 2019/6/26 14:48.
  */
-class TelephonyActivity : AppCompatActivity() {
+class TelephonyActivity : BaseActivity() {
 
     private lateinit var manager: TelephonyManager
     private lateinit var binding: ActivityTelephonyBinding

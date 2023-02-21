@@ -9,7 +9,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.R
 import me.zhang.laboratory.ui.Const.Companion.ACTION_MAP
 import me.zhang.laboratory.ui.Const.Companion.LOG_TAG
@@ -29,7 +28,7 @@ class Const {
     }
 }
 
-class TouchEventActivity : AppCompatActivity() {
+class TouchEventActivity : BaseActivity() {
 
     private var lastAction: Int = MotionEvent.ACTION_DOWN
 

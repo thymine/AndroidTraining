@@ -3,12 +3,11 @@ package me.zhang.laboratory.ui
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.R
 import me.zhang.laboratory.databinding.ActivityScrollerBinding
 
 @Suppress("UNUSED_PARAMETER")
-class ScrollerActivity : AppCompatActivity() {
+class ScrollerActivity : BaseActivity() {
 
     private var scrollRange = 0 // should be larger than or equal to 0
     private var targetView: View? = null

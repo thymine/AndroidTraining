@@ -73,6 +73,14 @@ android {
             path = file("src/main/cpp/Android.mk")
         }
     }
+
+    sourceSets {
+        // getByName("main").java.srcDirs("src/main/kotlin")
+        getByName("main").res.srcDirs(
+            "src/main/res-blue",
+            "src/main/res"
+        )
+    }
 }
 
 dependencies {
@@ -125,4 +133,12 @@ dependencies {
 
     // https://github.com/google/guava
     implementation("com.google.guava:guava:31.1-android")
+
+    // https://github.com/LittleFogCat/skin-support
+    val skinSupportVersion = "4.0.7"
+    implementation("com.github.littlefogcat.skin-support:skin-support:$skinSupportVersion")
+    implementation("com.github.littlefogcat.skin-support:skin-support-appcompat:$skinSupportVersion")
+    implementation("com.github.littlefogcat.skin-support:skin-support-material:$skinSupportVersion")
+    implementation("com.github.littlefogcat.skin-support:skin-support-cardview:$skinSupportVersion")
+    implementation("com.github.littlefogcat.skin-support:skin-support-constraintlayout:$skinSupportVersion")
 }

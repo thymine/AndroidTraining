@@ -1,10 +1,9 @@
 package me.zhang.laboratory.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.databinding.ActivityVerticalLayoutBinding
 
-class VerticalLayoutActivity : AppCompatActivity() {
+class VerticalLayoutActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

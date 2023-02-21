@@ -1,10 +1,9 @@
 package me.zhang.laboratory.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.R
 
-class MultiLauncherActivity : AppCompatActivity() {
+class MultiLauncherActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

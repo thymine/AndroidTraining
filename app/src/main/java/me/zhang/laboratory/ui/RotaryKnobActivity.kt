@@ -1,10 +1,9 @@
 package me.zhang.laboratory.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.databinding.ActivityRotaryKnobBinding
 
-class RotaryKnobActivity : AppCompatActivity() {
+class RotaryKnobActivity : BaseActivity() {
 
     private lateinit var binding: ActivityRotaryKnobBinding
 

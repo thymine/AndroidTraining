@@ -3,10 +3,9 @@ package me.zhang.laboratory.ui
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.R
 
-class JniActivity : AppCompatActivity() {
+class JniActivity : BaseActivity() {
 
     init {
         System.loadLibrary("hello-jni")

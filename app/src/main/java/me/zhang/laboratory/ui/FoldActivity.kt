@@ -2,10 +2,9 @@ package me.zhang.laboratory.ui
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.databinding.ActivityFoldBinding
 
-class FoldActivity : AppCompatActivity() {
+class FoldActivity : BaseActivity() {
 
     private lateinit var binding: ActivityFoldBinding
 

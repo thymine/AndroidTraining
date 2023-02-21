@@ -26,6 +26,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 import me.zhang.laboratory.R;
+import me.zhang.laboratory.ui.BaseActivity;
 import me.zhang.laboratory.utils.UiUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +37,7 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class QueryMediaCollectionActivity extends AppCompatActivity {
+public class QueryMediaCollectionActivity extends BaseActivity {
 
     // Register the permissions callback, which handles the user's response to the
     // system permissions dialog. Save the return value, an instance of

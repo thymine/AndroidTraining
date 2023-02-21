@@ -12,7 +12,6 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.databinding.ActivityPickFileBinding
 import me.zhang.laboratory.utils.FileUtils
 import java.io.BufferedInputStream
@@ -20,7 +19,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.lang.ref.WeakReference
 
-class PickFileActivity : AppCompatActivity() {
+class PickFileActivity : BaseActivity() {
 
     companion object {
         const val LOG_TAG = "PickFileActivity"

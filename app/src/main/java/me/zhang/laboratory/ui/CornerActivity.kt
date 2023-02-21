@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import androidx.core.view.setPadding
@@ -14,7 +13,7 @@ import me.zhang.laboratory.databinding.ActivityCornerBinding
 import me.zhang.laboratory.ui.view.CornerLayout
 import me.zhang.laboratory.utils.dp
 
-class CornerActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class CornerActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
 
     private val views = arrayListOf<View>()
     private val colors = listOf(

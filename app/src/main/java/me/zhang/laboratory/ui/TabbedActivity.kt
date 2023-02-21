@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import me.zhang.laboratory.ui.ui.main.SectionsPagerAdapter
 
-class TabbedActivity : AppCompatActivity() {
+class TabbedActivity : BaseActivity() {
 
     companion object {
         const val LOG_TAG = "TabbedActivity"

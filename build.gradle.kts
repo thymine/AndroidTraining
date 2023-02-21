@@ -19,6 +19,7 @@ buildscript {
         maven {
             url = java.net.URI("https://android3.weizhipin.com/nexus/repository/public/")
         }
+        maven { url = java.net.URI("https://jitpack.io") }
         google()
     }
 

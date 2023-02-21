@@ -21,7 +21,7 @@ import java.io.FileOutputStream
 import java.util.concurrent.Executors
 
 
-class CaptureViewActivity : AppCompatActivity() {
+class CaptureViewActivity : BaseActivity() {
 
     companion object {
         const val WHAT_BITMAP_TO_FILE = 100

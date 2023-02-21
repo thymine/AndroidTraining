@@ -2,10 +2,9 @@ package me.zhang.laboratory.ui
 
 import android.os.Bundle
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.databinding.ActivityAndroidGraphicsCameraBinding
 
-class AndroidGraphicsCameraActivity : AppCompatActivity() {
+class AndroidGraphicsCameraActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,10 +1,9 @@
 package me.zhang.laboratory.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.databinding.ActivityTrackerBallBinding
 
-class TrackerBallActivity : AppCompatActivity() {
+class TrackerBallActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

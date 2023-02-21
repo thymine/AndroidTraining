@@ -1,10 +1,9 @@
 package me.zhang.laboratory.ui
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.ui.view.FastRenderView
 
-class SurfaceViewTestActivity : AppCompatActivity() {
+class SurfaceViewTestActivity : BaseActivity() {
     private var fastRenderView: FastRenderView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

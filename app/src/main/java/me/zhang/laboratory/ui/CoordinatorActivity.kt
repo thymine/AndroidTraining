@@ -19,7 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import me.zhang.laboratory.R
 import me.zhang.laboratory.databinding.ActivityCoordinatorBinding
 
-class CoordinatorActivity : AppCompatActivity() {
+class CoordinatorActivity : BaseActivity() {
 
     private lateinit var binding: ActivityCoordinatorBinding
 

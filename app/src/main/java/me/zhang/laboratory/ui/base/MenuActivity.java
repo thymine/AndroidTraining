@@ -41,12 +41,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import me.zhang.laboratory.R;
+import me.zhang.laboratory.ui.BaseActivity;
+import skin.support.SkinCompatManager;
+import skin.support.utils.SkinPreference;
 
 /**
  * Created by Zhang on 5/11/2015 14:20 下午.
  */
-public abstract class MenuActivity extends AppCompatActivity
+public abstract class MenuActivity extends BaseActivity
         implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener, HistoryAdapter.OnHistoryItemClickListener {
 
     private static final String TAG = MenuActivity.class.getSimpleName();
@@ -215,11 +219,30 @@ public abstract class MenuActivity extends AppCompatActivity
 
         // Get the SearchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        //noinspection ConstantConditions
         SearchableInfo searchableInfo = searchManager.getSearchableInfo(getComponentName());
         searchView.setSearchableInfo(searchableInfo);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings:
+                Toast.makeText(this, "主题切换…", Toast.LENGTH_SHORT).show();
+
+                String skinName = SkinPreference.getInstance().getSkinName();
+                String targetSkinName = "blue";
+                if (targetSkinName.equals(skinName)) {
+                    SkinCompatManager.getInstance().restoreDefaultTheme();
+                    Toast.makeText(this, "加载默认主题", Toast.LENGTH_SHORT).show();
+                } else {
+                    SkinCompatManager.getInstance().loadSkin(targetSkinName, null, SkinCompatManager.SKIN_LOADER_STRATEGY_BUILD_IN);
+                    Toast.makeText(this, "加载" + targetSkinName + "主题", Toast.LENGTH_SHORT).show();
+                }
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected void addMenuItem(String label, Class<?> cls) {

@@ -2,13 +2,12 @@ package me.zhang.laboratory.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import me.zhang.laboratory.databinding.ActivityRecordProgressBarBinding
 import me.zhang.laboratory.ui.RecordProgressBarActivity.Const.MAX_PROGRESS
 import me.zhang.laboratory.ui.bean.PartBean
 import kotlin.random.Random
 
-class RecordProgressBarActivity : AppCompatActivity() {
+class RecordProgressBarActivity : BaseActivity() {
 
     object Const {
         const val MAX_PROGRESS = 120 * 1000L /* ms */
