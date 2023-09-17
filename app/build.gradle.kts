@@ -1,5 +1,5 @@
 import java.io.FileInputStream
-import java.util.*
+import java.util.Properties
 
 plugins {
     id("com.android.application")
@@ -14,6 +14,8 @@ android {
     compileSdk = rootProject.extra["compileSdkVersion"] as Int
     buildToolsVersion = rootProject.extra["buildToolsVersion"] as String
     ndkVersion = rootProject.extra["ndkVersion"] as String
+
+    namespace = "me.zhang.laboratory"
 
     defaultConfig {
         minSdk = rootProject.extra["minSdkVersion"] as Int
