@@ -64,6 +64,7 @@
         <activity android:name=".ui.VerticalLayoutActivity" />
         <activity android:name=".ui.TrackerBallActivity" />
         <activity android:name=".ui.RoomActivity" />
+        <activity android:name=".ui.RxActivity" />
     </application>
 
 </manifest>

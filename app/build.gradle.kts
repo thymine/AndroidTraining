@@ -141,6 +141,15 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
 
     // https://github.com/square/retrofit
-    implementation("com.squareup.retrofit2:retrofit:${rootProject.extra["retrofit2"]}")
-    implementation("com.squareup.retrofit2:converter-gson:${rootProject.extra["retrofit2"]}")
+    val retrofit2 = rootProject.extra["retrofit2"]
+    implementation("com.squareup.retrofit2:retrofit:$retrofit2")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit2")
+
+    val rxandroid = rootProject.extra["rxandroid"]
+    implementation("io.reactivex.rxjava3:rxandroid:$rxandroid")
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
+    // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
+    val rxjava = rootProject.extra["rxjava"]
+    implementation("io.reactivex.rxjava3:rxjava:$rxjava")
 }

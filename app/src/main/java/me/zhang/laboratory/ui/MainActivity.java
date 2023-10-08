@@ -30,6 +30,7 @@ public class MainActivity extends MenuActivity {
         addMenuItem("Second Finger Tracer", SecondFingerTracerActivity.class);
         addMenuItem("Call JNI", JniActivity.class);
         addMenuItem("Room", RoomActivity.class);
+        addMenuItem("Rx", RxActivity.class);
     }
 
 }

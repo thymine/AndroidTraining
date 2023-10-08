@@ -16,6 +16,9 @@ extra.apply {
     set("kotlin_version", "1.9.0")
 
     set("retrofit2", "2.9.0")
+
+    set("rxandroid", "3.0.2")
+    set("rxjava", "3.1.8")
 }
 
 buildscript {
