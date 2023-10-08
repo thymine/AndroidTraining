@@ -1,12 +1,17 @@
 package me.zhang.laboratory.ui.view
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Camera
+import android.graphics.Canvas
+import android.graphics.Matrix
+import android.graphics.Paint
 import android.util.AttributeSet
 import android.util.Log
 import androidx.appcompat.widget.AppCompatImageView
 import me.zhang.laboratory.R
-import java.util.*
+import java.util.Locale
 
 class CameraView : AppCompatImageView {
 
@@ -25,22 +30,31 @@ class CameraView : AppCompatImageView {
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context!!, attrs, defStyleAttr)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context!!,
+        attrs,
+        defStyleAttr
+    )
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        b = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.scenery), w, h, false)
+        b = Bitmap.createScaledBitmap(
+            BitmapFactory.decodeResource(resources, R.drawable.scenery),
+            w,
+            h,
+            false
+        )
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         //region Draw background
         b?.let {
             p.alpha = 128
-            canvas?.drawBitmap(it, 0f, 0f, p)
+            canvas.drawBitmap(it, 0f, 0f, p)
         }
         //endregion
 
-        canvas?.save()
+        canvas.save()
 
         //region CAMERA
         camera.save()
@@ -65,11 +79,11 @@ class CameraView : AppCompatImageView {
         camera.restore()
         //endregion
 
-        canvas?.setMatrix(m)
+        canvas.setMatrix(m)
 
         super.onDraw(canvas)
 
-        canvas?.restore()
+        canvas.restore()
     }
 
     private fun toImageCenterC() {

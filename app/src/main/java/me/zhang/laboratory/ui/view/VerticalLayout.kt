@@ -1,7 +1,13 @@
 package me.zhang.laboratory.ui.view
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.RectF
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.ViewGroup
@@ -13,7 +19,7 @@ class VerticalLayout : ViewGroup {
     private lateinit var tempBitmap: Bitmap
     private val cornerRadius: Float
 
-    private var tempCanvas: Canvas? = null
+    private lateinit var tempCanvas: Canvas
     private val paint: Paint = Paint()
     private val path = Path()
     private var rectF: RectF? = null

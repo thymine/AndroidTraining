@@ -4,6 +4,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("com.google.devtools.ksp")
 }
 
 val keystorePropertiesFile = rootProject.file("app/keystore.properties")
@@ -62,8 +63,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -83,8 +84,8 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
     testImplementation("junit:junit:4.13.2")
 
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.recyclerview:recyclerview:1.3.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
@@ -92,22 +93,22 @@ dependencies {
     implementation("com.google.android.flexbox:flexbox:3.0.0")
 
     // https://github.com/google/gson
-    implementation("com.google.code.gson:gson:2.9.1")
+    implementation("com.google.code.gson:gson:2.10.1")
 
-    implementation("com.google.android.material:material:1.7.0")
+    implementation("com.google.android.material:material:1.9.0")
 
     // https://github.com/android/android-ktx
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${rootProject.extra["kotlin_version"]}")
 
-    val activityVersion = "1.6.1"
+    val activityVersion = "1.7.2"
 
     // Java language implementation
     implementation("androidx.activity:activity:$activityVersion")
     // Kotlin
     implementation("androidx.activity:activity-ktx:$activityVersion")
 
-    val fragmentVersion = "1.5.4"
+    val fragmentVersion = "1.5.6"
 
     // Java language implementation
     implementation("androidx.fragment:fragment:$fragmentVersion")
@@ -127,4 +128,19 @@ dependencies {
 
     // https://github.com/google/guava
     implementation("com.google.guava:guava:31.1-android")
+
+    val room_version = "2.5.2"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+
+    // To use Kotlin Symbol Processing (KSP)
+    ksp("androidx.room:room-compiler:$room_version")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+
+    // https://github.com/square/retrofit
+    implementation("com.squareup.retrofit2:retrofit:${rootProject.extra["retrofit2"]}")
+    implementation("com.squareup.retrofit2:converter-gson:${rootProject.extra["retrofit2"]}")
 }

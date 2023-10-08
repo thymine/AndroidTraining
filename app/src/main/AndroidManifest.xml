@@ -63,6 +63,7 @@
         <activity android:name=".ui.AndroidGraphicsCameraActivity" />
         <activity android:name=".ui.VerticalLayoutActivity" />
         <activity android:name=".ui.TrackerBallActivity" />
+        <activity android:name=".ui.RoomActivity" />
     </application>
 
 </manifest>
