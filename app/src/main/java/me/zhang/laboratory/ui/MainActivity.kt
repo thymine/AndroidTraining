@@ -1,36 +1,33 @@
-package me.zhang.laboratory.ui;
+package me.zhang.laboratory.ui
 
-import me.zhang.laboratory.ui.base.MenuActivity;
-import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity;
+import me.zhang.laboratory.ui.base.MenuActivity
+import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
-public class MainActivity extends MenuActivity {
-
-    @Override
-    protected void prepareMenu() {
-        addMenuItem("Fold", FoldActivity.class);
-        addMenuItem("Corner Layout", CornerActivity.class);
-        addMenuItem("Scroller", ScrollerActivity.class);
-        addMenuItem("Coordinator", CoordinatorActivity.class);
-        addMenuItem("Multi Launcher", MultiLauncherActivity.class);
-        addMenuItem("Touch Event", TouchEventActivity.class);
-        addMenuItem("Multitouch", MultitouchActivity.class);
-        addMenuItem("Rotary Knob", RotaryKnobActivity.class);
-        addMenuItem("Custom EditText", CustomEditTextActivity.class);
-        addMenuItem("Tabbed", TabbedActivity.class);
-        addMenuItem("View to File", CaptureViewActivity.class);
-        addMenuItem("Telephony", TelephonyActivity.class);
-        addMenuItem("Pick File", PickFileActivity.class);
-        addMenuItem("SurfaceView", SurfaceViewTestActivity.class);
-        addMenuItem("RecordProgressBar", RecordProgressBarActivity.class);
-        addMenuItem("Media Collection", QueryMediaCollectionActivity.class);
-        addMenuItem("android.graphics.Camera", AndroidGraphicsCameraActivity.class);
-        addMenuItem("Vertical Layout", VerticalLayoutActivity.class);
-        addMenuItem("Floating Tracker Ball", TrackerBallActivity.class);
-        addMenuItem("Scrolling Conflicts", ScrollingConflictsActivity.class);
-        addMenuItem("Second Finger Tracer", SecondFingerTracerActivity.class);
-        addMenuItem("Call JNI", JniActivity.class);
-        addMenuItem("Room", RoomActivity.class);
-        addMenuItem("Rx", RxActivity.class);
+class MainActivity : MenuActivity() {
+    override fun prepareMenu() {
+        addMenuItem("Fold", FoldActivity::class.java)
+        addMenuItem("Corner Layout", CornerActivity::class.java)
+        addMenuItem("Scroller", ScrollerActivity::class.java)
+        addMenuItem("Coordinator", CoordinatorActivity::class.java)
+        addMenuItem("Multi Launcher", MultiLauncherActivity::class.java)
+        addMenuItem("Touch Event", TouchEventActivity::class.java)
+        addMenuItem("Multitouch", MultitouchActivity::class.java)
+        addMenuItem("Rotary Knob", RotaryKnobActivity::class.java)
+        addMenuItem("Custom EditText", CustomEditTextActivity::class.java)
+        addMenuItem("Tabbed", TabbedActivity::class.java)
+        addMenuItem("View to File", CaptureViewActivity::class.java)
+        addMenuItem("Telephony", TelephonyActivity::class.java)
+        addMenuItem("Pick File", PickFileActivity::class.java)
+        addMenuItem("SurfaceView", SurfaceViewTestActivity::class.java)
+        addMenuItem("RecordProgressBar", RecordProgressBarActivity::class.java)
+        addMenuItem("Media Collection", QueryMediaCollectionActivity::class.java)
+        addMenuItem("android.graphics.Camera", AndroidGraphicsCameraActivity::class.java)
+        addMenuItem("Vertical Layout", VerticalLayoutActivity::class.java)
+        addMenuItem("Floating Tracker Ball", TrackerBallActivity::class.java)
+        addMenuItem("Scrolling Conflicts", ScrollingConflictsActivity::class.java)
+        addMenuItem("Second Finger Tracer", SecondFingerTracerActivity::class.java)
+        addMenuItem("Call JNI", JniActivity::class.java)
+        addMenuItem("Room", RoomActivity::class.java)
+        addMenuItem("Rx", RxActivity::class.java)
     }
-
 }
