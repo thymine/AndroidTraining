@@ -4,7 +4,7 @@ import java.util.Properties
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.ksp)
 }
 
 val keystorePropertiesFile = rootProject.file("app/keystore.properties")
@@ -73,7 +73,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = rootProject.extra["compose_compiler_version"].toString()
+        kotlinCompilerExtensionVersion = libs.versions.composeCompilerVersion.get()
     }
 
     externalNativeBuild {
@@ -86,80 +86,69 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    testImplementation("junit:junit:4.13.2")
+    implementation(libs.androidx.lifecycle.extensions)
+    testImplementation(libs.junit)
 
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(libs.appcompat)
+    implementation(libs.recyclerview)
+    implementation(libs.constraintlayout)
 
     // https://github.com/google/flexbox-layout
-    implementation("com.google.android.flexbox:flexbox:3.0.0")
+    implementation(libs.flexbox)
 
     // https://github.com/google/gson
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation(libs.gson)
 
-    implementation("com.google.android.material:material:1.9.0")
+    implementation(libs.material)
 
     // https://github.com/android/android-ktx
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${rootProject.extra["kotlin_version"]}")
-
-    val activityVersion = "1.7.2"
+    implementation(libs.core.ktx)
+    implementation(libs.kotlin.stdlib.jdk7)
 
     // Java language implementation
-    implementation("androidx.activity:activity:$activityVersion")
+    implementation(libs.activity)
     // Kotlin
-    implementation("androidx.activity:activity-ktx:$activityVersion")
-
-    val fragmentVersion = "1.5.6"
+    implementation(libs.activity.ktx)
 
     // Java language implementation
-    implementation("androidx.fragment:fragment:$fragmentVersion")
+    implementation(libs.fragment)
     // Kotlin
-    implementation("androidx.fragment:fragment-ktx:$fragmentVersion")
+    implementation(libs.fragment.ktx)
     // Testing Fragments in Isolation
-    debugImplementation("androidx.fragment:fragment-testing:$fragmentVersion")
+    debugImplementation(libs.fragment.testing)
 
     // https://github.com/google/dagger
-    val daggerVersion = "2.42"
-    implementation("com.google.dagger:dagger:$daggerVersion")
-    annotationProcessor("com.google.dagger:dagger-compiler:$daggerVersion")
-    implementation("com.google.dagger:dagger-android:$daggerVersion")
-    implementation("com.google.dagger:dagger-android-support:$daggerVersion")
+    implementation(libs.dagger)
+    annotationProcessor(libs.dagger.compiler)
+    implementation(libs.dagger.android)
+    implementation(libs.dagger.android.support)
     // if you use the support libraries
-    annotationProcessor("com.google.dagger:dagger-android-processor:$daggerVersion")
+    annotationProcessor(libs.dagger.android.processor)
 
     // https://github.com/google/guava
-    implementation("com.google.guava:guava:31.1-android")
+    implementation(libs.guava)
 
-    val room_version = "2.5.2"
-
-    implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
 
     // To use Kotlin Symbol Processing (KSP)
-    ksp("androidx.room:room-compiler:$room_version")
+    ksp(libs.room.compiler)
 
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation("androidx.room:room-ktx:$room_version")
+    implementation(libs.androidx.room.ktx)
 
     // https://github.com/square/retrofit
-    val retrofit2 = rootProject.extra["retrofit2"]
-    implementation("com.squareup.retrofit2:retrofit:$retrofit2")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofit2")
+    implementation(libs.retrofit2)
+    implementation(libs.converter.gson)
 
-    val rxandroid = rootProject.extra["rxandroid"]
-    implementation("io.reactivex.rxjava3:rxandroid:$rxandroid")
+    implementation(libs.rxandroid)
     // Because RxAndroid releases are few and far between, it is recommended you also
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
-    val rxjava = rootProject.extra["rxjava"]
-    implementation("io.reactivex.rxjava3:rxjava:$rxjava")
+    implementation(libs.rxjava)
 
     //region BOM
-    val composeBom = platform("androidx.compose:compose-bom:2023.10.00")
+    val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
@@ -192,9 +181,9 @@ dependencies {
     implementation("androidx.compose.material3:material3-window-size-class")
 
     // Optional - Integration with activities
-    implementation("androidx.activity:activity-compose:1.7.2")
+    implementation(libs.androidx.activity.compose)
     // Optional - Integration with ViewModels
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     // Optional - Integration with LiveData
     implementation("androidx.compose.runtime:runtime-livedata")
     // Optional - Integration with RxJava

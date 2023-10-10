@@ -124,7 +124,10 @@ class RoomActivity : AppCompatActivity() {
                 diffResult.dispatchUpdatesTo(adapter)
 
                 rvUsers.post {
-                    rvUsers.smoothScrollToPosition(adapter.itemCount - 1)
+                    val targetPosition = adapter.itemCount - 1
+                    if (targetPosition > RecyclerView.NO_POSITION) {
+                        rvUsers.smoothScrollToPosition(targetPosition)
+                    }
                 }
             }.launchIn(lifecycleScope)
     }
