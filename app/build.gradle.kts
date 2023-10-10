@@ -86,7 +86,7 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation(libs.androidx.lifecycle.extensions)
+    implementation(libs.lifecycle.extensions)
     testImplementation(libs.junit)
 
     implementation(libs.appcompat)
@@ -135,7 +135,7 @@ dependencies {
     ksp(libs.room.compiler)
 
     // optional - Kotlin Extensions and Coroutines support for Room
-    implementation(libs.androidx.room.ktx)
+    implementation(libs.room.ktx)
 
     // https://github.com/square/retrofit
     implementation(libs.retrofit2)
@@ -147,46 +147,46 @@ dependencies {
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
     implementation(libs.rxjava)
 
-    //region BOM
+    //region Compose
     val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
     androidTestImplementation(composeBom)
 
     // Choose one of the following:
     // Material Design 3
-    implementation("androidx.compose.material3:material3")
-//    // or Material Design 2
-//    implementation("androidx.compose.material:material")
-//    // or skip Material Design and build directly on top of foundational components
-//    implementation("androidx.compose.foundation:foundation")
-//    // or only import the main APIs for the underlying toolkit systems,
-//    // such as input and measurement/layout
-//    implementation("androidx.compose.ui:ui")
+    implementation(libs.compose.material3)
+    // or Material Design 2
+    implementation(libs.compose.material)
+    // or skip Material Design and build directly on top of foundational components
+    implementation(libs.compose.foundation)
+    // or only import the main APIs for the underlying toolkit systems,
+    // such as input and measurement/layout
+    implementation(libs.compose.ui)
 
     // Android Studio Preview support
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation(libs.compose.ui.tooling.preview)
+    debugImplementation(libs.compose.ui.tooling)
 
     // UI Tests
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    androidTestImplementation(libs.compose.ui.test.junit4)
+    debugImplementation(libs.compose.ui.test.manifest)
 
     // Optional - Included automatically by material, only add when you need
     // the icons but not the material library (e.g. when using Material3 or a
     // custom design system based on Foundation)
-    implementation("androidx.compose.material:material-icons-core")
+    implementation(libs.compose.material.icons.core)
     // Optional - Add full set of material icons
-    implementation("androidx.compose.material:material-icons-extended")
+    implementation(libs.compose.material.icons.extended)
     // Optional - Add window size utils
-    implementation("androidx.compose.material3:material3-window-size-class")
+    implementation(libs.compose.material3.window.size.clazz)
 
     // Optional - Integration with activities
-    implementation(libs.androidx.activity.compose)
+    implementation(libs.activity.compose)
     // Optional - Integration with ViewModels
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
     // Optional - Integration with LiveData
-    implementation("androidx.compose.runtime:runtime-livedata")
+    implementation(libs.compose.runtime.livedata)
     // Optional - Integration with RxJava
-    implementation("androidx.compose.runtime:runtime-rxjava3")
+    implementation(libs.compose.runtime.rxjava3)
     //endregion
 }
