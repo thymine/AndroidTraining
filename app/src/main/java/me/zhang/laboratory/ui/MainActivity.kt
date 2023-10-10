@@ -1,10 +1,12 @@
 package me.zhang.laboratory.ui
 
 import me.zhang.laboratory.ui.base.MenuActivity
+import me.zhang.laboratory.ui.compose.ComposableActivity
 import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
     override fun prepareMenu() {
+        addMenuItem("Composable", ComposableActivity::class.java)
         addMenuItem("Fold", FoldActivity::class.java)
         addMenuItem("Corner Layout", CornerActivity::class.java)
         addMenuItem("Scroller", ScrollerActivity::class.java)

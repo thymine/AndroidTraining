@@ -16,6 +16,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
+            android:name=".ui.compose.ComposableActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.JniActivity"
             android:exported="false" />
         <activity
