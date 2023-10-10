@@ -155,13 +155,13 @@ dependencies {
     // Choose one of the following:
     // Material Design 3
     implementation(libs.compose.material3)
-    // or Material Design 2
-    implementation(libs.compose.material)
-    // or skip Material Design and build directly on top of foundational components
-    implementation(libs.compose.foundation)
-    // or only import the main APIs for the underlying toolkit systems,
-    // such as input and measurement/layout
-    implementation(libs.compose.ui)
+//    // or Material Design 2
+//    implementation(libs.compose.material)
+//    // or skip Material Design and build directly on top of foundational components
+//    implementation(libs.compose.foundation)
+//    // or only import the main APIs for the underlying toolkit systems,
+//    // such as input and measurement/layout
+//    implementation(libs.compose.ui)
 
     // Android Studio Preview support
     implementation(libs.compose.ui.tooling.preview)
