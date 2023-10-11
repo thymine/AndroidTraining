@@ -72,4 +72,5 @@ object SampleData {
             "Have you tried writing build.gradle with KTS?"
         ),
     )
+    val emptySample = listOf<Message>()
 }

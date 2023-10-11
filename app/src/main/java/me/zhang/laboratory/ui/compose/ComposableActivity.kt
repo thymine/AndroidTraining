@@ -1,6 +1,7 @@
 package me.zhang.laboratory.ui.compose
 
 import SampleData.conversationSample
+import SampleData.emptySample
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.compose.setContent
@@ -13,6 +14,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -32,8 +34,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import me.zhang.laboratory.R
 
 class ComposableActivity : AppCompatActivity() {
@@ -49,9 +54,22 @@ class ComposableActivity : AppCompatActivity() {
 
 @Composable
 fun Conversation(messages: List<Message>) {
-    LazyColumn {
-        items(messages) { msg ->
-            MessageCard(msg)
+    if (messages.isEmpty()) {
+        Text(
+            modifier = Modifier
+                .padding(12.dp)
+                .fillMaxWidth(),
+            text = "No message.",
+            textAlign = TextAlign.Center,
+            fontSize = 24.sp,
+            fontFamily = FontFamily.Cursive,
+            color = MaterialTheme.colorScheme.secondary,
+        )
+    } else {
+        LazyColumn {
+            items(messages) { msg ->
+                MessageCard(msg)
+            }
         }
     }
 }
@@ -130,6 +148,6 @@ fun MessageCard(msg: Message) {
 @Composable
 fun PreviewMessageCard() {
     DarkLightMaterialTheme {
-        Conversation(messages = conversationSample)
+        Conversation(messages = emptySample)
     }
 }
