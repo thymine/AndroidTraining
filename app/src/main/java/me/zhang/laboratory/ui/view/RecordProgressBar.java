@@ -1,5 +1,7 @@
 package me.zhang.laboratory.ui.view;
 
+import static me.zhang.laboratory.utils.UiUtilsKt.convertDpToPixel;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,7 +20,6 @@ import java.util.List;
 
 import me.zhang.laboratory.ui.RecordProgressBarActivity;
 import me.zhang.laboratory.ui.bean.PartBean;
-import me.zhang.laboratory.utils.UiUtils;
 
 public class RecordProgressBar extends View {
 
@@ -47,9 +48,9 @@ public class RecordProgressBar extends View {
 
     public RecordProgressBar(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        minWidth = (int) UiUtils.convertDpToPixel(256, getContext());
-        minHeight = (int) UiUtils.convertDpToPixel(6, getContext());
-        dividerWidth = (int) UiUtils.convertDpToPixel(2, getContext());
+        minWidth = (int) convertDpToPixel(256, getContext());
+        minHeight = (int) convertDpToPixel(6, getContext());
+        dividerWidth = (int) convertDpToPixel(2, getContext());
     }
 
     @Override

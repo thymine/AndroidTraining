@@ -1,55 +1,49 @@
-package me.zhang.laboratory;
+package me.zhang.laboratory
 
-import android.app.Application;
-import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.room.Room;
-
-import me.zhang.laboratory.ui.net.NameFakeService;
-import me.zhang.laboratory.ui.room.AppDatabase;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import android.app.Application
+import android.content.Context
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.room.Room.databaseBuilder
+import me.zhang.laboratory.ui.net.NameFakeService
+import me.zhang.laboratory.ui.room.AppDatabase
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * Created by Li on 6/16/2016 9:37 PM.
  */
-public class App extends Application {
-
-    private static App sContext;
-
-    static {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
+class App : Application() {
+    override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(base)
+        sContext = this
     }
 
-    private static AppDatabase roomDb;
-    private static NameFakeService nameFakeService;
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(base);
-        sContext = this;
+    override fun onCreate() {
+        super.onCreate()
+        roomDb = databaseBuilder(applicationContext, AppDatabase::class.java, "room_db").build()
+        nameFakeService = Retrofit.Builder().baseUrl("https://api.namefake.com/")
+            .addConverterFactory(GsonConverterFactory.create()).build()
+            .create(NameFakeService::class.java)
     }
 
-    public static Context getContext() {
-        return sContext;
-    }
+    companion object {
+        private lateinit var sContext: App
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        roomDb = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "room_db").build();
-        nameFakeService = new Retrofit.Builder().baseUrl("https://api.namefake.com/").addConverterFactory(GsonConverterFactory.create()).build().create(NameFakeService.class);
-    }
+        init {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+        }
 
-    @NonNull
-    public static AppDatabase getRoomDb() {
-        return roomDb;
-    }
+        private lateinit var roomDb: AppDatabase
+        private lateinit var nameFakeService: NameFakeService
+        val context: Context
+            get() = sContext
 
-    @NonNull
-    public static NameFakeService getNameFakeService() {
-        return nameFakeService;
+        fun getRoomDb(): AppDatabase {
+            return roomDb
+        }
+
+        fun getNameFakeService(): NameFakeService {
+            return nameFakeService
+        }
     }
 }

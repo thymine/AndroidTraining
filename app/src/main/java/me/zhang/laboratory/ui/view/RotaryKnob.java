@@ -1,5 +1,7 @@
 package me.zhang.laboratory.ui.view;
 
+import static me.zhang.laboratory.utils.UiUtilsKt.convertDpToPixel;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -17,8 +19,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import me.zhang.laboratory.utils.UiUtils;
 
 /**
  * Created by zhangxiangdong on 2019/1/15 15:51.
@@ -60,14 +62,13 @@ public class RotaryKnob extends View {
     private final Handler.Callback callback = new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            switch (msg.what) {
-                case WHAT_PROGRESS:
-                    if (step < progress) {
-                        postInvalidate();
-                        handler.sendEmptyMessageDelayed(WHAT_PROGRESS, 16 /* ms */); // 线性
-                        step += 2;
-                    }
-                    return true;
+            if (msg.what == WHAT_PROGRESS) {
+                if (step < progress) {
+                    postInvalidate();
+                    handler.sendEmptyMessageDelayed(WHAT_PROGRESS, 16 /* ms */); // 线性
+                    step += 2;
+                }
+                return true;
             }
             return false;
         }
@@ -85,40 +86,40 @@ public class RotaryKnob extends View {
     public RotaryKnob(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        scaleTextPaint.setTextSize(UiUtils.convertDpToPixel(14, context));
+        scaleTextPaint.setTextSize(convertDpToPixel(14, context));
         scaleTextPaint.setColor(Color.parseColor("#AAAAAA"));
         scaleTextPaint.setAntiAlias(false);
 
         panPaint.setColor(Color.parseColor("#EBEBEB"));
         panPaint.setStyle(Paint.Style.STROKE);
-        panPaint.setStrokeWidth(UiUtils.convertDpToPixel(1, context));
+        panPaint.setStrokeWidth(convertDpToPixel(1, context));
 
         panScalePaint.setColor(Color.parseColor("#EBEBEB"));
         panScalePaint.setStyle(Paint.Style.STROKE);
         panScalePaint.setStrokeCap(Paint.Cap.ROUND);
-        panScalePaint.setStrokeWidth(UiUtils.convertDpToPixel(2, context));
+        panScalePaint.setStrokeWidth(convertDpToPixel(2, context));
 
-        fScaleLength = UiUtils.convertDpToPixel(20, context);
-        fOffset = UiUtils.convertDpToPixel(10, context);
-        fTextMargin = UiUtils.convertDpToPixel(50, context);
-        fMinimalDimen = UiUtils.convertDpToPixel(256, context);
+        fScaleLength = convertDpToPixel(20, context);
+        fOffset = convertDpToPixel(10, context);
+        fTextMargin = convertDpToPixel(50, context);
+        fMinimalDimen = convertDpToPixel(256, context);
 
 
         userScalePaint.setColor(Color.parseColor("#53CAC3"));
         userScalePaint.setStyle(Paint.Style.STROKE);
         userScalePaint.setStrokeCap(Paint.Cap.ROUND);
-        userScalePaint.setStrokeWidth(UiUtils.convertDpToPixel(2, context));
+        userScalePaint.setStrokeWidth(convertDpToPixel(2, context));
 
         userPanPaint.setColor(Color.parseColor("#53CAC3"));
         userPanPaint.setStyle(Paint.Style.STROKE);
-        userPanPaint.setStrokeWidth(UiUtils.convertDpToPixel(1, context));
+        userPanPaint.setStrokeWidth(convertDpToPixel(1, context));
 
         titlePaint.setColor(Color.parseColor("#2DB4B4"));
-        titlePaint.setTextSize(UiUtils.convertDpToPixel(24, context));
+        titlePaint.setTextSize(convertDpToPixel(24, context));
         titlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
 
         subtitlePaint.setColor(Color.parseColor("#484848"));
-        subtitlePaint.setTextSize(UiUtils.convertDpToPixel(18, context));
+        subtitlePaint.setTextSize(convertDpToPixel(18, context));
         subtitlePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
     }
 
@@ -127,7 +128,7 @@ public class RotaryKnob extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int finalWidth = getFinalWidth(widthMeasureSpec);
         int finalHeight = getFinalHeight(heightMeasureSpec);
-        final int finalDimen = finalWidth > finalHeight ? finalHeight : finalWidth;
+        final int finalDimen = Math.min(finalWidth, finalHeight);
         setMeasuredDimension(finalDimen, finalDimen);
     }
 
@@ -151,7 +152,7 @@ public class RotaryKnob extends View {
 
     @SuppressLint("Assert")
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
 
         int knobWidth = getMeasuredWidth();

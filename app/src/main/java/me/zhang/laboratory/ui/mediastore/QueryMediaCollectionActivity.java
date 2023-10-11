@@ -1,15 +1,21 @@
 package me.zhang.laboratory.ui.mediastore;
 
+import static me.zhang.laboratory.utils.UiUtilsKt.convertDpToPixel;
+
 import android.Manifest;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.*;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.CancellationSignal;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -17,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
@@ -25,16 +32,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
-import me.zhang.laboratory.R;
-import me.zhang.laboratory.utils.UiUtils;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
+
+import me.zhang.laboratory.R;
 
 public class QueryMediaCollectionActivity extends AppCompatActivity {
 
@@ -131,19 +138,16 @@ public class QueryMediaCollectionActivity extends AppCompatActivity {
                 Video video = videoList.get(position);
 
                 ImageView mediaThumbnail = itemView.findViewById(R.id.mediaThumbnail);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    try {
-                        int _48dp = (int) UiUtils.convertDpToPixel(48, context);
-                        Size size = new Size(_48dp, _48dp);
-                        Bitmap bitmap = getContentResolver().loadThumbnail(video.uri, size, new CancellationSignal());
+                try {
+                    int _48dp = (int) convertDpToPixel(48, context);
+                    Size size = new Size(_48dp, _48dp);
+                    Bitmap bitmap;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                        bitmap = getContentResolver().loadThumbnail(video.uri, size, new CancellationSignal());
                         mediaThumbnail.setImageBitmap(bitmap);
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
-                } else {
-                    Random rnd = new Random();
-                    int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
-                    mediaThumbnail.setBackgroundColor(color);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
                 mediaItem.setText(String.format(Locale.getDefault(),
                         "%s\n%d ms\n%d bytes\n%s",
@@ -195,26 +199,29 @@ public class QueryMediaCollectionActivity extends AppCompatActivity {
                 sortOrder
         )) {
             // Cache column indices.
-            int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
-            int nameColumn =
-                    cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME);
-            int durationColumn =
-                    cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION);
-            int sizeColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE);
+            int idColumn;
+            if (cursor != null) {
+                idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
+                int nameColumn =
+                        cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME);
+                int durationColumn =
+                        cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION);
+                int sizeColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.SIZE);
 
-            while (cursor.moveToNext()) {
-                // Get values of columns for a given video.
-                long id = cursor.getLong(idColumn);
-                String name = cursor.getString(nameColumn);
-                int duration = cursor.getInt(durationColumn);
-                int size = cursor.getInt(sizeColumn);
+                while (cursor.moveToNext()) {
+                    // Get values of columns for a given video.
+                    long id = cursor.getLong(idColumn);
+                    String name = cursor.getString(nameColumn);
+                    int duration = cursor.getInt(durationColumn);
+                    int size = cursor.getInt(sizeColumn);
 
-                Uri contentUri = ContentUris.withAppendedId(
-                        MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
+                    Uri contentUri = ContentUris.withAppendedId(
+                            MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
 
-                // Stores column values and the contentUri in a local object
-                // that represents the media file.
-                videoList.add(new Video(contentUri, name, duration, size));
+                    // Stores column values and the contentUri in a local object
+                    // that represents the media file.
+                    videoList.add(new Video(contentUri, name, duration, size));
+                }
             }
         }
 
