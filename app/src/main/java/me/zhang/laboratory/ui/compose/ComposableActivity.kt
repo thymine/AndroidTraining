@@ -36,6 +36,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -129,6 +130,7 @@ fun MessageCard(msg: Message) {
                     // If the message is expanded, we display all its content
                     // otherwise we only display the first line
                     maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                    overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyMedium,
                 )
             }
@@ -147,6 +149,22 @@ fun MessageCard(msg: Message) {
 )
 @Composable
 fun PreviewMessageCard() {
+    DarkLightMaterialTheme {
+        Conversation(messages = conversationSample)
+    }
+}
+
+@Preview(
+    showSystemUi = true,
+    name = "Light Mode",
+)
+@Preview(
+    showSystemUi = true,
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    name = "Dark Mode",
+)
+@Composable
+fun PreviewEmptyMessageCard() {
     DarkLightMaterialTheme {
         Conversation(messages = emptySample)
     }
