@@ -68,6 +68,7 @@
         <activity android:name=".ui.TrackerBallActivity" />
         <activity android:name=".ui.RoomActivity" />
         <activity android:name=".ui.RxActivity" />
+        <activity android:name=".ui.compose.SSOTActivity" />
     </application>
 
 </manifest>
