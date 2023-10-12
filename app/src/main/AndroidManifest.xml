@@ -14,7 +14,12 @@
         android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        android:usesCleartextTraffic="true"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity
+            android:name=".ui.compose.WebViewActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.compose.ComposableActivity"
             android:exported="false" />
