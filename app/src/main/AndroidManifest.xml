@@ -18,6 +18,9 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
         <activity
+            android:name=".ui.compose.BilibiliActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.compose.LoginActivity"
             android:exported="false" />
         <activity

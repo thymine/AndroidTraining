@@ -3,6 +3,7 @@ package me.zhang.laboratory.ui.compose
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -24,4 +25,9 @@ fun DarkLightMaterialTheme(
 @Composable
 fun HorizontalDivider() {
     Spacer(modifier = Modifier.height(16.dp))
+}
+
+@Composable
+fun VerticalDivider() {
+    Spacer(modifier = Modifier.width(16.dp))
 }
