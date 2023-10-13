@@ -2,6 +2,7 @@ package me.zhang.laboratory.ui
 
 import me.zhang.laboratory.ui.base.MenuActivity
 import me.zhang.laboratory.ui.compose.ComposableActivity
+import me.zhang.laboratory.ui.compose.LoginActivity
 import me.zhang.laboratory.ui.compose.ModifierActivity
 import me.zhang.laboratory.ui.compose.SSOTActivity
 import me.zhang.laboratory.ui.compose.WebViewActivity
@@ -9,6 +10,7 @@ import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
     override fun prepareMenu() {
+        addMenuItem("Compose-Login", LoginActivity::class.java)
         addMenuItem("Compose-Modifier", ModifierActivity::class.java)
         addMenuItem("Compose-WebView", WebViewActivity::class.java)
         addMenuItem("Compose-SSOT", SSOTActivity::class.java)

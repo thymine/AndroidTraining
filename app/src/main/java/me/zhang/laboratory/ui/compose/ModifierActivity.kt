@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -116,11 +115,6 @@ class ModifierActivity : AppCompatActivity() {
                 Text(text = name)
             }
         }
-    }
-
-    @Composable
-    fun HorizontalDivider() {
-        Spacer(modifier = Modifier.height(16.dp))
     }
 
     @Composable
