@@ -19,7 +19,7 @@
         tools:targetApi="m">
         <activity
             android:name=".ui.compose.BilibiliActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.compose.LoginActivity"
             android:exported="false" />

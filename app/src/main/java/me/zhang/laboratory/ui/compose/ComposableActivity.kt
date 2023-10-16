@@ -2,7 +2,6 @@ package me.zhang.laboratory.ui.compose
 
 import SampleData.conversationSample
 import SampleData.emptySample
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +36,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.zhang.laboratory.R
@@ -138,15 +136,7 @@ fun MessageCard(msg: Message) {
     }
 }
 
-@Preview(
-    showSystemUi = true,
-    name = "Light Mode",
-)
-@Preview(
-    showSystemUi = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    name = "Dark Mode",
-)
+@PreviewDarkLight
 @Composable
 fun PreviewMessageCard() {
     DarkLightMaterialTheme {
@@ -154,15 +144,7 @@ fun PreviewMessageCard() {
     }
 }
 
-@Preview(
-    showSystemUi = true,
-    name = "Light Mode",
-)
-@Preview(
-    showSystemUi = true,
-    uiMode = Configuration.UI_MODE_NIGHT_YES,
-    name = "Dark Mode",
-)
+@PreviewDarkLight
 @Composable
 fun PreviewEmptyMessageCard() {
     DarkLightMaterialTheme {
