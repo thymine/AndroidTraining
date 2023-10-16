@@ -3,6 +3,7 @@ package me.zhang.laboratory.ui
 import me.zhang.laboratory.ui.base.MenuActivity
 import me.zhang.laboratory.ui.compose.BilibiliActivity
 import me.zhang.laboratory.ui.compose.ComposableActivity
+import me.zhang.laboratory.ui.compose.LayoutActivity
 import me.zhang.laboratory.ui.compose.LoginActivity
 import me.zhang.laboratory.ui.compose.ModifierActivity
 import me.zhang.laboratory.ui.compose.SSOTActivity
@@ -11,6 +12,7 @@ import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
     override fun prepareMenu() {
+        addMenuItem("Compose-Layout", LayoutActivity::class.java)
         addMenuItem("Compose-Bilibili", BilibiliActivity::class.java)
         addMenuItem("Compose-Login", LoginActivity::class.java)
         addMenuItem("Compose-Modifier", ModifierActivity::class.java)
