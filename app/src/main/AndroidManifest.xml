@@ -18,6 +18,9 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         tools:targetApi="m">
         <activity
+            android:name=".ui.compose.ScaffoldActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.compose.ConstraintActivity"
             android:exported="false" />
         <activity

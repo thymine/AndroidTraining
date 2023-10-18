@@ -8,11 +8,13 @@ import me.zhang.laboratory.ui.compose.LayoutActivity
 import me.zhang.laboratory.ui.compose.LoginActivity
 import me.zhang.laboratory.ui.compose.ModifierActivity
 import me.zhang.laboratory.ui.compose.SSOTActivity
+import me.zhang.laboratory.ui.compose.ScaffoldActivity
 import me.zhang.laboratory.ui.compose.WebViewActivity
 import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
     override fun prepareMenu() {
+        addMenuItem("Compose-Scaffold", ScaffoldActivity::class.java)
         addMenuItem("Compose-Constraint", ConstraintActivity::class.java)
         addMenuItem("Compose-Layout", LayoutActivity::class.java)
         addMenuItem("Compose-Bilibili", BilibiliActivity::class.java)
