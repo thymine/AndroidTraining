@@ -14,6 +14,7 @@ import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
     override fun prepareMenu() {
+        addMenuItem("Compose-List", ListActivity::class.java)
         addMenuItem("Compose-Scaffold", ScaffoldActivity::class.java)
         addMenuItem("Compose-Constraint", ConstraintActivity::class.java)
         addMenuItem("Compose-Layout", LayoutActivity::class.java)
