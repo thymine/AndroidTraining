@@ -5,6 +5,7 @@ import me.zhang.laboratory.ui.compose.BilibiliActivity
 import me.zhang.laboratory.ui.compose.ComposableActivity
 import me.zhang.laboratory.ui.compose.ConstraintActivity
 import me.zhang.laboratory.ui.compose.LayoutActivity
+import me.zhang.laboratory.ui.compose.ListActivity
 import me.zhang.laboratory.ui.compose.LoginActivity
 import me.zhang.laboratory.ui.compose.ModifierActivity
 import me.zhang.laboratory.ui.compose.SSOTActivity
