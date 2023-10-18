@@ -3,8 +3,9 @@ androidGradlePlugin = "8.1.2"
 activityVersion = "1.7.2"
 composeCompilerVersion = "1.5.3"
 constraintlayout = "2.1.4"
+composeConstraintlayout = "1.0.1"
 appcompat = "1.6.1"
-guava = "31.1-android"
+guava = "31.1-jre"
 daggerVersion = "2.44.2"
 fragmentVersion = "1.5.6"
 coreKtx = "1.12.0"
@@ -45,6 +46,7 @@ material = { module = "com.google.android.material:material", version.ref = "mat
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
 recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintlayout" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 compose-material = { module = "androidx.compose.material:material" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }

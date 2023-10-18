@@ -188,5 +188,7 @@ dependencies {
     implementation(libs.compose.runtime.livedata)
     // Optional - Integration with RxJava
     implementation(libs.compose.runtime.rxjava3)
+
+    implementation(libs.compose.constraintlayout)
     //endregion
 }
