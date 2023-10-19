@@ -26,9 +26,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -101,11 +98,11 @@ fun MessageCard(msg: Message) {
             Spacer(modifier = Modifier.height(4.dp))
 
             // We keep track if the message is expanded or not in this variable
-            var isExpanded by rememberSaveable { mutableStateOf(false) }
+//            var isExpanded by rememberSaveable { mutableStateOf(false) }
 
             // surfaceColor will be updated gradually from one color to the other
             val surfaceColor by animateColorAsState(
-                if (isExpanded) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
+                if (msg.isExpand()) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.surface,
                 label = "surfaceColor"
             )
 
@@ -124,10 +121,10 @@ fun MessageCard(msg: Message) {
                     text = msg.body,
                     modifier = Modifier
                         .padding(all = 4.dp)
-                        .clickable { isExpanded = !isExpanded },
+                        .clickable { msg.toggle() },
                     // If the message is expanded, we display all its content
                     // otherwise we only display the first line
-                    maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                    maxLines = if (msg.isExpand()) Int.MAX_VALUE else 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.bodyMedium,
                 )
