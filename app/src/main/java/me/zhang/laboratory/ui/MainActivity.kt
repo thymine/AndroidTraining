@@ -10,11 +10,13 @@ import me.zhang.laboratory.ui.compose.LoginActivity
 import me.zhang.laboratory.ui.compose.ModifierActivity
 import me.zhang.laboratory.ui.compose.SSOTActivity
 import me.zhang.laboratory.ui.compose.ScaffoldActivity
+import me.zhang.laboratory.ui.compose.StateActivity
 import me.zhang.laboratory.ui.compose.WebViewActivity
 import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
     override fun prepareMenu() {
+        addMenuItem("Compose-State", StateActivity::class.java)
         addMenuItem("Compose-List", ListActivity::class.java)
         addMenuItem("Compose-Scaffold", ScaffoldActivity::class.java)
         addMenuItem("Compose-Constraint", ConstraintActivity::class.java)
