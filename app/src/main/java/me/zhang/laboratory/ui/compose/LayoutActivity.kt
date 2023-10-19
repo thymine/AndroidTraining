@@ -28,10 +28,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.AlignmentLine
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.FirstBaseline
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import me.zhang.laboratory.R
 
@@ -123,6 +128,56 @@ class LayoutActivity : AppCompatActivity() {
                     }
                 }
             }
+            CustomLayout(modifier = Modifier.padding(16.dp)) {
+                Text(text = "One")
+                Text(text = "Two")
+                Text(text = "Three")
+                Text(
+                    text = "Four",
+                    modifier = Modifier
+                        .background(Color.Red)
+                        .firstBaselineToTop(24.dp)
+                )
+                Text(
+                    text = "Five",
+                    Modifier
+                        .background(Color.Green)
+                        .padding(top = 24.dp)
+                )
+            }
+        }
+    }
+
+    @Composable
+    fun CustomLayout(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+        Layout(
+            content = content,
+            modifier = modifier
+        ) { measurables, constraints ->
+            val placeables = measurables.map { measurable ->
+                measurable.measure(constraints)
+            }
+            var yPosition = 0;
+            layout(constraints.maxWidth, constraints.maxHeight) {
+                placeables.forEach { placeable ->
+                    placeable.placeRelative(0, yPosition)
+                    yPosition += placeable.height
+                }
+            }
+        }
+    }
+
+    private fun Modifier.firstBaselineToTop(
+        firstBaselineToTop: Dp
+    ) = this then Modifier.layout { measurable, constraints ->
+        val placeable = measurable.measure(constraints)
+        val firstBaseline = placeable[FirstBaseline]
+        check(firstBaseline != AlignmentLine.Unspecified)
+
+        val placeableY = firstBaselineToTop.roundToPx() - firstBaseline
+        val height = placeable.height + placeableY
+        layout(placeable.width, height) {
+            placeable.placeRelative(0, placeableY)
         }
     }
 
