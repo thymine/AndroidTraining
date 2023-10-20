@@ -3,6 +3,7 @@ package me.zhang.laboratory.ui.compose
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.Animatable
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.Crossfade
@@ -10,7 +11,9 @@ import androidx.compose.animation.EnterExitState
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.animateColor
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
@@ -25,17 +28,21 @@ import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FontDownload
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -182,6 +189,44 @@ class AnimateActivity : AppCompatActivity() {
                     maxLines = if (isExpanded) Int.MAX_VALUE else 1,
                 )
             }
+
+            var liked by remember {
+                mutableStateOf(false)
+            }
+            var flag by remember {
+                mutableStateOf(false)
+            }
+            val iconSize by animateDpAsState(
+                targetValue = if (flag) 128.dp else 64.dp,
+                label = "size changed"
+            )
+//            val iconColor by animateColorAsState(
+//                targetValue = if (liked) Color.Red else Color.Gray,
+//                label = "color changed"
+//            )
+            val iconColor = remember { Animatable(Color.Gray) }
+            LaunchedEffect(liked) {
+                iconColor.animateTo(if (liked) Color.Red else Color.Gray)
+            }
+            if (iconSize == 128.dp) {
+                flag = false
+            }
+            Icon(
+                imageVector = Icons.Default.Favorite,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(iconSize)
+                    .align(Alignment.CenterHorizontally)
+                    .clickable(
+                        indication = null,
+                        interactionSource = remember { MutableInteractionSource() }
+                    ) {
+                        liked = !liked
+                        flag = true
+                    },
+//                tint = iconColor
+                tint = iconColor.value
+            )
         }
     }
 
