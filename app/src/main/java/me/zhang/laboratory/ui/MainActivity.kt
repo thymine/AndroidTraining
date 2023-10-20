@@ -4,6 +4,7 @@ import me.zhang.laboratory.ui.base.MenuActivity
 import me.zhang.laboratory.ui.compose.BilibiliActivity
 import me.zhang.laboratory.ui.compose.ComposableActivity
 import me.zhang.laboratory.ui.compose.ConstraintActivity
+import me.zhang.laboratory.ui.compose.DrawActivity
 import me.zhang.laboratory.ui.compose.LayoutActivity
 import me.zhang.laboratory.ui.compose.ListActivity
 import me.zhang.laboratory.ui.compose.LoginActivity
@@ -16,6 +17,7 @@ import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
     override fun prepareMenu() {
+        addMenuItem("Compose-Draw", DrawActivity::class.java)
         addMenuItem("Compose-State", StateActivity::class.java)
         addMenuItem("Compose-List", ListActivity::class.java)
         addMenuItem("Compose-Scaffold", ScaffoldActivity::class.java)
