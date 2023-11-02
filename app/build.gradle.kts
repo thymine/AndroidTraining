@@ -23,7 +23,7 @@ android {
         minSdk = rootProject.extra["minSdkVersion"] as Int
         targetSdk = rootProject.extra["targetSdkVersion"] as Int
 
-        applicationId = "me.zhang.workbench"
+        applicationId = "me.zhang.laboratory"
         versionCode = rootProject.ext["versionCode"] as Int
         versionName = rootProject.ext["versionName"] as String
 
