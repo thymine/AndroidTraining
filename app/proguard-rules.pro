@@ -16,6 +16,9 @@
 #   public *;
 #}
 
+-keepattributes SourceFile,LineNumberTable        # Keep file names and line numbers.
+-keep public class * extends java.lang.Exception  # Optional: Keep custom exceptions.
+
 # Gson uses generic type information stored in a class file when working with
 # fields. Proguard removes such information by default, keep it.
 -keepattributes Signature

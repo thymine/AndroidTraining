@@ -1,13 +1,16 @@
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
     // Add the Google services Gradle plugin
     alias(libs.plugins.google.services)
-    alias(libs.plugins.ksp)
+    // Add the Crashlytics Gradle plugin
+    alias(libs.plugins.crashlytics)
 }
 
 android {
@@ -59,7 +62,14 @@ android {
             signingConfig = signingConfigs.getByName("release")
 
             isMinifyEnabled = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+
+            configure<CrashlyticsExtension> {
+                mappingFileUploadEnabled = true
+            }
         }
 
         // Build with ./gradlew app:installDebug -Pminify
@@ -68,7 +78,14 @@ android {
             signingConfig = signingConfigs.getByName("debug")
 
             isMinifyEnabled = minified
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+
+            configure<CrashlyticsExtension> {
+                mappingFileUploadEnabled = false
+            }
         }
     }
 
@@ -212,6 +229,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation(libs.firebase.analytics)
+    implementation(libs.firebase.crashlytics)
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
 }
