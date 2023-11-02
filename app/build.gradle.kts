@@ -2,26 +2,29 @@ import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    // Add the Google services Gradle plugin
+    alias(libs.plugins.google.services)
     alias(libs.plugins.ksp)
 }
 
 android {
-    compileSdk = rootProject.extra["compileSdkVersion"] as Int
-    buildToolsVersion = rootProject.extra["buildToolsVersion"] as String
-    ndkVersion = rootProject.extra["ndkVersion"] as String
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    buildToolsVersion = libs.versions.buildTools.get()
+    ndkVersion = libs.versions.ndk.get()
 
     namespace = "me.zhang.laboratory"
 
     defaultConfig {
-        minSdk = rootProject.extra["minSdkVersion"] as Int
-        targetSdk = rootProject.extra["targetSdkVersion"] as Int
-
         applicationId = "me.zhang.laboratory"
-        versionCode = rootProject.ext["versionCode"] as Int
-        versionName = rootProject.ext["versionName"] as String
+
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+
+        versionCode = libs.versions.versionCode.get().toInt()
+        versionName = libs.versions.versionName.get()
 
         ndk {
             /* 只需要64位的ABI */
@@ -56,7 +59,7 @@ android {
             signingConfig = signingConfigs.getByName("release")
 
             isMinifyEnabled = true
-            proguardFiles("proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
 
         // Build with ./gradlew app:installDebug -Pminify
@@ -65,7 +68,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
 
             isMinifyEnabled = minified
-            proguardFiles("proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
 
@@ -204,4 +207,11 @@ dependencies {
 
     implementation(libs.compose.constraintlayout)
     //endregion
+
+    // Import the Firebase BoM
+    implementation(platform(libs.firebase.bom))
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation(libs.firebase.analytics)
+    // Add the dependencies for any other desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
 }

@@ -26,6 +26,15 @@ kotlin = "1.9.10"
 composeBom = "2023.10.01"
 rxandroid = "3.0.2"
 rxjava = "3.1.8"
+googleServices = "4.4.0"
+
+compileSdk = "34"
+buildTools = "34.0.0"
+ndk = "25.1.8937393"
+minSdk = "21"
+targetSdk = "34"
+versionCode = "1"
+versionName = "1.0"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
@@ -75,6 +84,12 @@ converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", ve
 retrofit2 = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit2" }
 rxjava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxjava" }
 rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroid" }
+firebase-bom = "com.google.firebase:firebase-bom:32.5.0"
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 
 [plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

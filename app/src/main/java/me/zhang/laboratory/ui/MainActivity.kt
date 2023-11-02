@@ -14,6 +14,7 @@ import me.zhang.laboratory.ui.compose.SSOTActivity
 import me.zhang.laboratory.ui.compose.ScaffoldActivity
 import me.zhang.laboratory.ui.compose.StateActivity
 import me.zhang.laboratory.ui.compose.WebViewActivity
+import me.zhang.laboratory.ui.firebase.TestFirebaseActivity
 import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 
 class MainActivity : MenuActivity() {
@@ -55,5 +56,6 @@ class MainActivity : MenuActivity() {
         addMenuItem("Call JNI", JniActivity::class.java)
         addMenuItem("Room", RoomActivity::class.java)
         addMenuItem("Rx", RxActivity::class.java)
+        addMenuItem("Test Firebase", TestFirebaseActivity::class.java)
     }
 }
