@@ -8,10 +8,6 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-val keystorePropertiesFile = rootProject.file("app/keystore.properties")
-val keystoreProperties = Properties()
-keystoreProperties.load(FileInputStream(keystorePropertiesFile))
-
 android {
     compileSdk = rootProject.extra["compileSdkVersion"] as Int
     buildToolsVersion = rootProject.extra["buildToolsVersion"] as String
@@ -38,16 +34,26 @@ android {
 
     signingConfigs {
         getByName("debug") {
-            keyAlias = keystoreProperties["keyAlias"] as String
-            keyPassword = keystoreProperties["keyPassword"] as String
-            storeFile = file(keystoreProperties["storeFile"]!!)
-            storePassword = keystoreProperties["storePassword"] as String
+            val properties = getSigningConfigs("debug.properties")
+
+            keyAlias = properties["keyAlias"] as String
+            keyPassword = properties["keyPassword"] as String
+            storeFile = file(properties["storeFile"]!!)
+            storePassword = properties["storePassword"] as String
+        }
+        create("release") {
+            val properties = getSigningConfigs("release.properties")
+
+            keyAlias = properties["keyAlias"] as String
+            keyPassword = properties["keyPassword"] as String
+            storeFile = file(properties["storeFile"]!!)
+            storePassword = properties["storePassword"] as String
         }
     }
 
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
 
             isMinifyEnabled = true
             proguardFiles("proguard-rules.pro")
@@ -81,6 +87,12 @@ android {
         ndkBuild {
             path = file("src/main/cpp/Android.mk")
         }
+    }
+}
+
+fun getSigningConfigs(path: String): Properties {
+    return Properties().apply {
+        load(FileInputStream(project.file(path)))
     }
 }
 
