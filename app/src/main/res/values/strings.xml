@@ -17,5 +17,8 @@
     <string name="cd_media_thumbnail">Media Thumbnail</string>
     <string name="string_test">Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about.</string>
     <string name="msg_token_fmt">New token: %s</string>
+    <string name="fcm_channel_id">fcm</string>
+    <string name="fcm_channel_name">FCM</string>
+    <string name="channel_description">for FCM use only</string>
 
 </resources>

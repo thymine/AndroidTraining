@@ -1,9 +1,12 @@
 package me.zhang.laboratory
 
 import android.app.Application
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -32,11 +35,28 @@ class App : Application() {
         Firebase.messaging.isAutoInitEnabled = true
         FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(true)
         retrieveNewToken()
+        createFcmNotificationChannel()
 
         roomDb = databaseBuilder(applicationContext, AppDatabase::class.java, "room_db").build()
         nameFakeService = Retrofit.Builder().baseUrl("https://api.namefake.com/")
             .addConverterFactory(GsonConverterFactory.create()).build()
             .create(NameFakeService::class.java)
+    }
+
+    private fun createFcmNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Create the NotificationChannel.
+            val id = getString(R.string.fcm_channel_id)
+            val name = getString(R.string.fcm_channel_name)
+            val descriptionText = getString(R.string.channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(id, name, importance)
+            channel.description = descriptionText
+            // Register the channel with the system. You can't change the importance
+            // or other notification behaviors after this.
+            val nm = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+            nm.createNotificationChannel(channel)
+        }
     }
 
     private fun retrieveNewToken() {
