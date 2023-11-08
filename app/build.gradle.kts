@@ -120,6 +120,7 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     implementation(libs.lifecycle.extensions)
+    implementation(libs.firebase.messaging.ktx)
     testImplementation(libs.junit)
 
     implementation(libs.appcompat)

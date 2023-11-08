@@ -16,5 +16,6 @@
     <string name="tab_text">Tab %1$d</string>
     <string name="cd_media_thumbnail">Media Thumbnail</string>
     <string name="string_test">Reputation is a rough measurement of how much the community trusts you; it is earned by convincing your peers that you know what you’re talking about.</string>
+    <string name="msg_token_fmt">New token: %s</string>
 
 </resources>
