@@ -121,7 +121,9 @@ dependencies {
 
     implementation(libs.lifecycle.extensions)
     implementation(libs.firebase.messaging.ktx)
+
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
 
     implementation(libs.appcompat)
     implementation(libs.recyclerview)
