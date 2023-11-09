@@ -5,15 +5,11 @@ import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -29,10 +25,7 @@ class CoroutinesActivity : AppCompatActivity() {
     @Composable
     fun Main() {
         Box {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            Column {
                 val viewModel by viewModels<CoroutinesViewModel>()
                 Button(onClick = {
                     Toast.makeText(applicationContext, "Do fetching...", Toast.LENGTH_SHORT).show()
@@ -44,13 +37,26 @@ class CoroutinesActivity : AppCompatActivity() {
                 }) {
                     Text("Fetch Docs")
                 }
-                Text(text = "Hello, Coroutines!", modifier = Modifier.clickable {
+                Button(onClick = {
+                    Toast.makeText(applicationContext, "Do fetching...", Toast.LENGTH_SHORT).show()
                     lifecycleScope.launch {
                         repeatOnLifecycle(Lifecycle.State.STARTED) {
                             viewModel.fetchNews()
                         }
                     }
-                })
+                }) {
+                    Text("Fetch News")
+                }
+                Button(onClick = {
+                    Toast.makeText(applicationContext, "Do fetching...", Toast.LENGTH_SHORT).show()
+                    lifecycleScope.launch {
+                        repeatOnLifecycle(Lifecycle.State.STARTED) {
+                            viewModel.fetchJokes()
+                        }
+                    }
+                }) {
+                    Text("Fetch Jokes")
+                }
             }
         }
     }
