@@ -21,6 +21,13 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MySuperAppTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/g0</item>
+        <item name="colorPrimaryDark">@color/g1</item>
+        <item name="colorAccent">@color/g2</item>
+        <item name="colorSecondary">@color/g3</item>
+    </style>
+
     <!-- Font Style -->
 
 </resources>

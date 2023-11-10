@@ -13,4 +13,9 @@
     <color name="yellow">#ffe100</color>
     <color name="gray">#b3b3b3</color>
     <color name="black">#000000</color>
+
+    <color name="g0">#4285F4</color>
+    <color name="g1">#34A853</color>
+    <color name="g2">#FBBC05</color>
+    <color name="g3">#EA4335</color>
 </resources>

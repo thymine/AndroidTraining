@@ -5,6 +5,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
@@ -15,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
@@ -23,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.actionCodeSettings
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import me.zhang.laboratory.R
 
 private const val TAG = "SignActivity"
 
@@ -60,7 +65,8 @@ class SignActivity : AppCompatActivity() {
     @Composable
     fun Main() {
         Box {
-            Column {
+            val scrollableState = rememberScrollableState { 0f }
+            Column(Modifier.scrollable(scrollableState, Orientation.Vertical)) {
                 Button(onClick = {
                     // Choose authentication providers
                     val providers = arrayListOf(
@@ -75,6 +81,12 @@ class SignActivity : AppCompatActivity() {
                     val signInIntent = AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
+                        .setLogo(R.drawable.ic_google_light_normal_icon) // Set logo drawable
+                        .setTheme(R.style.MySuperAppTheme) // Set theme
+                        .setTosAndPrivacyPolicyUrls(
+                            "https://example.com/terms.html",
+                            "https://example.com/privacy.html",
+                        )
                         .build()
                     signInLauncher.launch(signInIntent)
                 }) {
