@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "883738537421-uvggcqo8dkkfcfd341ge26j74qgipacg.apps.googleusercontent.com",
+          "client_id": "883738537421-31i0df31o0nt6e78a8b6711l5s7b97iu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.zhang.laboratory",
+            "certificate_hash": "32c5493e0b4cb5e0ce9f59fc6bfd1a49fe3523ec"
+          }
+        },
+        {
+          "client_id": "883738537421-q1ohjsv59h54ktp4f9i0r7g7palni40p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
@@ -27,7 +35,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "883738537421-uvggcqo8dkkfcfd341ge26j74qgipacg.apps.googleusercontent.com",
+              "client_id": "883738537421-q1ohjsv59h54ktp4f9i0r7g7palni40p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

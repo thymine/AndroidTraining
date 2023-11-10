@@ -6,6 +6,7 @@ firebaseMessagingKtxVersion = "23.3.1"
 constraintlayout = "2.1.4"
 composeConstraintlayout = "1.0.1"
 appcompat = "1.6.1"
+firebaseUiAuthVersion = "7.2.0"
 guava = "31.1-jre"
 daggerVersion = "2.44.2"
 fragmentVersion = "1.6.2"
@@ -18,6 +19,7 @@ kotlinxCoroutinesTestVersion = "1.7.3"
 lifecycleExtensions = "2.2.0"
 lifecycleViewmodelCompose = "2.6.2"
 material = "1.10.0"
+playServicesAuthVersion = "20.7.0"
 recyclerview = "1.3.2"
 retrofit2 = "2.9.0"
 roomKtx = "2.6.0"
@@ -41,6 +43,7 @@ versionName = "1.0"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+firebase-ui-auth = { module = "com.firebaseui:firebase-ui-auth", version.ref = "firebaseUiAuthVersion" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlin-stdlib-jdk7 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk7", version.ref = "kotlinStdlibJdk7" }
@@ -57,6 +60,7 @@ core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
+play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuthVersion" }
 recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintlayout" }
@@ -91,6 +95,7 @@ rxandroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxandroi
 firebase-bom = "com.google.firebase:firebase-bom:32.5.0"
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
+firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-messaging-ktx = { group = "com.google.firebase", name = "firebase-messaging-ktx", version.ref = "firebaseMessagingKtxVersion" }
 
 [plugins]

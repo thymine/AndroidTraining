@@ -1,5 +1,6 @@
 package me.zhang.laboratory.ui.firebase
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -67,6 +68,16 @@ class TestFirebaseActivity : AppCompatActivity() {
                         }
                 }) {
                     Text("Subscribe weather topic")
+                }
+                Button(onClick = {
+                    startActivity(
+                        Intent(
+                            this@TestFirebaseActivity,
+                            SignActivity::class.java
+                        )
+                    )
+                }) {
+                    Text("Sign")
                 }
             }
         }
