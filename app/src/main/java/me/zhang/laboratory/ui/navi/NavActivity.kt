@@ -1,6 +1,7 @@
 package me.zhang.laboratory.ui.navi
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
@@ -12,59 +13,58 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import me.zhang.laboratory.R
 
 class NavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_navi)
-//        setContent {
-//            MyAppNavHost()
-//        }
+//        setContentView(R.layout.activity_navi)
+        setContent {
+            MyAppNavHost()
+        }
     }
 
     @Composable
     private fun MyAppNavHost(
         modifier: Modifier = Modifier,
         navController: NavHostController = rememberNavController(),
-        startDestination: String = "destination_a"
+        startDestination: String = NavRoutes.A
     ) {
         NavHost(
             modifier = modifier,
             navController = navController,
             startDestination = startDestination
         ) {
-            composable("destination_a") {
+            composable(NavRoutes.A) {
                 DestinationA(
                     onNavigateToB = {
-                        // Navigate to the "destination_b" destination
-                        navController.navigate("destination_b")
+                        // Navigate to the "b" destination
+                        navController.navigate(NavRoutes.B)
                     },
                 )
             }
-            composable("destination_b") {
+            composable(NavRoutes.B) {
                 DestinationB(onNavigateToC = {
-                    // Navigate to the "destination_c" destination
-                    navController.navigate("destination_c")
+                    // Navigate to the "c" destination
+                    navController.navigate(NavRoutes.C)
                 })
             }
-            composable("destination_c") {
+            composable(NavRoutes.C) {
                 DestinationC(onNavigateToD = {
-                    // Pop everything up to the "destination_a" destination off the back stack before
-                    // navigating to the "destination_d" destination
-                    navController.navigate("destination_d") {
-                        popUpTo("destination_a") {
+                    // Pop everything up to the "a" destination off the back stack before
+                    // navigating to the "d" destination
+                    navController.navigate(NavRoutes.D) {
+                        popUpTo(NavRoutes.A) {
                             inclusive = true
                             saveState = true
                         }
                     }
                 }, onNavigateBackToA = {
-                    // Navigate back to the "destination_a" destination
-                    navController.popBackStack("destination_a", false)
+                    // Navigate back to the "a" destination
+                    navController.popBackStack(NavRoutes.A, false)
 //                    navController.popBackStack(R.id.AFragment, false) // Not work!
                 })
             }
-            composable("destination_d") { DestinationD(/* ... */) }
+            composable(NavRoutes.D) { DestinationD(/* ... */) }
         }
     }
 
@@ -111,4 +111,11 @@ class NavActivity : AppCompatActivity() {
     fun PreviewMyAppNavHost() {
         MyAppNavHost()
     }
+}
+
+object NavRoutes {
+    const val A = "a"
+    const val B = "b"
+    const val C = "c"
+    const val D = "d"
 }
