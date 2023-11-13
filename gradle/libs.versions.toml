@@ -27,6 +27,7 @@ roomCompiler = "2.6.0"
 roomRuntime = "2.6.0"
 ksp = "1.9.10-1.0.13"
 kotlin = "1.9.10"
+navVersion = "2.7.5"
 composeBom = "2023.10.01"
 rxandroid = "3.0.2"
 rxjava = "3.1.8"
@@ -40,9 +41,16 @@ minSdk = "21"
 targetSdk = "34"
 versionCode = "1"
 versionName = "1.0"
+junitVersion = "1.1.5"
+espressoCoreVersion = "3.5.1"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navVersion" }
+androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navVersion" }
+androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navVersion" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navVersion" }
+navigation-safe-args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navVersion" }
 firebase-ui-auth = { module = "com.firebaseui:firebase-ui-auth", version.ref = "firebaseUiAuthVersion" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -60,6 +68,9 @@ core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 flexbox = { module = "com.google.android.flexbox:flexbox", version.ref = "flexbox" }
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navVersion" }
+navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navVersion" }
+navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navVersion" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuthVersion" }
 recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
@@ -97,6 +108,8 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-messaging-ktx = { group = "com.google.firebase", name = "firebase-messaging-ktx", version.ref = "firebaseMessagingKtxVersion" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCoreVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
@@ -105,3 +118,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-services = { id = "com.google.gms.google-services", version.ref = "googleServicesPlugin" }
 crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "crashlyticsPlugin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+safeargs-kotlin = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion" }

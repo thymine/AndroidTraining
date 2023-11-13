@@ -25,3 +25,6 @@ dependencyResolutionManagement {
 rootProject.name = "Laboratory"
 
 include(":app")
+include(":feature:foryou")
+include(":feature:topic")
+include(":feature:sample")

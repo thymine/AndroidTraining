@@ -27,6 +27,7 @@ import me.zhang.laboratory.ui.compose.WebViewActivity
 import me.zhang.laboratory.ui.coroutines.CoroutinesActivity
 import me.zhang.laboratory.ui.firebase.TestFirebaseActivity
 import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
+import me.zhang.laboratory.ui.navi.NavActivity
 
 
 class MainActivity : MenuActivity() {
@@ -88,6 +89,7 @@ class MainActivity : MenuActivity() {
     }
 
     override fun prepareMenu() {
+        addMenuItem("Navigation", NavActivity::class.java)
         addMenuItem("Coroutines", CoroutinesActivity::class.java)
         addMenuItem("Compose-Animate", AnimateActivity::class.java)
         addMenuItem("Compose-Draw", DrawActivity::class.java)

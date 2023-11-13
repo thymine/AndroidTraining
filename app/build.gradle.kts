@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    alias(libs.plugins.safeargs.kotlin)
     // Add the Google services Gradle plugin
     alias(libs.plugins.google.services)
     // Add the Crashlytics Gradle plugin
@@ -95,6 +96,7 @@ android {
     }
 
     buildFeatures {
+        dataBinding = true
         viewBinding = true
         compose = true
     }
@@ -118,6 +120,10 @@ fun getSigningConfigs(path: String): Properties {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    implementation(project(":feature:sample"))
+    implementation(project(":feature:topic"))
+    implementation(project(":feature:foryou"))
 
     implementation(libs.lifecycle.extensions)
     implementation(libs.firebase.messaging.ktx)
@@ -244,4 +250,23 @@ dependencies {
 
     // Also add the dependency for the Google Play services library and specify its version
     implementation(libs.play.services.auth)
+
+    //region Navigation
+    // Java language implementation
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+
+    // Kotlin
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    // Feature module Support
+    implementation(libs.androidx.navigation.dynamic.features.fragment)
+
+    // Testing Navigation
+    androidTestImplementation(libs.androidx.navigation.testing)
+
+    // Jetpack Compose Integration
+    implementation(libs.androidx.navigation.compose)
+    //endregion
 }
