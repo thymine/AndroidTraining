@@ -52,6 +52,12 @@ class BFragment : Fragment() {
                 }) {
                     Text(text = "Jump to C")
                 }
+                Button(onClick = {
+                    // findNavController().navigate(R.id.action_global_AFragment)
+                    findNavController().navigate(BFragmentDirections.actionGlobalAFragment())
+                }) {
+                    Text(text = "Back to A")
+                }
             }
         }
     }

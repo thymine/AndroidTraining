@@ -78,4 +78,7 @@
             app:destination="@id/nav_graph_sample" />
     </fragment>
     <include app:graph="@navigation/nav_graph_sample" />
+    <action
+        android:id="@+id/action_global_AFragment"
+        app:destination="@id/AFragment" />
 </navigation>
