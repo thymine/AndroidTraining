@@ -15,7 +15,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import me.zhang.laboratory.R
 import me.zhang.laboratory.databinding.FragmentABinding
 import me.zhang.laboratory.ui.compose.DarkLightMaterialTheme
 import me.zhang.laboratory.ui.compose.PreviewDarkLight
@@ -24,6 +26,8 @@ class AFragment : Fragment() {
 
     private var _binding: FragmentABinding? = null
     private val binding get() = _binding
+
+    private val navViewModel: NavViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,16 +64,30 @@ class AFragment : Fragment() {
                 }, value = text, onValueChange = { text = it })
 
                 Button(onClick = {
-                    // findNavController().navigate(R.id.action_AFragment_to_BFragment)
-                    findNavController().navigate(AFragmentDirections.actionAFragmentToBFragment())
+                    findNavController().navigate(R.id.action_AFragment_to_BFragment)
                 }) {
-                    Text(text = "Jump to B")
+                    Text(text = "Jump to B (id)")
                 }
 
                 Button(onClick = {
-                    findNavController().navigate("b/123?name=zhang&age=31")
+                    // findNavController().navigate(R.id.action_AFragment_to_BFragment)
+                    findNavController().navigate(AFragmentDirections.actionAFragmentToBFragment())
                 }) {
-                    Text(text = "Jump to B (Dsl)")
+                    Text(text = "Jump to B (Directions)")
+                }
+
+                Button(onClick = {
+                    findNavController().navigate(getString(R.string.route_fragment_b))
+                }) {
+                    Text(text = "Jump to B (route)")
+                }
+
+                if (navViewModel.dslEnabled.value == true) {
+                    Button(onClick = {
+                        findNavController().navigate("b/123?name=zhang&age=31")
+                    }) {
+                        Text(text = "Jump to B (Dsl)")
+                    }
                 }
 
                 Button(onClick = {

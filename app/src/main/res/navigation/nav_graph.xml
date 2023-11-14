@@ -20,12 +20,13 @@
         <deepLink
             app:action="android.intent.action.A_ACTION"
             app:mimeType="a/a"
-            app:uri="android-lab://zhang.me/users/{id}?name={name}&amp;age={age}" />
+            app:uri="android-lab://zhang.me/a/{id}?name={name}&amp;age={age}" />
     </fragment>
     <fragment
         android:id="@+id/BFragment"
         android:name="me.zhang.laboratory.ui.navi.BFragment"
         android:label="fragment_b"
+        app:route="@string/route_fragment_b"
         tools:layout="@layout/fragment_b">
         <action
             android:id="@+id/action_BFragment_to_CFragment"
@@ -37,7 +38,7 @@
         <deepLink
             app:action="android.intent.action.B_ACTION"
             app:mimeType="b/b"
-            app:uri="android-lab://zhang.me/users/{id}?arg1={arg1}&amp;arg2={arg2}" />
+            app:uri="android-lab://zhang.me/b/{id}?name={name}&amp;age={age}" />
     </fragment>
     <fragment
         android:id="@+id/CFragment"

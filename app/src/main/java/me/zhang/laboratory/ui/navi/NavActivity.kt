@@ -1,6 +1,8 @@
 package me.zhang.laboratory.ui.navi
 
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Button
@@ -19,11 +21,21 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.fragment
 import me.zhang.laboratory.R
 
+private const val TAG = "NavActivity"
+
 class NavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navi)
 
+//        initNavGraph()
+
+//        setContent { MyAppNavHost() }
+    }
+
+    private fun initNavGraph() {
+        val viewModel by viewModels<NavViewModel>()
+        viewModel.setDslEnabled(true)
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
@@ -36,7 +48,7 @@ class NavActivity : AppCompatActivity() {
                     label = resources.getString(R.string.b)
                     deepLink {
                         uriPattern =
-                            "android-lab://zhang.me/${NavRoutes.B}/{${NavArguments.ID}}?${NavArguments.NAME}={${NavArguments.NAME}}&${NavArguments.AGE}={${NavArguments.AGE}}"
+                            "${NavRoutes.URI}/${NavRoutes.B}/{${NavArguments.ID}}?${NavArguments.NAME}={${NavArguments.NAME}}&${NavArguments.AGE}={${NavArguments.AGE}}"
                         action = "android.intent.action.B_ACTION"
                         mimeType = "b/b"
                     }
@@ -63,10 +75,6 @@ class NavActivity : AppCompatActivity() {
                     activityClass = XActivity::class
                 }
             }
-
-//        setContent {
-//            MyAppNavHost()
-//        }
     }
 
     @Composable
@@ -110,7 +118,16 @@ class NavActivity : AppCompatActivity() {
 //                    navController.popBackStack(R.id.AFragment, false) // Not work!
                 })
             }
-            composable(NavRoutes.D) { DestinationD(/* ... */) }
+            // Warning: Don't pass your NavController to your composables.
+            // Expose an event.
+            // composable(NavRoutes.D) { DestinationD2(navController) }
+            composable(NavRoutes.D) {
+                DestinationD(onNavigateToE = {
+                    // Navigate to the "e" destination
+                    navController.navigate(NavRoutes.E)
+                })
+            }
+            composable(NavRoutes.E) { DestinationE(/* ... */) }
         }
     }
 
@@ -148,8 +165,33 @@ class NavActivity : AppCompatActivity() {
     }
 
     @Composable
-    private fun DestinationD() {
-        Text("D")
+    private fun DestinationD(onNavigateToE: () -> Unit) {
+        Column {
+            Text("D")
+            Button(onClick = onNavigateToE) {
+                Text(text = "Jump to E")
+            }
+        }
+    }
+
+    @Composable
+    private fun DestinationD2(navController: NavHostController) {
+        Column {
+            Text("D")
+            // Warning: You should only call navigate() as part of a callback and not as part of your composable itself.
+            // This avoids calling navigate() on every recomposition.
+            Button(onClick = {
+                Log.d(TAG, "DestinationD: navigate(NavRoutes.E)")
+                navController.navigate(NavRoutes.E)
+            }) {
+                Text(text = "Jump to E")
+            }
+        }
+    }
+
+    @Composable
+    private fun DestinationE() {
+        Text("E")
     }
 
     @Preview(showSystemUi = true)
@@ -160,10 +202,13 @@ class NavActivity : AppCompatActivity() {
 }
 
 object NavRoutes {
+    const val URI = "android-lab://zhang.me"
+
     const val A = "a"
     const val B = "b"
     const val C = "c"
     const val D = "d"
+    const val E = "e"
     const val X = "x"
 }
 

@@ -62,14 +62,14 @@ class CFragment : Fragment() {
                 }
                 Button(onClick = {
                     val request = NavDeepLinkRequest.Builder
-                        .fromUri("android-lab://zhang.me/b/101?${NavArguments.NAME}=zhang&${NavArguments.AGE}=31".toUri())
-                        .setAction("android.intent.action.A_ACTION")
+                        .fromUri("${NavRoutes.URI}/${NavRoutes.B}/101?${NavArguments.NAME}=zhang&${NavArguments.AGE}=31".toUri())
+                        .setAction("android.intent.action.B_ACTION")
                         .setMimeType("b/b")
                         .build()
-                    findNavController().navigate(
-                        request,
-                        navOptions(optionsBuilder = {})
-                    )
+                    findNavController().navigate(request, navOptions(optionsBuilder = {
+                        popUpTo("fragment_b", popUpToBuilder = { inclusive = true })
+                        // popUpTo(R.id.BFragment, popUpToBuilder = { inclusive = true })
+                    }))
                 }) {
                     Text(text = "Back to B (Deep Link)")
                 }

@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import me.zhang.laboratory.databinding.FragmentBBinding
 import me.zhang.laboratory.ui.compose.DarkLightMaterialTheme
@@ -19,6 +20,7 @@ import me.zhang.laboratory.ui.navi.BFragmentDirections.Companion.actionBFragment
 class BFragment : Fragment() {
     private var _binding: FragmentBBinding? = null
     private val binding get() = _binding
+    private val navViewModel: NavViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,20 +49,20 @@ class BFragment : Fragment() {
             Column {
                 Text(text = "Current: B")
 
-                val id =
-                    findNavController().currentBackStackEntry?.arguments?.getInt(NavArguments.ID)
-                if (id?.compareTo(0) != 0) {
+                //region Extract arguments
+                val id = arguments?.getString(NavArguments.ID) ?: ""
+                if (id != "") {
                     Text(text = "ID: $id")
                 }
-                val name = arguments?.getString(NavArguments.NAME)
-                if (name != null) {
+                val name = arguments?.getString(NavArguments.NAME) ?: ""
+                if (name != "") {
                     Text(text = "NAME: $name")
                 }
-                val age =
-                    findNavController().currentBackStackEntry?.arguments?.getInt(NavArguments.AGE)
-                if (age?.compareTo(0) != 0) {
+                val age = arguments?.getString(NavArguments.AGE) ?: ""
+                if (age != "") {
                     Text(text = "AGE: $age")
                 }
+                //endregion
 
                 Button(onClick = {
                     // findNavController().navigate(R.id.action_BFragment_to_CFragment)
@@ -69,10 +71,12 @@ class BFragment : Fragment() {
                     Text(text = "Jump to C")
                 }
 
-                Button(onClick = {
-                    findNavController().navigate(NavRoutes.C)
-                }) {
-                    Text(text = "Jump to C (Dsl)")
+                if (navViewModel.dslEnabled.value == true) {
+                    Button(onClick = {
+                        findNavController().navigate(NavRoutes.C)
+                    }) {
+                        Text(text = "Jump to C (Dsl)")
+                    }
                 }
 
                 Button(onClick = {
@@ -82,10 +86,12 @@ class BFragment : Fragment() {
                     Text(text = "Back to A")
                 }
 
-                Button(onClick = {
-                    findNavController().navigate(NavRoutes.A)
-                }) {
-                    Text(text = "Back to A (Dsl)")
+                if (navViewModel.dslEnabled.value == true) {
+                    Button(onClick = {
+                        findNavController().navigate(NavRoutes.A)
+                    }) {
+                        Text(text = "Back to A (Dsl)")
+                    }
                 }
             }
         }

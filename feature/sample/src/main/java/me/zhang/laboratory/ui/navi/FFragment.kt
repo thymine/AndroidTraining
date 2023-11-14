@@ -52,7 +52,7 @@ class FFragment : Fragment() {
                 Button(onClick = {
                     // findNavController().popBackStack(R.id.AFragment, false) // how to go back to AFragment?
                     val request = NavDeepLinkRequest.Builder
-                        .fromUri("android-lab://zhang.me/users/1?name=zhang&age=31".toUri())
+                        .fromUri("android-lab://zhang.me/a/1?name=zhang&age=31".toUri())
                         .setAction("android.intent.action.A_ACTION")
                         .setMimeType("a/a")
                         .build()
