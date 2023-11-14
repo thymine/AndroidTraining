@@ -17,6 +17,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy.DisposeOnViewTreeLif
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import me.zhang.laboratory.R
 import me.zhang.laboratory.databinding.FragmentABinding
 import me.zhang.laboratory.ui.compose.DarkLightMaterialTheme
@@ -64,7 +65,17 @@ class AFragment : Fragment() {
                 }, value = text, onValueChange = { text = it })
 
                 Button(onClick = {
-                    findNavController().navigate(R.id.action_AFragment_to_BFragment)
+                    findNavController().navigate(
+                        R.id.action_AFragment_to_BFragment,
+                        null,
+                        navOptions {
+                            anim {
+                                enter = R.anim.nav_enter
+                                exit = R.anim.nav_exit
+                                popEnter = R.anim.nav_pop_enter
+                                popExit = R.anim.nav_pop_exit
+                            }
+                        })
                 }) {
                     Text(text = "Jump to B (id)")
                 }

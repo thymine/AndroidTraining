@@ -1,7 +1,6 @@
 package me.zhang.laboratory.ui.navi
 
 import android.os.Bundle
-import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavType
@@ -11,16 +10,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.fragment
 import me.zhang.laboratory.R
 
-private const val TAG = "NavActivity"
-
 class NavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_navi)
+        setContentView(R.layout.activity_navi)
 
 //        initNavGraph()
 
-        setContent { MyAppNavHost() }
+//        setContent { MyAppNavHost() }
     }
 
     private fun initNavGraph() {
