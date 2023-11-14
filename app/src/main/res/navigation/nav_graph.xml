@@ -13,10 +13,10 @@
         <action
             android:id="@+id/action_AFragment_to_BFragment"
             app:destination="@id/BFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
         <deepLink
             app:action="android.intent.action.A_ACTION"
             app:mimeType="a/a"
@@ -31,10 +31,10 @@
         <action
             android:id="@+id/action_BFragment_to_CFragment"
             app:destination="@id/CFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
         <deepLink
             app:action="android.intent.action.B_ACTION"
             app:mimeType="b/b"
@@ -48,19 +48,19 @@
         <action
             android:id="@+id/action_CFragment_to_AFragment"
             app:destination="@id/AFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
         <!-- https://developer.android.com/guide/navigation/backstack#pop -->
         <!-- To remove destinations from the back stack when navigating from one destination to another -->
         <action
             android:id="@+id/action_CFragment_to_DFragment"
             app:destination="@id/DFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit"
             app:popUpTo="@id/AFragment"
             app:popUpToInclusive="true"
             app:popUpToSaveState="true" />
@@ -69,10 +69,10 @@
         android:id="@+id/DFragment"
         android:name="me.zhang.laboratory.ui.navi.DFragment"
         android:label="DFragment"
-        app:enterAnim="@anim/nav_default_enter_anim"
-        app:exitAnim="@anim/nav_default_exit_anim"
-        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim"
+        app:enterAnim="@anim/nav_enter"
+        app:exitAnim="@anim/nav_exit"
+        app:popEnterAnim="@anim/nav_pop_enter"
+        app:popExitAnim="@anim/nav_pop_exit"
         tools:layout="@layout/fragment_d">
         <action
             android:id="@+id/action_DFragment_to_nav_graph_sample"
