@@ -9,8 +9,11 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import me.zhang.laboratory.R
 import me.zhang.laboratory.databinding.FragmentCBinding
 import me.zhang.laboratory.ui.compose.DarkLightMaterialTheme
@@ -56,6 +59,19 @@ class CFragment : Fragment() {
                     findNavController().navigate(CFragmentDirections.actionCFragmentToDFragment())
                 }) {
                     Text(text = "Jump to D")
+                }
+                Button(onClick = {
+                    val request = NavDeepLinkRequest.Builder
+                        .fromUri("android-lab://zhang.me/b/101?${NavArguments.NAME}=zhang&${NavArguments.AGE}=31".toUri())
+                        .setAction("android.intent.action.A_ACTION")
+                        .setMimeType("b/b")
+                        .build()
+                    findNavController().navigate(
+                        request,
+                        navOptions(optionsBuilder = {})
+                    )
+                }) {
+                    Text(text = "Back to B (Deep Link)")
                 }
             }
         }

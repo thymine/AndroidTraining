@@ -46,17 +46,46 @@ class BFragment : Fragment() {
         DarkLightMaterialTheme {
             Column {
                 Text(text = "Current: B")
+
+                val id =
+                    findNavController().currentBackStackEntry?.arguments?.getInt(NavArguments.ID)
+                if (id?.compareTo(0) != 0) {
+                    Text(text = "ID: $id")
+                }
+                val name = arguments?.getString(NavArguments.NAME)
+                if (name != null) {
+                    Text(text = "NAME: $name")
+                }
+                val age =
+                    findNavController().currentBackStackEntry?.arguments?.getInt(NavArguments.AGE)
+                if (age?.compareTo(0) != 0) {
+                    Text(text = "AGE: $age")
+                }
+
                 Button(onClick = {
                     // findNavController().navigate(R.id.action_BFragment_to_CFragment)
                     findNavController().navigate(actionBFragmentToCFragment())
                 }) {
                     Text(text = "Jump to C")
                 }
+
+                Button(onClick = {
+                    findNavController().navigate(NavRoutes.C)
+                }) {
+                    Text(text = "Jump to C (Dsl)")
+                }
+
                 Button(onClick = {
                     // findNavController().navigate(R.id.action_global_AFragment)
                     findNavController().navigate(BFragmentDirections.actionGlobalAFragment())
                 }) {
                     Text(text = "Back to A")
+                }
+
+                Button(onClick = {
+                    findNavController().navigate(NavRoutes.A)
+                }) {
+                    Text(text = "Back to A (Dsl)")
                 }
             }
         }

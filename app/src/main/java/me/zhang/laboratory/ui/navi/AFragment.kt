@@ -51,17 +51,31 @@ class AFragment : Fragment() {
         DarkLightMaterialTheme {
             Column {
                 Text(text = "Current: A")
+
                 var text by rememberSaveable {
                     mutableStateOf("")
                 }
                 OutlinedTextField(label = {
                     Text(text = "测试数据状态")
                 }, value = text, onValueChange = { text = it })
+
                 Button(onClick = {
                     // findNavController().navigate(R.id.action_AFragment_to_BFragment)
                     findNavController().navigate(AFragmentDirections.actionAFragmentToBFragment())
                 }) {
                     Text(text = "Jump to B")
+                }
+
+                Button(onClick = {
+                    findNavController().navigate("b/123?name=zhang&age=31")
+                }) {
+                    Text(text = "Jump to B (Dsl)")
+                }
+
+                Button(onClick = {
+                    findNavController().navigate(NavRoutes.X)
+                }) {
+                    Text(text = "Jump to X (Activity)")
                 }
             }
         }

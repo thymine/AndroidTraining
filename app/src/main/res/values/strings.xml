@@ -20,5 +20,10 @@
     <string name="fcm_channel_id">fcm</string>
     <string name="fcm_channel_name">FCM</string>
     <string name="channel_description">for FCM use only</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="x">X</string>
 
 </resources>
