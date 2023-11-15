@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+    id("org.jetbrains.kotlin.kapt")
     alias(libs.plugins.safeargs.kotlin)
     // Add the Google services Gradle plugin
     alias(libs.plugins.google.services)
