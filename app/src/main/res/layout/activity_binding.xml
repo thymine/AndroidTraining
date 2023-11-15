@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewModel.onClickUser(viewModel.user)}"
-            android:text="@{`主页面：` + viewModel.user.name + `: ` + viewModel.user.age}"
+            android:text="@{`主页面：` + viewModel.user.name + `: ` + viewModel.user.age + `/` + viewModel.user.skills}"
             android:visibility="@{!TextUtils.isEmpty(viewModel.user.name) &amp;&amp; viewModel.user.age > 0 ? View.VISIBLE: View.GONE}"
             tools:text="主页面" />
 
