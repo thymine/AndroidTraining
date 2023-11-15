@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="me.zhang.laboratory.ui.databinding.User" />
+
+        <import type="android.text.TextUtils" />
+
+        <import
+            alias="UserViewModel"
+            type="me.zhang.laboratory.ui.databinding.UserViewModel" />
+
+        <variable
+            name="viewModel"
+            type="UserViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.databinding.DataBindingActivity">
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.onClickUser(viewModel.user)}"
+            android:text="@{`主页面：` + viewModel.user.name + `: ` + viewModel.user.age}"
+            android:visibility="@{!TextUtils.isEmpty(viewModel.user.name) &amp;&amp; viewModel.user.age > 0 ? View.VISIBLE: View.GONE}"
+            tools:text="主页面" />
+
+        <include
+            layout="@layout/sub_binding"
+            bind:viewModel="@{viewModel}" />
+
+    </LinearLayout>
+
+</layout>

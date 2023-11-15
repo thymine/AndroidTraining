@@ -25,6 +25,7 @@ import me.zhang.laboratory.ui.compose.ScaffoldActivity
 import me.zhang.laboratory.ui.compose.StateActivity
 import me.zhang.laboratory.ui.compose.WebViewActivity
 import me.zhang.laboratory.ui.coroutines.CoroutinesActivity
+import me.zhang.laboratory.ui.databinding.DataBindingActivity
 import me.zhang.laboratory.ui.firebase.TestFirebaseActivity
 import me.zhang.laboratory.ui.mediastore.QueryMediaCollectionActivity
 import me.zhang.laboratory.ui.navi.NavActivity
@@ -89,6 +90,7 @@ class MainActivity : MenuActivity() {
     }
 
     override fun prepareMenu() {
+        addMenuItem("Data Binding", DataBindingActivity::class.java)
         addMenuItem("Navigation", NavActivity::class.java)
         addMenuItem("Coroutines", CoroutinesActivity::class.java)
         addMenuItem("Compose-Animate", AnimateActivity::class.java)

@@ -2,7 +2,7 @@ pluginManagement {
     repositories {
         maven { url = uri("$rootProject.rootDir/.local") }
         mavenLocal()
-        maven { url = uri("https://android3.weizhipin.com/nexus/repository/public/") }
+//        maven { url = uri("https://android3.weizhipin.com/nexus/repository/public/") }
 
         gradlePluginPortal()
         mavenCentral()
@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     repositories {
         maven { url = uri("$rootProject.rootDir/.local") }
         mavenLocal()
-        maven { url = uri("https://android3.weizhipin.com/nexus/repository/public/") }
+//        maven { url = uri("https://android3.weizhipin.com/nexus/repository/public/") }
 
         mavenCentral()
         google()
