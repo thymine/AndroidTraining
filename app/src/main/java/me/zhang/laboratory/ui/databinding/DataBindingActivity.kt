@@ -14,6 +14,7 @@ class DataBindingActivity : AppCompatActivity() {
         val binding =
             DataBindingUtil.setContentView<ActivityBindingBinding>(this, R.layout.activity_binding)
         val userViewModel by viewModels<UserViewModel>()
+        userViewModel.setUser(name = "Zhang", age = 31)
         binding.viewModel = userViewModel
     }
 }
