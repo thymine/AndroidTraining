@@ -3,7 +3,7 @@
     xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
+    <data class="ActivityBinding">
 
         <import type="android.view.View" />
 
