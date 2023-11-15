@@ -17,5 +17,6 @@ class DataBindingActivity : AppCompatActivity() {
         userViewModel.setUser(name = "Zhang", age = 31, arrayListOf("Coding", "Cooking", "Surfing"))
         userViewModel.setAccount(username = "zhang", password = "123456")
         binding.viewModel = userViewModel
+        binding.lifecycleOwner = this
     }
 }

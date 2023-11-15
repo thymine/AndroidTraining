@@ -7,6 +7,9 @@ import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 
 class UserViewModel : ViewModel() {
     private val _user = User()
@@ -14,6 +17,15 @@ class UserViewModel : ViewModel() {
 
     private val _account = Account()
     val account = _account
+
+    private val _repo = MutableStateFlow(Repo("demo", "demo repo desc..."))
+    val repo = _repo
+
+    init {
+        viewModelScope.launch {
+            _repo.value = Repository.loadRepo()
+        }
+    }
 
     fun setUser(name: String, age: Int, skills: ArrayList<String>) {
         _user.name.set(name)
@@ -53,3 +65,5 @@ class Account : BaseObservable() {
             notifyPropertyChanged(BR.password)
         }
 }
+
+data class Repo(val name: String, val description: String)
