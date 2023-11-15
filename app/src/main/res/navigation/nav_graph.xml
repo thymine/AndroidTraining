@@ -39,6 +39,19 @@
             app:action="android.intent.action.B_ACTION"
             app:mimeType="b/b"
             app:uri="android-lab://zhang.me/b/{id}?name={name}&amp;age={age}" />
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            android:defaultValue="@null"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="age"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/CFragment"
@@ -69,17 +82,31 @@
         android:id="@+id/DFragment"
         android:name="me.zhang.laboratory.ui.navi.DFragment"
         android:label="DFragment"
-        app:enterAnim="@anim/nav_enter"
-        app:exitAnim="@anim/nav_exit"
-        app:popEnterAnim="@anim/nav_pop_enter"
-        app:popExitAnim="@anim/nav_pop_exit"
         tools:layout="@layout/fragment_d">
         <action
             android:id="@+id/action_DFragment_to_nav_graph_sample"
-            app:destination="@id/nav_graph_sample" />
+            app:destination="@id/nav_graph_sample"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
     </fragment>
     <include app:graph="@navigation/nav_graph_sample" />
     <action
         android:id="@+id/action_global_AFragment"
-        app:destination="@id/AFragment" />
+        app:destination="@id/AFragment">
+        <argument
+            android:name="id"
+            android:defaultValue="7"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            android:defaultValue="X"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="age"
+            android:defaultValue="106"
+            app:argType="integer" />
+    </action>
 </navigation>

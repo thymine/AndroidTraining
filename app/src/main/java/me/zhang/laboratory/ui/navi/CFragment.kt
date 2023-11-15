@@ -68,6 +68,12 @@ class CFragment : Fragment() {
                         .build()
                     findNavController().navigate(request, navOptions(optionsBuilder = {
                         popUpTo("fragment_b", popUpToBuilder = { inclusive = true })
+                        anim {
+                            enter = R.anim.nav_pop_enter
+                            exit = R.anim.nav_pop_exit
+                            popEnter = R.anim.nav_enter
+                            popExit = R.anim.nav_exit
+                        }
                         // popUpTo(R.id.BFragment, popUpToBuilder = { inclusive = true })
                     }))
                 }) {

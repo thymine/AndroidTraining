@@ -1,23 +1,36 @@
 package me.zhang.laboratory.ui.navi
 
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.activity.viewModels
+import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.navigation.NavType
 import androidx.navigation.activity
 import androidx.navigation.createGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.fragment
 import me.zhang.laboratory.R
+import java.io.Serializable
 
 class NavActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_navi)
+        setContentView()
 
 //        initNavGraph()
 
 //        setContent { MyAppNavHost() }
+    }
+
+    private fun setContentView() {
+        setContentView(R.layout.activity_navi)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
+        val navController = navHostFragment.navController
+        val startDestinationArgs = bundleOf("id" to 333, "name" to "xCrash", "age" to 6)
+        navController.setGraph(R.navigation.nav_graph, startDestinationArgs)
     }
 
     private fun initNavGraph() {
@@ -81,3 +94,12 @@ object NavArguments {
     const val NAME = "name"
     const val AGE = "age"
 }
+
+@Keep
+interface ParcelableArg : Parcelable {}
+
+@Keep
+class SerializableArg : Serializable {}
+
+@Keep
+enum class EnumArg {}

@@ -12,15 +12,16 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import me.zhang.laboratory.databinding.FragmentBBinding
 import me.zhang.laboratory.ui.compose.DarkLightMaterialTheme
 import me.zhang.laboratory.ui.compose.PreviewDarkLight
-import me.zhang.laboratory.ui.navi.BFragmentDirections.Companion.actionBFragmentToCFragment
 
 class BFragment : Fragment() {
     private var _binding: FragmentBBinding? = null
     private val binding get() = _binding
     private val navViewModel: NavViewModel by activityViewModels()
+    private val args: BFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,23 +51,35 @@ class BFragment : Fragment() {
                 Text(text = "Current: B")
 
                 //region Extract arguments
-                val id = arguments?.getString(NavArguments.ID) ?: ""
-                if (id != "") {
+                val id = arguments?.getInt(NavArguments.ID) ?: 0
+                if (id != 0) {
                     Text(text = "ID: $id")
                 }
-                val name = arguments?.getString(NavArguments.NAME) ?: ""
-                if (name != "") {
+                val name = arguments?.getString(NavArguments.NAME)
+                if (name != null) {
                     Text(text = "NAME: $name")
                 }
-                val age = arguments?.getString(NavArguments.AGE) ?: ""
-                if (age != "") {
+                val age = arguments?.getInt(NavArguments.AGE) ?: 0
+                if (age != 0) {
                     Text(text = "AGE: $age")
+                }
+                //endregion
+
+                //region Extract arguments
+                if (args.id != 0) {
+                    Text(text = "ID: ${args.id}")
+                }
+                if (args.name != null) {
+                    Text(text = "NAME: ${args.name}")
+                }
+                if (args.age != 0) {
+                    Text(text = "AGE: ${args.age}")
                 }
                 //endregion
 
                 Button(onClick = {
                     // findNavController().navigate(R.id.action_BFragment_to_CFragment)
-                    findNavController().navigate(actionBFragmentToCFragment())
+                    findNavController().navigate(BFragmentDirections.actionBFragmentToCFragment())
                 }) {
                     Text(text = "Jump to C")
                 }
@@ -81,9 +94,15 @@ class BFragment : Fragment() {
 
                 Button(onClick = {
                     // findNavController().navigate(R.id.action_global_AFragment)
-                    findNavController().navigate(BFragmentDirections.actionGlobalAFragment())
+                    findNavController().navigate(
+                        BFragmentDirections.actionGlobalAFragment(
+                            120,
+                            "Li",
+                            32
+                        )
+                    )
                 }) {
-                    Text(text = "Back to A")
+                    Text(text = "Back to A (Directions))")
                 }
 
                 if (navViewModel.dslEnabled.value == true) {

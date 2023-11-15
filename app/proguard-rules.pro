@@ -32,3 +32,7 @@
 
 # Optional. For using GSON @Expose annotation
 -keepattributes AnnotationDefault,RuntimeVisibleAnnotations
+
+-keepnames class me.zhang.laboratory.ui.navi.ParcelableArg
+-keepnames class me.zhang.laboratory.ui.navi.SerializableArg
+-keepnames class me.zhang.laboratory.ui.navi.EnumArg
