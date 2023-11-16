@@ -10,6 +10,7 @@ object Repository {
         return withContext(Dispatchers.IO) {
             delay(3000)
             Repo(
+                "https://www.baidu.com/img/flexible/logo/pc/peak-result.png",
                 "https://github.com/googlesamples/android-architecture-components",
                 "Android Architecture Components. A collection of libraries that help you design robust, testable, and maintainable apps. Start with classes for managing your UI component lifecycle and handling data persistence. Provide a flexible, robust, and powerful architecture for building dynamic UI's. Android Architecture Components (AAc) is a collection of libraries that help you design robust, testable, and maintainable apps. AAc is a collection of"
             )

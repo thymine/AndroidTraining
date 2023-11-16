@@ -190,6 +190,9 @@ dependencies {
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
     implementation(libs.rxjava)
 
+    ksp(libs.ksp.glide)
+    implementation(libs.glide)
+
     //region Compose
     val composeBom = platform(libs.compose.bom)
     implementation(composeBom)

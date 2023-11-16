@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -18,6 +19,10 @@
         <variable
             name="viewModel"
             type="UserViewModel" />
+
+        <variable
+            name="handler"
+            type="me.zhang.laboratory.ui.databinding.Handler" />
 
     </data>
 
@@ -50,8 +55,26 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@{viewModel.isError ? @color/red : @color/white, default=@color/red}"
             android:text="@{viewModel.repo.name + `:` + viewModel.repo.description}"
-            tools:text="repo:desc" />
+            android:textColor="@{viewModel.isError ? @color/white : @color/red, default=@color/white}"
+            app:goneUnless="@{viewModel.repo.description.length() > 256}"
+            app:onLayoutChange="@{() -> handler.layoutChanged()}"
+            app:paddingStart="@{16}"
+            tools:background="@color/black"
+            tools:paddingStart="16dp"
+            tools:text="repo:desc"
+            tools:textColor="@color/white" />
+
+        <ImageView
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/cd_image"
+            android:scaleType="centerInside"
+            app:error="@{@drawable/ic_bin}"
+            app:imageUrl="@{viewModel.repo.logo}"
+            app:placeholder="@{@drawable/scenery}" />
 
     </LinearLayout>
 

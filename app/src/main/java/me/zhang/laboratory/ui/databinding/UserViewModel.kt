@@ -18,8 +18,17 @@ class UserViewModel : ViewModel() {
     private val _account = Account()
     val account = _account
 
-    private val _repo = MutableStateFlow(Repo("demo", "demo repo desc..."))
+    private val _repo = MutableStateFlow(
+        Repo(
+            "https://dgss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2017-09-27/297f5edb1e984613083a2d3cc0c5bb36.png",
+            "demo",
+            "demo repo desc..."
+        )
+    )
     val repo = _repo
+
+    private val _isError = MutableStateFlow(true)
+    val isError = _isError
 
     init {
         viewModelScope.launch {
@@ -66,4 +75,4 @@ class Account : BaseObservable() {
         }
 }
 
-data class Repo(val name: String, val description: String)
+data class Repo(val logo: String, val name: String, val description: String)
