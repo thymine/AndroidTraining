@@ -6,6 +6,7 @@ import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableField
 import androidx.databinding.ObservableInt
 import androidx.databinding.library.baseAdapters.BR
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,6 +31,9 @@ class UserViewModel : ViewModel() {
     private val _isError = MutableStateFlow(true)
     val isError = _isError
 
+    private val _rememberMe = MutableLiveData(true)
+    val rememberMe = _rememberMe
+
     init {
         viewModelScope.launch {
             _repo.value = Repository.loadRepo()
@@ -50,6 +54,10 @@ class UserViewModel : ViewModel() {
     fun onClickUser(user: User) {
         _user.name.set(user.name.get())
         _user.age.set(user.age.get() + 1)
+    }
+
+    fun rememberMeChanged(isChecked: Boolean) {
+        _rememberMe.value = isChecked
     }
 }
 

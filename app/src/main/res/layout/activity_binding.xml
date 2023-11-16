@@ -26,56 +26,70 @@
 
     </data>
 
-    <LinearLayout
-        android:id="@+id/main"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.databinding.DataBindingActivity">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_text"
+        <LinearLayout
+            android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.onClickUser(viewModel.user)}"
-            android:text="@{`主页面：` + viewModel.user.name + `:` + viewModel.user.age + `/` + viewModel.user.skills}"
-            android:visibility="@{!TextUtils.isEmpty(viewModel.user.name) &amp;&amp; viewModel.user.age > 0 ? View.VISIBLE: View.GONE}"
-            tools:text="主页面" />
+            android:orientation="vertical"
+            tools:context=".ui.databinding.DataBindingActivity">
 
-        <include
-            layout="@layout/sub_binding"
-            bind:viewModel="@{viewModel}" />
+            <TextView
+                android:id="@+id/tv_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> viewModel.onClickUser(viewModel.user)}"
+                android:text="@{`主页面：` + viewModel.user.name + `:` + viewModel.user.age + `/` + viewModel.user.skills}"
+                android:visibility="@{!TextUtils.isEmpty(viewModel.user.name) &amp;&amp; viewModel.user.age > 0 ? View.VISIBLE: View.GONE}"
+                tools:text="主页面" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.account.username + `:` + viewModel.account.password}"
-            tools:text="admin:123" />
+            <include
+                layout="@layout/sub_binding"
+                bind:viewModel="@{viewModel}" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@{viewModel.isError ? @color/red : @color/white, default=@color/red}"
-            android:text="@{viewModel.repo.name + `:` + viewModel.repo.description}"
-            android:textColor="@{viewModel.isError ? @color/white : @color/red, default=@color/white}"
-            app:goneUnless="@{viewModel.repo.description.length() > 256}"
-            app:onLayoutChange="@{() -> handler.layoutChanged()}"
-            app:paddingStart="@{16}"
-            tools:background="@color/black"
-            tools:paddingStart="16dp"
-            tools:text="repo:desc"
-            tools:textColor="@color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.account.username + `:` + viewModel.account.password}"
+                tools:text="admin:123" />
 
-        <ImageView
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:background="@color/colorPrimary"
-            android:contentDescription="@string/cd_image"
-            android:scaleType="centerInside"
-            app:error="@{@drawable/ic_bin}"
-            app:imageUrl="@{viewModel.repo.logo}"
-            app:placeholder="@{@drawable/scenery}" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@{viewModel.isError ? @color/red : @color/white, default=@color/red}"
+                android:text="@{viewModel.repo.name + `:` + viewModel.repo.description}"
+                android:textColor="@{viewModel.isError ? @color/white : @color/red, default=@color/white}"
+                app:goneUnless="@{viewModel.repo.description.length() > 256}"
+                app:onLayoutChange="@{() -> handler.layoutChanged()}"
+                app:paddingStart="@{16}"
+                tools:background="@color/black"
+                tools:paddingStart="16dp"
+                tools:text="repo:desc"
+                tools:textColor="@color/white" />
 
-    </LinearLayout>
+            <ImageView
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:background="@color/colorPrimary"
+                android:contentDescription="@string/cd_image"
+                android:scaleType="centerInside"
+                app:error="@{@drawable/ic_bin}"
+                app:imageUrl="@{viewModel.repo.logo}"
+                app:placeholder="@{@drawable/scenery}" />
+
+            <CheckBox
+                android:id="@+id/rememberMeCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:checked="@{viewModel.rememberMe}"
+                android:onCheckedChanged="@{(buttonView, isChecked) -> viewModel.rememberMeChanged(isChecked)}"
+                android:text="@string/remember_me" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>

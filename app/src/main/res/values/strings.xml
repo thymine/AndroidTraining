@@ -27,5 +27,6 @@
     <string name="x">X</string>
     <string name="route_fragment_b">fragment_b</string>
     <string name="cd_image">Image</string>
+    <string name="remember_me">Remember Me</string>
 
 </resources>
