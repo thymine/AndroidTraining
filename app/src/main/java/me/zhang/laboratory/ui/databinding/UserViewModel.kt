@@ -34,6 +34,9 @@ class UserViewModel : ViewModel() {
     private val _rememberMe = MutableLiveData(true)
     val rememberMe = _rememberMe
 
+    private val _birthDate = MutableLiveData(1700101725422L)
+    val birthDate = _birthDate
+
     init {
         viewModelScope.launch {
             _repo.value = Repository.loadRepo()
@@ -58,6 +61,13 @@ class UserViewModel : ViewModel() {
 
     fun rememberMeChanged(isChecked: Boolean) {
         _rememberMe.value = isChecked
+    }
+
+    fun addOneDay() {
+        val current = birthDate.value
+        if (current != null) {
+            birthDate.value = current + 24 * 60 * 60 * 1000
+        }
     }
 }
 

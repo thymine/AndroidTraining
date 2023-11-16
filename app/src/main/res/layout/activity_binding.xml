@@ -12,6 +12,8 @@
 
         <import type="android.text.TextUtils" />
 
+        <import type="me.zhang.laboratory.ui.databinding.DateStringConverter" />
+
         <import
             alias="UserViewModel"
             type="me.zhang.laboratory.ui.databinding.UserViewModel" />
@@ -98,6 +100,17 @@
                 android:layout_height="48dp"
                 android:checked="@={loginViewModel.rememberMe}"
                 android:text="@string/remember_me2" />
+
+            <TextView
+                android:id="@+id/birth_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:onClick="@{() -> viewModel.addOneDay()}"
+                android:padding="16dp"
+                android:text="@={DateStringConverter.dateToString(viewModel.birthDate)}"
+                android:textColor="@color/white"
+                tools:text="2013-11-16" />
 
         </LinearLayout>
 
