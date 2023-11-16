@@ -24,6 +24,10 @@
             name="handler"
             type="me.zhang.laboratory.ui.databinding.Handler" />
 
+        <variable
+            name="loginViewModel"
+            type="me.zhang.laboratory.ui.databinding.LoginViewModel" />
+
     </data>
 
     <ScrollView
@@ -87,6 +91,13 @@
                 android:checked="@{viewModel.rememberMe}"
                 android:onCheckedChanged="@{(buttonView, isChecked) -> viewModel.rememberMeChanged(isChecked)}"
                 android:text="@string/remember_me" />
+
+            <CheckBox
+                android:id="@+id/rememberMeCheckBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:checked="@={loginViewModel.rememberMe}"
+                android:text="@string/remember_me2" />
 
         </LinearLayout>
 

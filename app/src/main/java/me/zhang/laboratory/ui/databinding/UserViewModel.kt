@@ -84,3 +84,12 @@ class Account : BaseObservable() {
 }
 
 data class Repo(val logo: String, val name: String, val description: String)
+
+class LoginViewModel : BaseObservable() {
+    @get:Bindable
+    var rememberMe: Boolean = false
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.rememberMe)
+        }
+}
