@@ -30,6 +30,10 @@
             name="loginViewModel"
             type="me.zhang.laboratory.ui.databinding.LoginViewModel" />
 
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
     </data>
 
     <ScrollView
@@ -101,16 +105,25 @@
                 android:checked="@={loginViewModel.rememberMe}"
                 android:text="@string/remember_me2" />
 
-            <TextView
+            <EditText
                 android:id="@+id/birth_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/black"
-                android:onClick="@{() -> viewModel.addOneDay()}"
+                android:importantForAutofill="no"
+                android:inputType="date"
+                android:labelFor="@id/birth_date"
                 android:padding="16dp"
                 android:text="@={DateStringConverter.dateToString(viewModel.birthDate)}"
                 android:textColor="@color/white"
-                tools:text="2013-11-16" />
+                tools:text="2003-11-16" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{(view) -> clickListener.onClick(view)}"
+                android:text="@string/show_current_date"
+                android:textAllCaps="false" />
 
         </LinearLayout>
 

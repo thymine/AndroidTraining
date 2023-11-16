@@ -29,5 +29,6 @@
     <string name="cd_image">Image</string>
     <string name="remember_me">Remember Me (One Way)</string>
     <string name="remember_me2">Remember Me (Tow Way)</string>
+    <string name="show_current_date">Show Current Date</string>
 
 </resources>

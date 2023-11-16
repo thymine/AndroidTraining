@@ -62,13 +62,6 @@ class UserViewModel : ViewModel() {
     fun rememberMeChanged(isChecked: Boolean) {
         _rememberMe.value = isChecked
     }
-
-    fun addOneDay() {
-        val current = birthDate.value
-        if (current != null) {
-            birthDate.value = current + 24 * 60 * 60 * 1000
-        }
-    }
 }
 
 class User {

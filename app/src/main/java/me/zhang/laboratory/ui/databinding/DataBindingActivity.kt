@@ -1,6 +1,7 @@
 package me.zhang.laboratory.ui.databinding
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,15 @@ class DataBindingActivity : AppCompatActivity() {
             override fun layoutChanged() {
                 Toast.makeText(this@DataBindingActivity, "layout changed", Toast.LENGTH_SHORT)
                     .show()
+            }
+        }
+        binding.clickListener = View.OnClickListener {
+            userViewModel.birthDate.value?.apply {
+                Toast.makeText(
+                    this@DataBindingActivity,
+                    DateStringConverter.dateToString(this),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         binding.lifecycleOwner = this
