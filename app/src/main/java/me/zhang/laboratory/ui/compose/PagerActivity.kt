@@ -18,6 +18,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.PagerDefaults
+import androidx.compose.foundation.pager.PagerSnapDistance
 import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
@@ -68,18 +70,24 @@ class PagerActivity : AppCompatActivity() {
                     Log.d(TAG, "Settled page: $settledPage")
                 }
             }
+            val fling = PagerDefaults.flingBehavior(
+                state = horizontalPagerState,
+                pagerSnapDistance = PagerSnapDistance.atMost(10)
+            )
             HorizontalPager(
                 beyondBoundsPageCount = 3,
                 state = horizontalPagerState,
                 contentPadding = PaddingValues(16.dp),
 //                pageSize = PageSize.Fixed(256.dp)
-                pageSize = twoPagesPerViewport
+                pageSize = twoPagesPerViewport,
+                flingBehavior = fling,
             ) { page ->
                 Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                     Card(
                         Modifier
                             .fillMaxWidth()
                             .height(200.dp)
+                            .padding(end = 16.dp)
                             .graphicsLayer {
                                 // Calculate the absolute offset for the current page from the
                                 // scroll position. We use the absolute value which allows us to mirror
