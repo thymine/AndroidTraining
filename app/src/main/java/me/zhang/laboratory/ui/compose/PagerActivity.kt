@@ -20,6 +20,7 @@ import androidx.compose.foundation.pager.VerticalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -29,9 +30,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.google.android.material.math.MathUtils.lerp
 import kotlinx.coroutines.launch
+import kotlin.math.absoluteValue
 
 private const val TAG = "PagerActivity"
 
@@ -56,16 +60,47 @@ class PagerActivity : AppCompatActivity() {
                 state = horizontalPagerState,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.Gray)
-                    .height(128.dp),
-                verticalAlignment = Alignment.Bottom,
-            ) {
-                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomEnd) {
-                    Text(
-                        text = "Page: $it",
-                        modifier = Modifier
-                            .background(Color.DarkGray)
-                    )
+            ) { page ->
+                Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                    Card(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                            .height(200.dp)
+                            .graphicsLayer {
+                                // Calculate the absolute offset for the current page from the
+                                // scroll position. We use the absolute value which allows us to mirror
+                                // any effects for both directions
+                                val pageOffset = (
+                                        (horizontalPagerState.currentPage - page) + horizontalPagerState
+                                            .currentPageOffsetFraction
+                                        ).absoluteValue
+
+                                // We animate the alpha, between 50% and 100%
+                                alpha = lerp(
+                                    0.5f,
+                                    1f,
+                                    1f - pageOffset.coerceIn(0f, 1f)
+                                )
+
+                                scaleX = lerp(
+                                    0.75f,
+                                    1f,
+                                    1f - pageOffset.coerceIn(0f, 1f)
+                                )
+
+                                scaleY = lerp(
+                                    0.75f,
+                                    1f,
+                                    1f - pageOffset.coerceIn(0f, 1f)
+                                )
+                            }
+                    ) {
+                        // Card content
+                        Text(
+                            text = "Page: $page"
+                        )
+                    }
                 }
             }
 
