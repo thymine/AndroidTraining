@@ -20,6 +20,7 @@ import me.zhang.laboratory.ui.compose.LayoutActivity
 import me.zhang.laboratory.ui.compose.ListActivity
 import me.zhang.laboratory.ui.compose.LoginActivity
 import me.zhang.laboratory.ui.compose.ModifierActivity
+import me.zhang.laboratory.ui.compose.PagerActivity
 import me.zhang.laboratory.ui.compose.SSOTActivity
 import me.zhang.laboratory.ui.compose.ScaffoldActivity
 import me.zhang.laboratory.ui.compose.StateActivity
@@ -90,6 +91,7 @@ class MainActivity : MenuActivity() {
     }
 
     override fun prepareMenu() {
+        addMenuItem("Pager", PagerActivity::class.java)
         addMenuItem("Data Binding", DataBindingActivity::class.java)
         addMenuItem("Navigation", NavActivity::class.java)
         addMenuItem("Coroutines", CoroutinesActivity::class.java)
