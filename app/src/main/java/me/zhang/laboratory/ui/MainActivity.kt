@@ -15,6 +15,7 @@ import me.zhang.laboratory.ui.compose.AnimateActivity
 import me.zhang.laboratory.ui.compose.BilibiliActivity
 import me.zhang.laboratory.ui.compose.ComposableActivity
 import me.zhang.laboratory.ui.compose.ConstraintActivity
+import me.zhang.laboratory.ui.compose.DatePickerActivity
 import me.zhang.laboratory.ui.compose.DrawActivity
 import me.zhang.laboratory.ui.compose.LayoutActivity
 import me.zhang.laboratory.ui.compose.ListActivity
@@ -91,6 +92,7 @@ class MainActivity : MenuActivity() {
     }
 
     override fun prepareMenu() {
+        addMenuItem("Date Picker", DatePickerActivity::class.java)
         addMenuItem("Pager", PagerActivity::class.java)
         addMenuItem("Data Binding", DataBindingActivity::class.java)
         addMenuItem("Navigation", NavActivity::class.java)

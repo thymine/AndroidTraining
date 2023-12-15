@@ -122,6 +122,7 @@
         <activity android:name=".ui.RoomActivity" />
         <activity android:name=".ui.RxActivity" />
         <activity android:name=".ui.compose.SSOTActivity" />
+        <activity android:name=".ui.compose.DatePickerActivity" />
         <activity
             android:name="me.zhang.laboratory.ui.compose.PagerActivity"
             android:exported="false" />

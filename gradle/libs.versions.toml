@@ -76,7 +76,7 @@ play-services-auth = { module = "com.google.android.gms:play-services-auth", ver
 recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "composeConstraintlayout" }
-compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-material3 = "androidx.compose.material3:material3:1.2.0-beta01"
 compose-material = { module = "androidx.compose.material:material" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }
 compose-ui = { module = "androidx.compose.ui:ui" }
