@@ -36,7 +36,7 @@
             android:name=".ui.firebase.TestFirebaseActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.compose.AnimateActivity"
+            android:name=".ui.compose.AnimationActivity"
             android:exported="false" />
         <activity
             android:name=".ui.compose.DrawActivity"

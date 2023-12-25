@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import me.zhang.laboratory.ui.base.MenuActivity
-import me.zhang.laboratory.ui.compose.AnimateActivity
+import me.zhang.laboratory.ui.compose.AnimationActivity
 import me.zhang.laboratory.ui.compose.BilibiliActivity
 import me.zhang.laboratory.ui.compose.BringIntoViewActivity
 import me.zhang.laboratory.ui.compose.ComposableActivity
@@ -99,7 +99,7 @@ class MainActivity : MenuActivity() {
         addMenuItem("Navigation", NavActivity::class.java)
         addMenuItem("Coroutines", CoroutinesActivity::class.java)
         addMenuItem("Compose-BringIntoView", BringIntoViewActivity::class.java)
-        addMenuItem("Compose-Animate", AnimateActivity::class.java)
+        addMenuItem("Compose-Animation", AnimationActivity::class.java)
         addMenuItem("Compose-Draw", DrawActivity::class.java)
         addMenuItem("Compose-State", StateActivity::class.java)
         addMenuItem("Compose-List", ListActivity::class.java)

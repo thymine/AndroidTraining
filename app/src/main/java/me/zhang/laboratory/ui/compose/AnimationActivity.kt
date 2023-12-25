@@ -11,16 +11,13 @@ import androidx.compose.animation.EnterExitState
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.animateColor
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
-import androidx.compose.animation.shrinkVertically
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
@@ -31,6 +28,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -57,7 +55,7 @@ import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-class AnimateActivity : AppCompatActivity() {
+class AnimationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent { Main() }
@@ -73,10 +71,10 @@ class AnimateActivity : AppCompatActivity() {
             val density = LocalDensity.current
             AnimatedVisibility(
                 visible = visible,
-                enter = slideInVertically { with(density) { -40.dp.roundToPx() } }
-                        + expandVertically(expandFrom = Alignment.Top)
-                        + fadeIn(initialAlpha = 0.3f),
-                exit = slideOutVertically() + shrinkVertically() + fadeOut(),
+//                enter = slideInVertically { with(density) { -40.dp.roundToPx() } }
+//                        + expandVertically(expandFrom = Alignment.Top)
+//                        + fadeIn(initialAlpha = 0.3f),
+//                exit = slideOutVertically() + shrinkVertically() + fadeOut(),
             ) {
                 val background by transition.animateColor(label = "background") { state ->
                     if (state == EnterExitState.Visible) Color.DarkGray else Color.LightGray
@@ -227,6 +225,36 @@ class AnimateActivity : AppCompatActivity() {
 //                tint = iconColor
                 tint = iconColor.value
             )
+
+            Row {
+                var c by remember { mutableIntStateOf(0) }
+                Button(onClick = { c++ }) {
+                    Text("Add")
+                }
+                AnimatedContent(
+                    targetState = c,
+                    transitionSpec = {
+                        // Compare the incoming number with the previous number.
+                        if (targetState > initialState) {
+                            // If the target number is larger, it slides up and fades in
+                            // while the initial (smaller) number slides up and fades out.
+                            (slideInVertically { height -> height } + fadeIn())
+                                .togetherWith(slideOutVertically { height -> -height } + fadeOut())
+                        } else {
+                            // If the target number is smaller, it slides down and fades in
+                            // while the initial number slides down and fades out.
+                            (slideInVertically { height -> -height } + fadeIn())
+                                .togetherWith(slideOutVertically { height -> height } + fadeOut())
+                        }.using(
+                            // Disable clipping since the faded slide-in/out should
+                            // be displayed out of bounds.
+                            SizeTransform(clip = false)
+                        )
+                    }, label = ""
+                ) { targetCount ->
+                    Text(text = "$targetCount")
+                }
+            }
         }
     }
 
