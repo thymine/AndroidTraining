@@ -48,6 +48,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
@@ -254,6 +255,24 @@ class AnimationActivity : AppCompatActivity() {
                 ) { targetCount ->
                     Text(text = "$targetCount")
                 }
+            }
+
+            var expanded by remember { mutableStateOf(false) }
+            Box(
+                modifier = Modifier
+                    .alpha(0.5f)
+                    .background(Color.Blue)
+                    .animateContentSize()
+                    .height(if (expanded) 200.dp else 100.dp)
+                    .fillMaxWidth()
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = null
+                    ) {
+                        expanded = !expanded
+                    }
+
+            ) {
             }
         }
     }
