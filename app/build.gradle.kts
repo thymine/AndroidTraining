@@ -73,6 +73,7 @@ android {
             path = file("src/main/cpp/Android.mk")
         }
     }
+    namespace = "me.zhang.laboratory"
 }
 
 dependencies {
