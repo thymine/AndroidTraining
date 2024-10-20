@@ -75,7 +75,7 @@ class PagerActivity : AppCompatActivity() {
                 pagerSnapDistance = PagerSnapDistance.atMost(10)
             )
             HorizontalPager(
-                beyondBoundsPageCount = 3,
+//                beyondBoundsPageCount = 3,
                 state = horizontalPagerState,
                 contentPadding = PaddingValues(16.dp),
 //                pageSize = PageSize.Fixed(256.dp)
@@ -138,7 +138,7 @@ class PagerActivity : AppCompatActivity() {
             }
             Box {
                 VerticalPager(
-                    beyondBoundsPageCount = 3,
+//                    beyondBoundsPageCount = 3,
                     state = verticalPagerState,
                     modifier = Modifier
                         .fillMaxWidth()

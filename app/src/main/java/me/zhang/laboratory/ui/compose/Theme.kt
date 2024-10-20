@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxColors
@@ -61,8 +60,8 @@ fun LabeledCheckbox(
         modifier = modifier
             .clip(MaterialTheme.shapes.small)
             .clickable(
-                indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
-                interactionSource = remember { MutableInteractionSource() },
+//                indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
+//                interactionSource = remember { MutableInteractionSource() },
                 onClick = {
                     if (onCheckedChange != null) {
                         onCheckedChange(!checked)
